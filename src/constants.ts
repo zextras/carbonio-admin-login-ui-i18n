@@ -29,6 +29,7 @@ export const SUSPENDED = 'suspended';
 export const MANAGE_APP_ID = 'manage';
 export const DOMAINS_ROUTE_ID = 'domains';
 export const STORAGES_ROUTE_ID = 'storages';
+export const BUCKET_ROUTE_ID = 'buckets';
 export const SUBSCRIPTIONS_ROUTE_ID = 'subscriptions';
 export const BACKUP_ROUTE_ID = 'backup';
 export const ZIMBRA_DOMAIN_NAME = 'zimbraDomainName';
