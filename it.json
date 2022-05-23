@@ -1,1 +1,7 @@
-{}
+{
+    "buckets": {
+        "connection": {
+            "notes": "Note"
+        }
+    }
+}
