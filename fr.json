@@ -2,8 +2,14 @@
     "buckets": {
         "connection": {
             "access_key": "Clé d’accès",
-            "notes": "Notes"
-        }
+            "notes": "Notes",
+            "arn_name": "Arn / Nom",
+            "descriptive_name": "Nom descriptif",
+            "secret_key": "Clé secrète"
+        },
+        "bucket_list": "Liste des buckets",
+        "bucket_type": "Type de Buckets",
+        "connect_buckets": "Connecter les Buckets"
     },
     "core": {
         "subscription": {
