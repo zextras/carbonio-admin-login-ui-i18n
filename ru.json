@@ -88,7 +88,20 @@
         "add_regex": "ДОБАВИТЬ REGEX",
         "admin_help_url": "URL справки для администратора",
         "admins": "Администраторы",
-        "aggrigated_space_criteria": "Совокупные пространственные критерии"
+        "aggrigated_space_criteria": "Совокупные пространственные критерии",
+        "block_send_receive": "Блокировать отправку/получение",
+        "buckets": "Бакеты",
+        "change_save_success_msg": "Изменение успешно сохранено",
+        "console_redirection": "Перенаправление консоли",
+        "cos": "Классы Сервисов",
+        "create_date": "Дата создания",
+        "default_class_of_service": "Класс сервиса по умолчанию",
+        "delete_domain": "Удалить домен",
+        "allow_send_receive": "Разрешить отправить/получить",
+        "auth_method": "Метод авторизации",
+        "auto_logout_users": "Автоматический выход пользователей из системы",
+        "bind_dn_template": "Привязать шаблон DN",
+        "block_send": "Заблокировать отправку"
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
