@@ -5,11 +5,15 @@
             "notes": "Notes",
             "arn_name": "Arn / Nom",
             "descriptive_name": "Nom descriptif",
-            "secret_key": "Clé secrète"
+            "secret_key": "Clé secrète",
+            "verify_connector": "VÉRIFIER LE CONNECTEUR"
         },
         "bucket_list": "Liste des buckets",
         "bucket_type": "Type de Buckets",
-        "connect_buckets": "Connecter les Buckets"
+        "connect_buckets": "Connecter les Buckets",
+        "new": {
+            "bucket_connection": "Connexion au Bucket"
+        }
     },
     "core": {
         "subscription": {
@@ -29,7 +33,15 @@
             "subscription_last_check": "Dernière vérification de souscription",
             "subscription_type": "Type de souscription",
             "token": "Token",
-            "version": "Zextras version"
+            "version": "Zextras version",
+            "deactive": "Désactivé",
+            "modal": {
+                "cancel": "NON",
+                "confirm": "Êtes-vous sûr de vouloir continuer ?",
+                "deactivate": "Oui, désactiver",
+                "label": "Désactiver le Token",
+                "warning": "Vous êtes sur le point de désactiver le token courant. En le faisant, vous désactiverez toutes les fonctionnalités activées."
+            }
         }
     },
     "label": {
@@ -72,7 +84,50 @@
         "suspended": "Suspendu",
         "timezone": "Fuseau horaire",
         "unlimited": "Illimité",
-        "url": "URL"
+        "url": "URL",
+        "active_sync": "ActiveSync",
+        "add_regex": "AJOUTER UNE REGEX",
+        "admin_help_url": "URL d'aide administrateur",
+        "admins": "Administrateurs",
+        "aggrigated_space_criteria": "Critère d'agrégation d'espace",
+        "allow_send_receive": "Autoriser l'envoi/réception",
+        "auth_method": "Méthode d'authentification",
+        "authentication": "Authentification",
+        "auto_logout_users": "Déconnexion automatique des utilisateurs",
+        "bind_dn_template": "Lier le modèle DN",
+        "block_send": "Bloquer l'envoi",
+        "block_send_receive": "Bloquer l'envoi/réception",
+        "buckets": "Buckets",
+        "certificate": "Certificat",
+        "certificates": "Certificats",
+        "change_save_success_msg": "Les changements ont été enregistrés avec succès",
+        "closed": "Fermé",
+        "console_redirection": "Console de redirection",
+        "cos": "CoS",
+        "create_date": "Date de création",
+        "default_class_of_service": "Classe de service par défaut",
+        "delete_domain": "Supprimer le domaine",
+        "delete_domain_error_msg": "Vous êtes sur le point de supprimer {{domainName}}. Êtes-vous certain de vouloir supprimer {{domainName}} ?",
+        "delete_domain_success_msg": "Le domaine a été supprimé avec succès",
+        "delete_domain_with_account_content_msg": "{{domainName}} n'est pas vide : il contient {{domainAccounts}} comptes système et {{domainAccounts}} compte normaux. Êtes-vous certain de vouloir précéder à la suppression",
+        "deleteing": "Suppression ",
+        "deligated_admin_help_url": "URL d'aide pour la délégation d'administrateur",
+        "domain_quota_settings": "Paramètres de quota de domaine",
+        "domains": "Domaines",
+        "enable_start_tls": "Activer StartTLS",
+        "example_new": "Nouvel Exemple",
+        "external_active_directory": "Active Directory externe",
+        "external_gal": "GAL externe",
+        "external_ldap": "LDAP Externe",
+        "external_password_change_listener": "Système d'écoute pour le changement des mots de passe",
+        "fall_back_to_local_msg": "Revenir au gestionnaire de mot de passe local en cas de dysfonctionnement",
+        "features": "Fonctionnalités",
+        "filter": "Filtre",
+        "force_delete": "Forcer la suppression",
+        "general_information": "Informations générales",
+        "http": "http",
+        "https": "https",
+        "id": "Identifiant"
     },
     "message": {
         "snackbar": {
@@ -224,6 +279,32 @@
         "advanced": "Avancé",
         "free_busy": "Libre/Occupé",
         "general_settings": "Paramètres généraux",
-        "theme": "Thème"
-    }
+        "theme": "Thème",
+        "account_gal_synchronization": "Nom du compte de la Synchronisation GAL",
+        "aggregated_domain_space": "Espace de domaine agrégée (en octet)",
+        "authentication": "Authentification",
+        "create_new_domain": "CRÉER UN NOUVEAU DOMAINE",
+        "domain_space_byte": "Espace des domaines (en octet)",
+        "gal": "GAL",
+        "gal_mode": "Mode de la GAL",
+        "general_information": "Informations générales",
+        "internal_gal_received": "Plage de réception de la GAL interne",
+        "mail_server": "Serveur email",
+        "mailbox_quota": "Quota des mailbox",
+        "mailbox_space": "Espace des mailbox",
+        "many_domain_info_msg": "Trop de domaines ! Lequel souhaitez-vous voir ? Commencez à taper pour filtrer.",
+        "most_result_return_gal_search": "La plupart des résultats obtenus par la recherche GAL",
+        "range": "Plage",
+        "search_domain": "Rechercher un domaine",
+        "select_domain_or_create_new": "Merci de sélectionner un domaine pour le gérer ou cliquer sur le bouton Créer pour en créer un nouveau.",
+        "send_the_warning_to": "Envoyer une alerte à",
+        "source_name_internal_gal": "Nom de la source pour la GAL interne",
+        "virtual_hosts": "Hôtes virtuels",
+        "warn_when_reach_space_quota": "Me prévenir quand j'ai atteint ce quota d'espace agrégé"
+    },
+    "commons": {
+        "confirm_connection": "CONFIRMER LA CONNEXION"
+    },
+    "create_new_bucket": "NOUVEAU BUCKET",
+    "create_new_domain": "Créer un nouveau domaine"
 }
