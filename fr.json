@@ -127,7 +127,8 @@
         "general_information": "Informations générales",
         "http": "http",
         "https": "https",
-        "id": "Identifiant"
+        "id": "Identifiant",
+        "no": "NON"
     },
     "message": {
         "snackbar": {
@@ -306,5 +307,7 @@
         "confirm_connection": "CONFIRMER LA CONNEXION"
     },
     "create_new_bucket": "NOUVEAU BUCKET",
-    "create_new_domain": "Créer un nouveau domaine"
+    "create_new_domain": "Créer un nouveau domaine",
+    "many_domain_info_msg": "Trop de domaines ! Lequel souhaitez-vous voir ? Commencez à taper pour filtrer.",
+    "select_domain_or_create_new": "Merci de sélectionner un domaine pour le gérer ou cliquer sur le bouton Créer pour en créer un nouveau."
 }
