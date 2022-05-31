@@ -91,7 +91,9 @@
         "allow_send_receive": "Permitir Enviar/Recibir",
         "auth_method": "Método de autenticación",
         "authentication": "Autenticación",
-        "auto_logout_users": "Cerrar sesión automáticamente"
+        "auto_logout_users": "Cerrar sesión automáticamente",
+        "general_information": "Información general",
+        "no": "NO"
     },
     "timezone": {
         "indian_mauritius": "{{value}} Port Louis",
@@ -272,5 +274,7 @@
         "confirm_connection": "CONFIRMAR CONEXIÓN"
     },
     "create_new_bucket": "NUEVO BUCKET",
-    "create_new_domain": "Crear un nuevo dominio"
+    "create_new_domain": "Crear un nuevo dominio",
+    "many_domain_info_msg": "La lista de dominios es extensa. Comience a escribir para filtrar.",
+    "select_domain_or_create_new": "Seleccione un dominio para administrarlo, o haga clic en el botón Crear para crear uno nuevo."
 }
