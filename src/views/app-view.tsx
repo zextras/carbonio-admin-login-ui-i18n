@@ -22,6 +22,7 @@ import {
 	SUBSCRIPTIONS_ROUTE_ID
 } from '../constants';
 import Subscription from './core/subscribsion/subscription';
+import BackupApp from './features/backup/BackupApp';
 
 const AppView: FC = () => {
 	const { path } = useRouteMatch();
@@ -76,11 +77,8 @@ const AppView: FC = () => {
 			</Route>
 			<Route path={`${path}/${BACKUP_ROUTE_ID}`}>
 				<Container orientation="horizontal" mainAlignment="flex-start">
-					<Container width="40%">
-						<Text>{t('label.backup', 'Backup')}</Text>
-					</Container>
 					<Suspense fallback={<Spinner />}>
-						<DomainDetailPanel />
+						<BackupApp />
 					</Suspense>
 				</Container>
 			</Route>
