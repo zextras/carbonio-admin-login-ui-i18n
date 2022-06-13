@@ -2,7 +2,22 @@
     "core": {
         "subscription": {
             "status": "Trạng thái",
-            "hide": "Ẩn"
+            "hide": "Ẩn",
+            "emissionDate": "Ngày phát",
+            "features": "Các tính năng khác",
+            "less_info": "Ít thông tin hơn",
+            "more_info": "Nhiều thông tin hơn",
+            "active": "Đang hoạt động",
+            "bundle": "Bó lại",
+            "company_name": "Tên Công ty",
+            "customer": "Khách hàng",
+            "email_buyer": "Người mua thư điện tử",
+            "renew": "Làm mới",
+            "subscription_Accounts": "Các tài khoản thuê bao",
+            "subscription_last_check": "Kiểm tra thuê bao cuối",
+            "subscription_type": "Kiểu thuê bao",
+            "token": "Mã thông báo",
+            "version": "Phiên bản Zextras"
         }
     },
     "label": {
@@ -35,7 +50,13 @@
         "suspended": "Cấm",
         "timezone": "Múi giờ",
         "unlimited": "Không giới hạn",
-        "url": "URL"
+        "url": "URL",
+        "active": "Đang hoạt động",
+        "app_name": "Quản lý",
+        "hours": "Giờ",
+        "minutes": "Phút",
+        "note": "Chú thích",
+        "notification": "Thông báo"
     },
     "timezone": {
         "australia_sydney": "{{value}} Canberra, Melbourne, Sydney",
@@ -179,7 +200,8 @@
     "domain": {
         "general_settings": "Cài đặt chung",
         "theme": "Chủ đề",
-        "free_busy": "Rảnh/Bận"
+        "free_busy": "Rảnh/Bận",
+        "advanced": "Nâng cao"
     },
     "buckets": {
         "connection": {
