@@ -134,7 +134,7 @@
         "locked": "Vérouillé",
         "log": "Log",
         "login_allowed_ip": "IP de connexion autorisée",
-        "login_allowed_user_agent": "User Agent de connexion autorisé",
+        "login_allowed_user_agent": "Login agent autorisé",
         "mail_size": "Taille des emails",
         "main_view": "C'est une vue",
         "maintenance": "Maintenance",
@@ -169,10 +169,11 @@
         "virtual_host_user_msg": "Tous les utilisateur connectés utilisant une URL avec l'un des hostname ci-dessous seront considérés comme faisant partie de ce domaine, {{domainName}}",
         "web_client": "Client Web",
         "your_auth_method_is": "Votre méthode d'authentification est",
-        "inbound_smtp_host_name": "Inbound SMTP Host Name",
+        "inbound_smtp_host_name": "Nom d'hôte SMTP entrant",
         "login_redirect_url": "URL de redirection du Login",
         "mx_record_information_msg": "Si vous enregistrement MX pointent vers un relay anti-spam ou autre serveur externe non Zimbra, entrez le nom de ce serveur dans le champ \"Inbound SMTP Host Name\".",
-        "password_to_bind_external_server_msg": "Je souhaite utiliser DN/Mot de passe pour le lier à un serveur externe"
+        "password_to_bind_external_server_msg": "Je souhaite utiliser DN/Mot de passe pour le lier à un serveur externe",
+        "logout_allowed_ip": "Déconnexion IP autorisée"
     },
     "message": {
         "snackbar": {
