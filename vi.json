@@ -56,7 +56,11 @@
         "hours": "Giờ",
         "minutes": "Phút",
         "note": "Chú thích",
-        "notification": "Thông báo"
+        "notification": "Thông báo",
+        "available_space": "Không gian đang sẵn sàng",
+        "backup": "Sao lưu",
+        "configuration": "Cấu hình",
+        "core": "Lõi"
     },
     "timezone": {
         "australia_sydney": "{{value}} Canberra, Melbourne, Sydney",
