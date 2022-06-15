@@ -119,7 +119,7 @@
         "external_active_directory": "Active Directory externe",
         "external_gal": "GAL externe",
         "external_ldap": "LDAP Externe",
-        "external_password_change_listener": "Système d'écoute pour le changement des mots de passe",
+        "external_password_change_listener": "Système d'écoute pour le changement des mots de passe externes",
         "fall_back_to_local_msg": "Revenir au gestionnaire de mot de passe local en cas de dysfonctionnement",
         "features": "Fonctionnalités",
         "filter": "Filtre",
