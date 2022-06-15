@@ -52,7 +52,12 @@
         "virtual_hosts": "Host virtuali",
         "select_domain_or_create_new": "Seleziona una dominio per gestirlo oppure seleziona il tasto Crea per crearne uno nuovo.",
         "authentication": "Autenticazione",
-        "general_information": "Informazioni Generali"
+        "general_information": "Informazioni Generali",
+        "mail_server": "Mail Server",
+        "create_new_domain": "CREA NUOVO DOMINIO",
+        "gal": "GAL",
+        "mailbox_quota": "Dimensione Casella di Posta",
+        "many_domain_info_msg": "Sembrano esserci molti domini! Quale vuoi visualizzare? Inizia a digitare il nome per filtrarli."
     },
     "label": {
         "account": "Profilo",
@@ -131,7 +136,14 @@
         "virtual_host_name": "Nome Host Virtuale",
         "virtual_host_note": "Si tenga presente che la rimozione dell'host virtuale è effettiva solo dopo il riavvio del mailbox server.",
         "web_client": "Web Client",
-        "your_auth_method_is": "Il tuo Metodo di Autenticazione è"
+        "your_auth_method_is": "Il tuo Metodo di Autenticazione è",
+        "block_send_receive": "Blocca Invia/Ricevi",
+        "force_delete": "Eliminazione Forzata",
+        "maintenance": "Supporto",
+        "certificate": "Certificato",
+        "certificates": "Certificati",
+        "internal": "Interno",
+        "virtual_host_user_msg": "Qualsiasi utente che effettua il login utilizzando un URL che contiene uno degli hostname qui elencati, sarà considerato come utente di questo dominio, {{domainName}}"
     },
     "message": {
         "snackbar": {
@@ -284,5 +296,9 @@
     },
     "create_new_bucket": "NUOVO BUCKET",
     "log": "Log",
-    "select_domain_or_create_new": "Seleziona una dominio per gestirlo oppure seleziona il tasto Crea per crearne uno nuovo."
+    "select_domain_or_create_new": "Seleziona una dominio per gestirlo oppure seleziona il tasto Crea per crearne uno nuovo.",
+    "new_bucket_connection": "CONNESSIONE",
+    "create_new_domain": "Crea Nuovo Dominio",
+    "select_bucket_or_create_new_bucket": "sembra che tu non abbia ancora impostato un tipo di bucket. Clicca il bottone NUOVO BUCKET per crearne uno nuovo.",
+    "many_domain_info_msg": "Sembrano esserci molti domini! Quale vuoi visualizzare? Inizia a digitare il nome per filtrarli."
 }
