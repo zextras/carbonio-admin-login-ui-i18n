@@ -24,6 +24,8 @@ type Props = {
 	currentStep: any;
 	currentStepIndex: any;
 	setToggleBucket: any;
+
+	bucketType: any;
 };
 
 const Wizard: React.FC<Props> = ({
@@ -38,7 +40,8 @@ const Wizard: React.FC<Props> = ({
 	cancelI18nLabel,
 	Wrapper,
 	title,
-	setToggleBucket
+	setToggleBucket,
+	bucketType
 }) => {
 	const sectionRef = useRef();
 	const activeRef = useRef();
@@ -60,6 +63,8 @@ const Wizard: React.FC<Props> = ({
 			cancelI18nLabel={cancelI18nLabel}
 			ref={{ sectionRef, activeRef }}
 			setToggleBucket={setToggleBucket}
+			
+			bucketType={bucketType}
 			{...useWizardAnswer}
 		/>
 	);

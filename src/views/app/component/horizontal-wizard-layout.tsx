@@ -9,7 +9,6 @@ import React, { FC, useMemo, useRef } from 'react';
 import { map } from 'lodash';
 import styled from 'styled-components';
 import { Button, Icon, Padding, Row, Text } from '@zextras/carbonio-design-system';
-import { useTranslation } from 'react-i18next';
 
 const StepContainer = styled(Row)``;
 const StepView = styled(Row)``;
@@ -63,7 +62,7 @@ const StepNavigator: FC<{
 			<Row
 				wrap="nowrap"
 				onClick={onClick}
-				width="80%"
+				width="100%"
 				style={{
 					borderBottom: isActive ? '2px solid #2b73d2' : '',
 					cursor: 'pointer'
@@ -118,6 +117,7 @@ type Props = {
 	setToggleBucket: (val: boolean) => void;
 	sectionRef: any;
 	activeRef: any;
+	bucketType: any;
 };
 
 export const VerticalWizardLayout = React.forwardRef<HTMLDivElement, Props>(
@@ -139,7 +139,9 @@ export const VerticalWizardLayout = React.forwardRef<HTMLDivElement, Props>(
 			isFirstStep,
 			Wrapper = DefaultWrapper,
 			title,
-			setToggleBucket
+			setToggleBucket,
+
+			bucketType
 		}: Props,
 		{ sectionRef, activeRef }: any
 	): JSX.Element => {
@@ -204,7 +206,8 @@ export const VerticalWizardLayout = React.forwardRef<HTMLDivElement, Props>(
 				setCompleteLoading,
 				activeRef,
 				onComplete,
-				canGoNext
+				canGoNext,
+				bucketType
 			]
 		);
 
@@ -244,6 +247,7 @@ export const VerticalWizardLayout = React.forwardRef<HTMLDivElement, Props>(
 										goToStep={goToStep}
 										title={title}
 										setCompleteLoading={setCompleteLoading}
+										bucketType={bucketType}
 									/>
 								)}
 								{View && isActive && (
@@ -256,6 +260,7 @@ export const VerticalWizardLayout = React.forwardRef<HTMLDivElement, Props>(
 										title={title}
 										onComplete={onComplete}
 										setCompleteLoading={setCompleteLoading}
+										bucketType={bucketType}
 									/>
 								)}
 							</StepView>
@@ -271,20 +276,22 @@ export const VerticalWizardLayout = React.forwardRef<HTMLDivElement, Props>(
 
 				<Row mainAlignment="flex-end" takeAvailableSpace>
 					<Padding right="large">
-						<PrevButton
-							key="wizard-prev"
-							label={'Back'}
-							color="secondary"
-							icon="ChevronLeftOutline"
-							iconPlacement="left"
-							onClick={goBack}
-						/>
+						{!completeLoading && (
+							<PrevButton
+								key="wizard-cancel"
+								label={'CANCEL'}
+								color="secondary"
+								icon="ChevronLeftOutline"
+								iconPlacement="left"
+								onClick={(): void => setToggleBucket(false)}
+							/>
+						)}
 					</Padding>
 
 					<NextButton
 						key="wizard-next"
-						label={'Next'}
-						icon="ChevronRightOutline"
+						label={!completeLoading ? 'VIEW DETAILS' : ' Done'}
+						icon={!completeLoading && 'CheckmarkCircleOutline'}
 						onClick={goNext}
 						disabled={!canGoNext() || !completeLoading}
 					/>
@@ -293,7 +300,12 @@ export const VerticalWizardLayout = React.forwardRef<HTMLDivElement, Props>(
 		);
 
 		return (
-			<Wrapper wizard={wizard} wizardFooter={wizardFooter} setToggleBucket={setToggleBucket} />
+			<Wrapper
+				wizard={wizard}
+				wizardFooter={wizardFooter}
+				setToggleBucket={setToggleBucket}
+				bucketType={bucketType}
+			/>
 		);
 	}
 );
