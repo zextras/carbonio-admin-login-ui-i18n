@@ -11,9 +11,7 @@ import {
 	Row,
 	Padding,
 	Text,
-	Dropdown,
-	IconButton,
-	Divider
+	Dropdown
 } from '@zextras/carbonio-design-system';
 
 import { replaceHistory } from '@zextras/carbonio-shell-ui';
@@ -318,7 +316,6 @@ const DomainListPanel: FC = () => {
 								: t('domain.type_here_a_domain', 'Type here a domain')
 						}
 						onChange={(ev: any): void => {
-							setIsDomainSelect(false);
 							setSearchDomainName(ev.target.value);
 						}}
 						CustomIcon={(): any => (
