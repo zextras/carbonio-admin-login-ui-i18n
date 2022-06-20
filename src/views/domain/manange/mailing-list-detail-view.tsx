@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import {
 	Container,
@@ -21,6 +21,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import ListRow from '../../list/list-row';
 import Paginig from '../../components/paging';
+import { getDistributionList } from '../../../services/get-distribution-list';
+import { getDistributionListMembership } from '../../../services/get-distributionlists-membership-service';
 
 const MailingListDetailContainer = styled(Container)`
 	z-index: 10;
@@ -37,10 +39,102 @@ const MailingListDetailContainer = styled(Container)`
 	box-shadow: -6px 4px 5px 0px rgba(0, 0, 0, 0.1);
 	opacity: '10%;
 `;
+
+// eslint-disable-next-line no-shadow
+export enum SUBSCRIBE_UNSUBSCRIBE {
+	ACCEPT = 'ACCEPT',
+	APPROVAL = 'APPROVAL',
+	REJECT = 'REJECT'
+}
+
+// eslint-disable-next-line no-shadow
+export enum TRUE_FALSE {
+	TRUE = 'TRUE',
+	FALSE = 'FALSE'
+}
+
 const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingListDetailView }) => {
 	const [t] = useTranslation();
 	const [memberOffset, setMemberOffset] = useState<number>(0);
 	const [ownerOffset, setOwnerOffset] = useState<number>(0);
+	const [displayName, setDisplayName] = useState<string>('');
+	const [distributionName, setDistributionName] = useState<string>('');
+	const [
+		zimbraDistributionListSendShareMessageToNewMembers,
+		setZimbraDistributionListSendShareMessageToNewMembers
+	] = useState<boolean>(false);
+
+	const [zimbraHideInGal, setZimbraHideInGal] = useState<boolean>(false);
+	const [zimbraMailAlias, setZimbraMailAlias] = useState<any>([]);
+	const [dlm, setDlm] = useState<any>([]);
+	const [zimbraNotes, setZimbraNotes] = useState<string>('');
+
+	const getMailingList = useCallback(
+		(id: string, name: string): void => {
+			getDistributionList(id, name)
+				.then((response) => response.json())
+				.then((data) => {
+					const distributionListMembers = data?.Body?.GetDistributionListResponse?.dl[0];
+					if (distributionListMembers) {
+						if (distributionListMembers?.dlm) {
+							const _dlm = distributionListMembers?.dlm.map((item: any) => item?._content);
+							setDlm(_dlm);
+						}
+						if (distributionListMembers?.a) {
+							/* Get Gal Hide Information */
+							const _zimbraHideInGal = distributionListMembers?.a?.find(
+								(a: any) => a?.n === 'zimbraHideInGal'
+							)?._content;
+							_zimbraHideInGal === 'TRUE' ? setZimbraHideInGal(true) : setZimbraHideInGal(false);
+
+							const _zimbraNotes = distributionListMembers?.a?.find(
+								(a: any) => a?.n === 'zimbraNotes'
+							)?._content;
+
+							setZimbraNotes(_zimbraNotes || '');
+							const _zimbraDistributionListSendShareMessageToNewMembers =
+								distributionListMembers?.a?.find(
+									(a: any) => a?.n === 'zimbraDistributionListSendShareMessageToNewMembers'
+								)?._content;
+							_zimbraDistributionListSendShareMessageToNewMembers === 'TRUE'
+								? setZimbraDistributionListSendShareMessageToNewMembers(true)
+								: setZimbraDistributionListSendShareMessageToNewMembers(false);
+
+							const _zimbraMailAlias = distributionListMembers?.a?.filter(
+								(a: any) => a?.n === 'zimbraMailAlias' && a?._content !== selectedMailingList?.name
+							);
+							if (_zimbraMailAlias && _zimbraMailAlias.length > 0) {
+								const allAlias = _zimbraMailAlias.map((item: any) => ({
+									attr: 'zimbraMailAlias',
+									value: item?._content
+								}));
+								setZimbraMailAlias(allAlias);
+							}
+						}
+					}
+				});
+		},
+		[selectedMailingList?.name]
+	);
+
+	const getDistributionListMembershipList = useCallback((id: string): void => {
+		getDistributionListMembership(id)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('[getDistributionListMembershipList][response]:', data);
+			});
+	}, []);
+
+	useEffect(() => {
+		if (selectedMailingList?.a) {
+			const dsName = selectedMailingList?.a?.find((a: any) => a?.n === 'displayName')?._content;
+			dsName ? setDisplayName(dsName) : setDisplayName('');
+		}
+		setDistributionName(selectedMailingList?.name);
+		getMailingList(selectedMailingList?.id, selectedMailingList?.name);
+		getDistributionListMembershipList(selectedMailingList?.id);
+	}, [selectedMailingList, getMailingList, getDistributionListMembershipList]);
+
 	const memberHeaders: any[] = useMemo(
 		() => [
 			{
@@ -70,6 +164,63 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 		],
 		[t]
 	);
+
+	const subscriptionUnsubscriptionRequestOptions: any[] = useMemo(
+		() => [
+			{
+				label: t('label.automatically_accept', 'Automatically accept'),
+				value: SUBSCRIBE_UNSUBSCRIBE.ACCEPT
+			},
+			{
+				label: t('label.require_list_owner_approval', 'Require list owner approval'),
+				value: SUBSCRIBE_UNSUBSCRIBE.APPROVAL
+			},
+			{
+				label: t('label.automatically_reject', 'Automatically reject'),
+				value: SUBSCRIBE_UNSUBSCRIBE.REJECT
+			}
+		],
+		[t]
+	);
+
+	const rightsOptions: any[] = useMemo(
+		() => [
+			{
+				label: t('label.can_send_receiver', 'Can Send & Receive'),
+				value: TRUE_FALSE.TRUE
+			},
+			{
+				label: t('label.not_send_receive', 'Not Send & Receive'),
+				value: TRUE_FALSE.FALSE
+			}
+		],
+		[t]
+	);
+
+	const [zimbraDistributionListSubscriptionPolicy, setZimbraDistributionListSubscriptionPolicy] =
+		useState<any>(subscriptionUnsubscriptionRequestOptions[0]);
+
+	const [
+		zimbraDistributionListUnsubscriptionPolicy,
+		setZimbraDistributionListUnsubscriptionPolicy
+	] = useState<any>(subscriptionUnsubscriptionRequestOptions[0]);
+
+	const [zimbraMailStatus, setZimbraMailStatus] = useState<any>(rightsOptions[1]);
+
+	const onSubscriptionChange = (v: any): any => {
+		const it = subscriptionUnsubscriptionRequestOptions.find((item: any) => item.value === v);
+		setZimbraDistributionListSubscriptionPolicy(it);
+	};
+
+	const onUnSubscriptionChange = (v: any): any => {
+		const it = subscriptionUnsubscriptionRequestOptions.find((item: any) => item.value === v);
+		setZimbraDistributionListUnsubscriptionPolicy(it);
+	};
+
+	const onRightsChange = (v: any): any => {
+		const it = rightsOptions.find((item: any) => item.value === v);
+		setZimbraMailStatus(it);
+	};
 
 	return (
 		<MailingListDetailContainer background="gray5" mainAlignment="flex-start">
@@ -115,58 +266,74 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 					<Container padding={{ all: 'small' }}>
 						<Input
 							label={t('label.displayed_name', 'Displayed Name')}
-							value={''}
+							value={displayName}
 							background="gray5"
 						/>
 					</Container>
 					<Container padding={{ all: 'small' }}>
-						<Input label={t('label.address', 'Address')} value="" background="gray5" />
+						<Input
+							label={t('label.address', 'Address')}
+							value={distributionName}
+							background="gray5"
+						/>
 					</Container>
 				</ListRow>
 				<ListRow>
 					<Container padding={{ all: 'small' }}>
 						<Select
-							items={[]}
+							items={subscriptionUnsubscriptionRequestOptions}
 							background="gray5"
 							label={t('label.new_subscription_requests', 'New subscriptions requests')}
 							showCheckbox={false}
+							onChange={onSubscriptionChange}
+							selection={zimbraDistributionListSubscriptionPolicy}
 						/>
 					</Container>
 					<Container padding={{ all: 'small' }}>
 						<Select
-							items={[]}
+							items={subscriptionUnsubscriptionRequestOptions}
 							background="gray5"
 							label={t('label.unsubscribe_request', 'Unsubscription requests')}
 							showCheckbox={false}
+							onChange={onUnSubscriptionChange}
+							selection={zimbraDistributionListUnsubscriptionPolicy}
 						/>
 					</Container>
 				</ListRow>
 				<ListRow>
 					<Select
-						items={[]}
+						items={rightsOptions}
 						background="gray5"
 						label={t('label.rights', 'Rights')}
 						showCheckbox={false}
+						onChange={onRightsChange}
+						selection={zimbraMailStatus}
 					/>
 				</ListRow>
 				<ListRow>
 					<Switch
-						value={false}
+						value={zimbraDistributionListSendShareMessageToNewMembers}
 						label={t('backup.share_manages_to_new_members', 'Share messages to new members')}
+						onClick={(): void =>
+							setZimbraDistributionListSendShareMessageToNewMembers(
+								!zimbraDistributionListSendShareMessageToNewMembers
+							)
+						}
 					/>
 					<Switch
-						value={false}
+						value={zimbraHideInGal}
 						label={t('backup.this_is_hidden_from_gal', 'This list is hidden from GAL')}
+						onClick={(): void => setZimbraHideInGal(!zimbraHideInGal)}
 					/>
 				</ListRow>
 				<ListRow>
 					<Container padding={{ all: 'small' }}>
-						<Input label={t('label.members', 'Members')} value={''} background="gray5" />
+						<Input label={t('label.members', 'Members')} value={dlm.length} background="gray5" />
 					</Container>
 					<Container padding={{ all: 'small' }}>
 						<Input
 							label={t('label.alias_in_the_list', 'Alias in the List')}
-							value=""
+							value={zimbraMailAlias.length}
 							background="gray5"
 						/>
 					</Container>
@@ -265,7 +432,7 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 				</Row>
 				<ListRow>
 					<Container padding={{ all: 'small' }}>
-						<Input value={''} background="gray5" />
+						<Input value={zimbraNotes} background="gray5" />
 					</Container>
 				</ListRow>
 			</Container>
