@@ -6,22 +6,26 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import DomainAuthentication from './domain-authentication';
+import DomainAuthentication from './details/domain-authentication';
 import {
 	GAL,
 	GENERAL_INFORMATION,
 	GENERAL_SETTINGS,
 	VIRTUAL_HOSTS,
 	AUTHENTICATION,
-	MAILBOX_QUOTA
+	MAILBOX_QUOTA,
+	ACCOUNTS,
+	MAILING_LIST
 } from '../../constants';
 import { getDomainInformation } from '../../services/domain-information-service';
 import { searchDirectory } from '../../services/search-directory-service';
-import DomainGalSettings from './domain-gal-settings';
-import DomainGeneralSettings from './domain-general-settings';
-import DomainMailboxQuotaSetting from './domain-mailbox-quota-settings';
-import DomainVirtualHosts from './domain-virtual-hosts';
+import DomainGalSettings from './details/domain-gal-settings';
+import DomainGeneralSettings from './details/domain-general-settings';
+import DomainMailboxQuotaSetting from './details/domain-mailbox-quota-settings';
+import ManageAccounts from './manange/manage-accounts';
+import DomainVirtualHosts from './details/domain-virtual-hosts';
 import { useDomainStore } from '../../store/domain/store';
+import DomainMailingList from './manange/domain-mailing-list';
 
 const DomainOperations: FC = () => {
 	const [t] = useTranslation();
@@ -81,6 +85,10 @@ const DomainOperations: FC = () => {
 						return <DomainVirtualHosts />;
 					case MAILBOX_QUOTA:
 						return <DomainMailboxQuotaSetting />;
+					case ACCOUNTS:
+						return <ManageAccounts />;
+					case MAILING_LIST:
+						return <DomainMailingList />;
 					default:
 						return null;
 				}

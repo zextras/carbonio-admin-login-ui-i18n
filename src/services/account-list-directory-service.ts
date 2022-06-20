@@ -4,20 +4,16 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-export const searchDirectory = async (
+export const accountListDirectory = async (
 	attr: string,
 	type: string,
 	domainName: string,
-	query: string,
-	offset?: number,
-	limit?: number,
-	sortBy?: string
+	query: string
 ): Promise<any> => {
 	const request: any = {
 		SearchDirectoryRequest: {
 			_jsns: 'urn:zimbraAdmin',
-			limit: limit || 50,
-			offset: offset || 0,
+			offset: 0,
 			sortAscending: '1',
 			applyCos: 'false',
 			applyConfig: 'false',
@@ -31,10 +27,28 @@ export const searchDirectory = async (
 	if (query !== '') {
 		request.SearchDirectoryRequest.query = query;
 	}
-	if (sortBy !== '') {
-		request.SearchDirectoryRequest.sortBy = sortBy;
-	}
 	return fetch(`/service/admin/soap/SearchDirectoryRequest`, {
+		method: 'POST',
+		credentials: 'include',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			Body: request
+		})
+	});
+};
+
+export const getMailboxQuota = async (id: string): Promise<any> => {
+	const request: any = {
+		GetMailboxRequest: {
+			_jsns: 'urn:zimbraAdmin',
+			mbox: {
+				id
+			}
+		}
+	};
+	return fetch(`/service/admin/soap/GetMailboxRequest`, {
 		method: 'POST',
 		credentials: 'include',
 		headers: {

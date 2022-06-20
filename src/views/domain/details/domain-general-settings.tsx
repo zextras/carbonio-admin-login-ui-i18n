@@ -22,7 +22,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { replaceHistory } from '@zextras/carbonio-shell-ui';
-import { timeZoneList } from '../utility/utils';
+import { timeZoneList, getFormatedDate, getDateFromStr } from '../../utility/utils';
 import {
 	ACTIVE,
 	CLOSED,
@@ -33,30 +33,19 @@ import {
 	MAINTENANCE,
 	NOT_SET,
 	SUSPENDED
-} from '../../constants';
-import { modifyDomain } from '../../services/modify-domain-service';
-import { deleteDomain } from '../../services/delete-domain-service';
-import { searchDirectory } from '../../services/search-directory-service';
-import { deleteAccount } from '../../services/delete-account-service';
-import { useDomainStore } from '../../store/domain/store';
-import { RouteLeavingGuard } from '../ui-extras/nav-guard';
+} from '../../../constants';
+import { modifyDomain } from '../../../services/modify-domain-service';
+import { deleteDomain } from '../../../services/delete-domain-service';
+import { searchDirectory } from '../../../services/search-directory-service';
+import { deleteAccount } from '../../../services/delete-account-service';
+import { useDomainStore } from '../../../store/domain/store';
+import { RouteLeavingGuard } from '../../ui-extras/nav-guard';
+import ListRow from '../../list/list-row';
 
 const CustomIcon = styled(Icon)`
 	width: 20px;
 	height: 20px;
 `;
-
-const SettingRow: FC<{ children?: any; wrap?: any }> = ({ children, wrap }) => (
-	<Row
-		orientation="horizontal"
-		mainAlignment="space-between"
-		crossAlignment="flex-start"
-		width="fill"
-		wrap={wrap || 'nowrap'}
-	>
-		{children}
-	</Row>
-);
 
 const DomainGeneralSettings: FC = () => {
 	const [t] = useTranslation();
@@ -253,29 +242,6 @@ const DomainGeneralSettings: FC = () => {
 			setIsDirty(false);
 		}
 	}, [domainInformation, timezones, serviceProtocolItems, domainStatusItems, cosItems]);
-
-	const getDomainCreateDate = (serverStr: string): any => {
-		if (serverStr === null) return null;
-		const d = new Date();
-		const yyyy = parseInt(serverStr.substr(0, 4), 10);
-		const MM = parseInt(serverStr.substr(4, 2), 10);
-		const dd = parseInt(serverStr.substr(6, 2), 10);
-		d.setFullYear(yyyy);
-		d.setMonth(MM - 1);
-		d.setMonth(MM - 1);
-		d.setDate(dd);
-		return d;
-	};
-
-	const getFormatedDate = (date: Date): any => {
-		const dd = date.getDate();
-		const mm = date.getMonth() + 1; // January is 0!
-		const yyyy = date.getFullYear();
-		const hour = date.getHours();
-		const minutes = date.getMinutes();
-		const seconds = date.getSeconds();
-		return `${yyyy}-${mm}-${dd} | ${hour}:${minutes}:${seconds}`;
-	};
 
 	const onTimeZoneChange = (v: any): any => {
 		const it = timezones.find((item: any) => item.value === v);
@@ -494,6 +460,14 @@ const DomainGeneralSettings: FC = () => {
 		});
 	};
 
+	const domainCreationDate = useMemo(
+		() =>
+			!!domainData.zimbraCreateTimestamp && domainData.zimbraCreateTimestamp !== null
+				? getFormatedDate(getDateFromStr(domainData.zimbraCreateTimestamp))
+				: '',
+		[domainData.zimbraCreateTimestamp]
+	);
+
 	const onDeleteDomain = (): void => {
 		setIsRequestInProgress(true);
 		const type = 'accounts,distributionlists,aliases,resources,dynamicgroups';
@@ -586,7 +560,7 @@ const DomainGeneralSettings: FC = () => {
 							background="gray6"
 							padding={{ left: 'small', right: 'small' }}
 						>
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Input
 										label={t('label.name', 'Name')}
@@ -602,9 +576,9 @@ const DomainGeneralSettings: FC = () => {
 										background="gray6"
 									/>
 								</Container>
-							</SettingRow>
+							</ListRow>
 
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Input
 										label={t('label.id', 'Id')}
@@ -616,19 +590,14 @@ const DomainGeneralSettings: FC = () => {
 								<Container padding={{ all: 'small' }}>
 									<Input
 										label={t('label.create_date', 'CreateDate')}
-										value={
-											!!domainData.zimbraCreateTimestamp &&
-											domainData.zimbraCreateTimestamp !== null
-												? getFormatedDate(getDomainCreateDate(domainData.zimbraCreateTimestamp))
-												: ''
-										}
+										value={domainCreationDate}
 										background="gray6"
 										disabled
 									/>
 								</Container>
-							</SettingRow>
+							</ListRow>
 
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Select
 										items={serviceProtocolItems}
@@ -660,9 +629,9 @@ const DomainGeneralSettings: FC = () => {
 										}}
 									/>
 								</Container>
-							</SettingRow>
+							</ListRow>
 
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Select
 										items={timezones}
@@ -673,7 +642,7 @@ const DomainGeneralSettings: FC = () => {
 										selection={selectedTimeZone}
 									/>
 								</Container>
-							</SettingRow>
+							</ListRow>
 							<Container
 								orientation="horizontal"
 								width="98%"
@@ -684,7 +653,7 @@ const DomainGeneralSettings: FC = () => {
 								<Divider />
 							</Container>
 
-							<SettingRow>
+							<ListRow>
 								<Container
 									orientation="horizontal"
 									width="99%"
@@ -717,9 +686,9 @@ const DomainGeneralSettings: FC = () => {
 										</Text>
 									</Row>
 								</Container>
-							</SettingRow>
+							</ListRow>
 
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Input
 										label={t('label.inbound_smtp_host_name', 'Inbound SMTP Host Name')}
@@ -730,9 +699,9 @@ const DomainGeneralSettings: FC = () => {
 										}}
 									/>
 								</Container>
-							</SettingRow>
+							</ListRow>
 
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Input
 										label={t('label.description', 'Description')}
@@ -743,9 +712,9 @@ const DomainGeneralSettings: FC = () => {
 										}}
 									/>
 								</Container>
-							</SettingRow>
+							</ListRow>
 
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Select
 										items={cosItems}
@@ -775,9 +744,9 @@ const DomainGeneralSettings: FC = () => {
 										selection={domainStatus}
 									/>
 								</Container>
-							</SettingRow>
+							</ListRow>
 
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Input
 										label={t('label.note', 'Note')}
@@ -788,9 +757,9 @@ const DomainGeneralSettings: FC = () => {
 										}}
 									/>
 								</Container>
-							</SettingRow>
+							</ListRow>
 
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Input
 										label={t('label.admin_help_url', 'Admin Help URL')}
@@ -801,9 +770,9 @@ const DomainGeneralSettings: FC = () => {
 										}}
 									/>
 								</Container>
-							</SettingRow>
+							</ListRow>
 
-							<SettingRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Input
 										label={t('label.deligated_admin_help_url', 'Deligated Admin Help URL')}
@@ -814,8 +783,8 @@ const DomainGeneralSettings: FC = () => {
 										}}
 									/>
 								</Container>
-							</SettingRow>
-							<SettingRow>
+							</ListRow>
+							<ListRow>
 								<Container padding={{ all: 'small' }}>
 									<Button
 										type="outlined"
@@ -931,7 +900,7 @@ const DomainGeneralSettings: FC = () => {
 										</Padding>
 									</Modal>
 								</Container>
-							</SettingRow>
+							</ListRow>
 						</Container>
 					</Row>
 				)}
