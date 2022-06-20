@@ -20,8 +20,7 @@ export const fetchSoap = async (api: string, body: unknown): Promise<any> =>
 			},
 			Header: {
 				context: {
-					_jsns: 'urn:zimbra',
-					csrfToken: window.csrfToken
+					_jsns: 'urn:zimbra'
 				}
 			}
 		})
