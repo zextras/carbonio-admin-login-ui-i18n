@@ -141,7 +141,7 @@
     "buckets": {
         "connection": {
             "access_key": "Chave de acesso",
-            "notes": "Notas",
+            "notes": "Observações",
             "arn_name": "Arn / Nombre",
             "descriptive_name": "Nombre descriptivo",
             "secret_key": "Secret Key",
@@ -156,7 +156,7 @@
     },
     "core": {
         "subscription": {
-            "active": "Ativo",
+            "active": "Ativa",
             "bundle": "Bundle",
             "company_name": "Nome da Empresa",
             "customer": "Cliente",
@@ -167,7 +167,7 @@
             "less_info": "Menos Informação",
             "more_info": "Mais Informação",
             "renew": "Renovar",
-            "status": "Estado",
+            "status": "Status",
             "subscription_Accounts": "Contas de Assinatura",
             "subscription_last_check": "Última Verificação de Assinatura",
             "subscription_type": "Tipo de Assinatura",
@@ -194,14 +194,14 @@
         "create_new_domain": "CRIAR NOVO DOMÍNIO",
         "domain_space_byte": "Espaço do domínio (Bytes)",
         "aggregated_domain_space": "Espaço de Domínio Agregado (Bytes)",
-        "gal": "GAL",
+        "gal": "Lista global de endereços",
         "gal_mode": "Modo da GAL",
-        "general_information": "Informação geral",
+        "general_information": "Informações gerais",
         "internal_gal_received": "Faixa da GAL interna recebido",
         "mail_server": "Servidor de email",
-        "mailbox_quota": "Cota de email",
+        "mailbox_quota": "Cota da caixa de e-mails",
         "mailbox_space": "Espaço da conta",
-        "most_result_return_gal_search": "A maioria dos resultados devolvidos pela busca na GAL",
+        "most_result_return_gal_search": "A maioria dos resultados retornados pela busca na Lista global de endereços",
         "range": "Faixa",
         "search_domain": "Buscar um domínio",
         "send_the_warning_to": "Enviar advertência para",
@@ -213,7 +213,7 @@
     "label": {
         "account": "Conta",
         "accounts": "Contas",
-        "active": "Ativo",
+        "active": "Ativa",
         "add": "Adicionar",
         "app_clicked": "Você aceitou este pedido de compartilhamento",
         "app_name": "Gerenciar",
@@ -231,7 +231,7 @@
         "mb": "MB",
         "minutes": "Minutos",
         "name": "Nome",
-        "not_set": "Não ativado",
+        "not_set": "Não definido",
         "note": "Nota",
         "notification": "Notificação",
         "of": "de",
@@ -246,9 +246,9 @@
                 "accepted": "Você aceitou este pedido de compartilhamento"
             }
         },
-        "status": "Estado",
-        "suspended": "Suspendido",
-        "timezone": "Fuso Horário",
+        "status": "Status",
+        "suspended": "Suspenso",
+        "timezone": "Fuso horário",
         "unlimited": "Ilimitado",
         "url": "URL",
         "delete_domain_error_msg": "Você está eliminando o domínio {{domainName}}. Tem certeza?",
@@ -274,7 +274,21 @@
         "create_date": "Data de criação",
         "default_class_of_service": "Classe de serviço por padrão",
         "delete_domain": "Eliminar domínio",
-        "delete_domain_success_msg": "O domínio foi eliminado com sucesso"
+        "delete_domain_success_msg": "O domínio foi eliminado com sucesso",
+        "domains": "Domínios",
+        "enable_start_tls": "Ativar StartTLS",
+        "external_active_directory": "Diretório ativo externo",
+        "external_ldap": "LDAP externo",
+        "features": "Recursos",
+        "filter": "Filtro",
+        "general_information": "Informações gerais",
+        "id": "Id",
+        "internal": "Interno",
+        "locked": "Bloqueado",
+        "maintenance": "Manutenção",
+        "no": "NÃO",
+        "services": "Serviços",
+        "web_client": "Cliente web"
     },
     "message": {
         "snackbar": {
@@ -287,5 +301,7 @@
         "confirm_connection": "CONFIRMAR CONEXÃO"
     },
     "create_new_bucket": "NOVO BUCKET",
-    "create_new_domain": "Crear novo domínio"
+    "create_new_domain": "Crear novo domínio",
+    "many_domain_info_msg": "Muitos domínios! Começe a digitar para filtrar o que você quer ver.",
+    "select_domain_or_create_new": "Por favor selecione um domínio para gerenciá-lo o clique no botão Criar para criar um novo."
 }
