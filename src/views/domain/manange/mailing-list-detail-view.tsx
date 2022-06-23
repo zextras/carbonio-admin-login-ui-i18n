@@ -402,7 +402,7 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 				<Divider color="gray3" />
 			</Row>
 			<Container
-				padding={{ left: 'large' }}
+				padding={{ all: 'extralarge' }}
 				mainAlignment="flex-start"
 				crossAlignment="flex-start"
 				height="calc(100% - 64px)"
@@ -414,8 +414,9 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 						{t('domain.list_details', 'List Details')}
 					</Text>
 				</Row>
+
 				<ListRow>
-					<Container padding={{ all: 'small' }}>
+					<Container>
 						<Input
 							label={t('label.displayed_name', 'Displayed Name')}
 							value={displayName}
@@ -431,7 +432,7 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 					</Container>
 				</ListRow>
 				<ListRow>
-					<Container padding={{ all: 'small' }}>
+					<Container>
 						<Select
 							items={subscriptionUnsubscriptionRequestOptions}
 							background="gray5"
@@ -453,33 +454,47 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 					</Container>
 				</ListRow>
 				<ListRow>
-					<Select
-						items={rightsOptions}
-						background="gray5"
-						label={t('label.rights', 'Rights')}
-						showCheckbox={false}
-						onChange={onRightsChange}
-						selection={zimbraMailStatus}
-					/>
+					<Container padding={{ right: 'small', top: 'small' }}>
+						<Select
+							items={rightsOptions}
+							background="gray5"
+							label={t('label.rights', 'Rights')}
+							showCheckbox={false}
+							onChange={onRightsChange}
+							selection={zimbraMailStatus}
+						/>
+					</Container>
 				</ListRow>
 				<ListRow>
-					<Switch
-						value={zimbraDistributionListSendShareMessageToNewMembers}
-						label={t('label.share_manages_to_new_members', 'Share messages to new members')}
-						onClick={(): void =>
-							setZimbraDistributionListSendShareMessageToNewMembers(
-								!zimbraDistributionListSendShareMessageToNewMembers
-							)
-						}
-					/>
-					<Switch
-						value={zimbraHideInGal}
-						label={t('label.this_is_hidden_from_gal', 'This list is hidden from GAL')}
-						onClick={(): void => setZimbraHideInGal(!zimbraHideInGal)}
-					/>
+					<Container
+						mainAlignment="flex-start"
+						crossAlignment="flex-start"
+						padding={{ top: 'small', bottom: 'small' }}
+					>
+						<Switch
+							value={zimbraDistributionListSendShareMessageToNewMembers}
+							label={t('label.share_manages_to_new_members', 'Share messages to new members')}
+							onClick={(): void =>
+								setZimbraDistributionListSendShareMessageToNewMembers(
+									!zimbraDistributionListSendShareMessageToNewMembers
+								)
+							}
+						/>
+					</Container>
+					<Container
+						mainAlignment="flex-start"
+						crossAlignment="flex-start"
+						padding={{ top: 'small', bottom: 'small' }}
+					>
+						<Switch
+							value={zimbraHideInGal}
+							label={t('label.this_is_hidden_from_gal', 'This list is hidden from GAL')}
+							onClick={(): void => setZimbraHideInGal(!zimbraHideInGal)}
+						/>
+					</Container>
 				</ListRow>
 				<ListRow>
-					<Container padding={{ all: 'small' }}>
+					<Container>
 						<Input label={t('label.members', 'Members')} value={dlm.length} background="gray5" />
 					</Container>
 					<Container padding={{ all: 'small' }}>
@@ -492,7 +507,7 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 				</ListRow>
 
 				<ListRow>
-					<Container padding={{ all: 'small' }}>
+					<Container>
 						<Input
 							label={t('label.creation_date', 'Creation Date')}
 							value={dlCreateDate}
@@ -504,60 +519,72 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 						<Input label={t('label.id_lbl', 'ID')} value={dlId} background="gray5" disabled />
 					</Container>
 				</ListRow>
-				<Row>
+				<Row padding={{ top: 'small', bottom: 'small' }}>
 					<Text size="medium" weight="bold" color="gray0">
 						{t('label.manage_list', 'Manage List')}
 					</Text>
 				</Row>
 				<ListRow>
-					<ChipInput
-						placeholder={t('label.this_list_is_member_of', 'This List is member of')}
-						value={dlMembershipList}
-						onInputType={(e: any): void => {
-							if (e.textContent && e.textContent !== '') {
-								getSearchMembers(e.textContent);
-							}
-						}}
-						options={searchMemberList}
-						onChange={onChangeChipInput}
-						requireUniqueChips
-					/>
+					<Container padding={{ top: 'small', bottom: 'small' }}>
+						<ChipInput
+							placeholder={t('label.this_list_is_member_of', 'This List is member of')}
+							value={dlMembershipList}
+							onInputType={(e: any): void => {
+								if (e.textContent && e.textContent !== '') {
+									getSearchMembers(e.textContent);
+								}
+							}}
+							options={searchMemberList}
+							onChange={onChangeChipInput}
+							requireUniqueChips
+						/>
+					</Container>
 				</ListRow>
-				<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
+				<Row
+					takeAvwidth="fill"
+					mainAlignment="flex-start"
+					width="100%"
+					padding={{ top: 'small', bottom: 'small' }}
+				>
 					<Container
 						orientation="vertical"
 						mainAlignment="space-around"
 						background="gray6"
 						height="58px"
 					>
-						<Row orientation="horizontal" width="100%" padding={{ all: 'large' }}>
-							<Row mainAlignment="flex-start" width="30%" crossAlignment="flex-start">
+						<Row
+							orientation="horizontal"
+							mainAlignment="flex-start"
+							crossAlignment="flex-start"
+							width="100%"
+						>
+							<Row mainAlignment="flex-start" width="70%" crossAlignment="flex-start">
 								<Input
 									label={t('label.i_am_looking_for_member', 'I’m looking for the member...')}
 									value=""
 									background="gray5"
 								/>
 							</Row>
-							<Row width="70%" mainAlignment="flex-end" crossAlignment="flex-end">
-								<Padding right="medium">
+							<Row width="30%" mainAlignment="flex-start" crossAlignment="flex-start">
+								<Padding left="large" right="large">
 									<IconButton
 										iconColor="primary"
 										backgroundColor="gray5"
 										icon="Plus"
-										height={36}
-										width={36}
+										height={44}
+										width={44}
 										onClick={(): void => {
 											setOpenAddMailingListDialog(true);
 										}}
 									/>
 								</Padding>
-								<Padding right="medium">
+								<Padding right="large">
 									<IconButton
 										iconColor="gray6"
 										backgroundColor="gray5"
 										icon="EditAsNewOutline"
-										height={36}
-										width={36}
+										height={44}
+										width={44}
 										disabled
 									/>
 								</Padding>
@@ -565,8 +592,8 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 									iconColor="error"
 									backgroundColor="gray5"
 									icon="Trash2Outline"
-									height={36}
-									width={36}
+									height={44}
+									width={44}
 									disabled={!isEnableDeleteButton}
 									onClick={onDeleteFromList}
 								/>
@@ -575,7 +602,7 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 					</Container>
 				</Row>
 				<ListRow>
-					<Container padding={{ all: 'small' }} mainAlignment="flex-start">
+					<Container mainAlignment="flex-start" padding={{ top: 'small', bottom: 'small' }}>
 						<Table
 							rows={dlmTableRows}
 							headers={memberHeaders}
@@ -585,7 +612,10 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 							}
 						/>
 					</Container>
-					<Container padding={{ all: 'small' }} mainAlignment="flex-start">
+					<Container
+						padding={{ left: 'small', top: 'small', bottom: 'small' }}
+						mainAlignment="flex-start"
+					>
 						<Table
 							rows={ownerTableRows}
 							headers={ownerHeaders}
@@ -602,13 +632,13 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 						<Paginig totalItem={1} pageSize={10} setOffset={setOwnerOffset} />
 					</Container>
 				</ListRow>
-				<Row>
+				<Row padding={{ top: 'small', bottom: 'small' }}>
 					<Text size="medium" weight="bold" color="gray0">
 						{t('label.notes', 'Notes')}
 					</Text>
 				</Row>
 				<ListRow>
-					<Container padding={{ all: 'small' }}>
+					<Container padding={{ left: 'extralarge' }}>
 						<Input value={zimbraNotes} background="gray5" />
 					</Container>
 				</ListRow>
