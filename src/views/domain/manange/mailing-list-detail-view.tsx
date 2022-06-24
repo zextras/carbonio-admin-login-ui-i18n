@@ -22,7 +22,7 @@ import {
 } from '@zextras/carbonio-design-system';
 import { Trans, useTranslation } from 'react-i18next';
 import moment from 'moment';
-import { isEqual } from 'lodash';
+import { differenceBy, isEqual } from 'lodash';
 import ListRow from '../../list/list-row';
 import Paginig from '../../components/paging';
 import { getDistributionList } from '../../../services/get-distribution-list';
@@ -142,9 +142,17 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 						if (distributionListMembers?.dlm) {
 							const _dlm = distributionListMembers?.dlm.map((item: any) => item?._content);
 							setDlm(_dlm);
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								dlm: _dlm
+							}));
 						}
 						if (distributionListMembers?.owners && distributionListMembers?.owners[0]?.owner) {
 							setOwnersList(distributionListMembers?.owners[0]?.owner);
+							setPreviousDetail((prevState: any) => ({
+								...prevState,
+								ownersList: distributionListMembers?.owners[0]?.owner
+							}));
 						}
 						if (distributionListMembers?.a) {
 							/* Get Gal Hide Information */
@@ -237,6 +245,15 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 						name: item?.name
 					}));
 					setDlMembershipList(allMembers);
+					setPreviousDetail((prevState: any) => ({
+						...prevState,
+						dlMembershipList: allMembers
+					}));
+				} else {
+					setPreviousDetail((prevState: any) => ({
+						...prevState,
+						dlMembershipList: []
+					}));
 				}
 			});
 	}, []);
@@ -279,10 +296,6 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 				]
 			}));
 			setDlmTableRows(allRows);
-			setPreviousDetail((prevState: any) => ({
-				...prevState,
-				dlm
-			}));
 		}
 	}, [dlm]);
 
@@ -297,10 +310,6 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 				]
 			}));
 			setOwnerTableRows(allRows);
-			setPreviousDetail((prevState: any) => ({
-				...prevState,
-				ownersList
-			}));
 		}
 	}, [ownersList]);
 
@@ -371,16 +380,18 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 				const result = data?.Body?.SearchDirectoryResponse?.dl;
 				if (result && result.length > 0) {
 					// setSearchMemberList(result);
+
 					const allResult = result.map((item: any) => {
 						// eslint-disable-next-line no-param-reassign
 						item.label = item?.name;
 						// eslint-disable-next-line no-param-reassign
 						item.value = {
-							label: item?.name
+							label: item?.name,
+							id: item?.id
 						};
+						// eslint-disable-next-line no-param-reassign
 						return item;
 					});
-
 					setSearchMemberList(allResult);
 				}
 			});
@@ -441,11 +452,107 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 	};
 
 	const onSave = (): void => {
-		setPreviousDetail((prevState: any) => ({
-			...prevState,
-			displayName,
-			distributionName
-		}));
+		const attributes: any[] = [];
+		attributes.push({
+			n: 'displayName',
+			_content: displayName
+		});
+
+		attributes.push({
+			n: 'description',
+			_content: zimbraNotes
+		});
+
+		attributes.push({
+			n: 'zimbraDistributionListUnsubscriptionPolicy',
+			_content: zimbraDistributionListUnsubscriptionPolicy?.value
+		});
+
+		attributes.push({
+			n: 'zimbraDistributionListSubscriptionPolicy',
+			_content: zimbraDistributionListSubscriptionPolicy?.value
+		});
+
+		attributes.push({
+			n: 'zimbraMailStatus',
+			_content: zimbraMailStatus?.value === TRUE_FALSE.TRUE ? 'enabled' : 'disabled'
+		});
+
+		attributes.push({
+			n: 'zimbraHideInGal',
+			_content: zimbraHideInGal ? 'TRUE' : 'FALSE'
+		});
+
+		attributes.push({
+			n: 'zimbraDistributionListSendShareMessageToNewMembers',
+			_content: zimbraDistributionListSendShareMessageToNewMembers ? 'TRUE' : 'FALSE'
+		});
+
+		if (
+			previousDetail?.distributionName !== undefined &&
+			previousDetail?.distributionName !== distributionName
+		) {
+			console.log('[Rename DL]', distributionName);
+		}
+
+		/* Member Of Data add dl Id */
+		if (
+			previousDetail?.dlMembershipList !== undefined &&
+			!isEqual(previousDetail?.dlMembershipList, dlMembershipList)
+		) {
+			const newAddedMember: any[] = [];
+			dlMembershipList.forEach((item: any) => {
+				if (!previousDetail?.dlMembershipList.map((i: any) => i?.id).includes(item?.id)) {
+					newAddedMember.push(item);
+				}
+			});
+
+			const removeMember: any[] = [];
+			previousDetail?.dlMembershipList.forEach((item: any) => {
+				if (!dlMembershipList.map((i: any) => i?.id).includes(item?.id)) {
+					removeMember.push(item);
+				}
+			});
+		}
+
+		/* Distribution LIst */
+		if (previousDetail?.dlm !== undefined && !isEqual(previousDetail?.dlm, dlm)) {
+			const newAddedMember: any[] = [];
+			dlm.forEach((item: any) => {
+				if (!previousDetail?.dlm.includes(item)) {
+					newAddedMember.push(item);
+				}
+			});
+			const removeMember: any[] = [];
+			previousDetail?.dlm.forEach((item: any) => {
+				if (!dlm.includes(item)) {
+					removeMember.push(item);
+				}
+			});
+			console.log('new Members ', newAddedMember);
+			console.log('Remove Members ', removeMember);
+		}
+
+		/* Owner LIst */
+		if (
+			previousDetail?.ownersList !== undefined &&
+			!isEqual(previousDetail?.ownersList, ownersList)
+		) {
+			const newAddedOwnerMember: any[] = [];
+			ownersList.forEach((item: any) => {
+				if (!previousDetail?.ownersList.includes(item)) {
+					newAddedOwnerMember.push(item);
+				}
+			});
+			const removeOwnerMember: any[] = [];
+			previousDetail?.ownersList.forEach((item: any) => {
+				if (!ownersList.includes(item)) {
+					removeOwnerMember.push(item);
+				}
+			});
+			console.log('new owner Members ', newAddedOwnerMember);
+			console.log('Remove Owner Members ', removeOwnerMember);
+		}
 	};
 
 	useEffect(() => {
@@ -486,6 +593,15 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 			setIsDirty(true);
 		}
 	}, [previousDetail?.ownersList, ownersList]);
+
+	useEffect(() => {
+		if (
+			previousDetail?.dlMembershipList !== undefined &&
+			!isEqual(previousDetail?.dlMembershipList, dlMembershipList)
+		) {
+			setIsDirty(true);
+		}
+	}, [previousDetail?.dlMembershipList, dlMembershipList]);
 
 	useEffect(() => {
 		if (previousDetail?.zimbraNotes !== undefined && previousDetail?.zimbraNotes !== zimbraNotes) {
