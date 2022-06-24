@@ -38,7 +38,7 @@ const DomainResources: FC = () => {
 			{
 				id: 'resource',
 				label: t('label.resource', 'Resource'),
-				width: '20%',
+				width: '15%',
 				bold: true
 			},
 			{
@@ -50,7 +50,7 @@ const DomainResources: FC = () => {
 			{
 				id: 'status',
 				label: t('label.status', 'Status'),
-				width: '15%',
+				width: '10%',
 				bold: true
 			},
 			{
@@ -62,7 +62,7 @@ const DomainResources: FC = () => {
 			{
 				id: 'description',
 				label: t('label.description', 'Description'),
-				width: '25%',
+				width: '35%',
 				bold: true
 			}
 		],
@@ -193,10 +193,10 @@ const DomainResources: FC = () => {
 				mainAlignment="flex-start"
 				style={{ overflow: 'auto' }}
 				width="100%"
-				height="calc(100vh - 150px)"
+				height="calc(100vh - 200px)"
 				padding={{ top: 'large' }}
 			>
-				<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
+				<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%" height="100%">
 					<Container height="fit" crossAlignment="flex-start" background="gray6">
 						<Row
 							orientation="horizontal"
@@ -222,12 +222,18 @@ const DomainResources: FC = () => {
 							crossAlignment="flex-start"
 							width="fill"
 							padding={{ all: 'large' }}
+							height="calc(100vh - 340px)"
 						>
 							{resourceList && resourceList.length > 0 && (
-								<Table rows={resourceList} headers={headers} showCheckbox={false} />
+								<Table
+									rows={resourceList}
+									headers={headers}
+									showCheckbox={false}
+									style={{ overflow: 'auto', height: '100%' }}
+								/>
 							)}
 							{resourceList.length === 0 && (
-								<Container orientation="column" crossAlignment="center" mainAlignment="flex-start">
+								<Container orientation="column" crossAlignment="center" mainAlignment="center">
 									<Row>
 										<img src={logo} alt="logo" />
 									</Row>
@@ -267,7 +273,10 @@ const DomainResources: FC = () => {
 							padding={{ all: 'large' }}
 						>
 							{resourceList && resourceList.length > 0 && (
-								<Paginig totalItem={totalAccount} setOffset={setOffset} pageSize={limit} />
+								<Row orientation="horizontal" width="100%" background="gray6">
+									<Divider />
+									<Paginig totalItem={totalAccount} setOffset={setOffset} pageSize={limit} />
+								</Row>
 							)}
 						</Row>
 					</Container>
