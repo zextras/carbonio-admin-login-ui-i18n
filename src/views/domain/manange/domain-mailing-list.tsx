@@ -34,7 +34,7 @@ const DomainMailingList: FC = () => {
 	const [limit, setLimit] = useState<number>(50);
 	const [totalAccount, setTotalAccount] = useState<number>(0);
 	const [selectedMailingList, setSelectedMailingList] = useState<any>({});
-	const [showMailingListDetailView, setShowMailingListDetailView] = useState<boolean>(false);
+	const [showMailingListDetailView, setShowMailingListDetailView] = useState<any>();
 	const [searchString, setSearchString] = useState<string>('');
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const headers: any[] = useMemo(
@@ -207,6 +207,12 @@ const DomainMailingList: FC = () => {
 	useEffect(() => {
 		searchResourceQuery(searchString);
 	}, [searchString, searchResourceQuery]);
+
+	useEffect(() => {
+		if (showMailingListDetailView !== undefined && !showMailingListDetailView) {
+			getMailingList();
+		}
+	}, [showMailingListDetailView, getMailingList]);
 
 	return (
 		<Container
