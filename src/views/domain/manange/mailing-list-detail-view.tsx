@@ -504,6 +504,27 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 		}
 	};
 
+	const updatePreviousDetail = (): void => {
+		const latestData: any = {};
+		latestData.displayName = displayName;
+		latestData.distributionName = distributionName;
+		zimbraHideInGal ? (latestData.zimbraHideInGal = true) : (latestData.zimbraHideInGal = false);
+		dlm ? (latestData.dlm = dlm) : (latestData.dlm = []);
+		ownersList ? (latestData.ownersList = ownersList) : (latestData.ownersList = []);
+		dlMembershipList
+			? (latestData.dlMembershipList = dlMembershipList)
+			: (latestData.dlMembershipList = []);
+		zimbraNotes ? (latestData.zimbraNotes = zimbraNotes) : (latestData.zimbraNotes = '');
+		zimbraDistributionListSendShareMessageToNewMembers
+			? (latestData.zimbraDistributionListSendShareMessageToNewMembers = true)
+			: (latestData.zimbraDistributionListSendShareMessageToNewMember = false);
+		latestData.zimbraDistributionListUnsubscriptionPolicy =
+			zimbraDistributionListUnsubscriptionPolicy;
+		latestData.zimbraDistributionListSubscriptionPolicy = zimbraDistributionListSubscriptionPolicy;
+		setPreviousDetail(latestData);
+		setIsDirty(false);
+	};
+
 	const onUndo = (): void => {
 		previousDetail?.displayName ? setDisplayName(previousDetail?.displayName) : setDisplayName('');
 		setDistributionName(previousDetail?.distributionName);
@@ -538,6 +559,7 @@ const MailingListDetailView: FC<any> = ({ selectedMailingList, setShowMailingLis
 				hideButton: true,
 				replace: true
 			});
+			updatePreviousDetail();
 		});
 	};
 
