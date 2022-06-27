@@ -460,7 +460,8 @@
         "global": {
             "headers": {
                 "advanced": "Avancé",
-                "service_status": "Statut du service"
+                "service_status": "Statut du service",
+                "server_config": "Configuration du serveur"
             }
         },
         "keep_delete_accounts_in_backup": "Garder les comptes supprimés dans le backup",
