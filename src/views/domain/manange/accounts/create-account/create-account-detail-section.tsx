@@ -3,10 +3,11 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useCallback, useMemo, useContext } from 'react';
 import {
 	Container,
 	Input,
+	PasswordInput,
 	Row,
 	Select,
 	Padding,
@@ -15,14 +16,80 @@ import {
 	Switch
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
+import { AccountContext } from './account-context';
+import { ACTIVE, CLOSED, LOCKED, MAINTENANCE, PENDING } from '../../../../../constants';
+import { timeZoneList, localeList } from '../../../../utility/utils';
 
-const CreateAccountDetailSection: FC<{
-	domainName: string | undefined;
-	setUserName: any;
-	setDescription: any;
-}> = ({ domainName, setUserName, setDescription }) => {
+const CreateAccountDetailSection: FC = () => {
+	const conext = useContext(AccountContext);
+	const { domainName, accountDetail, setAccountDetail } = conext;
+
 	const [t] = useTranslation();
-	const [isCheck, setIsCheck] = useState(true);
+	const timezones = useMemo(() => timeZoneList(t), [t]);
+	const localeZone = useMemo(() => localeList(t), [t]);
+
+	const ACCOUNT_STATUS = [
+		{
+			label: 'Active',
+			value: ACTIVE
+		},
+		{
+			label: 'Maintenance',
+			value: MAINTENANCE
+		},
+		{
+			label: 'Locked',
+			value: LOCKED
+		},
+		{
+			label: 'Closed',
+			value: CLOSED
+		},
+		{
+			label: 'Pending',
+			value: PENDING
+		}
+	];
+	// const [accountStatus, setAccountStatus] = useState(
+	// 	ACCOUNT_STATUS.find((item: any) => item.value === accountDetail?.zimbraAccountStatus)
+	// );
+
+	const changeSwitchOption = useCallback(
+		(key: string): void => {
+			setAccountDetail((prev: any) => ({ ...prev, [key]: !accountDetail[key] }));
+		},
+		[accountDetail, setAccountDetail]
+	);
+	const changeAccDetail = useCallback(
+		(e) => {
+			setAccountDetail((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
+		},
+		[setAccountDetail]
+	);
+
+	const combineName = useMemo(
+		() =>
+			`${accountDetail?.givenName || ''}${accountDetail?.initials || ''}${accountDetail?.sn || ''}`,
+		[accountDetail?.givenName, accountDetail?.initials, accountDetail?.sn]
+	);
+
+	useEffect(() => {
+		setAccountDetail((prev: any) => ({ ...prev, name: combineName }));
+	}, [combineName, setAccountDetail]);
+
+	const onAccountStatusChange = (v: any): any => {
+		// const statusValue = ACCOUNT_STATUS.find((item: any) => item.value === v);
+		// setAccountStatus(statusValue);
+		// setAccountDetail((prev: any) => ({ ...prev, zimbraAccountStatus: v }));
+		setAccountDetail((prev: any) => ({ ...prev, zimbraAccountStatus: v }));
+	};
+	const onPrefLocaleChange = (v: string): void => {
+		setAccountDetail((prev: any) => ({ ...prev, zimbraPrefLocale: v }));
+	};
+	const onPrefTimeZoneChange = (v: string): void => {
+		setAccountDetail((prev: any) => ({ ...prev, zimbraPrefTimeZoneId: v }));
+	};
+
 	return (
 		<Container
 			mainAlignment="flex-start"
@@ -34,19 +101,33 @@ const CreateAccountDetailSection: FC<{
 				</Text>
 				<Row padding={{ top: 'large', left: 'large' }} width="100%">
 					<Row width="32%" mainAlignment="flex-start">
-						<Input label={t('label.name', 'Name')} backgroundColor="gray5" readOnly />
+						<Input
+							onChange={changeAccDetail}
+							inputName="givenName"
+							label={t('label.name', 'Name')}
+							backgroundColor="gray5"
+							defaultValue={accountDetail?.givenName || ''}
+						/>
 					</Row>
 					<Padding width="2%" />
 					<Row width="32%" mainAlignment="flex-start">
 						<Input
 							label={t('label.second_name_initials', 'Second Name Initials')}
 							backgroundColor="gray5"
-							readOnly
+							onChange={changeAccDetail}
+							inputName="initials"
+							defaultValue={accountDetail?.initials || ''}
 						/>
 					</Row>
 					<Padding width="2%" />
 					<Row width="32%" mainAlignment="flex-start">
-						<Input label={t('label.surname', 'Surname')} backgroundColor="gray5" readOnly />
+						<Input
+							label={t('label.surname', 'Surname')}
+							backgroundColor="gray5"
+							onChange={changeAccDetail}
+							inputName="sn"
+							defaultValue={accountDetail?.sn || ''}
+						/>
 					</Row>
 				</Row>
 				<Row width="100%" padding={{ top: 'large', left: 'large' }}>
@@ -54,10 +135,10 @@ const CreateAccountDetailSection: FC<{
 						<Input
 							background="gray5"
 							label={t('label.userName', 'username (Auto-fill)')}
-							name="ArnName"
-							onChange={(e: any): any => {
-								setUserName(e.target.value);
-							}}
+							value={accountDetail.name}
+							onChange={changeAccDetail}
+							inputName="name"
+							// defaultValue={accountDetail?.name || ''}
 						/>
 					</Row>
 					<Padding width="4%" />
@@ -84,27 +165,38 @@ const CreateAccountDetailSection: FC<{
 					<Input
 						label={t('label.viewed_name', 'Viewed Name (Auto-fill)')}
 						backgroundColor="gray5"
+						value={accountDetail.name}
+						onChange={changeAccDetail}
+						inputName="name"
 						name="descriptiveName"
 					/>
 				</Row>
 				<Row width="100%" padding={{ top: 'large', left: 'large' }}>
 					<Row width="48%" mainAlignment="flex-start">
-						<Input background="gray5" label={t('label.password', 'Password')} name="ArnName" />
+						<PasswordInput
+							background="gray5"
+							label={t('label.password', 'Password')}
+							onChange={changeAccDetail}
+							inputName="password"
+							defaultValue={accountDetail?.password || ''}
+						/>
 					</Row>
 					<Padding width="4%" />
 					<Row width="48%" mainAlignment="flex-start">
-						<Input
+						<PasswordInput
 							background="gray5"
 							label={t('label.repeat_password', 'Repeat Password')}
-							name="ArnName"
+							onChange={changeAccDetail}
+							inputName="repeatPassword"
+							defaultValue={accountDetail?.repeatPassword || ''}
 						/>
 					</Row>
 				</Row>
 				<Row width="100%" padding={{ top: 'large', left: 'large' }}>
 					<Row width="48%" mainAlignment="flex-start">
 						<Switch
-							value={isCheck}
-							onClick={(): void => setIsCheck(!isCheck)}
+							value={accountDetail?.zimbraPasswordMustChange}
+							onClick={(): void => changeSwitchOption('zimbraPasswordMustChange')}
 							label={t(
 								'accountDetails.change_password_for_next_login',
 								'Must change password on the next login'
@@ -114,8 +206,8 @@ const CreateAccountDetailSection: FC<{
 					<Padding width="4%" />
 					<Row width="48%" mainAlignment="flex-start">
 						<Switch
-							value={isCheck}
-							onClick={(): void => setIsCheck(!isCheck)}
+							value={accountDetail?.generateFirst2FAToken}
+							onClick={(): void => changeSwitchOption('generateFirst2FAToken')}
 							label={t('accountDetails.generate_first_2FA_token', 'Generate first 2FA token')}
 						/>
 					</Row>
@@ -123,8 +215,8 @@ const CreateAccountDetailSection: FC<{
 				<Row width="100%" padding={{ top: 'large', left: 'large' }} mainAlignment="flex-start">
 					<Row mainAlignment="flex-start">
 						<Switch
-							value={isCheck}
-							onClick={(): void => setIsCheck(!isCheck)}
+							value={accountDetail?.enableActiveSyncRemoteAccess}
+							onClick={(): void => changeSwitchOption('enableActiveSyncRemoteAccess')}
 							label={t(
 								'accountDetails.enable_activeSync_remote_access',
 								'Enable ActiveSync remote access'
@@ -142,39 +234,44 @@ const CreateAccountDetailSection: FC<{
 				<Row padding={{ top: 'large', left: 'large' }} width="100%">
 					<Row width="32%" mainAlignment="flex-start">
 						<Select
+							items={ACCOUNT_STATUS}
 							background="gray5"
 							label={t('label.account_status', 'Account Status')}
 							showCheckbox={false}
+							onChange={onAccountStatusChange}
+							// selection={accountStatus}
 							padding={{ right: 'medium' }}
-							defaultSelection={{ value: '4', label: 'Active' }}
 						/>
 					</Row>
 					<Padding width="2%" />
 					<Row width="32%" mainAlignment="flex-start">
 						<Select
+							items={localeZone}
 							background="gray5"
 							label={t('label.language', 'Language')}
 							showCheckbox={false}
+							// selection={accountDetail?.zimbraPrefLocale}
+							onChange={onPrefLocaleChange}
 							padding={{ right: 'medium' }}
-							defaultSelection={{ value: '4', label: 'English (Default)' }}
 						/>
 					</Row>
 					<Padding width="2%" />
 					<Row width="32%" mainAlignment="flex-start">
 						<Select
+							items={timezones}
 							background="gray5"
 							label={t('label.time_zone', 'Time Zone')}
 							showCheckbox={false}
 							padding={{ right: 'medium' }}
-							defaultSelection={{ value: '4', label: 'Rome (Local)' }}
+							onChange={onPrefTimeZoneChange}
 						/>
 					</Row>
 				</Row>
 				<Row padding={{ top: 'large', left: 'large' }} width="100%">
 					<Row width="32%" mainAlignment="flex-start">
 						<Switch
-							value={isCheck}
-							onClick={(): void => setIsCheck(!isCheck)}
+							value={accountDetail?.defaultCOS}
+							onClick={(): void => changeSwitchOption('defaultCOS')}
 							label={t('accountDetails.default_COS', 'Default COS')}
 						/>
 					</Row>
@@ -185,7 +282,8 @@ const CreateAccountDetailSection: FC<{
 							label={t('label.class_of_Service', 'Class of Service')}
 							showCheckbox={false}
 							padding={{ right: 'medium' }}
-							defaultSelection={{ value: '4', label: 'company.dom' }}
+							disabled
+							defaultSelection={{ value: 0, label: domainName }}
 						/>
 					</Row>
 				</Row>
@@ -201,10 +299,9 @@ const CreateAccountDetailSection: FC<{
 						background="gray5"
 						height="85px"
 						label={t('label.description', 'Description')}
-						name="ArnName"
-						onChange={(e: any): any => {
-							setDescription(e.target.value);
-						}}
+						defaultValue={accountDetail?.description || ''}
+						onChange={changeAccDetail}
+						inputName="description"
 					/>
 				</Row>
 			</Row>

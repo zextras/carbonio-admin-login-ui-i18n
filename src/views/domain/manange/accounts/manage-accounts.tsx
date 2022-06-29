@@ -16,12 +16,11 @@ import {
 	Icon,
 	Padding,
 	Button,
-	Snackbar,
-	IconButton
+	IconButton,
+	useSnackbar
 } from '@zextras/carbonio-design-system';
 import logo from '../../../../assets/gardian.svg';
 import { useDomainStore } from '../../../../store/domain/store';
-
 import Paginig from '../../../components/paging';
 import {
 	accountListDirectory,
@@ -33,8 +32,8 @@ import CreateAccount from './create-account/create-account';
 
 const ManageAccounts: FC = () => {
 	const [t] = useTranslation();
+	const createSnackbar = useSnackbar();
 	const domainName = useDomainStore((state) => state.domain?.name);
-
 	const headers: any = useMemo(
 		() => [
 			{
@@ -80,7 +79,6 @@ const ManageAccounts: FC = () => {
 	const [totalAccount, setTotalAccount] = useState<number>(0);
 	const [showAccountDetailView, setShowAccountDetailView] = useState<boolean>(false);
 	const [showCreateAccountView, setShowCreateAccountView] = useState<boolean>(false);
-	const [snackBarData, setSnackBarData] = useState(false);
 
 	const STATUS_COLOR: any = useMemo(
 		() => ({
@@ -234,12 +232,46 @@ const ManageAccounts: FC = () => {
 			createAccountRequest(attr, name, password)
 				.then((response) => response.json())
 				.then((data) => {
-					console.log('createAccountRequest', data);
+					const isCreateAccount = data?.Body?.CreateAccountResponse;
+					if (isCreateAccount) {
+						setShowCreateAccountView(false);
+						createSnackbar({
+							key: 'success',
+							type: 'success',
+							label: t(
+								'label.account_created_successfully',
+								'The account has been created successfully'
+							),
+							autoHideTimeout: 3000,
+							hideButton: true,
+							replace: true
+						});
+					} else {
+						createSnackbar({
+							key: 'error',
+							type: 'error',
+							label: data?.Body?.Fault?.Reason?.Text,
+							autoHideTimeout: 3000,
+							hideButton: true,
+							replace: true
+						});
+					}
 					getAccountList();
+				})
+				.catch((error) => {
+					createSnackbar({
+						key: 'error',
+						type: 'error',
+						label: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+						autoHideTimeout: 3000,
+						hideButton: true,
+						replace: true
+					});
 				});
 		},
-		[getAccountList]
+		[createSnackbar, getAccountList, t]
 	);
+
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
 			<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
@@ -382,17 +414,10 @@ const ManageAccounts: FC = () => {
 			{showCreateAccountView && (
 				<CreateAccount
 					setShowCreateAccountView={setShowCreateAccountView}
-					setSnackBarData={setSnackBarData}
 					domainName={domainName}
 					createAccountReq={createAccountReq}
 				/>
 			)}
-			<Snackbar
-				open={snackBarData}
-				onClose={(): void => setSnackBarData(false)}
-				type="success"
-				label="The account has been created successfully"
-			/>
 		</Container>
 	);
 };

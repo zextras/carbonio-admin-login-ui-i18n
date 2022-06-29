@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC } from 'react';
+import React, { FC, useMemo, useContext } from 'react';
 import {
 	Container,
 	Input,
@@ -14,12 +14,15 @@ import {
 	Icon
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
+import { find } from 'lodash';
+import { AccountContext } from './account-context';
+import { localeList } from '../../../../utility/utils';
 
-const AccountCreateSection: FC<{
-	domainName: string | undefined;
-	createAccountReq: any;
-}> = ({ domainName, createAccountReq }) => {
+const AccountCreateSection: FC = () => {
+	const conext = useContext(AccountContext);
+	const { domainName, accountDetail, setAccountDetail } = conext;
 	const [t] = useTranslation();
+	const localeZone = useMemo(() => localeList(t), [t]);
 
 	return (
 		<Container
@@ -35,7 +38,7 @@ const AccountCreateSection: FC<{
 						<Input
 							label={t('label.user', 'User')}
 							backgroundColor="gray5"
-							value="Pio Venacifra"
+							value={accountDetail?.name}
 							readOnly
 						/>
 					</Row>
@@ -44,7 +47,7 @@ const AccountCreateSection: FC<{
 						<Input
 							label={t('label.mail', 'Mail')}
 							backgroundColor="gray5"
-							value="piovenacifra@carbonio.com"
+							value={accountDetail?.name && `${accountDetail?.name}@${domainName}`}
 							readOnly
 						/>
 					</Row>
@@ -54,7 +57,7 @@ const AccountCreateSection: FC<{
 						<Input
 							label={t('label.password', 'Password')}
 							backgroundColor="gray5"
-							value="Mil0kun15"
+							defaultValue={`${accountDetail?.password}`}
 							CustomIcon={(): any => <Icon icon="CopyOutline" size="large" color="Gray0" />}
 						/>
 					</Row>
@@ -65,7 +68,11 @@ const AccountCreateSection: FC<{
 							label={t('label.must_change_passowrd', 'Must Change Passowrd?')}
 							showCheckbox={false}
 							padding={{ right: 'medium' }}
-							defaultSelection={{ value: '4', label: 'Yes' }}
+							defaultSelection={{
+								value: '0',
+								label: `${accountDetail?.zimbraPasswordMustChange ? 'Yes' : 'No'}`
+							}}
+							disabled
 						/>
 					</Row>
 				</Row>
@@ -87,7 +94,11 @@ const AccountCreateSection: FC<{
 							label={t('label.status', 'Status')}
 							showCheckbox={false}
 							padding={{ right: 'medium' }}
-							defaultSelection={{ value: '4', label: 'Active' }}
+							defaultSelection={{
+								value: `${accountDetail?.zimbraAccountStatus}`,
+								label: `${accountDetail?.zimbraAccountStatus}`
+							}}
+							disabled
 						/>
 					</Row>
 					<Padding width="2%" />
@@ -97,7 +108,13 @@ const AccountCreateSection: FC<{
 							label={t('label.language', 'Language')}
 							showCheckbox={false}
 							padding={{ right: 'medium' }}
-							defaultSelection={{ value: '4', label: 'English (Default)' }}
+							defaultSelection={{
+								value: accountDetail?.zimbraPrefLocale,
+								label: `${
+									find(localeZone, { value: accountDetail?.zimbraPrefLocale })?.label || ''
+								}`
+							}}
+							disabled
 						/>
 					</Row>
 					<Padding width="2%" />
@@ -107,7 +124,11 @@ const AccountCreateSection: FC<{
 							label={t('label.time_zone', 'Time Zone')}
 							showCheckbox={false}
 							padding={{ right: 'medium' }}
-							defaultSelection={{ value: '4', label: 'Rome (Local)' }}
+							defaultSelection={{
+								value: `${accountDetail?.zimbraPrefTimeZoneId}`,
+								label: `${accountDetail?.zimbraPrefTimeZoneId}`
+							}}
+							disabled
 						/>
 					</Row>
 				</Row>
@@ -117,14 +138,14 @@ const AccountCreateSection: FC<{
 						label={t('label.cos', 'COS')}
 						showCheckbox={false}
 						padding={{ right: 'medium' }}
-						defaultSelection={{ value: '4', label: 'company.dom (Default)' }}
+						defaultSelection={{ value: domainName, label: domainName }}
 					/>
 				</Row>
 				<Row padding={{ top: 'large', left: 'large' }} width="100%">
 					<Input
 						label={t('label.space', 'Space')}
 						backgroundColor="gray6"
-						value="512 MB (CoS Default)"
+						value="(CoS Default)"
 						readOnly
 					/>
 				</Row>
@@ -132,7 +153,7 @@ const AccountCreateSection: FC<{
 					<Input
 						label={t('label.description', 'Description')}
 						backgroundColor="gray5"
-						value="This new guy is joining SmokingBagels team next monday"
+						value={accountDetail?.description}
 						readOnly
 					/>
 				</Row>

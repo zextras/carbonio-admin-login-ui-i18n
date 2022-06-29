@@ -4,14 +4,15 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, ReactElement, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Button } from '@zextras/carbonio-design-system';
+import { Container, Button, useSnackbar } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 import { HorizontalWizard } from '../../../../app/component/hwizard';
 import CreateAccountDetailSection from './create-account-detail-section';
 import { Section } from '../../../../app/component/section';
 import CreateAccountSectionView from './account-create-section';
+import { AccountContext } from './account-context';
 
 const AccountDetailContainer = styled(Container)`
 	z-index: 10;
@@ -47,96 +48,167 @@ const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection
 	);
 };
 
+interface AccountDetailObj {
+	name: string;
+	givenName: string;
+	initials: string;
+	sn: string;
+	zimbraPasswordMustChange: boolean;
+	generateFirst2FAToken: boolean;
+	enableActiveSyncRemoteAccess: boolean;
+	defaultCOS: boolean;
+	zimbraAccountStatus: string;
+	zimbraPrefLocale: string;
+	zimbraPrefTimeZoneId: string;
+	description: string;
+	password: string;
+	repeatPassword: string;
+}
+
 // eslint-disable-next-line no-empty-pattern
 const CreateAccount: FC<{
 	setShowCreateAccountView: any;
-	setSnackBarData: any;
 	domainName: any;
 	createAccountReq: any;
-}> = ({ setShowCreateAccountView, setSnackBarData, domainName, createAccountReq }) => {
+}> = ({ setShowCreateAccountView, domainName, createAccountReq }) => {
 	const { t } = useTranslation();
-	const [wizardData, setWizardData] = useState();
-	const [userName, setUserName] = useState('');
-	const [password, setPassword] = useState('password');
-	const [description, setDescription] = useState('');
+	const createSnackbar = useSnackbar();
+	const [accountDetail, setAccountDetail] = useState<AccountDetailObj>({
+		name: '',
+		givenName: '',
+		initials: '',
+		sn: '',
+		zimbraPasswordMustChange: true,
+		generateFirst2FAToken: true,
+		enableActiveSyncRemoteAccess: true,
+		defaultCOS: true,
+		zimbraAccountStatus: '',
+		zimbraPrefLocale: '',
+		zimbraPrefTimeZoneId: '',
+		description: '',
+		password: '',
+		repeatPassword: ''
+	});
 
-	const CreateAccountDetailSectionCB = useCallback(
-		() => (
-			<CreateAccountDetailSection
-				domainName={domainName}
-				setUserName={setUserName}
-				setDescription={setDescription}
-			/>
-		),
-		[domainName]
+	const [wizardData, setWizardData] = useState();
+
+	const wizardSteps = useMemo(
+		() => [
+			{
+				name: 'details',
+				label: t('label.details', 'DETAILS'),
+				icon: 'Edit2Outline',
+				view: CreateAccountDetailSection,
+				CancelButton: (props: any): ReactElement => (
+					<Button
+						{...props}
+						type="outlined"
+						key="wizard-cancel"
+						label={'CANCEL'}
+						color="secondary"
+						icon="CloseOutline"
+						iconPlacement="right"
+						onClick={(): void => setShowCreateAccountView(false)}
+					/>
+				),
+				PrevButton: (props: any): ReactElement => <></>,
+				NextButton: (props: any) => (
+					<Button
+						{...props}
+						label={t('label.next_step', 'NEXT STEP')}
+						icon="ChevronRightOutline"
+						iconPlacement="right"
+					/>
+				)
+			},
+			{
+				name: 'create',
+				label: t('label.create', 'CREATE'),
+				icon: 'PersonOutline',
+				view: CreateAccountSectionView,
+				CancelButton: (props: any) => (
+					<Button
+						{...props}
+						type="outlined"
+						key="wizard-cancel"
+						label={'CANCEL'}
+						color="secondary"
+						icon="CloseOutline"
+						iconPlacement="right"
+						onClick={(): void => setShowCreateAccountView(false)}
+					/>
+				),
+				PrevButton: (props: any): ReactElement => <></>,
+				NextButton: (props: any) => (
+					<Button
+						{...props}
+						label={t('commons.create_with_there_data', 'CREATE WITH THESE DATA')}
+						icon="PersonOutline"
+						iconPlacement="right"
+						onClick={(): void => {
+							if (accountDetail?.password?.length < 6) {
+								createSnackbar({
+									key: 'error',
+									type: 'error',
+									label: t('label.password_lenght_msg', 'Password should be more then 5 character'),
+									autoHideTimeout: 3000,
+									hideButton: true,
+									replace: true
+								});
+							} else if (accountDetail?.password !== accountDetail?.repeatPassword) {
+								createSnackbar({
+									key: 'error',
+									type: 'error',
+									label: t(
+										'label.password_and repeat_password_not_match',
+										'Password and repeat password not match'
+									),
+									autoHideTimeout: 3000,
+									hideButton: true,
+									replace: true
+								});
+							} else {
+								createAccountReq(
+									{
+										givenName: accountDetail?.givenName,
+										initials: accountDetail?.initials,
+										sn: accountDetail?.sn,
+										zimbraPasswordMustChange: accountDetail?.zimbraPasswordMustChange
+											? 'TRUE'
+											: ' FALSE',
+										zimbraAccountStatus: accountDetail?.zimbraAccountStatus,
+										zimbraPrefLocale: accountDetail?.zimbraPrefLocale,
+										zimbraPrefTimeZoneId: accountDetail?.zimbraPrefTimeZoneId,
+										description: accountDetail?.description
+									},
+									`${accountDetail?.name}@${domainName}`,
+									accountDetail?.password || ''
+								);
+							}
+						}}
+					/>
+				)
+			}
+		],
+		[
+			accountDetail?.description,
+			accountDetail?.givenName,
+			accountDetail?.initials,
+			accountDetail?.name,
+			accountDetail?.password,
+			accountDetail?.repeatPassword,
+			accountDetail?.sn,
+			accountDetail?.zimbraAccountStatus,
+			accountDetail?.zimbraPasswordMustChange,
+			accountDetail?.zimbraPrefLocale,
+			accountDetail?.zimbraPrefTimeZoneId,
+			createAccountReq,
+			createSnackbar,
+			domainName,
+			setShowCreateAccountView,
+			t
+		]
 	);
-	const CreateAccountSectionCB = useCallback(
-		() => <CreateAccountSectionView domainName={domainName} createAccountReq={createAccountReq} />,
-		[createAccountReq, domainName]
-	);
-	const wizardSteps = [
-		{
-			name: 'details',
-			label: t('label.details', 'DETAILS'),
-			icon: 'Edit2Outline',
-			view: CreateAccountDetailSectionCB,
-			CancelButton: (props: any) => (
-				<Button
-					{...props}
-					type="outlined"
-					key="wizard-cancel"
-					label={'CANCEL'}
-					color="secondary"
-					icon="CloseOutline"
-					iconPlacement="right"
-					onClick={(): void => setShowCreateAccountView(false)}
-				/>
-			),
-			PrevButton: (props: any) => '',
-			NextButton: (props: any) => (
-				<Button
-					{...props}
-					label={'NEXT STEP'}
-					style={{ marginRight: '33px' }}
-					icon="ChevronRightOutline"
-					iconPlacement="right"
-				/>
-			)
-		},
-		{
-			name: 'create',
-			label: t('label.create', 'CREATE'),
-			icon: 'PersonOutline',
-			view: CreateAccountSectionCB,
-			CancelButton: (props: any) => (
-				<Button
-					{...props}
-					type="outlined"
-					key="wizard-cancel"
-					label={'CANCEL'}
-					color="secondary"
-					icon="CloseOutline"
-					iconPlacement="right"
-					onClick={(): void => setShowCreateAccountView(false)}
-				/>
-			),
-			PrevButton: (props: any) => '',
-			NextButton: (props: any) => (
-				<Button
-					{...props}
-					label={t('commons.create_with_there_data', 'CREATE WITH THESE DATA')}
-					icon="PersonOutline"
-					iconPlacement="right"
-					style={{ marginRight: '100px' }}
-					onClick={(): void => {
-						setShowCreateAccountView(false);
-						setSnackBarData(true);
-						createAccountReq({ description }, `${userName}@${domainName}`, password);
-					}}
-				/>
-			)
-		}
-	];
 
 	const onComplete = useCallback(() => {
 		setShowCreateAccountView(false);
@@ -144,13 +216,15 @@ const CreateAccount: FC<{
 
 	return (
 		<AccountDetailContainer background="gray5" mainAlignment="flex-start">
-			<HorizontalWizard
-				steps={wizardSteps}
-				Wrapper={WizardInSection}
-				onChange={setWizardData}
-				onComplete={onComplete}
-				setToggleWizardSection={setShowCreateAccountView}
-			/>
+			<AccountContext.Provider value={{ domainName, accountDetail, setAccountDetail }}>
+				<HorizontalWizard
+					steps={wizardSteps}
+					Wrapper={WizardInSection}
+					onChange={setWizardData}
+					onComplete={onComplete}
+					setToggleWizardSection={setShowCreateAccountView}
+				/>
+			</AccountContext.Provider>
 		</AccountDetailContainer>
 	);
 };
