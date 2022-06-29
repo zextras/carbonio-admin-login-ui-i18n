@@ -143,11 +143,11 @@ const DomainListPanel: FC = () => {
 
 	const detailOptions = useMemo(
 		() => [
-			{
-				id: GENERAL_INFORMATION,
-				name: t('label.general_information', 'General Information'),
-				isSelected: isDomainSelect
-			},
+			// {
+			// 	id: GENERAL_INFORMATION,
+			// 	name: t('label.general_information', 'General Information'),
+			// 	isSelected: isDomainSelect
+			// },
 			{
 				id: GENERAL_SETTINGS,
 				name: t('label.general_settings', 'General Settings'),
@@ -267,6 +267,8 @@ const DomainListPanel: FC = () => {
 					}
 			  ]
 			: domainList.map((domain: any, index) => ({
+					id: domain.id,
+					label: domain.name,
 					customComponent: (
 						<SelectItem
 							top="9px"
@@ -274,7 +276,7 @@ const DomainListPanel: FC = () => {
 							bottom="9px"
 							left="large"
 							style={{
-								'font-family': 'roboto',
+								fontFamily: 'roboto',
 								display: 'block',
 								textAlign: 'left',
 								height: 'inherit',
@@ -296,14 +298,14 @@ const DomainListPanel: FC = () => {
 			crossAlignment="flex-start"
 			mainAlignment="flex-start"
 			background="gray5"
-			style={{ overflow: 'auto', 'border-top': '1px solid #FFFFFF' }}
+			style={{ overflow: 'auto', borderTop: '1px solid #FFFFFF' }}
 		>
 			<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
 				<Dropdown
 					items={items}
 					placement="bottom-start"
 					maxWidth="300px"
-					disableAutoFocus="true"
+					disableAutoFocus
 					width="265px"
 					style={{
 						width: '100%'

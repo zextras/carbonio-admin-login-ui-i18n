@@ -68,7 +68,7 @@ const StepNavigator: FC<{
 					cursor: 'pointer'
 				}}
 			>
-				<Row padding={renderElement ? '12px 8px' : ''} style={{ borderRadius: '50%' }}>
+				<Row style={{ padding: renderElement ? '12px 8px' : '', borderRadius: '50%' }}>
 					<Icon icon={step.icon} color={color} size="large" />
 				</Row>
 				{renderElement && (
