@@ -26,18 +26,6 @@ import { getDistributionList } from '../../../services/get-distribution-list';
 import { getDistributionListMembership } from '../../../services/get-distributionlists-membership-service';
 import { getDateFromStr } from '../../utility/utils';
 
-const MailingListDetailContainer = styled(Container)`
-	position: absolute;
-	left: ${'max(calc(100% - 680px), 12px)'};
-	top: 43px;
-	height: auto;
-	width: auto;
-	max-height: 100%;
-	overflow: hidden;
-	transition: left 0.2s ease-in-out;
-	box-shadow: -6px 4px 5px 0px rgba(0, 0, 0, 0.1);
-`;
-
 // eslint-disable-next-line no-shadow
 export enum SUBSCRIBE_UNSUBSCRIBE {
 	ACCEPT = 'ACCEPT',
@@ -372,7 +360,20 @@ const MailingListDetail: FC<any> = ({ selectedMailingList, setShowMailingListDet
 	}, [ownersList]);
 
 	return (
-		<MailingListDetailContainer background="gray5" mainAlignment="flex-start">
+		<Container
+			background="gray5"
+			mainAlignment="flex-start"
+			style={{
+				position: 'absolute',
+				left: `${'max(calc(100% - 680px), 12px)'}`,
+				top: '43px',
+				height: 'auto',
+				width: 'auto',
+				overflow: 'hidden',
+				transition: 'left 0.2s ease-in-out',
+				'box-shadow': '-6px 4px 5px 0px rgba(0, 0, 0, 0.1)'
+			}}
+		>
 			<Row
 				mainAlignment="flex-start"
 				crossAlignment="center"
@@ -574,7 +575,7 @@ const MailingListDetail: FC<any> = ({ selectedMailingList, setShowMailingListDet
 					</Container>
 				</ListRow>
 			</Container>
-		</MailingListDetailContainer>
+		</Container>
 	);
 };
 

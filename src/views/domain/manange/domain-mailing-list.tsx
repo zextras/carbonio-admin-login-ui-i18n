@@ -113,6 +113,11 @@ const DomainMailingList: FC = () => {
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
 									}}
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setShowMailingListDetailView(true);
+										setSelectedFromRow(item);
+									}}
 								>
 									<Text size="small" weight="light" key={`${item?.id}display-child`} color="gray0">
 										{item?.a?.find((a: any) => a?.n === 'displayName')?._content}
@@ -126,6 +131,11 @@ const DomainMailingList: FC = () => {
 										event.stopPropagation();
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
+									}}
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setShowMailingListDetailView(true);
+										setSelectedFromRow(item);
 									}}
 								>
 									<Text size="medium" weight="light" key={`${item?.id}address-child`} color="gray0">
@@ -141,6 +151,11 @@ const DomainMailingList: FC = () => {
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
 									}}
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setShowMailingListDetailView(true);
+										setSelectedFromRow(item);
+									}}
 								>
 									<Text size="medium" weight="light" key={`${item?.id}member-child`} color="gray0">
 										{''}
@@ -154,6 +169,11 @@ const DomainMailingList: FC = () => {
 										event.stopPropagation();
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
+									}}
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setShowMailingListDetailView(true);
+										setSelectedFromRow(item);
 									}}
 								>
 									<Text size="medium" weight="light" key={`${item?.id}status-child`} color="gray0">
@@ -171,6 +191,11 @@ const DomainMailingList: FC = () => {
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
 									}}
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setShowMailingListDetailView(true);
+										setSelectedFromRow(item);
+									}}
 								>
 									<Text size="medium" weight="light" key={`${item?.id}gal-child`} color="gray0">
 										{''}
@@ -184,6 +209,11 @@ const DomainMailingList: FC = () => {
 										event.stopPropagation();
 										setSelectedMailingList(item);
 										setShowEditMailingView(true);
+									}}
+									onClick={(event: { stopPropagation: () => void }): void => {
+										event.stopPropagation();
+										setShowMailingListDetailView(true);
+										setSelectedFromRow(item);
 									}}
 								>
 									<Text
@@ -246,11 +276,6 @@ const DomainMailingList: FC = () => {
 			setShowMailingListDetailView(false);
 		}
 	}, [showMailingListDetailView]);
-
-	const isOpenDetail = useMemo(
-		() => !!showMailingListDetailView && showMailingListDetailView,
-		[showMailingListDetailView]
-	);
 
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
@@ -407,7 +432,7 @@ const DomainMailingList: FC = () => {
 				/>
 			)}
 
-			{isOpenDetail && (
+			{showMailingListDetailView && (
 				<MailingListDetail
 					selectedMailingList={selectedFromRow}
 					setShowMailingListDetailView={setShowMailingListDetailView}
