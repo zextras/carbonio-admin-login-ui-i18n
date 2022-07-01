@@ -33,9 +33,14 @@ const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection
 const NewBucket: FC<{
 	setToggleWizardSection: any;
 	setDetailsBucket: any;
-	staticData: any;
+	// staticData: any;
 	setConnectionData: any;
-}> = ({ setToggleWizardSection, setDetailsBucket, staticData, setConnectionData }) => {
+}> = ({
+	setToggleWizardSection,
+	setDetailsBucket,
+	// staticData,
+	setConnectionData
+}) => {
 	const { t } = useTranslation();
 	const [wizardData, setWizardData] = useState();
 
@@ -103,7 +108,7 @@ const NewBucket: FC<{
 			onChange={setWizardData}
 			onComplete={onComplete}
 			setToggleWizardSection={setToggleWizardSection}
-			staticData={staticData}
+			// staticData={staticData}
 		/>
 	);
 };
