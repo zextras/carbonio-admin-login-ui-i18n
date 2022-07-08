@@ -23,6 +23,8 @@ import { timeZoneList, localeList } from '../../../../utility/utils';
 const CreateAccountDetailSection: FC = () => {
 	const conext = useContext(AccountContext);
 	const domainName = useDomainStore((state) => state.domain?.name);
+	const cosList = useDomainStore((state) => state.cosList);
+	const [cosItems, setCosItems] = useState<any[]>([]);
 	const { accountDetail, setAccountDetail } = conext;
 
 	const [t] = useTranslation();
@@ -67,16 +69,67 @@ const CreateAccountDetailSection: FC = () => {
 		},
 		[setAccountDetail]
 	);
+	const changeAccName = useCallback(
+		(e) => {
+			setAccountDetail((prev: any) => ({ ...prev, changeNameBool: true }));
+			setAccountDetail((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
+		},
+		[setAccountDetail]
+	);
+
+	const changeAccDisplayName = useCallback(
+		(e) => {
+			setAccountDetail((prev: any) => ({ ...prev, changeDisplayNameBool: true }));
+			setAccountDetail((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
+		},
+		[setAccountDetail]
+	);
 
 	const combineName = useMemo(
 		() =>
-			`${accountDetail?.givenName || ''}${accountDetail?.initials || ''}${accountDetail?.sn || ''}`,
-		[accountDetail?.givenName, accountDetail?.initials, accountDetail?.sn]
+			!accountDetail?.changeNameBool
+				? `${accountDetail?.givenName || ''}${accountDetail?.initials || ''}${
+						accountDetail?.sn || ''
+				  }`
+				: accountDetail?.name,
+		[
+			accountDetail?.changeNameBool,
+			accountDetail?.givenName,
+			accountDetail?.initials,
+			accountDetail?.name,
+			accountDetail?.sn
+		]
 	);
 
+	const combineDisplayName = useMemo(
+		() =>
+			`${accountDetail?.givenName || ''} ${accountDetail?.initials || ''} ${
+				accountDetail?.sn || ''
+			}`,
+		[accountDetail?.givenName, accountDetail?.initials, accountDetail?.sn]
+	);
 	useEffect(() => {
-		setAccountDetail((prev: any) => ({ ...prev, name: combineName }));
-	}, [combineName, setAccountDetail]);
+		if (!!cosList && cosList.length > 0) {
+			const arrayItem: any[] = [];
+			cosList.forEach((item: any) => {
+				arrayItem.push({
+					label: item.name,
+					value: item.id
+				});
+			});
+			setCosItems(arrayItem);
+		}
+	}, [cosList]);
+
+	useEffect(() => {
+		!accountDetail?.changeNameBool &&
+			setAccountDetail((prev: any) => ({ ...prev, name: combineName }));
+	}, [accountDetail?.changeNameBool, combineName, setAccountDetail]);
+
+	useEffect(() => {
+		!accountDetail?.changeDisplayNameBool &&
+			setAccountDetail((prev: any) => ({ ...prev, displayName: combineDisplayName }));
+	}, [accountDetail?.changeDisplayNameBool, combineDisplayName, setAccountDetail]);
 
 	const onAccountStatusChange = (v: any): any => {
 		setAccountDetail((prev: any) => ({ ...prev, zimbraAccountStatus: v }));
@@ -86,6 +139,9 @@ const CreateAccountDetailSection: FC = () => {
 	};
 	const onPrefTimeZoneChange = (v: string): void => {
 		setAccountDetail((prev: any) => ({ ...prev, zimbraPrefTimeZoneId: v }));
+	};
+	const onCOSIdChange = (v: string): void => {
+		setAccountDetail((prev: any) => ({ ...prev, zimbraCOSId: v }));
 	};
 
 	return (
@@ -132,7 +188,7 @@ const CreateAccountDetailSection: FC = () => {
 							background="gray5"
 							label={t('label.userName', 'username (Auto-fill)')}
 							value={accountDetail.name}
-							onChange={changeAccDetail}
+							onChange={changeAccName}
 							inputName="name"
 							// defaultValue={accountDetail?.name || ''}
 						/>
@@ -160,9 +216,9 @@ const CreateAccountDetailSection: FC = () => {
 					<Input
 						label={t('label.viewed_name', 'Viewed Name (Auto-fill)')}
 						backgroundColor="gray5"
-						value={accountDetail.name}
-						onChange={changeAccDetail}
-						inputName="name"
+						value={accountDetail.displayName || combineDisplayName}
+						onChange={changeAccDisplayName}
+						inputName="displayName"
 						name="descriptiveName"
 					/>
 				</Row>
@@ -197,13 +253,13 @@ const CreateAccountDetailSection: FC = () => {
 							)}
 						/>
 					</Row>
-					<Row width="48%" mainAlignment="flex-start">
+					{/* <Row width="48%" mainAlignment="flex-start">
 						<Switch
 							value={accountDetail?.generateFirst2FAToken}
 							onClick={(): void => changeSwitchOption('generateFirst2FAToken')}
 							label={t('accountDetails.generate_first_2FA_token', 'Generate first 2FA token')}
 						/>
-					</Row>
+					</Row> */}
 				</Row>
 				<Row width="100%" padding={{ top: 'large', left: 'large' }} mainAlignment="flex-start">
 					<Row mainAlignment="flex-start">
@@ -274,14 +330,21 @@ const CreateAccountDetailSection: FC = () => {
 						/>
 					</Row>
 					<Row width="64%" mainAlignment="flex-start">
-						<Select
-							background="gray6"
-							label={t('label.class_of_Service', 'Class of Service')}
-							showCheckbox={false}
-							padding={{ right: 'medium' }}
-							disabled
-							defaultSelection={{ value: 0, label: domainName }}
-						/>
+						{cosItems?.length === cosList?.length ? (
+							<Select
+								items={cosItems}
+								background="gray5"
+								label={t('label.default_class_of_service', 'Default Class of Service')}
+								showCheckbox={false}
+								defaultSelection={cosItems.find(
+									(item: any) => item.value === accountDetail?.zimbraCOSId
+								)}
+								onChange={onCOSIdChange}
+								disabled={accountDetail?.defaultCOS}
+							/>
+						) : (
+							<></>
+						)}
 					</Row>
 				</Row>
 			</Row>

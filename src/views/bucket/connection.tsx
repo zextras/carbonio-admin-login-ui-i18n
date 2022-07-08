@@ -11,7 +11,8 @@ import {
 	Select,
 	Padding,
 	PasswordInput,
-	Button
+	Button,
+	useSnackbar
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import { BucketRegions, BucketTypeItems } from '../utility/utils';
@@ -25,10 +26,11 @@ const Connection: FC<{
 	setVerifyCheck: any;
 	verifyCheck: any;
 	setButtonChange: any;
-	bucketType: any;
+	externalData: any;
 	setCompleteLoading: any;
-}> = ({ isActive, getData, onSelection, title, bucketType, setCompleteLoading }) => {
+}> = ({ isActive, getData, onSelection, title, externalData, setCompleteLoading }) => {
 	const [t] = useTranslation();
+	const createSnackbar = useSnackbar();
 	const [buttonColor, setButtonColor] = useState<string>('primary');
 	const [icon, setIcon] = useState<string>('ActivityOutline');
 	const [buttonDetail, setButtonDetail] = useState(
@@ -45,7 +47,8 @@ const Connection: FC<{
 	const [bucketTypeData, setBucketTypeData] = useState();
 	const [verifyCheck, setVerifyCheck] = useState<string>('');
 	const [buttonChange, setButtonChange] = useState<boolean>(false);
-
+	const [verifyFailErr, setverifyFailErr] = useState('');
+	const bucketType = externalData;
 	const server = document.location.hostname; // 'nbm-s02.demo.zextras.io';
 	const handleVerifyConnector = (): any => {
 		// API CALL
@@ -62,11 +65,29 @@ const Connection: FC<{
 		}).then((res: any) => {
 			const response = JSON.parse(res.response.content);
 			if (response.ok) {
-				setVerifyCheck('success');
 				const data = response.response.message;
 				const responseData = data.split("'");
 				setBucketUid(responseData[1]);
 				onSelection({ uuid: responseData[1] }, false);
+				fetchSoap('zextras', {
+					_jsns: 'urn:zimbraAdmin',
+					module: 'ZxCore',
+					action: 'testS3Connection',
+					targetServers: server,
+					bucketId: responseData[1]
+				}).then((responseVerify) => {
+					const responseVerifyData = JSON.parse(responseVerify.response.content);
+					if (
+						responseVerifyData.ok &&
+						responseVerifyData.response[server] &&
+						responseVerifyData.response[server].ok
+					) {
+						setVerifyCheck('successWithVerify');
+					} else {
+						setVerifyCheck('errorOnVerify');
+						setverifyFailErr(responseVerifyData.response[server].error);
+					}
+				});
 			} else {
 				setVerifyCheck('fail');
 			}
@@ -76,13 +97,7 @@ const Connection: FC<{
 	useEffect(() => {
 		if (isActive) {
 			setCompleteLoading(
-				descriptiveName &&
-					bucketName &&
-					regionsData &&
-					accessKeyData &&
-					secretKey &&
-					notes &&
-					BucketUid
+				descriptiveName && bucketName && regionsData && accessKeyData && secretKey && BucketUid
 			);
 		}
 	}, [
@@ -93,7 +108,6 @@ const Connection: FC<{
 		regionsData,
 		secretKey,
 		setCompleteLoading,
-		notes,
 		BucketUid
 	]);
 
@@ -106,26 +120,54 @@ const Connection: FC<{
 	}, [bucketType, bucketTypeData, onSelection]);
 
 	useEffect(() => {
-		if (verifyCheck === 'success') {
+		if (verifyCheck === 'successWithVerify') {
 			setButtonColor('success');
 			setIcon('CheckmarkCircle2');
 			setButtonDetail(
 				t('label.connector_is_create_and_verified', 'CONNECTOR IS CREATED AND VERIFIED')
 			);
+		} else if (verifyCheck === 'errorOnVerify') {
+			setButtonColor('error');
+			setIcon('alert-triangle');
+			setButtonDetail(
+				t(
+					'label.connection_is_created_verify_connector_fail',
+					'CONNECTOR IS CREATED BUT VERIFICATION FAILED'
+				)
+			);
+			if (verifyFailErr !== '') {
+				createSnackbar({
+					key: '1',
+					type: 'error',
+					label: t('label.verify_error', '{{name}}', {
+						name: verifyFailErr
+					}),
+					autoHideTimeout: 2000
+				});
+			}
 		} else if (verifyCheck === 'fail') {
 			setButtonColor('error');
 			setIcon('AlertTriangle');
 			setButtonDetail(
 				t(
-					'label.connector_is_created_by_verification_failed',
-					'CONNECTOR IS CREATED BY VERIFICATION FAILED'
+					'label.connector_is_not_created_and_verification_failed',
+					'CONNECTOR IS NOT CREATED AND VERIFICATION FAILED'
 				)
 			);
+			createSnackbar({
+				key: 1,
+				type: 'error',
+				label: t(
+					'label.connector_is_not_created_and_verification_failed',
+					'CONNECTOR IS NOT CREATED AND VERIFICATION FAILED'
+				),
+				autoHideTimeout: 2000
+			});
 		}
-	}, [setButtonChange, t, verifyCheck]);
+	}, [createSnackbar, setButtonChange, t, verifyCheck, verifyFailErr]);
 
 	return (
-		<Container mainAlignment="flex-start">
+		<Container mainAlignment="flex-start" padding={{ horizontal: 'large' }}>
 			{bucketType !== '' ? (
 				<Row padding={{ top: 'extralarge' }} width="100%">
 					<Input

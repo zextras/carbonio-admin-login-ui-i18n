@@ -64,6 +64,10 @@ interface AccountDetailObj {
 	description: string;
 	password: string;
 	repeatPassword: string;
+	displayName: string;
+	zimbraCOSId: string;
+	changeNameBool: boolean;
+	changeDisplayNameBool: boolean;
 }
 
 // eslint-disable-next-line no-empty-pattern
@@ -88,7 +92,11 @@ const CreateAccount: FC<{
 		zimbraPrefTimeZoneId: '',
 		description: '',
 		password: '',
-		repeatPassword: ''
+		repeatPassword: '',
+		displayName: '',
+		zimbraCOSId: '',
+		changeNameBool: false,
+		changeDisplayNameBool: false
 	});
 
 	const [wizardData, setWizardData] = useState();
@@ -176,11 +184,13 @@ const CreateAccount: FC<{
 										sn: accountDetail?.sn,
 										zimbraPasswordMustChange: accountDetail?.zimbraPasswordMustChange
 											? 'TRUE'
-											: ' FALSE',
+											: 'FALSE',
 										zimbraAccountStatus: accountDetail?.zimbraAccountStatus,
 										zimbraPrefLocale: accountDetail?.zimbraPrefLocale,
 										zimbraPrefTimeZoneId: accountDetail?.zimbraPrefTimeZoneId,
-										description: accountDetail?.description
+										description: accountDetail?.description,
+										displayName: accountDetail?.displayName,
+										zimbraCOSId: accountDetail?.defaultCOS ? '' : accountDetail?.zimbraCOSId
 									},
 									`${accountDetail?.name}@${domainName}`,
 									accountDetail?.password || ''
@@ -192,22 +202,25 @@ const CreateAccount: FC<{
 			}
 		],
 		[
-			accountDetail?.description,
-			accountDetail?.givenName,
-			accountDetail?.initials,
-			accountDetail?.name,
+			t,
+			setShowCreateAccountView,
 			accountDetail?.password,
 			accountDetail?.repeatPassword,
+			accountDetail?.givenName,
+			accountDetail?.initials,
 			accountDetail?.sn,
-			accountDetail?.zimbraAccountStatus,
 			accountDetail?.zimbraPasswordMustChange,
+			accountDetail?.zimbraAccountStatus,
 			accountDetail?.zimbraPrefLocale,
 			accountDetail?.zimbraPrefTimeZoneId,
-			createAccountReq,
+			accountDetail?.description,
+			accountDetail?.displayName,
+			accountDetail?.defaultCOS,
+			accountDetail?.zimbraCOSId,
+			accountDetail?.name,
 			createSnackbar,
-			domainName,
-			setShowCreateAccountView,
-			t
+			createAccountReq,
+			domainName
 		]
 	);
 
