@@ -1215,26 +1215,35 @@ const EditMailingListView: FC<any> = ({
 			<Row>
 				<Divider color="gray3" />
 			</Row>
-			<Container
-				orientation="horizontal"
-				mainAlignment="flex-end"
-				crossAlignment="flex-end"
-				background="gray6"
-				padding={{ all: 'extralarge' }}
-				height="85px"
-			>
-				<Padding right="small">
+			{isDirty && (
+				<Container
+					orientation="horizontal"
+					mainAlignment="flex-end"
+					crossAlignment="flex-end"
+					background="gray6"
+					padding={{ all: 'extralarge' }}
+					height="85px"
+				>
+					<Padding right="small">
+						{isDirty && (
+							<Button
+								label={t('label.cancel', 'Cancel')}
+								color="secondary"
+								onClick={onUndo}
+								height={44}
+							/>
+						)}
+					</Padding>
 					{isDirty && (
-						<Button label={t('label.cancel', 'Cancel')} color="secondary" onClick={onUndo} />
+						<Button label={t('label.save', 'Save')} color="primary" onClick={onSave} height={44} />
 					)}
-				</Padding>
-				{isDirty && <Button label={t('label.save', 'Save')} color="primary" onClick={onSave} />}
-			</Container>
+				</Container>
+			)}
 			<Container
 				padding={{ all: 'extralarge' }}
 				mainAlignment="flex-start"
 				crossAlignment="flex-start"
-				height="calc(100vh - 230px)"
+				height={isDirty ? 'calc(100vh - 230px)' : 'calc(100vh - 145px)'}
 				background="white"
 				style={{ overflow: 'auto' }}
 			>
@@ -1319,7 +1328,7 @@ const EditMailingListView: FC<any> = ({
 					<Container
 						mainAlignment="flex-start"
 						crossAlignment="flex-start"
-						padding={{ top: 'small', bottom: 'small' }}
+						padding={{ top: 'large', bottom: 'medium' }}
 					>
 						<Switch
 							value={zimbraDistributionListSendShareMessageToNewMembers}
@@ -1335,7 +1344,7 @@ const EditMailingListView: FC<any> = ({
 					<Container
 						mainAlignment="flex-start"
 						crossAlignment="flex-start"
-						padding={{ top: 'small', bottom: 'small' }}
+						padding={{ top: 'large', bottom: 'medium', left: 'small' }}
 					>
 						<Switch
 							value={zimbraHideInGal}
@@ -1349,64 +1358,70 @@ const EditMailingListView: FC<any> = ({
 				</ListRow>
 				{selectedMailingList?.dynamic && (
 					<ListRow>
-						<Container width="fit" padding={{ right: 'small' }}>
-							<Icon icon={'Link2Outline'} size="large" />
-						</Container>
-						<Container>
-							<Input
-								label={t('label.list_url', 'List URL')}
-								value={memberURL}
-								background="gray5"
-								onChange={(e: any): any => {
-									setMemberURL(e.target.value);
-								}}
-								disabled={zimbraIsACLGroup}
-							/>
+						<Container padding={{ top: 'small', bottom: 'small' }} orientation="horizontal">
+							<Container width="fit" padding={{ right: 'small' }}>
+								<Icon icon={'Link2Outline'} size="large" />
+							</Container>
+							<Container>
+								<Input
+									label={t('label.list_url', 'List URL')}
+									value={memberURL}
+									background="gray5"
+									onChange={(e: any): any => {
+										setMemberURL(e.target.value);
+									}}
+									disabled={zimbraIsACLGroup}
+								/>
+							</Container>
 						</Container>
 					</ListRow>
 				)}
 				<ListRow>
-					<Container width="64px" padding={{ right: 'small' }}>
-						<Icon icon={'PeopleOutline'} size="large" />
-					</Container>
-					<Container>
-						<Input
-							label={t('label.members', 'Members')}
-							value={dlm.length}
-							background="gray5"
-							disabled
-						/>
-					</Container>
-					<Container width="64px" padding={{ left: 'medium' }}>
-						<Icon icon={'CornerUpRight'} size="large" />
-					</Container>
-					<Container padding={{ all: 'small' }}>
-						<Input
-							label={t('label.alias_in_the_list', 'Alias in the List')}
-							value={zimbraMailAlias.length}
-							background="gray5"
-							disabled
-						/>
+					<Container padding={{ top: 'small', bottom: 'small' }} orientation="horizontal">
+						<Container width="54px">
+							<Icon icon={'PeopleOutline'} size="large" />
+						</Container>
+						<Container padding={{ all: 'small' }}>
+							<Input
+								label={t('label.members', 'Members')}
+								value={dlm.length}
+								background="gray5"
+								disabled
+							/>
+						</Container>
+						<Container width="64px" padding={{ right: 'medium' }}>
+							<Icon icon={'CornerUpRight'} size="large" />
+						</Container>
+						<Container>
+							<Input
+								label={t('label.alias_in_the_list', 'Alias in the List')}
+								value={zimbraMailAlias.length}
+								background="gray5"
+								disabled
+							/>
+						</Container>
 					</Container>
 				</ListRow>
 
 				<ListRow>
-					<Container width="54px">
-						<Icon icon={'FingerPrintOutline'} size="large" />
-					</Container>
-					<Container padding={{ all: 'small' }}>
-						<Input label={t('label.id_lbl', 'ID')} value={dlId} background="gray5" disabled />
-					</Container>
-					<Container width="64px" padding={{ right: 'small' }}>
-						<Icon icon={'CalendarOutline'} size="large" />
-					</Container>
-					<Container>
-						<Input
-							label={t('label.creation_date', 'Creation Date')}
-							value={dlCreateDate}
-							background="gray5"
-							disabled
-						/>
+					<Container padding={{ bottom: 'small' }} orientation="horizontal">
+						<Container width="54px">
+							<Icon icon={'FingerPrintOutline'} size="large" />
+						</Container>
+						<Container padding={{ all: 'small' }}>
+							<Input label={t('label.id_lbl', 'ID')} value={dlId} background="gray5" disabled />
+						</Container>
+						<Container width="64px" padding={{ right: 'small' }}>
+							<Icon icon={'CalendarOutline'} size="large" />
+						</Container>
+						<Container>
+							<Input
+								label={t('label.creation_date', 'Creation Date')}
+								value={dlCreateDate}
+								background="gray5"
+								disabled
+							/>
+						</Container>
 					</Container>
 				</ListRow>
 				{selectedMailingList?.dynamic && (
@@ -1548,10 +1563,20 @@ const EditMailingListView: FC<any> = ({
 					</Container>
 				</ListRow>
 				<ListRow>
-					<Container padding={{ all: 'small' }} mainAlignment="flex-end" crossAlignment="flex-end">
-						<Paginig totalItem={1} pageSize={10} setOffset={setMemberOffset} />
-					</Container>
-					<Container padding={{ all: 'small' }} mainAlignment="flex-end" crossAlignment="flex-end">
+					{!selectedMailingList?.dynamic && (
+						<Container
+							padding={{ all: 'small' }}
+							mainAlignment="flex-end"
+							crossAlignment="flex-end"
+						>
+							<Paginig totalItem={1} pageSize={10} setOffset={setMemberOffset} />
+						</Container>
+					)}
+					<Container
+						padding={{ all: 'small' }}
+						mainAlignment={selectedMailingList?.dynamic ? 'flex-start' : 'flex-end'}
+						crossAlignment={selectedMailingList?.dynamic ? 'flex-start' : 'flex-end'}
+					>
 						<Paginig totalItem={1} pageSize={10} setOffset={setOwnerOffset} />
 					</Container>
 				</ListRow>

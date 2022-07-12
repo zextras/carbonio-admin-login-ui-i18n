@@ -532,7 +532,7 @@ const MailingListDetail: FC<any> = ({
 					<Container
 						mainAlignment="flex-start"
 						crossAlignment="flex-start"
-						padding={{ top: 'small', bottom: 'small' }}
+						padding={{ top: 'large', bottom: 'medium' }}
 					>
 						<Switch
 							value={zimbraDistributionListSendShareMessageToNewMembers}
@@ -543,7 +543,7 @@ const MailingListDetail: FC<any> = ({
 					<Container
 						mainAlignment="flex-start"
 						crossAlignment="flex-start"
-						padding={{ top: 'small', bottom: 'small' }}
+						padding={{ top: 'large', bottom: 'medium' }}
 					>
 						<Switch
 							value={zimbraHideInGal}
