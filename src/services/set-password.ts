@@ -4,22 +4,28 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-export const renameDistributionList = async (dlId: string, newName?: string): Promise<any> => {
+export const setPasswordRequest = async (id: string, newPassword: string): Promise<any> => {
 	const request: any = {
-		RenameDistributionListRequest: {
+		SetPasswordRequest: {
 			_jsns: 'urn:zimbraAdmin',
-			id: dlId,
-			newName
+			id,
+			newPassword
 		}
 	};
 
-	return fetch(`/service/admin/soap/RenameDistributionListRequest`, {
+	return fetch(`/service/admin/soap/SetPasswordRequest`, {
 		method: 'POST',
 		credentials: 'include',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
+			Header: {
+				context: {
+					_jsns: 'urn:zimbra',
+					session: {}
+				}
+			},
 			Body: request
 		})
 	});

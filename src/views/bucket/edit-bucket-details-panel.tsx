@@ -442,6 +442,3 @@ const EditBucketDetailPanel: FC<{
 };
 
 export default EditBucketDetailPanel;
-function setDetailsBucket(arg0: boolean): any {
-	throw new Error('Function not implemented.');
-}
