@@ -26,6 +26,7 @@ import EditMailingListView from './edit-mailing-detail-view';
 import { useDomainStore } from '../../../../store/domain/store';
 import { RECORD_DISPLAY_LIMIT } from '../../../../constants';
 import MailingListDetail from './mailing-list-detail';
+import CreateMailingList from './create-mailing-list';
 
 const DomainMailingList: FC = () => {
 	const [t] = useTranslation();
@@ -46,6 +47,7 @@ const DomainMailingList: FC = () => {
 	const [prevent, setPrevent] = useState<boolean>(false);
 	const [editMailingList, setEditMailingList] = useState<boolean>(false);
 	const [isUpdateRecord, setIsUpdateRecord] = useState<boolean>(false);
+	const [showCreateMailingListView, setShowCreateMailingListView] = useState<boolean>(false);
 	const timer = useRef<any>();
 	const headers: any[] = useMemo(
 		() => [
@@ -306,6 +308,10 @@ const DomainMailingList: FC = () => {
 		}
 	}, [isUpdateRecord, getMailingList]);
 
+	const onAddClick = useCallback(() => {
+		setShowCreateMailingListView(true);
+	}, []);
+
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
 			<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
@@ -329,6 +335,7 @@ const DomainMailingList: FC = () => {
 									icon="Plus"
 									height={36}
 									width={36}
+									onClick={onAddClick}
 								/>
 							</Padding>
 							<Padding right="large">
@@ -468,6 +475,10 @@ const DomainMailingList: FC = () => {
 					setShowMailingListDetailView={setShowMailingListDetailView}
 					setEditMailingList={setEditMailingList}
 				/>
+			)}
+
+			{showCreateMailingListView && (
+				<CreateMailingList setShowCreateMailingListView={setShowCreateMailingListView} />
 			)}
 		</Container>
 	);

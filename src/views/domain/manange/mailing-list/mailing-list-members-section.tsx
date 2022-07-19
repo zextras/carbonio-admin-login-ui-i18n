@@ -1,0 +1,18 @@
+/*
+ * SPDX-FileCopyrightText: 2022 Zextras <https://www.zextras.com>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+import React, { FC } from 'react';
+import { Container } from '@zextras/carbonio-design-system';
+
+const MailingListMembersSection: FC<any> = () => {
+	console.log('xxxx');
+	return (
+		<Container>
+			<Container>Members</Container>
+		</Container>
+	);
+};
+
+export default MailingListMembersSection;
