@@ -177,7 +177,9 @@
         "surname": "Nachname",
         "user": "Nutzer",
         "enable_toaster_notification_for_new_calendar_events": "Aktiviert die Toaster-Benachrichtigung für neue Kalenderereignisse",
-        "deleteing": "Wird gelöscht"
+        "deleteing": "Wird gelöscht",
+        "range_time": "Uhrzeit",
+        "search_dot": "Suchen…"
     },
     "timezone": {
         "asia_yerevan": "{{value}} Eriwan",
