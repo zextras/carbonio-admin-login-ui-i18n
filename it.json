@@ -377,7 +377,12 @@
         "wizard_cancel_button": "CANCELLA",
         "yes": "Sì",
         "connector_is_created_by_verification_failed": "CONNETTORE CREATO MA LA VERIFICA È FALLITA",
-        "configration": "CONFIGURAZIONE"
+        "configration": "CONFIGURAZIONE",
+        "delete_bucket_sucess": "{{name}} è stato rimosso",
+        "delete_bucket_fail": "{{name}} non è stato rimosso",
+        "delet_content": "Stai eliminando {{name}}. Vuoi continuare?",
+        "create_new_cos": "Crea Nuova COS",
+        "connector_is_not_created_and_verification_failed": "CONNETTORE NON CREATO E VERIFICA FALLITA"
     },
     "message": {
         "snackbar": {
