@@ -78,7 +78,7 @@ const MailingListSection: FC<any> = () => {
 					</Container>
 					<Container
 						mainAlignment="flex-start"
-						crossAlignment="flex-start"
+						crossAlignment="center"
 						orientation="horizontal"
 						padding={{ top: 'large', right: 'small' }}
 						width="fit"

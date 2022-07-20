@@ -148,7 +148,6 @@ const CreateMailingList: FC<{
 						icon="ChevronLeftOutline"
 						color="secondary"
 						iconPlacement="left"
-						disabled
 					/>
 				),
 				NextButton: (props: any) => (
@@ -186,7 +185,6 @@ const CreateMailingList: FC<{
 						icon="ChevronLeftOutline"
 						color="secondary"
 						iconPlacement="left"
-						disabled
 					/>
 				),
 				NextButton: (props: any) => (
@@ -224,14 +222,13 @@ const CreateMailingList: FC<{
 						icon="ChevronLeftOutline"
 						color="secondary"
 						iconPlacement="left"
-						disabled
 					/>
 				),
 				NextButton: (props: any) => (
 					<Button
 						{...props}
-						label={t('label.next', 'NEXT')}
-						icon="ChevronRightOutline"
+						label={t('label.create', 'CREATE')}
+						icon="PowerOutline"
 						iconPlacement="right"
 					/>
 				)
@@ -297,7 +294,6 @@ const CreateMailingList: FC<{
 						icon="ChevronLeftOutline"
 						color="secondary"
 						iconPlacement="left"
-						disabled
 					/>
 				),
 				NextButton: (props: any) => (

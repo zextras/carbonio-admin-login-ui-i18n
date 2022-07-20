@@ -147,7 +147,7 @@ const MailingListMembersSection: FC<any> = () => {
 					</Container>
 				</ListRow>
 				<ListRow>
-					<Container>
+					<Container padding={{ top: 'large' }}>
 						<Table
 							rows={dlmTableRows}
 							headers={memberHeaders}

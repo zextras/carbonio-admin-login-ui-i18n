@@ -309,7 +309,7 @@ const MailingListSettingsSection: FC<any> = () => {
 					</Container>
 				</ListRow>
 				<ListRow>
-					<Container>
+					<Container padding={{ top: 'large' }}>
 						<Table
 							rows={ownerTableRows}
 							headers={ownerHeaders}
