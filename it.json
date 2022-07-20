@@ -382,7 +382,11 @@
         "delete_bucket_fail": "{{name}} non è stato rimosso",
         "delet_content": "Stai eliminando {{name}}. Vuoi continuare?",
         "create_new_cos": "Crea Nuova COS",
-        "connector_is_not_created_and_verification_failed": "CONNETTORE NON CREATO E VERIFICA FALLITA"
+        "connector_is_not_created_and_verification_failed": "CONNETTORE NON CREATO E VERIFICA FALLITA",
+        "deleteing": "Cancellazione ",
+        "delete_domain_with_account_content_msg": "{{domainName}} non è vuoto: contiene {{domainAccounts}} account di sistema e {{domainAccounts}} account normali. Vuoi procedere con l'eliminazione?",
+        "delete_cos_succeess": "{{cosname}} è stata eliminata con successo",
+        "delete_cos_instruction_msg": "Se clicchi il bottone SÌ, ELIMINA, la COS predefinita sostituirà la COS eliminata."
     },
     "message": {
         "snackbar": {
