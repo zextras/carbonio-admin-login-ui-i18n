@@ -26,6 +26,10 @@ interface MailingListDetailObj {
 	zimbraNotes: string;
 	memberURL: string;
 	members: Array<any>;
+	zimbraDistributionListSendShareMessageToNewMembers: boolean;
+	owners: Array<any>;
+	zimbraDistributionListSubscriptionPolicy: string;
+	zimbraDistributionListUnsubscriptionPolicy: string;
 }
 
 const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection }) => {
@@ -63,7 +67,11 @@ const CreateMailingList: FC<{
 		zimbraMailStatus: true,
 		zimbraNotes: '',
 		memberURL: '',
-		members: []
+		members: [],
+		zimbraDistributionListSendShareMessageToNewMembers: true,
+		owners: [],
+		zimbraDistributionListSubscriptionPolicy: '',
+		zimbraDistributionListUnsubscriptionPolicy: ''
 	});
 
 	const standardMailingListSizardSteps = useMemo(
