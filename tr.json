@@ -157,7 +157,10 @@
         "standard": "Standart",
         "surname": "Soyad",
         "user": "Kullanıcı",
-        "deleteing": "Siliniyor"
+        "deleteing": "Siliniyor",
+        "range_time": "Saat",
+        "search_dot": "Ara…",
+        "enable_toaster_notification_for_new_calendar_events": "Yeni takvim etkinlikleri için Toaster bildirimini etkinleştir"
     },
     "timezone": {
         "asia_gaza": "{{value}} Gaza",
