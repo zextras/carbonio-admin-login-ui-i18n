@@ -187,7 +187,8 @@
         "deleteing": "Wordt verwijderd",
         "enable_toaster_notification_for_new_calendar_events": "Toaster-kennisgeving voor nieuwe agenda-items inschakelen",
         "range_time": "Tijd",
-        "search_dot": "Zoeken…"
+        "search_dot": "Zoeken…",
+        "create_button": "CREËREN"
     },
     "timezone": {
         "europe_belgrade": "{{value}} Belgrado, Bratislava, Boedapest, Ljubljana, Praag",
