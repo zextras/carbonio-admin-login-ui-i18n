@@ -89,7 +89,7 @@ const CreateMailingList: FC<{
 			value: SUBSCRIBE_UNSUBSCRIBE.ACCEPT
 		},
 		prefixName: '',
-		suffixName: 'demo.zextras.io'
+		suffixName: ''
 	});
 
 	const onCreate = useCallback(() => {
