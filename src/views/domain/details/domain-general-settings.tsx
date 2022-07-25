@@ -684,7 +684,7 @@ const DomainGeneralSettings: FC = () => {
 										<Text overflow="break-word">
 											{t(
 												'label.mx_record_information_msg',
-												'If your MX records point to a spam-relay or any other external non-zimbra server, enter the name of that server in "Inbound SMTP Host Name" field.'
+												'If your MX records point to a spam-relay or any other external server, enter the name of that server in "Inbound SMTP Host Name" field.'
 											)}
 										</Text>
 									</Row>
