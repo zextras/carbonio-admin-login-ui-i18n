@@ -73,3 +73,7 @@ export const SERVERS_LIST = 'servers_list';
 export const RECORD_DISPLAY_LIMIT = 20;
 export const TRUE = 'TRUE';
 export const FALSE = 'FALSE';
+export const LOG_AND_QUEUES = 'logandqueues';
+export const OPERATIONS = 'operations';
+export const APPLICATION_LOG = 'application_log';
+export const MTA = 'mta';
