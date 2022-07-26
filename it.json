@@ -443,7 +443,23 @@
         "user_preferences": "PREFERENZE UTENTE",
         "userName_auto_fill": "nome utente (Auto completamento)",
         "userName": "nome utente (Auto completamento)",
-        "use_the_QuickAdd_dialog_when_creating_new_appointments": "Use the QuickAdd dialog when creating new appointments"
+        "use_the_QuickAdd_dialog_when_creating_new_appointments": "Use the QuickAdd dialog when creating new appointments",
+        "mailing_list_already_in_list_error": "La mailing list o l'utente sono già nella lista",
+        "would_you_like_to_add_ml": "<bold>Chi vuoi aggiungere alla Mailing list?</bold>",
+        "unsubscribe_request": "Richieste di cancellazione",
+        "this_list_is_member_of": "Questa lista fa parte di",
+        "second_name_initials": "Iniziali del secondo nome",
+        "schedule_policy": "Imposta policy",
+        "percentage_maximum_conflict_allowed": "% Conflitti massimi consentiti",
+        "new_subscription_requests": "Nuove richieste di sottoscrizioni",
+        "must_change_passowrd": "L'utente deve cambiare password al prossimo accesso",
+        "maximum_conflict_allowed": "Massimo Conflitto Consentito",
+        "mailing_list_user": "Mailing list / Utente",
+        "mailing_list_not_exists_error_msg": "La mailing list o l'utente non esistono. Controlla l'ortografia e riprova.",
+        "list_url": "URL della Mailing list",
+        "i_am_looking_for_member": "Cerca all'interno della lista",
+        "first_2FA_access_token_link": "Token link (da inviare all'utente) per effettuare il primo accesso 2FA",
+        "can_send_receiver": "Può ricevere e inviare"
     },
     "message": {
         "snackbar": {
@@ -732,5 +748,13 @@
         "vietnamese": "Vietnamita"
     },
     "create_new_cos": "CREA NUOVA COS",
-    "welcome_to_carbonio": "Benvenuto {{adminName}} su Carbonio {{carbonioVersion}}!"
+    "welcome_to_carbonio": "Benvenuto {{adminName}} su Carbonio {{carbonioVersion}}!",
+    "account": {
+        "new": {
+            "create_account_wizard": "Procedura guidata di modifica dell'account"
+        },
+        "edit": {
+            "edit_account_wizard": "Procedura guidata di modifica dell'account"
+        }
+    }
 }
