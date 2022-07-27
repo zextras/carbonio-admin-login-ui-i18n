@@ -79,6 +79,7 @@ const EditMailingListView: FC<any> = ({
 	const [selectedDistributionListMember, setSelectedDistributionListMember] = useState<any[]>([]);
 	const [selectedOwnerListMember, setSelectedOwnerListMember] = useState<any[]>([]);
 	const [searchMemberList, setSearchMemberList] = useState<any[]>([]);
+	const [dlMembershipListNames, setDlMembershipListNames] = useState<string>('');
 	const [openAddMailingListDialog, setOpenAddMailingListDialog] = useState<boolean>(false);
 	const [isRequstInProgress, setIsRequstInProgress] = useState<boolean>(false);
 	const [isAddToOwnerList, setIsAddToOwnerList] = useState<boolean>(false);
@@ -433,6 +434,7 @@ const EditMailingListView: FC<any> = ({
 						name: item?.name
 					}));
 					setDlMembershipList(allMembers);
+					setDlMembershipListNames(allMembers.map((item: any) => item?.name).join(', '));
 					setPreviousDetail((prevState: any) => ({
 						...prevState,
 						dlMembershipList: allMembers
@@ -442,6 +444,7 @@ const EditMailingListView: FC<any> = ({
 						...prevState,
 						dlMembershipList: []
 					}));
+					setDlMembershipListNames('');
 				}
 			});
 	}, []);
@@ -1438,6 +1441,10 @@ const EditMailingListView: FC<any> = ({
 					<Container padding={{ top: 'small', bottom: 'medium' }}>
 						<Input
 							value={zimbraNotes}
+							label={t(
+								'label.note_label',
+								'Write something that will easily make you remember this element'
+							)}
 							background="gray5"
 							onChange={(e: any): any => {
 								setZimbraNotes(e.target.value);
@@ -1448,23 +1455,17 @@ const EditMailingListView: FC<any> = ({
 
 				<Row padding={{ top: 'small', bottom: 'small' }}>
 					<Text size="medium" weight="bold" color="gray0">
-						{t('label.manage_list', 'Manage List')}
+						{t('label.who_is_in_this_list', "Who's in this list?")}
 					</Text>
 				</Row>
 				{!selectedMailingList?.dynamic && (
 					<ListRow>
 						<Container padding={{ top: 'small', bottom: 'small' }}>
-							<ChipInput
-								placeholder={t('label.this_list_is_member_of', 'This List is member of')}
-								value={dlMembershipList}
-								onInputType={(e: any): void => {
-									if (e.textContent && e.textContent !== '') {
-										getSearchMembers(e.textContent);
-									}
-								}}
-								options={searchMemberList}
-								onChange={onChangeChipInput}
-								requireUniqueChips
+							<Input
+								label={t('label.this_list_is_member_of', 'This List is member of')}
+								value={dlMembershipListNames}
+								background="gray5"
+								readOnly
 							/>
 						</Container>
 					</ListRow>
