@@ -1105,3 +1105,8 @@ export const isValidEmail = (email: string): boolean => {
 	const re = /\S+@\S+\.\S+/;
 	return re.test(email);
 };
+
+export const getAllEmailFromString = (str: string): any =>
+	str.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
+
+export const getEmailDisplayNameFromString = (str: string): any => str.match(/".*?"|'.*?'/g);
