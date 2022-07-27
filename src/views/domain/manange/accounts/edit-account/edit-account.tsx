@@ -86,8 +86,8 @@ const EditAccount: FC<{
 			icon: 'InfoOutline'
 		},
 		{
-			id: 'configration',
-			label: t('label.configration', 'CONFIGRATION'),
+			id: 'configuration',
+			label: t('label.configuration', 'CONFIGURATION'),
 			CustomComponent: ReusedDefaultTabBar,
 			icon: 'OptionsOutline'
 		},
@@ -283,7 +283,7 @@ const EditAccount: FC<{
 							</Container>
 						)}
 						{change === 'general' && <EditAccountGeneralSection />}
-						{change === 'configration' && <EditAccountConfigrationSection />}
+						{change === 'configuration' && <EditAccountConfigrationSection />}
 						{change === 'user_preferences' && <EditAccountUserPrefrencesSection />}
 					</Container>
 				</Container>

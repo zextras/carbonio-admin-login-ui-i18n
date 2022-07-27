@@ -106,6 +106,44 @@ const EditAccountUserPrefrencesSection: FC = () => {
 		[t]
 	);
 
+	const APPOINTMENT_DURATION = useMemo(
+		() => [
+			{
+				label: t('reminder.minute', {
+					count: 30,
+					defaultValue: '{{count}} minute',
+					defaultValue_plural: '{{count}} minutes'
+				}),
+				value: '30m'
+			},
+			{
+				label: t('reminder.minute', {
+					count: 60,
+					defaultValue: '{{count}} minute',
+					defaultValue_plural: '{{count}} minutes'
+				}),
+				value: '60m'
+			},
+			{
+				label: t('reminder.minute', {
+					count: 90,
+					defaultValue: '{{count}} minute',
+					defaultValue_plural: '{{count}} minutes'
+				}),
+				value: '90m'
+			},
+			{
+				label: t('reminder.minute', {
+					count: 120,
+					defaultValue: '{{count}} minute',
+					defaultValue_plural: '{{count}} minutes'
+				}),
+				value: '120m'
+			}
+		],
+		[t]
+	);
+
 	const onPrefMailPollingIntervalTypeChange = useCallback(
 		(v: string) => {
 			setAccountDetail((prev: any) => ({
@@ -152,6 +190,9 @@ const EditAccountUserPrefrencesSection: FC = () => {
 	);
 	const onPrefTimeZoneChange = (v: string): void => {
 		setAccountDetail((prev: any) => ({ ...prev, zimbraPrefTimeZoneId: v }));
+	};
+	const onCalendarDefaultApptDurationChange = (v: string): void => {
+		setAccountDetail((prev: any) => ({ ...prev, zimbraPrefCalendarDefaultApptDuration: v }));
 	};
 	const onReminderWarningTimeChange = (v: string): void => {
 		setAccountDetail((prev: any) => ({ ...prev, zimbraPrefCalendarApptReminderWarningTime: v }));
@@ -203,16 +244,6 @@ const EditAccountUserPrefrencesSection: FC = () => {
 						value={accountDetail?.zimbraPrefMessageViewHtmlPreferred === 'TRUE'}
 						onClick={(): void => changeSwitchOption('zimbraPrefMessageViewHtmlPreferred')}
 						label={t('account_details.view_mail_as_html', 'View mail as HTML')}
-					/>
-				</Row>
-				<Row width="48%" mainAlignment="flex-start">
-					<Switch
-						value={accountDetail?.zimbraPrefDisplayExternalImages === 'TRUE'}
-						onClick={(): void => changeSwitchOption('zimbraPrefDisplayExternalImages')}
-						label={t(
-							'account_details.display_external_image_as_html',
-							`Display external image as HTML`
-						)}
 					/>
 				</Row>
 			</Row>
@@ -514,7 +545,7 @@ const EditAccountUserPrefrencesSection: FC = () => {
 				</Row>
 			</Row>
 			<Row width="100%" padding={{ top: 'large', left: 'large' }} mainAlignment="space-between">
-				<Row width="100%" mainAlignment="flex-start">
+				<Row width="48%" mainAlignment="flex-start">
 					<Select
 						items={timezones}
 						background="gray5"
@@ -525,6 +556,22 @@ const EditAccountUserPrefrencesSection: FC = () => {
 							(item: any) => item.value === accountDetail?.zimbraPrefTimeZoneId
 						)}
 						onChange={onPrefTimeZoneChange}
+					/>
+				</Row>
+				<Row width="48%" mainAlignment="flex-start">
+					<Select
+						items={APPOINTMENT_DURATION}
+						background="gray5"
+						label={t(
+							'account_details.appointments_default_duration',
+							'Appointment’s Default Duration'
+						)}
+						showCheckbox={false}
+						padding={{ right: 'medium' }}
+						defaultSelection={APPOINTMENT_DURATION.find(
+							(item: any) => item.value === accountDetail?.zimbraPrefCalendarDefaultApptDuration
+						)}
+						onChange={onCalendarDefaultApptDurationChange}
 					/>
 				</Row>
 			</Row>
@@ -588,18 +635,7 @@ const EditAccountUserPrefrencesSection: FC = () => {
 					)}
 				</Row>
 			</Row>
-			<Row width="100%" padding={{ top: 'large', left: 'large' }} mainAlignment="space-between">
-				<Row width="100%" mainAlignment="flex-start">
-					<Switch
-						value={accountDetail?.zimbraPrefAppleIcalDelegationEnabled === 'TRUE'}
-						onClick={(): void => changeSwitchOption('zimbraPrefAppleIcalDelegationEnabled')}
-						label={t(
-							'account_details.use_ical_delegation_model_for_shared_calendars',
-							'Use iCal delegation model for shared calendars'
-						)}
-					/>
-				</Row>
-			</Row>
+
 			<Row width="100%" padding={{ top: 'large', left: 'large' }} mainAlignment="space-between">
 				<Row width="48%" mainAlignment="flex-start">
 					<Switch
@@ -612,7 +648,7 @@ const EditAccountUserPrefrencesSection: FC = () => {
 					<Switch
 						value={accountDetail?.zimbraPrefCalendarToasterEnabled === 'TRUE'}
 						onClick={(): void => changeSwitchOption('zimbraPrefCalendarToasterEnabled')}
-						label={t('account_details.enable_toast_notifications', `Enable toast notifications`)}
+						label={t('account_details.enable_notifications', `Enable notifications`)}
 					/>
 				</Row>
 			</Row>
@@ -724,7 +760,17 @@ const EditAccountUserPrefrencesSection: FC = () => {
 				</Row>
 			</Row>
 			<Row width="100%" padding={{ top: 'large', left: 'large' }} mainAlignment="space-between">
-				<Row width="100%" mainAlignment="flex-start">
+				<Row width="48%" mainAlignment="flex-start">
+					<Switch
+						value={accountDetail?.zimbraPrefAppleIcalDelegationEnabled === 'TRUE'}
+						onClick={(): void => changeSwitchOption('zimbraPrefAppleIcalDelegationEnabled')}
+						label={t(
+							'account_details.use_ical_delegation_model_for_shared_calendars',
+							'Use iCal delegation model for shared calendars'
+						)}
+					/>
+				</Row>
+				<Row width="48%" mainAlignment="flex-start">
 					<Switch
 						value={accountDetail?.zimbraPrefUseTimeZoneListInCalendar === 'TRUE'}
 						onClick={(): void => changeSwitchOption('zimbraPrefUseTimeZoneListInCalendar')}
