@@ -450,5 +450,10 @@
     "accountDetails": {
         "hide_in_gal": "Verbergen in GAL",
         "prevent_user_from_changing_password": "Voorkomen dat gebruiker wachtwoord kan wijzigen"
+    },
+    "account": {
+        "edit": {
+            "edit_account_wizard": "Account Wizard bewerken"
+        }
     }
 }
