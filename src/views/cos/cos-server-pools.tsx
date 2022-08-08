@@ -20,6 +20,7 @@ import {
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+import { debounce } from 'lodash';
 import ListRow from '../list/list-row';
 import Paginig from '../components/paging';
 import { useCosStore } from '../../store/cos/store';
@@ -39,6 +40,7 @@ const CosServerPools: FC = () => {
 	const [openConfirmDialog, setOpenConfirmDialog] = useState<boolean>(false);
 	const createSnackbar: any = useContext(SnackbarManagerContext);
 	const setCos = useCosStore((state) => state.setCos);
+	const [searchServer, setSearchServer] = useState<string>('');
 
 	const getAllServer = (): any => {
 		getAllServers()
@@ -301,6 +303,41 @@ const CosServerPools: FC = () => {
 		setOpenConfirmDialog(false);
 	}, []);
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const searchServerLists = useCallback(
+		debounce((searchText, serverListItems) => {
+			if (searchText !== '') {
+				const allRows = serverListItems
+					.filter((item: any) => item?.name.includes(searchText))
+					.map((item: any) => ({
+						id: item?.id,
+						columns: [
+							<Text size="small" weight="light" key={item?.id} color="#414141">
+								{item?.name}
+							</Text>,
+							<Text key={item?.id}>
+								{zimbraMailHostPoolList.find((sp: any) => item?.id === sp?._content)?.c ? (
+									<Text size="small" weight="light">
+										{t('cos.enabled', 'Enabled')}
+									</Text>
+								) : (
+									<Text size="small" weight="light" color="error">
+										{t('cos.disabled', 'Disabled')}
+									</Text>
+								)}
+							</Text>
+						]
+					}));
+				setServerTableRows(allRows);
+			}
+		}, 700),
+		[debounce]
+	);
+
+	useEffect(() => {
+		searchServerLists(searchServer, serverList);
+	}, [searchServer, searchServerLists, serverList]);
+
 	return (
 		<Container mainAlignment="flex-start" crossAlignment="flex-start">
 			<Row mainAlignment="flex-start" padding={{ all: 'large' }}>
@@ -363,11 +400,14 @@ const CosServerPools: FC = () => {
 									>
 										<Row mainAlignment="flex-start" width="70%" crossAlignment="flex-start">
 											<Input
-												value={''}
+												value={searchServer}
 												label={t('cos.search_a_specific_server', 'Search a specific server')}
 												CustomIcon={(): any => (
 													<Icon icon="FunnelOutline" size="large" color="secondary" />
 												)}
+												onChange={(e: any): any => {
+													setSearchServer(e.target.value);
+												}}
 											/>
 										</Row>
 
