@@ -25,6 +25,7 @@ import Paginig from '../components/paging';
 import { useCosStore } from '../../store/cos/store';
 import { getAllServers } from '../../services/get-all-servers-service';
 import { modifyCos } from '../../services/modify-cos-service';
+import { DISABLED, ENABLED } from '../../constants';
 
 const CosServerPools: FC = () => {
 	const [t] = useTranslation();
@@ -88,22 +89,99 @@ const CosServerPools: FC = () => {
 			zimbraMailHostPoolList.find((sp: any) => selectedTableRows[0] === sp?._content)?.c,
 		[selectedTableRows, zimbraMailHostPoolList]
 	);
+
 	useEffect(() => {
 		if (!!cosInformation && cosInformation.length > 0) {
 			getAllServer();
-			// const _zimbraMailHostPool: any = cosInformation.find(
-			// 	(item: any) => item?.n === 'zimbraMailHostPool'
-			// );
-			// if (_zimbraMailHostPool) {
-			// 	setZimbraMailHostPool(_zimbraMailHostPool?.c);
-			// }
-
 			const list = cosInformation.filter((item: any) => item?.n === 'zimbraMailHostPool');
 			if (list) {
 				setZimbraMailHostPoolList(list);
 			}
 		}
 	}, [cosInformation]);
+
+	const onFilterApply = useCallback(
+		(e) => {
+			if (e.length === 0) {
+				setServerTableRows([]);
+				setSelectedTableRows([]);
+			} else if (e.length > 1) {
+				const allRows = serverList.map((item: any) => ({
+					id: item?.id,
+					columns: [
+						<Text size="small" weight="light" key={item?.id} color="#414141">
+							{item?.name}
+						</Text>,
+						<Text key={item?.id}>
+							{zimbraMailHostPoolList.find((sp: any) => item?.id === sp?._content)?.c ? (
+								<Text size="small" weight="light">
+									{t('cos.enabled', 'Enabled')}
+								</Text>
+							) : (
+								<Text size="small" weight="light" color="error">
+									{t('cos.disabled', 'Disabled')}
+								</Text>
+							)}
+						</Text>
+					]
+				}));
+				setServerTableRows(allRows);
+			} else if (e.length === 1 && e.find((item: any) => item?.value === ENABLED)) {
+				const allRows = serverList
+					.filter(
+						(item: any) =>
+							zimbraMailHostPoolList.find((sp: any) => item?.id === sp?._content)?.c === true
+					)
+					.map((item: any) => ({
+						id: item?.id,
+						columns: [
+							<Text size="small" weight="light" key={item?.id} color="#414141">
+								{item?.name}
+							</Text>,
+							<Text key={item?.id}>
+								{zimbraMailHostPoolList.find((sp: any) => item?.id === sp?._content)?.c ? (
+									<Text size="small" weight="light">
+										{t('cos.enabled', 'Enabled')}
+									</Text>
+								) : (
+									<Text size="small" weight="light" color="error">
+										{t('cos.disabled', 'Disabled')}
+									</Text>
+								)}
+							</Text>
+						]
+					}));
+				setServerTableRows(allRows);
+			} else if (e.length === 1 && e.find((item: any) => item?.value === DISABLED)) {
+				const allRows = serverList
+					.filter(
+						(item: any) =>
+							zimbraMailHostPoolList.find((sp: any) => item?.id === sp?._content)?.c === false
+					)
+					.map((item: any) => ({
+						id: item?.id,
+						columns: [
+							<Text size="small" weight="light" key={item?.id} color="#414141">
+								{item?.name}
+							</Text>,
+							<Text key={item?.id}>
+								{zimbraMailHostPoolList.find((sp: any) => item?.id === sp?._content)?.c ? (
+									<Text size="small" weight="light">
+										{t('cos.enabled', 'Enabled')}
+									</Text>
+								) : (
+									<Text size="small" weight="light" color="error">
+										{t('cos.disabled', 'Disabled')}
+									</Text>
+								)}
+							</Text>
+						]
+					}));
+				setServerTableRows(allRows);
+			}
+		},
+		[t, serverList, zimbraMailHostPoolList]
+	);
 
 	const tableHeader: any[] = useMemo(
 		() => [
@@ -117,15 +195,18 @@ const CosServerPools: FC = () => {
 				id: 'status',
 				label: t('cos.status', 'Status'),
 				width: '100px',
+				align: 'left',
 				bold: true,
 				items: [
 					{ label: t('cos.enabled', 'Enabled'), value: 'enabled' },
 					{ label: t('cos.disabled', 'Disabled'), value: 'disabled' }
 				],
-				onChange: (e: any) => console.log('Filter changed', e)
+				onChange: (e: any): void => {
+					onFilterApply(e);
+				}
 			}
 		],
-		[t]
+		[t, onFilterApply]
 	);
 
 	const onDisable = useCallback(() => {
@@ -320,8 +401,15 @@ const CosServerPools: FC = () => {
 									</Row>
 								</Container>
 							</Row>
-							<ListRow>
+							<Row
+								orientation="horizontal"
+								mainAlignment="space-between"
+								crossAlignment="flex-start"
+								width="fill"
+								height="calc(100vh - 340px)"
+							>
 								<Table
+									style={{ overflow: 'auto', height: '100%' }}
 									multiSelect={false}
 									rows={serverTableRows}
 									headers={tableHeader}
@@ -329,7 +417,7 @@ const CosServerPools: FC = () => {
 									selectedRows={selectedTableRows}
 									onSelectionChange={(selected: any): void => setSelectedTableRows(selected)}
 								/>
-							</ListRow>
+							</Row>
 							<ListRow>
 								<Divider />
 							</ListRow>
