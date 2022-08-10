@@ -34,6 +34,7 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 	const context = useContext(RestoreDeleteAccountContext);
 	const { restoreAccountDetail, setRestoreAccountDetail } = context;
 	const [searchString, setSearchString] = useState<string>('');
+	const [totalItem, setTotalItem] = useState(1);
 	const accountHeader: any[] = useMemo(
 		() => [
 			{
@@ -89,6 +90,10 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 					}
 					if (backupAccounts && Array.isArray(backupAccounts) && backupAccounts.length > 0) {
 						setAccounts(backupAccounts);
+					}
+					if (data?.maxPage) {
+						const num: number = data?.maxPage;
+						setTotalItem(num * accountLimit);
 					}
 				});
 		},
@@ -203,7 +208,11 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 						</ListRow>
 						<ListRow>
 							<Container mainAlignment="flex-end" crossAlignment="flex-end">
-								<Paginig totalItem={1} pageSize={10} setOffset={setAccountOffset} />
+								<Paginig
+									totalItem={totalItem}
+									pageSize={accountLimit}
+									setOffset={setAccountOffset}
+								/>
 							</Container>
 						</ListRow>
 					</Row>
