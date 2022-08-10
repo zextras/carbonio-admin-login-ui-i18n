@@ -11,7 +11,8 @@ import {
 	Row,
 	Icon,
 	Table,
-	SnackbarManagerContext
+	SnackbarManagerContext,
+	Divider
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 
@@ -166,6 +167,7 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 						mainAlignment="space-between"
 						crossAlignment="flex-start"
 						width="fill"
+						className="dddddddd"
 						padding={{ bottom: 'large', right: 'large', left: 'large' }}
 					>
 						<Container padding={{ bottom: 'medium' }}>
@@ -180,17 +182,27 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 							/>
 						</Container>
 						<ListRow>
-							<Table
-								multiSelect={false}
-								rows={accountRows}
-								headers={accountHeader}
-								showCheckbox={false}
-								selectedRows={selectedAccountRows}
-								onSelectionChange={(selected: any): void => setSelectedAccountRows(selected)}
-							/>
+							<Row height="calc(100vh - 490px)">
+								<Table
+									style={{ overflow: 'auto', height: '100%' }}
+									multiSelect={false}
+									rows={accountRows}
+									headers={accountHeader}
+									showCheckbox={false}
+									selectedRows={selectedAccountRows}
+									onSelectionChange={(selected: any): void => setSelectedAccountRows(selected)}
+								/>
+							</Row>
 						</ListRow>
 						<ListRow>
-							<Paginig totalItem={1} pageSize={10} setOffset={setAccountOffset} />
+							<Container padding={{ top: 'large', bottom: 'small' }}>
+								<Divider />
+							</Container>
+						</ListRow>
+						<ListRow>
+							<Container mainAlignment="flex-end" crossAlignment="flex-end">
+								<Paginig totalItem={1} pageSize={10} setOffset={setAccountOffset} />
+							</Container>
 						</ListRow>
 					</Row>
 				</Container>

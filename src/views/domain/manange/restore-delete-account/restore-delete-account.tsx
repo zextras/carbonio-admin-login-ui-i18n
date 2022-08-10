@@ -38,8 +38,6 @@ const RestoreDeleteAccount: FC = () => {
 					background="gray6"
 					crossAlignment="flex-start"
 					mainAlignment="flex-start"
-					height="calc(100% - 70px)"
-					style={{ overflow: 'auto' }}
 				>
 					<RestoreAccountWizard
 						setShowRestoreAccountWizard={setShowRestoreAccountWizard}
