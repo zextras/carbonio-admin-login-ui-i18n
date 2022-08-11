@@ -81,7 +81,8 @@ const RestoreDeleteAccountWizard: FC<{
 			restoreAccountDetail?.lastAvailableStatus,
 			restoreAccountDetail?.hsmApply,
 			restoreAccountDetail?.dataSource,
-			restoreAccountDetail?.notificationReceiver
+			restoreAccountDetail?.notificationReceiver,
+			restoreAccountDetail?.isEmailNotificationEnable
 		);
 	}, [restoreAccountDetail, restoreAccountRequest]);
 

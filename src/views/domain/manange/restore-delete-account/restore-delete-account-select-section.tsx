@@ -35,6 +35,7 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 	const { restoreAccountDetail, setRestoreAccountDetail } = context;
 	const [searchString, setSearchString] = useState<string>('');
 	const [totalItem, setTotalItem] = useState(1);
+
 	const accountHeader: any[] = useMemo(
 		() => [
 			{
@@ -94,11 +95,14 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 					if (data?.maxPage) {
 						const num: number = data?.maxPage;
 						setTotalItem(num * accountLimit);
+					} else if (data?.maxPage === 0) {
+						setTotalItem(1);
 					}
 				});
 		},
 		[domainName, createSnackbar, accountLimit, accountOffset]
 	);
+
 	useMemo(() => {
 		if (accounts && accounts.length > 0) {
 			const allRows = accounts.map((item: any) => ({
@@ -121,6 +125,7 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 			setAccountRows([]);
 		}
 	}, [accounts]);
+
 	useEffect(() => {
 		getBackupAccounts('');
 	}, [accountOffset, getBackupAccounts]);
@@ -211,7 +216,9 @@ const RestoreDeleteAccountSelectSection: FC<any> = () => {
 								<Paginig
 									totalItem={totalItem}
 									pageSize={accountLimit}
-									setOffset={setAccountOffset}
+									setOffset={(val: any): void => {
+										setAccountOffset(val / accountLimit);
+									}}
 								/>
 							</Container>
 						</ListRow>

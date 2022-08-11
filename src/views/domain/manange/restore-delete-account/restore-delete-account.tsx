@@ -64,14 +64,15 @@ const RestoreDeleteAccount: FC = () => {
 			lastAvailableStatus,
 			hsmApply,
 			dataSource,
-			notificationReceiver
+			notificationReceiver,
+			isEmailNotificationEnable
 		) => {
 			const body: any = {
 				srcAccountName: id,
 				obeyHSM: hsmApply,
 				restoreDatasources: dataSource
 			};
-			if (notificationReceiver !== '') {
+			if (notificationReceiver !== '' && isEmailNotificationEnable) {
 				body.notificationMails = [notificationReceiver];
 			}
 			if (copyAccount !== '') {
