@@ -8,6 +8,8 @@ import { Container, Row, Text, Divider, Table, Button } from '@zextras/carbonio-
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { NO } from '../../../constants';
+import { AbsoluteContainer } from '../../components/styled';
+import ServerVolumeDetailsPanel from './server-volume-details-panel';
 
 const RelativeContainer = styled(Container)`
 	position: relative;
@@ -64,6 +66,9 @@ const VolumeListTable: FC<{
 const VolumesDetailPanel: FC = () => {
 	const [t] = useTranslation();
 	const [volumeselection, setVolumeselection] = useState('');
+	const [toggleDetailPage, setToggleDetailPage] = useState(false);
+	const [volumeDetail, setVolumeDetail] = useState<object | any>({});
+
 	const headers = [
 		{
 			id: 'name',
@@ -188,6 +193,14 @@ const VolumesDetailPanel: FC = () => {
 	];
 	return (
 		<>
+			{toggleDetailPage && volumeDetail && (
+				<AbsoluteContainer orientation="vertical" background="gray5">
+					<ServerVolumeDetailsPanel
+						volumeDetail={volumeDetail}
+						setToggleDetailPage={setToggleDetailPage}
+					/>
+				</AbsoluteContainer>
+			)}
 			<RelativeContainer
 				orientation="column"
 				crossAlignment="flex-start"
@@ -252,9 +265,7 @@ const VolumesDetailPanel: FC = () => {
 								headers={headers}
 								selectedRows={volumeselection}
 								onSelectionChange={(selected: any): any => {
-									// const volumeObject: any = volumeList.find(
-									// 	(s, index) => index === selected[0]
-									// );
+									// const volumeObject: any = volumeList.find((s, index) => index === selected[0]);
 								}}
 							/>
 						</Row>
@@ -315,9 +326,12 @@ const VolumesDetailPanel: FC = () => {
 								headers={headers}
 								selectedRows={volumeselection}
 								onSelectionChange={(selected: any): any => {
-									// const volumeObject: any = volumeList.find(
-									// 	(s, index) => index === selected[0]
-									// );
+									setVolumeselection(selected);
+									const volumeObject: any = secondaryVolumeList.find(
+										(s, index) => index === selected[0]
+									);
+									setToggleDetailPage(true);
+									setVolumeDetail(volumeObject);
 								}}
 							/>
 						</Row>
