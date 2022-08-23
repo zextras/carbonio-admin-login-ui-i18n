@@ -529,10 +529,46 @@ const EditMailingListView: FC<any> = ({
 		const attrs = 'name,zimbraId';
 		const types = 'distributionlists,dynamicgroups';
 		const query = `(&(|(mail=*${value}*)(cn=*${value}*)(sn=*${value}*)(gn=*${value}*)(displayName=*${value}*)(zimbraMailAlias=*${value}*)(uid=*${value}*))(!(zimbraIsACLGroup=FALSE)))`;
-		searchDirectory(attrs, types, '', query)
-			.then((response) => response.json())
-			.then((data) => {
-				const result = data?.Body?.SearchDirectoryResponse?.dl;
+		searchDirectory(attrs, types, '', query).then((data) => {
+			const result = data?.dl;
+			if (result && result.length > 0) {
+				const allResult = result.map((item: any) => {
+					// eslint-disable-next-line no-param-reassign
+					item.label = item?.name;
+					// eslint-disable-next-line no-param-reassign
+					item.value = {
+						label: item?.name,
+						id: item?.id
+					};
+					// eslint-disable-next-line no-param-reassign
+					return item;
+				});
+				setSearchMemberList(allResult);
+			}
+		});
+	}, []);
+
+	const getOwnerOfListSearch = useCallback(
+		(value: string) => {
+			const attrs =
+				'displayName,zimbraId,zimbraAliasTargetId,cn,sn,zimbraMailHost,uid,zimbraCOSId,zimbraAccountStatus,zimbraLastLogonTimestamp,description,zimbraIsSystemAccount,zimbraIsDelegatedAdminAccount,zimbraIsAdminAccount,zimbraIsSystemResource,zimbraAuthTokenValidityValue,zimbraIsExternalVirtualAccount,zimbraMailStatus,zimbraIsAdminGroup,zimbraCalResType,zimbraDomainType,zimbraDomainName,zimbraDomainStatus';
+			const types = 'accounts,distributionlists,aliases';
+			const query = `(&(&(!(zimbraAccountStatus=closed))(|(mail=*${value}*)(cn=*${value}*)(sn=*${value}*)(gn=*${value}*)(displayName=*${value}*)(zimbraMailDeliveryAddress=*${value}*)(zimbraMailAlias=*${value}*)(uid=*${value}*)(zimbraDomainName=*${value}*)(uid=*${value}*)))(&(!(mail=${distributionName}))(!(zimbraMailAddress=${distributionName}))(!(zimbraMailDeliveryAddress=${distributionName}))(!(zimbraMailForwardingAddress=${distributionName}))(!(zimbraMemberOf=${distributionName}))))`;
+			searchDirectory(attrs, types, '', query).then((data) => {
+				const result: any[] = [];
+
+				const dl = data?.dl;
+				const account = data?.account;
+				const alias = data?.alias;
+				if (dl) {
+					dl.map((item: any) => result.push(item));
+				}
+				if (account) {
+					account.map((item: any) => result.push(item));
+				}
+				if (alias) {
+					alias.map((item: any) => result.push(item));
+				}
 				if (result && result.length > 0) {
 					const allResult = result.map((item: any) => {
 						// eslint-disable-next-line no-param-reassign
@@ -545,49 +581,9 @@ const EditMailingListView: FC<any> = ({
 						// eslint-disable-next-line no-param-reassign
 						return item;
 					});
-					setSearchMemberList(allResult);
+					setSearchOwnerMemberOfList(allResult);
 				}
 			});
-	}, []);
-
-	const getOwnerOfListSearch = useCallback(
-		(value: string) => {
-			const attrs =
-				'displayName,zimbraId,zimbraAliasTargetId,cn,sn,zimbraMailHost,uid,zimbraCOSId,zimbraAccountStatus,zimbraLastLogonTimestamp,description,zimbraIsSystemAccount,zimbraIsDelegatedAdminAccount,zimbraIsAdminAccount,zimbraIsSystemResource,zimbraAuthTokenValidityValue,zimbraIsExternalVirtualAccount,zimbraMailStatus,zimbraIsAdminGroup,zimbraCalResType,zimbraDomainType,zimbraDomainName,zimbraDomainStatus';
-			const types = 'accounts,distributionlists,aliases';
-			const query = `(&(&(!(zimbraAccountStatus=closed))(|(mail=*${value}*)(cn=*${value}*)(sn=*${value}*)(gn=*${value}*)(displayName=*${value}*)(zimbraMailDeliveryAddress=*${value}*)(zimbraMailAlias=*${value}*)(uid=*${value}*)(zimbraDomainName=*${value}*)(uid=*${value}*)))(&(!(mail=${distributionName}))(!(zimbraMailAddress=${distributionName}))(!(zimbraMailDeliveryAddress=${distributionName}))(!(zimbraMailForwardingAddress=${distributionName}))(!(zimbraMemberOf=${distributionName}))))`;
-			searchDirectory(attrs, types, '', query)
-				.then((response) => response.json())
-				.then((data) => {
-					const result: any[] = [];
-
-					const dl = data?.Body?.SearchDirectoryResponse?.dl;
-					const account = data?.Body?.SearchDirectoryResponse?.account;
-					const alias = data?.Body?.SearchDirectoryResponse?.alias;
-					if (dl) {
-						dl.map((item: any) => result.push(item));
-					}
-					if (account) {
-						account.map((item: any) => result.push(item));
-					}
-					if (alias) {
-						alias.map((item: any) => result.push(item));
-					}
-					if (result && result.length > 0) {
-						const allResult = result.map((item: any) => {
-							// eslint-disable-next-line no-param-reassign
-							item.label = item?.name;
-							// eslint-disable-next-line no-param-reassign
-							item.value = {
-								label: item?.name,
-								id: item?.id
-							};
-							// eslint-disable-next-line no-param-reassign
-							return item;
-						});
-						setSearchOwnerMemberOfList(allResult);
-					}
-				});
 		},
 		[distributionName]
 	);
@@ -609,29 +605,12 @@ const EditMailingListView: FC<any> = ({
 		const attrs = '';
 		const types = 'distributionlists,aliases,accounts,resources,dynamicgroups';
 		const query = `(mail=${searchMailingListOrUser})`;
-		searchDirectory(attrs, types, '', query, 0, 2)
-			.then((response) => response.json())
-			.then((data) => {
-				const accountExists =
-					data?.Body?.SearchDirectoryResponse?.dl || data?.Body?.SearchDirectoryResponse?.account;
-				if (!!accountExists && accountExists[0]) {
-					setIsShowError(false);
-					if (isAddToOwnerList) {
-						if (ownersList.find((item: any) => item?.name === searchMailingListOrUser)) {
-							setIsShowError(true);
-							setOwnerErrorMessage(
-								t(
-									'label.mailing_list_already_in_list_error',
-									'The Mailing List / User is already in the list'
-								)
-							);
-						} else {
-							setOwnersList(
-								ownersList.concat({ id: accountExists[0]?.id, name: accountExists[0]?.name })
-							);
-							setOpenAddMailingListDialog(false);
-						}
-					} else if (dlm.find((item: any) => item === searchMailingListOrUser)) {
+		searchDirectory(attrs, types, '', query, 0, 2).then((data) => {
+			const accountExists = data?.dl || data?.account;
+			if (!!accountExists && accountExists[0]) {
+				setIsShowError(false);
+				if (isAddToOwnerList) {
+					if (ownersList.find((item: any) => item?.name === searchMailingListOrUser)) {
 						setIsShowError(true);
 						setOwnerErrorMessage(
 							t(
@@ -640,19 +619,33 @@ const EditMailingListView: FC<any> = ({
 							)
 						);
 					} else {
-						setDlm(dlm.concat(accountExists[0]?.name));
+						setOwnersList(
+							ownersList.concat({ id: accountExists[0]?.id, name: accountExists[0]?.name })
+						);
 						setOpenAddMailingListDialog(false);
 					}
-				} else {
+				} else if (dlm.find((item: any) => item === searchMailingListOrUser)) {
 					setIsShowError(true);
 					setOwnerErrorMessage(
 						t(
-							'label.mailing_list_not_exists_error_msg',
-							'The Mailing List / User does not exists. Please check the spelling and try again.'
+							'label.mailing_list_already_in_list_error',
+							'The Mailing List / User is already in the list'
 						)
 					);
+				} else {
+					setDlm(dlm.concat(accountExists[0]?.name));
+					setOpenAddMailingListDialog(false);
 				}
-			});
+			} else {
+				setIsShowError(true);
+				setOwnerErrorMessage(
+					t(
+						'label.mailing_list_not_exists_error_msg',
+						'The Mailing List / User does not exists. Please check the spelling and try again.'
+					)
+				);
+			}
+		});
 	}, [t, isAddToOwnerList, searchMailingListOrUser, dlm, ownersList]);
 
 	const onDeleteFromList = (): void => {
@@ -1240,24 +1233,22 @@ const EditMailingListView: FC<any> = ({
 		const types = 'accounts,distributionlists,aliases';
 		const query = `(&(!(zimbraAccountStatus=closed))(|(mail=*${mem}*)(cn=*${mem}*)(sn=*${mem}*)(gn=*${mem}*)(displayName=*${mem}*)(zimbraMailDeliveryAddress=*${mem}*)(zimbraMailAlias=*${mem}*)(uid=*${mem}*)(zimbraDomainName=*${mem}*)(uid=*${mem}*)))`;
 
-		searchDirectory(attrs, types, '', query, 0, RECORD_DISPLAY_LIMIT, 'name')
-			.then((response) => response.json())
-			.then((data) => {
-				const result: any[] = [];
-				const dl = data?.Body?.SearchDirectoryResponse?.dl;
-				const account = data?.Body?.SearchDirectoryResponse?.account;
-				const alias = data?.Body?.SearchDirectoryResponse?.alias;
-				if (dl) {
-					dl.map((item: any) => result.push(item));
-				}
-				if (account) {
-					account.map((item: any) => result.push(item));
-				}
-				if (alias) {
-					alias.map((item: any) => result.push(item));
-				}
-				setSearchMemberResult(result);
-			});
+		searchDirectory(attrs, types, '', query, 0, RECORD_DISPLAY_LIMIT, 'name').then((data) => {
+			const result: any[] = [];
+			const dl = data?.dl;
+			const account = data?.account;
+			const alias = data?.alias;
+			if (dl) {
+				dl.map((item: any) => result.push(item));
+			}
+			if (account) {
+				account.map((item: any) => result.push(item));
+			}
+			if (alias) {
+				alias.map((item: any) => result.push(item));
+			}
+			setSearchMemberResult(result);
+		});
 	}, []);
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1363,33 +1354,31 @@ const EditMailingListView: FC<any> = ({
 
 	const getSearchOwnerList = useCallback(
 		(searchKeyword) => {
-			searchGal(searchKeyword)
-				.then((response) => response.json())
-				.then((data) => {
-					const contactList = data?.Body?.SearchGalResponse?.cn;
-					if (contactList) {
-						let result: any[] = [];
-						result = contactList.map((item: any): any => ({
-							id: item?.id,
-							name: item?._attrs?.email
-						}));
-						setAllOwnerList(
-							uniqBy(
-								allOwnerList.concat(
-									contactList.map((item: any) => ({
-										id: item?.id,
-										name: item?._attrs?.email,
-										type: item?._attrs?.type
-									}))
-								),
-								'id'
-							)
-						);
-						setSearchOwnerResult(result);
-					} else {
-						setSearchOwnerResult([]);
-					}
-				});
+			searchGal(searchKeyword).then((data) => {
+				const contactList = data?.cn;
+				if (contactList) {
+					let result: any[] = [];
+					result = contactList.map((item: any): any => ({
+						id: item?.id,
+						name: item?._attrs?.email
+					}));
+					setAllOwnerList(
+						uniqBy(
+							allOwnerList.concat(
+								contactList.map((item: any) => ({
+									id: item?.id,
+									name: item?._attrs?.email,
+									type: item?._attrs?.type
+								}))
+							),
+							'id'
+						)
+					);
+					setSearchOwnerResult(result);
+				} else {
+					setSearchOwnerResult([]);
+				}
+			});
 		},
 		[allOwnerList]
 	);

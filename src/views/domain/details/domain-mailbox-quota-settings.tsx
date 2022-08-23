@@ -291,22 +291,20 @@ const DomainMailboxQuotaSetting: FC = () => {
 			_content: zimbraDomainAggregateQuotaPolicy.value
 		});
 		body.a = attributes;
-		modifyDomain(body)
-			.then((response) => response.json())
-			.then((data) => {
-				createSnackbar({
-					key: 'success',
-					type: 'success',
-					label: t('label.change_save_success_msg', 'The change has been saved successfully'),
-					autoHideTimeout: 3000,
-					hideButton: true,
-					replace: true
-				});
-				const domain: any = data?.Body?.ModifyDomainResponse?.domain[0];
-				if (domain) {
-					setDomain(domain);
-				}
+		modifyDomain(body).then((data) => {
+			createSnackbar({
+				key: 'success',
+				type: 'success',
+				label: t('label.change_save_success_msg', 'The change has been saved successfully'),
+				autoHideTimeout: 3000,
+				hideButton: true,
+				replace: true
 			});
+			const domain: any = data?.domain[0];
+			if (domain) {
+				setDomain(domain);
+			}
+		});
 	};
 
 	const onZimbraDomainAggregateQuotaPolicy = (v: any): any => {

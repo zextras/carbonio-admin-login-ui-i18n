@@ -54,14 +54,12 @@ const DomainOperations: FC = () => {
 		const attrs = 'cn,description';
 		const types = 'coses';
 
-		searchDirectory(attrs, types, '', '')
-			.then((response) => response.json())
-			.then((data) => {
-				const cosLists = data?.Body?.SearchDirectoryResponse?.cos;
-				if (cosLists) {
-					setCosList(cosLists);
-				}
-			});
+		searchDirectory(attrs, types, '', '').then((data) => {
+			const cosLists = data?.cos;
+			if (cosLists) {
+				setCosList(cosLists);
+			}
+		});
 	}, [setCosList]);
 
 	useEffect(() => {

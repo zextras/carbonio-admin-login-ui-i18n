@@ -127,7 +127,6 @@ const DomainVirtualHosts: FC = () => {
 		});
 		body.a = attributes;
 		modifyDomain(body)
-			.then((response) => response.json())
 			.then((data) => {
 				createSnackbar({
 					key: 'success',
@@ -137,7 +136,7 @@ const DomainVirtualHosts: FC = () => {
 					hideButton: true,
 					replace: true
 				});
-				const domain: any = data?.Body?.ModifyDomainResponse?.domain[0];
+				const domain: any = data?.domain[0];
 				if (domain) {
 					setDomain(domain);
 				}

@@ -33,12 +33,10 @@ const CosDetailOperation: FC = () => {
 			if (isDefaultCos) {
 				query = `(|(!(zimbraDomainDefaultCOSId=*))(zimbraDomainDefaultCOSId=${id}))`;
 			}
-			searchDirectory('', 'domains', '', query, 0, -1)
-				.then((response) => response.json())
-				.then((data) => {
-					const totalDomain = data?.Body?.SearchDirectoryResponse?.searchTotal || 0;
-					setTotalDomain(totalDomain);
-				});
+			searchDirectory('', 'domains', '', query, 0, -1).then((data) => {
+				const totalDomain = data?.searchTotal || 0;
+				setTotalDomain(totalDomain);
+			});
 		},
 		[setTotalDomain]
 	);
@@ -49,12 +47,10 @@ const CosDetailOperation: FC = () => {
 			if (isDefaultCos) {
 				query = `(&(|(&(!(zimbraCOSId=*))(!(zimbraIsExternalVirtualAccount=TRUE)))(zimbraCOSId=${id}))(!(zimbraIsSystemAccount=TRUE)))`;
 			}
-			searchDirectory('', 'accounts', '', query, 0, -1)
-				.then((response) => response.json())
-				.then((data) => {
-					const totalAccount = data?.Body?.SearchDirectoryResponse?.searchTotal || 0;
-					setTotalAccount(totalAccount);
-				});
+			searchDirectory('', 'accounts', '', query, 0, -1).then((data) => {
+				const totalAccount = data?.searchTotal || 0;
+				setTotalAccount(totalAccount);
+			});
 		},
 		[setTotalAccount]
 	);

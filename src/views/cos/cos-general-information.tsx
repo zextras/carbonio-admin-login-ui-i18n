@@ -158,7 +158,6 @@ const CosGeneralInformation: FC = () => {
 			renameBody.newName = newName;
 
 			renameCos(renameBody)
-				.then((response) => response.json())
 				.then((data) => {
 					modifyCosInfo();
 				})
