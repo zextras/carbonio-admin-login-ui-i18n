@@ -38,6 +38,7 @@ const BackupDetailOperation: FC = () => {
 				}
 			});
 	}, [setGlobalConfig]);
+
 	useEffect(() => {
 		!globalConfig?.privateKeyAlgorithm && getGlobalConfig();
 	}, [getGlobalConfig, globalConfig?.privateKeyAlgorithm]);
