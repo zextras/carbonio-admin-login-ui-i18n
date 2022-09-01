@@ -461,7 +461,8 @@
         "can_send_receiver": "Può ricevere e inviare",
         "auto_accept_auto_decline_on_conflict": "Accetta automaticamente in caso di disponibilità, rifiuta automaticamente in caso di conflitto",
         "auto_accept": "Accetta automaticamente",
-        "add_in_mailing_list_or_both": "Hai aggiunto una Mailing list o un utente. Entrambi possono essere proprietari della lista."
+        "add_in_mailing_list_or_both": "Hai aggiunto una Mailing list o un utente. Entrambi possono essere proprietari della lista.",
+        "utility_view3": "test"
     },
     "message": {
         "snackbar": {
