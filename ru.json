@@ -425,7 +425,7 @@
         "bucket_list": "Список Бакетов",
         "bucket_List": "Список Бакетов",
         "base_dn_is_not_valid": "Базовое DN недействительно",
-        "back": "Вернуться назад",
+        "back": "Назад",
         "appointments_default_duration": "Продолжительность встречи по умолчанию",
         "application_log": "Журнал приложений",
         "account_quota_mb": "Квота аккаунта (MB)",
@@ -532,7 +532,12 @@
         "invalid_email_address": "Неправильный электронный адрес",
         "invites": "Приглашения",
         "list_name": "Имя списка",
-        "mailing_options": "Параметры почты"
+        "mailing_options": "Параметры почты",
+        "reply_to_address_for_receipt": "Адрес для получения ответа",
+        "allowed_sending_addresses": "Разрешенные адреса для отправки",
+        "share_message_to_new_member": "Поделиться сообщением с новыми участниками",
+        "restore_account_has_added_operation_queue": "Учетная запись восстановления добавлена в очередь операций успешно",
+        "auto_accept_auto_decline_on_conflict": "Автоматическое принятие при наличии, автоматический отказ в случае конфликта"
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
@@ -793,7 +798,7 @@
         "group_mail": "Группа Почта",
         "composing_mail": "Составление письма",
         "yes_disable": "Да, отключить",
-        "use_quickadd_dialog_in_creation": "Используйте диалоговое окно QuickAdd при создании",
+        "use_quickadd_dialog_in_creation": "При создании используйте диалоговое окно QuickAdd",
         "use_ical_delegation_model_for_shared_calendars": "Используйте модель делегирования iCal для общих календарей",
         "use_gal_to_auto_fill": "Используйте GAL для автозаполнения",
         "sms_reminders": "SMS напоминания",
@@ -981,7 +986,10 @@
     },
     "volume": {
         "serverName_volumes_create_mailstores_volume": "{{serverName}} Создать том почтовых хранилищ",
-        "serverName_volumes": "{{serverName}} Тома"
+        "serverName_volumes": "{{serverName}} Тома",
+        "new": {
+            "create_mailstores_volume": "Создать том почтовых хранилищ"
+        }
     },
     "have_not_setup_bucket_type": "Похоже, вы не настроили тип Бакета",
     "click_new_bucket_button_to_create_new_one": "Для создания нажмите кнопку NEW BUCKET.",
@@ -1061,14 +1069,16 @@
         "saved_searches": "Сохраненные профили поиска",
         "send_read_receipts": "Отправлять уведомления о прочтении",
         "sharing": "Общий доступ",
-        "tagging": "Установление меток"
+        "tagging": "Установление меток",
+        "can_send_auto_reply_messages": "Может отправлять сообщения автоответчика"
     },
     "privacy": {
         "survey_feedback_sub_1": "Мы обещаем, что они будут быстрыми, легкими и очень полезными, чтобы понять, как у нас дела.",
         "full_error_sub_1": "Мы все совершаем ошибки, но то, как вы справляетесь с ними, меняет все! Заставьте ошибки работать на вас, дайте нам знать, как мы можем их исправить.",
         "analytics_sub_1": "Ваши данные в безопасности. Вся информация, которую мы собираем, является и останется анонимной. Наша команда будет использовать их для улучшения Carbonio.",
         "allow_data_analytics": "Разрешить аналитику данных",
-        "send_full_error_data_to_zextras": "Посылать полные данные об ошибках в Zextras"
+        "send_full_error_data_to_zextras": "Посылать полные данные об ошибках в Zextras",
+        "allow_live_survey_feedbacks": "Разрешить комментарии к опросу в реальном времени"
     },
     "connection": {
         "access_key": "ключ доступа",
