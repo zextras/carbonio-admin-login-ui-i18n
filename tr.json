@@ -452,7 +452,7 @@
         "button_delete": "SİL",
         "calendar": "Takvim",
         "calendar_options": "Takvim Seçenekleri",
-        "can_receive_email": "E-posta alabilir:",
+        "can_receive_email": "E-posta alabilir",
         "click_here": "Buraya tıklayın",
         "compression": "Sıkıştırma",
         "compression_threshold": "Sıkıştırma Eşiği",
@@ -1047,7 +1047,7 @@
         "can_send_auto_reply_messages": "Otomatik yanıt mesajı gönderebilir",
         "browser_title_for_appointments": "Randevular için tarayıcı başlığı",
         "auto_delete_duplicate_messages": "Birbiriyle aynı mesajları otomatik sil",
-        "auto_decline_if_inviter_is_blacklisted": "Davet gönderen karalistede ise otomatik reddet",
+        "auto_decline_if_inviter_is_blacklisted": "Gönderen kara listede ise otomatik reddet",
         "audible_reminder_notification": "Sesli hatırlatma bildirimi",
         "appointments_default_duration": "Randevu için Varsayılan Süre",
         "always_show_mini_calendar": "Her zaman küçük takvimi göster",
@@ -1092,6 +1092,6 @@
     },
     "reminder": {
         "minute": "{{count}} dakika",
-        "minute_plural": ""
+        "minute_plural": "{{count}} dakika"
     }
 }
