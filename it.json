@@ -71,7 +71,6 @@
         "mailbox_quota": "Spazio casella di posta",
         "many_domain_info_msg": "Sembrano esserci molti domini! Quale vuoi visualizzare? Inizia a digitare il nome per filtrarli.",
         "most_result_return_gal_search": "La maggior parte dei risultati riportati dalla ricerca GAL",
-        "export_domain": "Esporta Dominio",
         "manage": "Gestisci",
         "account_gal_synchronization": "Nome Account GAL",
         "aggregated_domain_space": "Spazio aggregato del dominio (Byte)",
@@ -258,7 +257,6 @@
         "default_font_size": "Dimensione Carattere Predefinita",
         "default_settings": "Impostazioni Predefinite",
         "delet_bucket_header": "Rimozione {{name}}",
-        "I_want_to_see_this_COS": "Voglio vedere questa COS",
         "activate_and_update": "Attiva & Aggiorna",
         "add_regex": "AGGIUNGI REGEX",
         "admin_delegates": "Amministratori Delegati",
@@ -494,7 +492,9 @@
             "thursday": "Giovedì",
             "tuesday": "Martedì",
             "wednesday": "Mercoledì"
-        }
+        },
+        "volume_main": "Volume Principale",
+        "filter_account_list": "Filtra Lista Account"
     },
     "message": {
         "snackbar": {
@@ -877,7 +877,11 @@
         "saved_searches": "Ricerche salvate",
         "send_read_receipts": "Manda conferma di lettura",
         "sharing": "Condivisione",
-        "tagging": "Applicazione di tag"
+        "tagging": "Applicazione di tag",
+        "auto_decline_if_inviter_is_blacklisted": "Rifiuta automaticamente se il mittente risulta in black list",
+        "appointments_default_duration": "Durata predefinita di un appuntamento",
+        "always_show_mini_calendar": "Mostra sempre il mini calendario",
+        "allow_sending_from_any_address": "Consenti l’invio da qualsiasi indirizzo"
     },
     "connection": {
         "access_key": "Chiave d'Accesso",
