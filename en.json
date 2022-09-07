@@ -20,7 +20,7 @@
         "appointments_default_duration": "Appointment’s Default Duration",
         "as_new_mail_arrives": "As New Mail Arrives",
         "audible_reminder_notification": "Audible reminder notification",
-        "auto_decline_if_inviter_is_blacklisted": "Auto-decline if inviter is blacklisted",
+        "auto_decline_if_inviter_is_blacklisted": "Auto-decline if the sender is blacklisted",
         "auto_delete_duplicate_messages": "Auto-Delete duplicate messages",
         "autocomplete_from_GAL": "Autocomplete from GAL",
         "browser_title_for_appointments": "Browser title for appointments",
@@ -131,7 +131,7 @@
         },
         "create_new_bucket": "NEW BUCKET",
         "filter_buckets_list": "Filter Buckets List",
-        "invalid_prefix": "Prefix should not contains space, the allowed letters are a-z,A-z and special characters /-.",
+        "invalid_prefix": "The prefix should not contain space, the allowed letters are a-z, A-Z, and special characters /-.",
         "new": {
             "bucket_connection": "Bucket Connection"
         },
