@@ -226,7 +226,7 @@
         "automatically_add_invites_with_PUBLISH_method": "Ajouter automatiquement les invitations à l’aide de la méthode UBLISH",
         "both": "Interne et externe",
         "bucket_name": "Nom du Bucket",
-        "bucket_type": "Type de Buckets",
+        "bucket_type": "Type de Bucket",
         "access_key": "Clé d’accès",
         "account_scan": "AccountScan",
         "actions": "Actions",
@@ -402,7 +402,34 @@
             "thursday": "Jeudi",
             "tuesday": "Mardi",
             "wednesday": "Mercredi"
-        }
+        },
+        "check_new_mail_every": "Vérifier les nouveaux email tout les",
+        "changes_have_been_updated": "{{message}}",
+        "changes_have_been_saved": "Les modifications ont été enregistrées",
+        "can_send_receiver": "Peut Envoyer & Recevoir",
+        "bucket_view_details_button": "VOIR LES DÉTAILS",
+        "bucket_list": "Liste des buckets",
+        "bucket_List": "Liste des buckets",
+        "base_dn_is_not_valid": "La bas DN n'est pas valide",
+        "back": "RETOUR",
+        "auto_refuse": "Refus automatique",
+        "auto_negation": "Négociation automatique",
+        "auto_accept_auto_decline_on_conflict": "Acceptation automatique si disponible, rejet automatique en cas de conflit",
+        "auto_accept_always": "Acceptation automatique si toujours disponible",
+        "auto_accept": "Acceptation automatique",
+        "appointments_default_duration": "Durée par défaut d'un rendez-vous",
+        "application_log": "Log de l'application",
+        "allowed_sending_addresses": "Autoriser l'envoi d'adresses",
+        "alias_in_the_list": "Alias dans la liste",
+        "admin_delegates": "Délégations d'administration",
+        "add_to_the_list": "L'ajouter dans la liste",
+        "add_it_to_list": "L'ajouter dans la liste",
+        "add_in_mailing_list_or_both": "Vous avez ajouter une nouvelle liste de distribution ou un nouvel utilisateur. Dans les deux cas, ils pourront être propriétaires de la liste.",
+        "account_quota_mb": "Quota du compte (MB)",
+        "account_data_copy_to_account": "Les données de compte seront copiées dans ce compte",
+        "account_created_successfully": "Le compte a été créé avec succès",
+        "I_want_to_see_this_server_details": "Je souhaite voir les détails de ce serveur",
+        "\"max_email_quota_you_can_manage_is": "La taille maximale des quotas que vous pouvez gérer est …"
     },
     "message": {
         "snackbar": {
@@ -660,7 +687,7 @@
         "show_IMAP_search_folder": "Afficher le dossier de recherche IMAP",
         "send_read_receipts": "Envoyer les rapports de lecture",
         "search_class_of_service": "Sélectionner une Classe de Service (COS)",
-        "range_time": "Heure",
+        "range_time": "Durée de la plage",
         "main_features": "Fonctionnalités principales",
         "i_want_to_see_this_cos": "Je souhaite consulter cette COS",
         "composing_mail": "Rédiger un email",
@@ -760,7 +787,19 @@
         "add_invites_with_publish_method": "Ajouter les invitations avec la méthode PUBLISH",
         "add_forwarded_invites_to_calendar": "Ajouter les invitations transférées au calendrier",
         "add_appointments_when_invited": "Ajouter un rendez-vous lors d'une invitation",
-        "auto_decline_if_inviter_is_blacklisted": "Décliner automatiquement si l'organisateur est dans la liste des indésirables"
+        "auto_decline_if_inviter_is_blacklisted": "Décliner automatiquement si l'organisateur est dans la liste des indésirables",
+        "yes_disable": "Oui, désactiver",
+        "use_quickadd_dialog_in_creation": "Utiliser l'écran d'ajout rapide pour la création",
+        "use_ical_delegation_model_for_shared_calendars": "Utiliser le modèle de délégation iCal pour le partage de calendrier",
+        "use_gal_to_auto_fill": "Utiliser la GAL pour l'auto-complétion",
+        "sms_reminders": "Rappels par SMS",
+        "show_time_zone_lists_in_view": "Afficher la liste de fuseaux horaires dans la liste",
+        "search_for_people": "Rechercher une personne",
+        "search_a_specific_server": "Rechercher un serveur spécifique",
+        "percentage_threshold_for_quota_warning": "Seuil de pourcentage pour les messages d'avertissement sur les quotas",
+        "password_set_to_use_external_authentication_information_msg": "Ces paramétrages n'affectent pas les mots de passe définis par les utilisateurs dans les domaines qui ont été configurés pour utiliser une authentification externe",
+        "out_of_the_office_reply": "Réponse hors bureau",
+        "notify_changes_by_delegated_access": "Notifier les changements par accès délégué"
     },
     "create_new_cos": "CRÉER UNE NOUVELLE COS",
     "select_section_from_left_menu": "Merci de sélectionner une section depuis le menu de gauche",
@@ -902,5 +941,6 @@
         "minute": "{{count}} minute",
         "minute_plural": ""
     },
-    "click_new_bucket_button_to_create_new_one": "Cliquer sur le bouton NOUVEAU BUCKET pour en créer un nouveau."
+    "click_new_bucket_button_to_create_new_one": "Cliquer sur le bouton NOUVEAU BUCKET pour en créer un nouveau.",
+    "have_not_setup_bucket_type": "Il semblerai que vous n'ayez pas paramétré le type de bucket"
 }
