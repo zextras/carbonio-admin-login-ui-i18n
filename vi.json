@@ -174,7 +174,6 @@
         "owners": "Chủ sở hữu",
         "deleteing": "Đang xoá",
         "enable_toaster_notification_for_new_calendar_events": "Cho phép thông báo nổi đối với sự kiện lịch mới",
-        "range_time": "Thời gian",
         "search_dot": "Tìm…",
         "allocation": "Phân bổ",
         "always": "Luôn luôn",
@@ -385,8 +384,7 @@
         "mailbox_quota": "Hạn mức hộp thư",
         "most_result_return_gal_search": "Hầu hết các kết quả được trả về bởi tìm kiếm GAL",
         "virtual_hosts": "Máy chủ ảo",
-        "manage": "Quản lý",
-        "account_scan": "Quét Tài khoản"
+        "manage": "Quản lý"
     },
     "buckets": {
         "connection": {
@@ -413,14 +411,11 @@
         "keep_delted_items_backup": "Giữ các mục bị xoá trong Bản sao lưu",
         "ldap_dump": "LDAP Dump",
         "local_metadata_threshold": "Ngưỡng siêu dữ liệu cục bộ",
-        "metadata_archiving": "Lưu trữ siêu dữ liệu",
         "minimum_space_threshold": "Hạn mức không gian tối thiểu",
         "module_enable_at_startup": "Mô-đun sẽ chạy trong Startup",
-        "on_the_fly_metadata": "Siêu dữ liệu trực tuyến",
         "purge_old_configurations": "Xoá cấu hình cũ",
         "realtime_scanner": "Quét theo thời gian thực",
-        "schedule": "Lịch trình",
-        "smart_scan_at_startup": "Chạy SmartScan tại Startup"
+        "schedule": "Lịch trình"
     },
     "lable": {
         "delete_button": "XOÁ"
@@ -456,7 +451,6 @@
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "Hiển thị hộp lựa chọn để chọn các mục email, liên hệ, thư thoại ở chế độ xem theo danh sách đối với các thao tác theo từng đợt",
         "view_mail_as_html": "Xem thư dưới dạng HTML (khi có thể)",
         "group_mail": "Nhóm thư theo:",
-        "range_time": "Thời gian",
         "quota_warning_message_template": "Mẫu thư cảnh báo hạn mức",
         "quotas": "Hạn mức",
         "rss_polling_interval": "Khoảng thăm dò RSS",
