@@ -557,7 +557,8 @@
         "close_the_account": "Hesabı Kapat",
         "owners_description": "Sahip yetkili kullanıcılar dağıtım grubu üyelerini yönetebilir (eposta ekleme ve çıkarma) ve dağıtım listesi seçeneklerini değiştirebilir.",
         "virtual_host_user_msg_2": "Sanal host bilgisi alanadı için özel olmalıdır, böylece kullanıcının hangi alanadına ait olduğunu sistem anlayabilir ve alanadı için özel seçeneği gösterir",
-        "account_disable_correctly": "Hesap başarıyla pasif duruma alındı."
+        "account_disable_correctly": "Hesap başarıyla pasif duruma alındı.",
+        "configuration_lbl": "Yapılandırma"
     },
     "timezone": {
         "asia_gaza": "{{value}} Gaza",
@@ -1134,7 +1135,7 @@
         "out_of_office_reply": "Ofis Dışındayım Yanıtı",
         "notify_changes_by_delegated_access": "Alt yetkili hesaplarla yapılan değişiklikleri bildir",
         "new_mail_notification": "Yeni Posta Bildirimi",
-        "min_new_check_interval_value": "Min yeniden kontrol süresi (değer)",
+        "min_new_check_interval_value": "Değer",
         "mail_signatures": "Posta İmzaları",
         "mail_signature": "Posta İmzası",
         "initial_search_preference": "İlk Arama Tercihi",
