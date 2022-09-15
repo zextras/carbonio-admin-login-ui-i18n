@@ -15,7 +15,7 @@
         "mail_server": "Почтовый сервер",
         "range": "Диапазон",
         "search_domain": "Поиск домена",
-        "select_domain_or_create_new": "Выберите домен для управления или нажмите кнопку «Создать», чтобы создать новый.",
+        "select_domain_or_create_new": "Выберите домен в меню слева или нажмите кнопку «Создать», чтобы создать новый.",
         "send_the_warning_to": "Отправить предупреждение",
         "source_name_internal_gal": "Исходное имя внутреннего GAL",
         "warn_when_reach_space_quota": "Предупредить меня, когда я достигну этой совокупной квоты пространства",
@@ -184,7 +184,7 @@
         "default_appointment_visibility": "Видимость встречи по умолчанию",
         "details": "Детали",
         "draft_auto_save_interval": "Интервал автоматического сохранения черновика",
-        "email": "Email",
+        "email": "Электронная почта",
         "enable_automatic_adding_of_contacts": "Включить автоматическое добавление контактов",
         "enable_mandatory_spell_check": "Включить обязательную проверку правописания",
         "enable_past_due_reminders": "Разрешить напоминания о просроченных событиях",
@@ -582,7 +582,8 @@
         "virtual_host_user_msg_2": "Виртуальные хосты должны быть уникальными для домена, чтобы система могла понять, к какому домену принадлежит пользователь и мы можем сеять настроенный вариант для домена",
         "start": "старт",
         "default_calendar_view": "Представление календаря по умолчанию",
-        "auto_negation": "Автоматический отказ"
+        "auto_negation": "Автоматический отказ",
+        "configuration_lbl": "Конфигурация"
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
@@ -1119,7 +1120,7 @@
         "out_of_office_reply": "Ответ вне офиса",
         "notify_changes_by_delegated_access": "Уведомлять об изменениях с помощью делегированного доступа",
         "new_mail_notification": "Уведомление о новой почте",
-        "min_new_check_interval_value": "Мин. новый интервал проверки (значение)",
+        "min_new_check_interval_value": "Значение",
         "mail_signatures": "Подписи",
         "mail_signature": "Подпись",
         "iamp_access": "Доступ по IMAP",
