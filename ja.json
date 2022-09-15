@@ -633,7 +633,8 @@
         "select_a_server": "サーバーを選択してください",
         "volume_create": "作成",
         "required": "必須",
-        "volume_server": "サーバー"
+        "volume_server": "サーバー",
+        "configuration_lbl": "構成"
     },
     "message": {
         "snackbar": {
@@ -869,7 +870,8 @@
         "saved_searches": "保存済み検索",
         "send_read_receipts": "開封確認を送信する",
         "sharing": "共有",
-        "tagging": "タグ付け"
+        "tagging": "タグ付け",
+        "min_new_check_interval_value": "価"
     },
     "connection": {
         "access_key": "アクセスキー",
