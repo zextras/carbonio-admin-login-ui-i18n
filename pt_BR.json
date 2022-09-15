@@ -633,7 +633,8 @@
         "enable_current_helptext": "A ativação desta opção desativará o volume ativo atual.",
         "required": "Necessário",
         "select_a_server": "Selecionar um Servidor",
-        "volume_create": "CRIAR"
+        "volume_create": "CRIAR",
+        "configuration_lbl": "Configuração"
     },
     "message": {
         "snackbar": {
@@ -864,7 +865,8 @@
         "saved_searches": "Buscas salvas",
         "send_read_receipts": "Enviar confirmações de leitura",
         "sharing": "Compartilhamento",
-        "tagging": "Identificação"
+        "tagging": "Identificação",
+        "min_new_check_interval_value": "Valor"
     },
     "connection": {
         "access_key": "Chave de acesso",
