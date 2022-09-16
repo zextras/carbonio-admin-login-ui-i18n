@@ -678,9 +678,6 @@
         "save_index": "Salvar índice",
         "latency_low_threshold": "Limiar de latência baixo"
     },
-    "lable": {
-        "delete_button": "EXCLUIR"
-    },
     "cos": {
         "calendar_options": "Opções da agenda",
         "calender_features": "Recursos de agenda",
@@ -720,7 +717,6 @@
         "search_class_of_service": "Selecione uma Classe de Serviço",
         "main_features": "Funcionalidades principais",
         "i_want_to_see_this_cos": "Quero visualizar esta COS",
-        "group_mail": "Agrupar e-mail por:",
         "composing_mail": "Composição de email",
         "admin_console_auth_token_lifetime": "Tempo de vida do token de autenticação do console do administrador",
         "advanced": "Avançado",

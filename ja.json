@@ -643,9 +643,6 @@
             }
         }
     },
-    "lable": {
-        "delete_button": "削除する"
-    },
     "backup": {
         "backup_path": "バックアップパス",
         "backup_purge": "バックアップパージ",
@@ -699,7 +696,6 @@
         "search_features": "検索の機能",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "バッチ操作用のリストビューにメール、連絡先、ボイスメールの項目を選択するためのチェックボックス表示",
         "view_mail_as_html": "メールをHTML形式で表示（可能な場合）",
-        "group_mail": "メールのグループ分け：",
         "type_of_UI": "UIの種類",
         "standard_html_client": "標準（HTML）クライアント",
         "show_search_string": "検索文字列を表示する",

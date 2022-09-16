@@ -643,9 +643,6 @@
             }
         }
     },
-    "lable": {
-        "delete_button": "VERWIJDEREN"
-    },
     "backup": {
         "backup_path": "Backup-traject",
         "backup_purge": "Back-up wissen",
@@ -699,7 +696,6 @@
         "search_features": "Zoekfuncties",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "Selectievakje tonen voor het selecteren van e-mail-, contact-, voicemail-items in een lijstweergave voor batch-bewerking",
         "view_mail_as_html": "E-mail in HTML weergeven (wanneer mogelijk)",
-        "group_mail": "E-mail groeperen op:",
         "type_of_UI": "Type UI",
         "standard_html_client": "Standaard (HTML) cliënt",
         "show_search_string": "Zoekstring weergeven",

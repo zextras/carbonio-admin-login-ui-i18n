@@ -422,9 +422,6 @@
         "realtime_scanner": "Quét theo thời gian thực",
         "schedule": "Lịch trình"
     },
-    "lable": {
-        "delete_button": "XOÁ"
-    },
     "cos": {
         "calendar_options": "Tuỳ chọn lịch biểu",
         "calender_features": "Tính năng lịch",
@@ -455,7 +452,6 @@
         "search_features": "Tính năng tìm kiếm",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "Hiển thị hộp lựa chọn để chọn các mục email, liên hệ, thư thoại ở chế độ xem theo danh sách đối với các thao tác theo từng đợt",
         "view_mail_as_html": "Xem thư dưới dạng HTML (khi có thể)",
-        "group_mail": "Nhóm thư theo:",
         "quota_warning_message_template": "Mẫu thư cảnh báo hạn mức",
         "quotas": "Hạn mức",
         "rss_polling_interval": "Khoảng thăm dò RSS",

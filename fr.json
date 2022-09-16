@@ -708,9 +708,6 @@
     "new_bucket_connection": "CONNEXION",
     "new_bucket_summary": "RÉSUMÉ",
     "select_bucket_or_create_new_bucket": "Il semblerai que vous n'ayez pas défini le type de bucket. Cliquez sur le bouton NOUVEAU BUCKET pour en créer un nouveau.",
-    "lable": {
-        "delete_button": "SUPPRIMER"
-    },
     "backup": {
         "backup_path": "Dossier des sauvegardes",
         "backup_purge": "Purge des sauvegardes",
@@ -781,7 +778,6 @@
         "i_want_to_see_this_cos": "Je souhaite consulter cette COS",
         "composing_mail": "Rédiger un email",
         "sending_mail": "Email en cours d'envoi",
-        "group_mail": "Email du groupe",
         "account_quota": "Quota du compte",
         "admin_console_auth_token_lifetime": "Durée de vie du jeton d’authentification de la console d’administration",
         "advanced": "Avancé",

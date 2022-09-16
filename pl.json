@@ -915,7 +915,6 @@
         "search_features": "Funkcje wyszukiwania",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "Pokaż pole wyboru zaznaczania wiadomości e-mail, kontaktów, wiadomości głosowych w widoku listy na potrzeby operacji wsadowych",
         "view_mail_as_html": "Oglądaj pocztę jako HTML (jeśli możliwe)",
-        "group_mail": "Grupuj e-maile",
         "composing_mail": "Tworzenie e-maili",
         "type_of_UI": "Typ UI",
         "standard_html_client": "Standardowy klient (HTML)",
@@ -1035,9 +1034,7 @@
         "time_range": "Zakres czasu"
     },
     "lable": {
-        "delete_button": "USUŃ",
-        "delete_it": "Usuń ją",
-        "delete_it_instead": "Zamiast tego ją usuń"
+        "delete_it": "Usuń ją"
     },
     "locale": {
         "label_italian": "Włoski - {{value}}",

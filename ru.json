@@ -902,7 +902,6 @@
         "search_class_of_service": "Выберите Класс Сервиса",
         "main_features": "Основные функции",
         "i_want_to_see_this_cos": "Я хочу увидеть этот COS",
-        "group_mail": "Группа Почта",
         "composing_mail": "Составление письма",
         "yes_disable": "Да, отключить",
         "use_quickadd_dialog_in_creation": "Используйте диалоговое окно QuickAdd при создании",
@@ -1013,7 +1012,6 @@
         "time_range": "Диапазон времени"
     },
     "lable": {
-        "delete_button": "УДАЛИТЬ",
         "delete_it": "Удалить"
     },
     "backup": {

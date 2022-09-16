@@ -917,7 +917,6 @@
         "search_features": "Arama Özellikleri",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "Toplu işlemler için e-posta, kişi, sesli posta öğelerini seçmek üzere liste görünümünde seçim onay kutusu göster",
         "view_mail_as_html": "HTML olarak görüntüle (mümkün olduğunda)",
-        "group_mail": "Postayı Grupla",
         "type_of_UI": "Kullanıcı Arayüz Türü",
         "standard_html_client": "Standart (HTML) İstemci",
         "show_search_string": "Arama Dizesini Göster",
@@ -1037,9 +1036,7 @@
         "time_range": "Zaman Aralığı"
     },
     "lable": {
-        "delete_button": "SİL",
-        "delete_it": "Bunu Sil",
-        "delete_it_instead": "Bunu sil"
+        "delete_it": "Bunu Sil"
     },
     "locale": {
         "English": "English",

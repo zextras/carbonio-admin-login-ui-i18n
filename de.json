@@ -696,7 +696,6 @@
         "search_features": "Suchfunktionen",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "Kontrollkästchen für die Auswahl von Mails, Kontakten, Sprachnachrichten in einer Listenanzeige für Stapeloperationen anzeigen",
         "view_mail_as_html": "Mail als HTML anzeigen (falls möglich)",
-        "group_mail": "Mails gruppieren nach:",
         "type_of_UI": "Art der Benutzeroberfläche",
         "standard_html_client": "Standard-Client (HTML)",
         "show_search_string": "Suchzeichenfolge anzeigen",
@@ -774,9 +773,6 @@
         "timeout_policy": "Zeitüberschreitungsregeln",
         "trashed_message_lifetime": "Mails im Papierkorb löschen nach:",
         "user_specific_fowarding_addresses": "Anzahl der Zeichen im Feld für benutzerdefinierte Weiterleitungsadresse beschränken auf"
-    },
-    "lable": {
-        "delete_button": "LÖSCHEN"
     },
     "locale": {
         "English": "Englisch",

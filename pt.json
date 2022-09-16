@@ -405,7 +405,6 @@
         "polling_interval": "Intervalo de verificação (tempo após o qual se irá verificar se existem novas mensagens de correio)",
         "preferences": "Preferências",
         "receiving_mail": "A receber correio",
-        "group_mail": "Agrupar e-mail por:",
         "quota_warning_message_template": "Modelo da mensagem de aviso de quota",
         "quotas": "Quotas",
         "rss_polling_interval": "Intervalo de verificação do RSS",

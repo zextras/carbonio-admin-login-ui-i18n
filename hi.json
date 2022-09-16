@@ -643,9 +643,6 @@
             }
         }
     },
-    "lable": {
-        "delete_button": "डिलीट करें"
-    },
     "backup": {
         "backup_path": "Backup पाथ",
         "backup_purge": "बैकअप मिटाएँ",
@@ -699,7 +696,6 @@
         "search_features": "खोज सुविधाएँ",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "बैच कार्रवाइयों के लिए सूची दृश्य में ईमेल, संपर्क, वॉइसमेल आइटम्स चुनने के लिए चेकबॉक्‍स दिखाएं",
         "view_mail_as_html": "HTML के रूप में मेल देखें (जब संभव हो)",
-        "group_mail": "इस आधार पर मेल समूहीकृत करें:",
         "type_of_UI": "UI का टाइप",
         "standard_html_client": "स्टैंडर्ड (HTML) क्लाइंट",
         "show_search_string": "सर्च स्ट्रिंग दिखाएँ",

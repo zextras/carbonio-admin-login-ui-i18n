@@ -717,7 +717,6 @@
         "search_class_of_service": "Seleccione una Clase de Servicio",
         "main_features": "Funcionalidades principales",
         "i_want_to_see_this_cos": "Quiero ver esta COS",
-        "group_mail": "Agrupar correo por:",
         "composing_mail": "Composición de Mails",
         "imap_polling_interval": "Intervalo de consulta para IMAP",
         "mail": "Correo",
@@ -787,9 +786,6 @@
         "failed_login_policy": "Política de fallos de inicio de sesión",
         "free_busy_interop": "Interop",
         "html_compose": "Redactar en HTML"
-    },
-    "lable": {
-        "delete_button": "BORRAR"
     },
     "select_section_from_left_menu": "Por favor seleccione una sección en el menú de la izquierda",
     "select_cos_or_create_new_cos": "Por favor seleccione una Clase de servicio para administrarla, o haga clic en el botón Crear.",

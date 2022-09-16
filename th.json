@@ -666,9 +666,6 @@
         "latency_low_threshold": "เกณฑ์เวลาในการตอบสนองต่ำ",
         "latency_high_threshold": "เกณฑ์เวลาในการตอบสนองสูง"
     },
-    "lable": {
-        "delete_button": "ลบ"
-    },
     "cos": {
         "calendar_options": "ตัวเลือกปฏิทิน",
         "calender_features": "คุณลักษณะปฏิทิน",
@@ -699,7 +696,6 @@
         "search_features": "คุณลักษณะการค้นหา",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "แสดงกล่องกาเครื่องหมายการเลือกสำหรับเลือกรายการอีเมล รายชื่อผู้ติดต่อ ข้อความเสียงในมุมมองรายการสำหรับการดำเนินการชุดงาน",
         "view_mail_as_html": "ดูจดหมายเป็นแบบ HTML (หากเป็นไปได้)",
-        "group_mail": "จัดกลุ่มจดหมายตาม:",
         "type_of_UI": "ประเภทของ UI",
         "standard_html_client": "ไคลเอ็นต์มาตรฐาน (HTML)",
         "show_search_string": "แสดงสตริงการค้นหา",

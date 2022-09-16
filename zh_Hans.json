@@ -643,9 +643,6 @@
             }
         }
     },
-    "lable": {
-        "delete_button": "删除"
-    },
     "backup": {
         "backup_path": "备份路径",
         "backup_purge": "备份清除",
@@ -699,7 +696,6 @@
         "search_features": "搜索功能",
         "show_selection_checkbox_for_selecting_email_contact_voicemail_items_in_a_list_view_for_batch_operations": "显示选择复选框，用以在列表视图中成批选择电子邮件、联系人和语音邮件项目s",
         "view_mail_as_html": "以 HTML 格式查看邮件 (若可能)",
-        "group_mail": "邮件分组方式：",
         "type_of_UI": "UI类型",
         "standard_html_client": "标准（HTML）客户端",
         "show_search_string": "显示搜索字符串",

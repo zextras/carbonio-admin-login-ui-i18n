@@ -820,7 +820,6 @@
         "show_search_string": "Mostra Stringa di ricerca",
         "standard_html_client": "Client (HTML) Standard",
         "type_of_UI": "Tipo di UI",
-        "group_mail": "Raggruppa e-mail per:",
         "account_quota": "Spazio a disposizione dell’account",
         "admin_console_auth_token_lifetime": "Durata token autenticazione console amministratore",
         "advanced": "Avanzate",
@@ -919,9 +918,6 @@
         "audible_reminder_notification": "Notifica sonora per i promemoria",
         "enable_auto_add_contacts": "Abilita aggiunta automatica dei contatti",
         "show_time_zone_lists_in_view": "Mostra l'elenco dei fusi orari nella vista dell'appuntamento"
-    },
-    "lable": {
-        "delete_button": "ELIMINA"
     },
     "accountDetails": {
         "default_COS": "COS Predefinita",
