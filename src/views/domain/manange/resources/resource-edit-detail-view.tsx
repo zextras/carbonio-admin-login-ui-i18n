@@ -1413,7 +1413,7 @@ const ResourceEditDetailView: FC<any> = ({
 							/>
 							<Row style={{ gap: '8px' }}>
 								<Button
-									label={t('lable.disable_it_instead', 'Disable it instead')}
+									label={t('label.disable_it_instead', 'Disable it instead')}
 									color="secondary"
 									onClick={onDisableResource}
 									disabled={isRequestInProgress}
