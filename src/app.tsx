@@ -105,9 +105,6 @@ const App: FC = () => {
 				header: t('label.default_settings', 'Default Settings'),
 				options: [
 					{
-						label: t('label.service_status', 'Service Status')
-					},
-					{
 						label: t('label.server_config', 'Server Config')
 					},
 					{
@@ -273,7 +270,7 @@ const App: FC = () => {
 						label: t('label.service_status', 'Service_Status')
 					},
 					{
-						label: t('label.volumes', 'Volumes')
+						label: t('label.data_volumes', 'Data Volumes')
 					},
 					{
 						label: t('label.hsm_policies', 'HSM Policies')
@@ -513,7 +510,12 @@ const App: FC = () => {
 			).then((data: any) => {
 				const backupServer = data?.servers;
 				if (backupServer && Array.isArray(backupServer) && backupServer.length > 0) {
-					setBackupModuleEnable(true);
+					Object.keys(backupServer[0]).forEach((ele: any): void => {
+						const backup = backupServer[0][ele]?.ZxBackup;
+						if (backup?.services?.module?.running) {
+							setBackupModuleEnable(true);
+						}
+					});
 				} else {
 					setBackupModuleEnable(false);
 				}
