@@ -838,7 +838,7 @@
         "type_here_a_domain": "Buraya bir alanadı yazın",
         "source_name_internal_gal": "İç GAL için Kaynak Adı",
         "send_the_warning_to": "Uyarıyı gönder",
-        "select_domain_or_create_new": "Yönetmek için soldaki menüden bir alanadı seçin veya yeni oluşturmak için Oluştur simgesine tıklayın.",
+        "select_domain_or_create_new": "Yönetmek için soldaki menüden bir alanadı seçin veya yeni oluşturmak için \"Oluştur\" simgesine tıklayın.",
         "search_domain": "Alanadı ara",
         "range": "Aralık",
         "many_domain_info_msg": "Çok alanadı var! Hangisini görmek istersiniz? Filtrelemek için yazmaya başlayın.",
@@ -1076,9 +1076,9 @@
     },
     "welcome_to_carbonio": "Hoş geldin {{adminName}}, Carbonio {{carbonioVersion}}!",
     "select_section_from_left_menu": "Lütfen sol taraftaki menüden bir bölüm seçin",
-    "select_domain_or_create_new": "Yönetmek için soldaki menüden bir alanadı seçin veya yeni oluşturmak için Oluştur simgesine tıklayın.",
+    "select_domain_or_create_new": "Yönetmek için soldaki menüden bir alanadı seçin veya yeni oluşturmak için \"Oluştur\" simgesine tıklayın.",
     "select_cos_or_create_new_cos": "Yönetmek için bir Servis Paketi seçin veya yeni oluşturmak için \"Oluştur\" simgesine tıklayın.",
-    "select_bucket_or_create_new_bucket": "Bucket türü belirlememişsiniz. Yeni oluşturmak için YENİ BUCKET tuşuna yıklayın.",
+    "select_bucket_or_create_new_bucket": "Bucket türü belirlememişsiniz. Yeni oluşturmak için \"YENİ BUCKET\" tuşuna yıklayın.",
     "new_bucket_summary": "ÖZET",
     "new_bucket_connection": "BAĞLANTI",
     "many_domain_info_msg": "Çok alanadı var! Hangisini görmek istersiniz? Filtrelemek için yazmaya başlayın.",
@@ -1201,6 +1201,6 @@
     },
     "reminder": {
         "minute": "{{count}} dakika",
-        "minute_plural": ""
+        "minute_plural": "{{count}} dakika"
     }
 }
