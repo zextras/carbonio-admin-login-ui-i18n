@@ -15,7 +15,10 @@ import {
 	getSoapFetchRequest,
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	postSoapFetchRequest
+	postSoapFetchRequest,
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	useAllConfig
 } from '@zextras/carbonio-shell-ui';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -65,6 +68,12 @@ const App: FC = () => {
 	const setGlobalConfig = useGlobalConfigStore((state) => state.setGlobalConfig);
 	const setBackupModuleEnable = useBackupModuleStore((state) => state.setBackupModuleEnable);
 	const setConfig = useConfigStore((state) => state.setConfig);
+	const allConfig = useAllConfig();
+	useEffect(() => {
+		if (allConfig && allConfig.length > 0) {
+			setConfig(allConfig);
+		}
+	}, [allConfig, setConfig]);
 	const managementSection = useMemo(
 		() => ({
 			id: MANAGE_APP_ID,
@@ -552,19 +561,6 @@ const App: FC = () => {
 	useEffect(() => {
 		getAllServersRequest();
 	}, [getAllServersRequest]);
-
-	const getAllConfigRequest = useCallback(() => {
-		getAllConfig().then((data) => {
-			if (data?.a && Array.isArray(data?.a)) {
-				const allConfig = data?.a;
-				setConfig(allConfig);
-			}
-		});
-	}, [setConfig]);
-
-	useEffect(() => {
-		getAllConfigRequest();
-	}, [getAllConfigRequest]);
 
 	return null;
 };
