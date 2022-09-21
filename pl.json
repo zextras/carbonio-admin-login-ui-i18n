@@ -1033,9 +1033,6 @@
         "add_appointments_when_invited": "Dodawaj spotkania po otrzymaniu zaproszenia",
         "time_range": "Zakres czasu"
     },
-    "lable": {
-        "delete_it": "Usuń ją"
-    },
     "locale": {
         "label_italian": "Włoski - {{value}}",
         "label_japanese": "Japoński - {{value}}",
@@ -1126,7 +1123,7 @@
         "send_read_receipts": "Wysyłaj potwierdzenie przeczytania",
         "sharing": "Udostępnienie",
         "tagging": "Znaczniki",
-        "enable_toast_notifications": "Włącz powiadomienia pop-up",
+        "enable_toast_notifications": "Włącz powiadomienia",
         "enable_toast_for_new_emails": "Włącz powiadomienia pop-up dla nowych e-maili",
         "allow_sending_cancellation_mail": "Zezwalaj na wysyłanie wiadomości e-mail o anulowaniu",
         "group_calendar": "Kalendarz grupowy",
