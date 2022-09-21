@@ -467,7 +467,8 @@
         "enable_current_helptext": "Activando esta opción deshabilitará el volumen activo actual.",
         "volume_create": "CREAR",
         "volume_server": "Servidor",
-        "configuration_lbl": "Configuración"
+        "configuration_lbl": "Configuración",
+        "global_address_list": "Libreta general de direcciones"
     },
     "timezone": {
         "indian_mauritius": "{{value}} Port Louis",
