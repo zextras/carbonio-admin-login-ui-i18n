@@ -467,7 +467,8 @@
         "select_a_server": "Een Server selecteren",
         "volume_create": "CREËREN",
         "volume_server": "Server",
-        "configuration_lbl": "Configuratie"
+        "configuration_lbl": "Configuratie",
+        "global_address_list": "Algemene adreslijst"
     },
     "timezone": {
         "europe_belgrade": "{{value}} Belgrado, Bratislava, Boedapest, Ljubljana, Praag",
