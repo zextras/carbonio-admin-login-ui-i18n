@@ -3,9 +3,9 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Dropdown, Row, SelectItem, Input, Icon } from '@zextras/carbonio-design-system';
+import { Container, Dropdown, Row, Input, Icon } from '@zextras/carbonio-design-system';
 import { replaceHistory } from '@zextras/carbonio-shell-ui';
 import ListPanelItem from '../list/list-panel-item';
 import {
@@ -24,8 +24,8 @@ const BackupListPanel: FC = () => {
 	const [t] = useTranslation();
 	const [selectedOperationItem, setSelectedOperationItem] = useState(SERVER_CONFIG);
 	const [isDefaultSettingsExpanded, setIsDefaultSettingsExpanded] = useState(true);
-	const [isServerSettingsEpanded, setIsServerSettingsEpanded] = useState(true);
 	const [isActionExpanded, setIsActionExpanded] = useState(true);
+	const [isServerSpecificsExpanded, setIsServerSpecificsExpanded] = useState<boolean>(true);
 	const serverList = useServerStore((state) => state.serverList || []);
 	const [selectedServer, setSelectedServer] = useState<string>('');
 	const [isServerSelect, setIsServerSelect] = useState<boolean>(false);
@@ -94,11 +94,12 @@ const BackupListPanel: FC = () => {
 	const toggleDefaultSettingsView = (): void => {
 		setIsDefaultSettingsExpanded(!isDefaultSettingsExpanded);
 	};
-	const toggleServerSettingsView = (): void => {
-		setIsServerSettingsEpanded(!isServerSettingsEpanded);
-	};
 	const toggleActionView = (): void => {
 		setIsActionExpanded(!isActionExpanded);
+	};
+
+	const toggleServerSpecific = (): void => {
+		setIsServerSpecificsExpanded(!isServerSpecificsExpanded);
 	};
 
 	useEffect(() => {
@@ -156,11 +157,11 @@ const BackupListPanel: FC = () => {
 
 			<ListPanelItem
 				title={t('label.server_specifics', 'Server Specifics')}
-				isListExpanded={isServerSettingsEpanded}
-				setToggleView={toggleServerSettingsView}
+				isListExpanded={isServerSpecificsExpanded}
+				setToggleView={toggleServerSpecific}
 			/>
 
-			{isServerSettingsEpanded && (
+			{isServerSpecificsExpanded && (
 				<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
 					<Dropdown
 						items={serverNames}
@@ -185,7 +186,7 @@ const BackupListPanel: FC = () => {
 				</Row>
 			)}
 
-			{isServerSettingsEpanded && (
+			{isServerSpecificsExpanded && (
 				<ListItems
 					items={serverSettingsOptions}
 					selectedOperationItem={selectedOperationItem}

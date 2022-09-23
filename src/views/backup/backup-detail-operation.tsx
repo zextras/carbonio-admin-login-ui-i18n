@@ -16,7 +16,7 @@ import {
 import ImportExternalBackup from './actions/import-external-backup';
 import BackupAdvanced from './default-setting/backup-advanced';
 import BackupServerConfig from './default-setting/backup-server-config';
-import ServersList from './server-setting/backup-servers-list';
+import ServersList from './default-setting/backup-servers-list';
 import { dumpGlobalConfig } from '../../services/dump-global-config';
 import { useBackupStore } from '../../store/backup/store';
 import ServerAdvanced from './server-advanced/server-advanced';
