@@ -52,7 +52,7 @@
         "services": "Serviços",
         "web_client": "Cliente web",
         "access_key": "Chave de acesso",
-        "actions": "Ações",
+        "actions": "Açoes",
         "unsaved_changes": "Você tem alterações que não foram salvas",
         "unsaved_changes_line1": "Tem certeza que deseja sair desta página sem salvar?",
         "unsaved_changes_line2": "Todas as suas alterações não salvas serão perdidas",
@@ -193,7 +193,10 @@
         },
         "required": "Necessário",
         "volume_server": "Servidor",
-        "configuration_lbl": "Configuração"
+        "configuration_lbl": "Configuração",
+        "disabled": "Desativado",
+        "na": "N/A",
+        "scheduled": "Programado"
     },
     "timezone": {
         "asia_pyongyang": "{{value}} Pyongyang",
@@ -544,7 +547,8 @@
         "saved_searches": "Pesquisas guardadas",
         "sharing": "Compartilhamento",
         "tagging": "Marcação",
-        "min_new_check_interval_value": "Valor"
+        "min_new_check_interval_value": "Valor",
+        "send": "ENVIAR"
     },
     "connection": {
         "access_key": "Chave de acesso",
