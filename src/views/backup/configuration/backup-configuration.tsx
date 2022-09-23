@@ -79,7 +79,11 @@ const BackupConfiguration: FC = () => {
 					</Container>
 
 					<ListRow>
-						<Container padding={{ top: 'large' }}>
+						<Container
+							padding={{ top: 'large' }}
+							mainAlignment="flex-start"
+							crossAlignment="flex-start"
+						>
 							<Switch
 								label={t(
 									'backup.module_is_enabled_at_startup',
