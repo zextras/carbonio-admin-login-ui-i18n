@@ -633,7 +633,12 @@
         "required": "Necessário",
         "select_a_server": "Selecionar um Servidor",
         "volume_create": "CRIAR",
-        "configuration_lbl": "Configuração"
+        "configuration_lbl": "Configuração",
+        "na": "N/A",
+        "purge": "Excluir",
+        "scheduled": "Programado",
+        "disabled": "Desabilitado",
+        "local": "Local"
     },
     "message": {
         "snackbar": {
@@ -861,7 +866,8 @@
         "send_read_receipts": "Enviar confirmações de leitura",
         "sharing": "Compartilhamento",
         "tagging": "Identificação",
-        "min_new_check_interval_value": "Valor"
+        "min_new_check_interval_value": "Valor",
+        "send": "ENVIAR"
     },
     "connection": {
         "access_key": "Chave de acesso",
