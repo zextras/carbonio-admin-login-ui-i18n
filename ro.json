@@ -152,7 +152,9 @@
         "contact": "Persoană de contact",
         "conversation": "Conversaţie",
         "volume_server": "Server",
-        "configuration_lbl": "Configuraţie"
+        "configuration_lbl": "Configuraţie",
+        "disabled": "Dezactivat",
+        "scheduled": "Planificat"
     },
     "core": {
         "subscription": {
