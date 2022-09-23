@@ -153,7 +153,7 @@
         "surname": "Soyad",
         "user": "Kullanıcı",
         "deleteing": "Siliniyor ",
-        "search_dot": "Ara ...",
+        "search_dot": "Ara…",
         "enable_toaster_notification_for_new_calendar_events": "Yeni takvim etkinlikleri için alt köşe bildirimini etkinleştir",
         "your_auth_method_is": "Auth Metodunuz",
         "you_are_deleting": "{{cosname}} siliyorsunuz",
@@ -577,7 +577,12 @@
         "smartscan": "AkıllıTarama",
         "resource_deleted_successfully": "{{resource_name}} başarıyla silindi",
         "yes_delete_it": "Evet, Sil",
-        "you_are_deleting_ml": "{{name}} siliyorsunuz"
+        "you_are_deleting_ml": "{{name}} siliyorsunuz",
+        "disabled": "Kullanıma kapalı",
+        "local": "Lokal",
+        "na": "N/A",
+        "purge": "Sil",
+        "scheduled": "Zamanlandı"
     },
     "timezone": {
         "asia_gaza": "{{value}} Gaza",
@@ -1216,7 +1221,8 @@
         "please_note_code": "Uyarı: Bu kodu sadece bir kere görebileceksiniz.",
         "secret_code": "Gizli Kod",
         "select_email_otp": "Tek Kullanımlık Parola göndermek için e-posta adresi seçin veya yukarıdaki kodu kopyalayın",
-        "send_the_otp_to": "Tek Kullanımlık Parola gönder"
+        "send_the_otp_to": "Tek Kullanımlık Parola gönder",
+        "send": "GÖNDER"
     },
     "connection": {
         "access_key": "Access Key",
@@ -1227,6 +1233,6 @@
     },
     "reminder": {
         "minute": "{{count}} dakika",
-        "minute_plural": "{{count}} dakika"
+        "minute_plural": ""
     }
 }
