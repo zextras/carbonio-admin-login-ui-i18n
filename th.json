@@ -633,7 +633,12 @@
         "enable_current_helptext": "การเปิดใช้งานตัวเลือกนี้จะปิดใช้งานโวลุ่มที่ใช้งานอยู่ในปัจจุบัน",
         "required": "ที่จำเป็น",
         "volume_server": "เซิร์ฟเวอร์",
-        "configuration_lbl": "การกำหนดค่า"
+        "configuration_lbl": "การกำหนดค่า",
+        "local": "โลคอล",
+        "na": "N/A",
+        "purge": "ลบ",
+        "disabled": "ปิดการใช้งาน",
+        "scheduled": "กำหนดการ"
     },
     "message": {
         "snackbar": {
@@ -860,7 +865,8 @@
         "send_read_receipts": "ส่งการแจ้งเมื่อผู้รับเปิดอ่าน",
         "sharing": "การใช้ร่วมกัน",
         "tagging": "การแท็ก",
-        "min_new_check_interval_value": "ค่า"
+        "min_new_check_interval_value": "ค่า",
+        "send": "ส่ง"
     },
     "connection": {
         "access_key": "รหัสการเข้าถึง",
