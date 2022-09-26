@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import {
@@ -44,6 +44,7 @@ const ServerAdvanced: FC = () => {
 	const [backupCompressionLevel, setBackupCompressionLevel] = useState<number>(0);
 	const [backupNumberThreadsForItems, setBackupNumberThreadsForItems] = useState<number>(0);
 	const [backupNumberThreadsForAccounts, setBackupNumberThreadsForAccounts] = useState<number>(0);
+	const [currentBackupValue, setCurrentBackupValue] = useState<any>({});
 
 	const [scheduledMetadataArchivingEnabled, setScheduledMetadataArchivingEnabled] =
 		useState<boolean>(false);
@@ -52,16 +53,20 @@ const ServerAdvanced: FC = () => {
 		if (allServers && allServers.length > 0) {
 			const selectedServer = allServers.find((serverItem: any) => serverItem?.name === server);
 			if (selectedServer && selectedServer?.id) {
+				const currentBackupObject: any = {};
 				getSoapFetchRequest(
 					`/service/extension/zextras_admin/core/getServer/${selectedServer?.id}?module=zxbackup`
 				)
 					.then((data: any) => {
+						const attributes = data?.attributes;
 						if (data && data?.attributes) {
-							const attributes = data?.attributes;
 							if (attributes?.ldapDumpEnabled) {
 								const value = attributes?.ldapDumpEnabled?.value;
 								if (value) {
 									setLdapDumpEnabled(value);
+									currentBackupObject.ldapDumpEnabled = true;
+								} else {
+									currentBackupObject.ldapDumpEnabled = false;
 								}
 							}
 
@@ -69,6 +74,9 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.backupLatencyLowThreshold?.value;
 								if (value) {
 									setBackupLatencyLowThreshold(value);
+									currentBackupObject.backupLatencyLowThreshold = value;
+								} else {
+									currentBackupObject.backupLatencyLowThreshold = 0;
 								}
 							}
 
@@ -76,6 +84,9 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.backupLatencyHighThreshold?.value;
 								if (value) {
 									setBackupLatencyHighThreshold(value);
+									currentBackupObject.backupLatencyHighThreshold = value;
+								} else {
+									currentBackupObject.backupLatencyHighThreshold = 0;
 								}
 							}
 
@@ -83,6 +94,9 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.ZxBackup_MaxWaitingTime?.value;
 								if (value) {
 									setBackupMaxWaitTime(value);
+									currentBackupObject.backupMaxWaitTime = value;
+								} else {
+									currentBackupObject.backupMaxWaitTime = 0;
 								}
 							}
 
@@ -90,6 +104,9 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.ZxBackup_MaxMetadataSize?.value;
 								if (value) {
 									setBackupMaxMetaDataSize(value);
+									currentBackupObject.backupMaxMetaDataSize = value;
+								} else {
+									currentBackupObject.backupMaxMetaDataSize = 0;
 								}
 							}
 
@@ -97,6 +114,9 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.backupOnTheFlyMetadata?.value;
 								if (value) {
 									setBackupOnTheFlyMetadata(value);
+									currentBackupObject.backupOnTheFlyMetadata = true;
+								} else {
+									currentBackupObject.backupOnTheFlyMetadata = false;
 								}
 							}
 
@@ -104,6 +124,9 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.scheduledMetadataArchivingEnabled?.value;
 								if (value) {
 									setScheduledMetadataArchivingEnabled(value);
+									currentBackupObject.scheduledMetadataArchivingEnabled = true;
+								} else {
+									currentBackupObject.scheduledMetadataArchivingEnabled = false;
 								}
 							}
 
@@ -111,6 +134,9 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.ZxBackup_MaxOperationPerAccount?.value;
 								if (value) {
 									setBackupMaxOperationPerAccount(value);
+									currentBackupObject.backupMaxOperationPerAccount = value;
+								} else {
+									currentBackupObject.backupMaxOperationPerAccount = 0;
 								}
 							}
 
@@ -118,6 +144,9 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.backupCompressionLevel?.value;
 								if (value) {
 									setBackupCompressionLevel(value);
+									currentBackupObject.backupCompressionLevel = value;
+								} else {
+									currentBackupObject.backupCompressionLevel = 0;
 								}
 							}
 
@@ -125,6 +154,9 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.backupNumberThreadsForItems?.value;
 								if (value) {
 									setBackupNumberThreadsForItems(value);
+									currentBackupObject.backupNumberThreadsForItems = value;
+								} else {
+									currentBackupObject.backupNumberThreadsForItems = 0;
 								}
 							}
 
@@ -132,9 +164,13 @@ const ServerAdvanced: FC = () => {
 								const value = attributes?.backupNumberThreadsForAccounts?.value;
 								if (value) {
 									setBackupNumberThreadsForAccounts(value);
+									currentBackupObject.backupNumberThreadsForAccounts = value;
+								} else {
+									currentBackupObject.backupNumberThreadsForAccounts = 0;
 								}
 							}
 						}
+						setCurrentBackupValue(currentBackupObject);
 					})
 					.catch((error: any) => {
 						createSnackbar({
@@ -151,6 +187,134 @@ const ServerAdvanced: FC = () => {
 			}
 		}
 	}, [server, allServers, createSnackbar, t]);
+
+	const onCancel = useCallback(() => {
+		setLdapDumpEnabled(currentBackupValue.ldapDumpEnabled);
+		setBackupLatencyLowThreshold(currentBackupValue.backupLatencyLowThreshold);
+		setBackupLatencyHighThreshold(currentBackupValue.backupLatencyHighThreshold);
+		setBackupMaxWaitTime(currentBackupValue.backupMaxWaitTime);
+		setBackupMaxMetaDataSize(currentBackupValue.backupMaxMetaDataSize);
+		setBackupOnTheFlyMetadata(currentBackupValue.backupOnTheFlyMetadata);
+		setScheduledMetadataArchivingEnabled(currentBackupValue.scheduledMetadataArchivingEnabled);
+		setBackupMaxOperationPerAccount(currentBackupValue.backupMaxOperationPerAccount);
+		setBackupCompressionLevel(currentBackupValue.backupCompressionLevel);
+		setBackupNumberThreadsForItems(currentBackupValue.backupNumberThreadsForItems);
+		setBackupNumberThreadsForAccounts(currentBackupValue.backupNumberThreadsForAccounts);
+
+		setIsDirty(false);
+	}, [
+		currentBackupValue?.ldapDumpEnabled,
+		currentBackupValue?.backupLatencyLowThreshold,
+		currentBackupValue?.backupLatencyHighThreshold,
+		currentBackupValue?.backupMaxWaitTime,
+		currentBackupValue?.backupMaxMetaDataSize,
+		currentBackupValue?.backupOnTheFlyMetadata,
+		currentBackupValue?.scheduledMetadataArchivingEnabled,
+		currentBackupValue?.backupMaxOperationPerAccount,
+		currentBackupValue?.backupCompressionLevel,
+		currentBackupValue?.backupNumberThreadsForItems,
+		currentBackupValue?.backupNumberThreadsForAccounts
+	]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.ldapDumpEnabled !== undefined &&
+			currentBackupValue.ldapDumpEnabled !== ldapDumpEnabled
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.ldapDumpEnabled, ldapDumpEnabled]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupLatencyLowThreshold !== undefined &&
+			currentBackupValue.backupLatencyLowThreshold !== backupLatencyLowThreshold
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.backupLatencyLowThreshold, backupLatencyLowThreshold]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupLatencyHighThreshold !== undefined &&
+			currentBackupValue.backupLatencyHighThreshold !== backupLatencyHighThreshold
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.backupLatencyHighThreshold, backupLatencyHighThreshold]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupMaxWaitTime !== undefined &&
+			currentBackupValue.backupMaxWaitTime !== backupMaxWaitTime
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.backupMaxWaitTime, backupMaxWaitTime]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupMaxMetaDataSize !== undefined &&
+			currentBackupValue.backupMaxMetaDataSize !== backupMaxMetaDataSize
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.backupMaxMetaDataSize, backupMaxMetaDataSize]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupOnTheFlyMetadata !== undefined &&
+			currentBackupValue.backupOnTheFlyMetadata !== backupOnTheFlyMetadata
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.backupOnTheFlyMetadata, backupOnTheFlyMetadata]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.scheduledMetadataArchivingEnabled !== undefined &&
+			currentBackupValue.scheduledMetadataArchivingEnabled !== scheduledMetadataArchivingEnabled
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.scheduledMetadataArchivingEnabled, scheduledMetadataArchivingEnabled]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupMaxOperationPerAccount !== undefined &&
+			currentBackupValue.backupMaxOperationPerAccount !== backupMaxOperationPerAccount
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.backupMaxOperationPerAccount, backupMaxOperationPerAccount]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupCompressionLevel !== undefined &&
+			currentBackupValue.backupCompressionLevel !== backupCompressionLevel
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.backupCompressionLevel, backupCompressionLevel]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupNumberThreadsForItems !== undefined &&
+			currentBackupValue.backupNumberThreadsForItems !== backupNumberThreadsForItems
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.backupNumberThreadsForItems, backupNumberThreadsForItems]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupNumberThreadsForAccounts !== undefined &&
+			currentBackupValue.backupNumberThreadsForAccounts !== backupNumberThreadsForAccounts
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue.backupNumberThreadsForAccounts, backupNumberThreadsForAccounts]);
+
 	return (
 		<Container mainAlignment="flex-start" background="gray6">
 			<Container
@@ -179,7 +343,13 @@ const ServerAdvanced: FC = () => {
 								crossAlignment="flex-end"
 							>
 								<Padding right="small">
-									{isDirty && <Button label={t('label.cancel', 'Cancel')} color="secondary" />}
+									{isDirty && (
+										<Button
+											label={t('label.cancel', 'Cancel')}
+											color="secondary"
+											onClick={onCancel}
+										/>
+									)}
 								</Padding>
 								{isDirty && <Button label={t('label.save', 'Save')} color="primary" />}
 							</Row>
