@@ -55,6 +55,9 @@ const BackupConfiguration: FC = () => {
 	const [currentBackupValue, setCurrentBackupValue] = useState<any>({});
 	const [backupServiceStart, setBackupServiceStart] = useState<boolean>(false);
 	const [isBackupInitialized, setIsBackupInitialized] = useState<boolean>(false);
+	const [isPurgeRequestRunning, setIsPurgeRequestRunning] = useState<boolean>(false);
+	const [isExternalVolumeRequestRunning, setIsExternalVolumeRequestRunning] =
+		useState<boolean>(false);
 
 	useEffect(() => {
 		if (allServers && allServers.length > 0) {
@@ -462,7 +465,8 @@ const BackupConfiguration: FC = () => {
 				_jsns: 'urn:zimbraAdmin',
 				module: 'ZxBackup',
 				action: backupServiceStart ? 'doStopService' : 'doStartService',
-				service_name: 'module'
+				service_name: 'module',
+				targetServers: server
 			},
 			'zextras'
 		)
@@ -488,7 +492,7 @@ const BackupConfiguration: FC = () => {
 					replace: true
 				});
 			});
-	}, [backupServiceStart, createSnackbar, t]);
+	}, [backupServiceStart, createSnackbar, t, server]);
 
 	const doInitializeBackup = useCallback(
 		(isFromInitialize?: boolean) => {
@@ -518,6 +522,57 @@ const BackupConfiguration: FC = () => {
 		},
 		[server, createSnackbar, t, isBackupInitialized]
 	);
+
+	const doBackupPurge = useCallback(() => {
+		setIsPurgeRequestRunning(true);
+		fetchExternalSoap(`/service/extension/zextras_admin/backup/doPurge`, {
+			targetServers: [server]
+		})
+			.then((res: any) => {
+				setIsPurgeRequestRunning(false);
+			})
+			.catch((error: any) => {
+				setIsPurgeRequestRunning(false);
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label: error
+						? error?.error
+						: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
+			});
+	}, [server, createSnackbar, t]);
+
+	const onBackupExternalVolume = useCallback(() => {
+		setIsExternalVolumeRequestRunning(true);
+		fetchExternalSoap(`/service/extension/zextras_admin/backup/migrateBackupVolume`, {
+			targetServers: [server],
+			backup_volume_decommission: true,
+			volumeRootPath: backupDestPath,
+			useInfrequentAccess: true,
+			infrequentAcccessThreshold: 0,
+			useIntelligentTiering: true
+		})
+			.then((res: any) => {
+				setIsExternalVolumeRequestRunning(false);
+			})
+			.catch((error: any) => {
+				setIsExternalVolumeRequestRunning(false);
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label: error
+						? error?.error
+						: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
+			});
+	}, [server, createSnackbar, t, backupDestPath]);
 
 	return (
 		<Container mainAlignment="flex-start" background="gray6">
@@ -706,7 +761,9 @@ const BackupConfiguration: FC = () => {
 								iconPlacement="right"
 								height={36}
 								width="100%"
-								disabled={!isBackupInitialized}
+								disabled={!isBackupInitialized || isExternalVolumeRequestRunning}
+								onClick={onBackupExternalVolume}
+								loading={isExternalVolumeRequestRunning}
 							/>
 						</Container>
 					</ListRow>
@@ -908,7 +965,11 @@ const BackupConfiguration: FC = () => {
 								iconPlacement="right"
 								height={36}
 								width="100%"
-								disabled={!isBackupInitialized}
+								disabled={isPurgeRequestRunning || !isBackupInitialized}
+								loading={isPurgeRequestRunning}
+								onClick={(): void => {
+									doBackupPurge();
+								}}
 							/>
 						</Container>
 					</ListRow>
