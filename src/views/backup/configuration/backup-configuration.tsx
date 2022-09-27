@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
 	Container,
@@ -13,7 +13,8 @@ import {
 	Button,
 	Switch,
 	Input,
-	SnackbarManagerContext
+	SnackbarManagerContext,
+	Padding
 } from '@zextras/carbonio-design-system';
 import {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -33,7 +34,7 @@ const BackupConfiguration: FC = () => {
 	const [enableRealtimeScanner, setEnableRealtimeScanner] = useState<boolean>(false);
 	const [runSmartScanStartup, setRunSmartScanStartup] = useState<boolean>(false);
 	const [spaceThreshold, setSpaceThreshold] = useState<number>(0);
-	const [isScheduleSmartscan, setIsScheduleSmartScan] = useState<boolean>(false);
+	const [isScheduleSmartScan, setIsScheduleSmartScan] = useState<boolean>(false);
 	const [scheduleSmartScan, setScheduleSmartScan] = useState<string>('');
 	const [keepDeletedItemInBackup, setKeepDeletedItemInBackup] = useState<number>(0);
 	const [keepDeletedAccountsInBackup, setKeepDeletedAccountsInBackup] = useState<number>(0);
@@ -41,9 +42,14 @@ const BackupConfiguration: FC = () => {
 		useState<boolean>(false);
 	const [retentionPolicySchedule, setRetentionPolicySchedule] = useState<string>('');
 	const [backupDestPath, setBackupDestPath] = useState<string>('');
+	const [isDirty, setIsDirty] = useState<boolean>(false);
+	const [isRequestInProgress, setIsRequestInProgress] = useState<boolean>(false);
+	const [currentBackupValue, setCurrentBackupValue] = useState<any>({});
+
 	useEffect(() => {
 		if (allServers && allServers.length > 0) {
 			const selectedServer = allServers.find((serverItem: any) => serverItem?.name === server);
+			const currentBackupObject: any = {};
 			if (selectedServer && selectedServer?.id) {
 				getSoapFetchRequest(
 					`/service/extension/zextras_admin/core/getServer/${selectedServer?.id}?module=zxbackup`
@@ -55,6 +61,9 @@ const BackupConfiguration: FC = () => {
 								const value = attributes?.ZxBackup_ModuleEnabledAtStartup?.value;
 								if (value) {
 									setModuleEnableStartup(value);
+									currentBackupObject.moduleEnableStartup = true;
+								} else {
+									currentBackupObject.moduleEnableStartup = false;
 								}
 							}
 
@@ -62,6 +71,9 @@ const BackupConfiguration: FC = () => {
 								const value = attributes?.ZxBackup_RealTimeScanner?.value;
 								if (value) {
 									setEnableRealtimeScanner(value);
+									currentBackupObject.enableRealtimeScanner = true;
+								} else {
+									currentBackupObject.enableRealtimeScanner = false;
 								}
 							}
 
@@ -69,6 +81,9 @@ const BackupConfiguration: FC = () => {
 								const value = attributes?.ZxBackup_DoSmartScanOnStartup?.value;
 								if (value) {
 									setRunSmartScanStartup(value);
+									currentBackupObject.runSmartScanStartup = true;
+								} else {
+									currentBackupObject.runSmartScanStartup = false;
 								}
 							}
 
@@ -76,6 +91,9 @@ const BackupConfiguration: FC = () => {
 								const value = attributes?.ZxBackup_SpaceThreshold?.value;
 								if (value) {
 									setSpaceThreshold(value);
+									currentBackupObject.spaceThreshold = value;
+								} else {
+									currentBackupObject.spaceThreshold = 0;
 								}
 							}
 
@@ -83,9 +101,15 @@ const BackupConfiguration: FC = () => {
 								const value = attributes?.backupSmartScanScheduler?.value;
 								if (value && value['cron-enabled']) {
 									setIsScheduleSmartScan(value['cron-enabled']);
+									currentBackupObject.isScheduleSmartScan = true;
+								} else {
+									currentBackupObject.isScheduleSmartScan = false;
 								}
 								if (value && value['cron-pattern']) {
 									setScheduleSmartScan(value['cron-pattern']);
+									currentBackupObject.scheduleSmartScan = value['cron-pattern'];
+								} else {
+									currentBackupObject.scheduleSmartScan = '';
 								}
 							}
 
@@ -93,9 +117,15 @@ const BackupConfiguration: FC = () => {
 								const value = attributes?.backupPurgeScheduler?.value;
 								if (value && value['cron-enabled']) {
 									setScheduleAutomaticRetentionPolicy(value['cron-enabled']);
+									currentBackupObject.scheduleAutomaticRetentionPolicy = true;
+								} else {
+									currentBackupObject.scheduleAutomaticRetentionPolicy = false;
 								}
 								if (value && value['cron-pattern']) {
 									setRetentionPolicySchedule(value['cron-pattern']);
+									currentBackupObject.retentionPolicySchedule = value['cron-pattern'];
+								} else {
+									currentBackupObject.retentionPolicySchedule = '';
 								}
 							}
 
@@ -103,26 +133,34 @@ const BackupConfiguration: FC = () => {
 								const value = attributes?.ZxBackup_DestPath?.value;
 								if (value) {
 									setBackupDestPath(value);
+									currentBackupObject.backupDestPath = value;
+								} else {
+									currentBackupObject.backupDestPath = '';
 								}
 							}
 						}
 
 						if (data && data?.properties) {
 							const properties = data?.properties;
-							if (properties?.latest_smart_scan?.numDeletedItems) {
+							if (properties?.latest_smart_scan) {
 								const value = properties?.latest_smart_scan?.numDeletedItems;
 								if (value) {
 									setKeepDeletedItemInBackup(value);
+									currentBackupObject.keepDeletedItemInBackup = value;
+								} else {
+									currentBackupObject.keepDeletedItemInBackup = 0;
 								}
-							}
 
-							if (properties?.latest_smart_scan?.numDeletedAccounts) {
-								const value = properties?.latest_smart_scan?.numDeletedAccounts;
-								if (value) {
-									setKeepDeletedAccountsInBackup(value);
+								const numDeletedAccount = properties?.latest_smart_scan?.numDeletedAccounts;
+								if (numDeletedAccount) {
+									setKeepDeletedAccountsInBackup(numDeletedAccount);
+									currentBackupObject.keepDeletedAccountsInBackup = numDeletedAccount;
+								} else {
+									currentBackupObject.keepDeletedAccountsInBackup = 0;
 								}
 							}
 						}
+						setCurrentBackupValue(currentBackupObject);
 					})
 					.catch((error: any) => {
 						createSnackbar({
@@ -139,6 +177,137 @@ const BackupConfiguration: FC = () => {
 			}
 		}
 	}, [server, allServers, createSnackbar, t]);
+
+	const onCancel = useCallback(() => {
+		setModuleEnableStartup(currentBackupValue.moduleEnableStartup);
+		setEnableRealtimeScanner(currentBackupValue?.enableRealtimeScanner);
+		setRunSmartScanStartup(currentBackupValue?.runSmartScanStartup);
+		setSpaceThreshold(currentBackupValue?.spaceThreshold);
+		setIsScheduleSmartScan(currentBackupValue?.isScheduleSmartScan);
+		setScheduleSmartScan(currentBackupValue?.scheduleSmartScan);
+		setScheduleAutomaticRetentionPolicy(currentBackupValue?.scheduleAutomaticRetentionPolicy);
+		setRetentionPolicySchedule(currentBackupValue?.retentionPolicySchedule);
+		setBackupDestPath(currentBackupValue?.backupDestPath);
+		setKeepDeletedItemInBackup(currentBackupValue?.keepDeletedItemInBackup);
+		setKeepDeletedAccountsInBackup(currentBackupValue?.keepDeletedAccountsInBackup);
+		setIsDirty(false);
+	}, [
+		currentBackupValue?.moduleEnableStartup,
+		currentBackupValue?.enableRealtimeScanner,
+		currentBackupValue?.runSmartScanStartup,
+		currentBackupValue?.spaceThreshold,
+		currentBackupValue?.isScheduleSmartScan,
+		currentBackupValue?.scheduleSmartScan,
+		currentBackupValue?.scheduleAutomaticRetentionPolicy,
+		currentBackupValue?.retentionPolicySchedule,
+		currentBackupValue?.backupDestPath,
+		currentBackupValue?.keepDeletedItemInBackup,
+		currentBackupValue?.keepDeletedAccountsInBackup
+	]);
+
+	const onSave = useCallback(() => {
+		console.log('>>>>>>> Save');
+	}, []);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.moduleEnableStartup !== undefined &&
+			currentBackupValue.moduleEnableStartup !== moduleEnableStartup
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.moduleEnableStartup, moduleEnableStartup]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.enableRealtimeScanner !== undefined &&
+			currentBackupValue.enableRealtimeScanner !== enableRealtimeScanner
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.enableRealtimeScanner, enableRealtimeScanner]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.runSmartScanStartup !== undefined &&
+			currentBackupValue.runSmartScanStartup !== runSmartScanStartup
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.runSmartScanStartup, runSmartScanStartup]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.spaceThreshold !== undefined &&
+			currentBackupValue.spaceThreshold !== spaceThreshold
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.spaceThreshold, spaceThreshold]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.isScheduleSmartScan !== undefined &&
+			currentBackupValue.isScheduleSmartScan !== isScheduleSmartScan
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.isScheduleSmartScan, isScheduleSmartScan]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.scheduleSmartScan !== undefined &&
+			currentBackupValue.scheduleSmartScan !== scheduleSmartScan
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.scheduleSmartScan, scheduleSmartScan]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.scheduleAutomaticRetentionPolicy !== undefined &&
+			currentBackupValue.scheduleAutomaticRetentionPolicy !== scheduleAutomaticRetentionPolicy
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.scheduleAutomaticRetentionPolicy, scheduleAutomaticRetentionPolicy]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.retentionPolicySchedule !== undefined &&
+			currentBackupValue.retentionPolicySchedule !== retentionPolicySchedule
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.retentionPolicySchedule, retentionPolicySchedule]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.backupDestPath !== undefined &&
+			currentBackupValue.backupDestPath !== backupDestPath
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.backupDestPath, backupDestPath]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.keepDeletedItemInBackup !== undefined &&
+			currentBackupValue.keepDeletedItemInBackup !== keepDeletedItemInBackup
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.keepDeletedItemInBackup, keepDeletedItemInBackup]);
+
+	useEffect(() => {
+		if (
+			currentBackupValue.keepDeletedAccountsInBackup !== undefined &&
+			currentBackupValue.keepDeletedAccountsInBackup !== keepDeletedAccountsInBackup
+		) {
+			setIsDirty(true);
+		}
+	}, [currentBackupValue?.keepDeletedAccountsInBackup, keepDeletedAccountsInBackup]);
+
 	return (
 		<Container mainAlignment="flex-start" background="gray6">
 			<Container
@@ -147,12 +316,49 @@ const BackupConfiguration: FC = () => {
 				crossAlignment="flex-start"
 				mainAlignment="flex-start"
 			>
-				<Row mainAlignment="flex-start" padding={{ all: 'large' }}>
-					<Text size="medium" weight="bold">
-						{t('backup.server_configuration', 'Server Configuration')}
-					</Text>
+				<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
+					<Container orientation="vertical" mainAlignment="space-around" height="56px">
+						<Row orientation="horizontal" width="100%">
+							<Row
+								padding={{ all: 'large' }}
+								mainAlignment="flex-start"
+								width="50%"
+								crossAlignment="flex-start"
+							>
+								<Text size="medium" weight="bold" color="gray0">
+									{t('backup.server_configuration', 'Server Configuration')}
+								</Text>
+							</Row>
+							<Row
+								padding={{ all: 'large' }}
+								width="50%"
+								mainAlignment="flex-end"
+								crossAlignment="flex-end"
+							>
+								<Padding right="small">
+									{isDirty && (
+										<Button
+											label={t('label.cancel', 'Cancel')}
+											color="secondary"
+											onClick={onCancel}
+											disabled={isRequestInProgress}
+										/>
+									)}
+								</Padding>
+								{isDirty && (
+									<Button
+										label={t('label.save', 'Save')}
+										color="primary"
+										onClick={onSave}
+										disabled={isRequestInProgress}
+										loading={isRequestInProgress}
+									/>
+								)}
+							</Row>
+						</Row>
+					</Container>
+					<Divider color="gray2" />
 				</Row>
-				<Divider />
 				<Container
 					mainAlignment="flex-start"
 					crossAlignment="flex-end"
@@ -312,8 +518,8 @@ const BackupConfiguration: FC = () => {
 					>
 						<Switch
 							label={t('backup.schedule_smartscan', 'Schedule Smartscan')}
-							value={isScheduleSmartscan}
-							onClick={(): void => setIsScheduleSmartScan(!isScheduleSmartscan)}
+							value={isScheduleSmartScan}
+							onClick={(): void => setIsScheduleSmartScan(!isScheduleSmartScan)}
 						/>
 					</Container>
 
@@ -326,6 +532,7 @@ const BackupConfiguration: FC = () => {
 								onChange={(e: any): any => {
 									setScheduleSmartScan(e.target.value);
 								}}
+								disabled={!isScheduleSmartScan}
 							/>
 						</Container>
 					</ListRow>
@@ -394,6 +601,7 @@ const BackupConfiguration: FC = () => {
 								onChange={(e: any): any => {
 									setRetentionPolicySchedule(e.target.value);
 								}}
+								disabled={!scheduleAutomaticRetentionPolicy}
 							/>
 						</Container>
 					</ListRow>
@@ -413,6 +621,7 @@ const BackupConfiguration: FC = () => {
 								onChange={(e: any): any => {
 									setKeepDeletedItemInBackup(e.target.value);
 								}}
+								disabled={!scheduleAutomaticRetentionPolicy}
 							/>
 						</Container>
 						<Container
@@ -445,6 +654,7 @@ const BackupConfiguration: FC = () => {
 								onChange={(e: any): any => {
 									setKeepDeletedAccountsInBackup(e.target.value);
 								}}
+								disabled={!scheduleAutomaticRetentionPolicy}
 							/>
 						</Container>
 						<Container
