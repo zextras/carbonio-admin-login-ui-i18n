@@ -42,7 +42,7 @@
             "cn_shenzhen": "Cina (Shenzhen)",
             "cn_zhangjiakou": "Cina (Zhangjiakou)",
             "eu_central_1": "Germania (Francoforte)",
-            "eu_west_1": "Regno Unito (Londra)",
+            "eu_west_1": "UK (London)",
             "me_east_1": "Emirati Arabi (Dubai)",
             "us_east_1": "Stati Uniti (Virginia)",
             "cn_hongkong": "Cina (Hong Kong)",
@@ -64,7 +64,15 @@
             "me_south_1": "Medio Oriente (Bahrain)",
             "sa_east_1": "America del Sud (San Paolo)",
             "ap_south_1": "Asia Pacifica (Mumbai)",
-            "eu_central_1": "Europa (Francoforte)"
+            "eu_central_1": "Europa (Francoforte)",
+            "eu_west_2": "EU (London)",
+            "eu_west_3": "EU (Paris)",
+            "govcloud": "AWS GovCloud (US)",
+            "us_east_1": "US East (N. Virginia)",
+            "us_east_2": "US East (Ohio)",
+            "us_gov_east_1": "AWS GovCloud (US-East)",
+            "us_west_1": "US West (N. California)",
+            "us_west_2": "US West (Oregon)"
         },
         "invalid_volume_name": "Completa il campo con il nome del volume.",
         "s3_types": {
@@ -78,7 +86,10 @@
             "scality_s3": "Scality S3",
             "yandex_s3": "Yandex S3"
         },
-        "serverName_volumes": "Volumi {{serverName}}"
+        "serverName_volumes": "Volumi {{serverName}}",
+        "invalid_compression_thresold": "La soglia di compressione è obbligatoria",
+        "invalid_volume_path": "Il path del volume è obbligatorio",
+        "serverName#1_volumes": "ServerName#1 Volumes"
     },
     "core": {
         "subscription": {
@@ -133,7 +144,13 @@
         "type_here_a_domain": "Digita un dominio",
         "warn_when_reach_space_quota": "Avvisami quando raggiungo lo spazio aggregato di questa quota",
         "account_list": "Lista degli account",
-        "list_details": "Dettagli Lista"
+        "list_details": "Dettagli Lista",
+        "the_account_has_been_successfully_created": "L'account è stato creato con successo",
+        "total_domain_space": "Spazio totale del dominio (Byte)",
+        "max_result_return_gal_search": "Numero massimo di risultati riportati dalla ricerca GAL",
+        "single_account_domain_space_byte": "Spazio dominio del singolo account (Byte)",
+        "i_want_to_generate_an_otp_code": "VOGLIO GENERARE UN CODICE OTP",
+        "proceed_without_generating_an_otp_code": "PROCEDI SENZA GENERARE UN CODICE OTP"
     },
     "label": {
         "account": "Account",
@@ -232,7 +249,7 @@
         "allow_sending_email_from_any_address": "Consenti l’invio di posta da qualsiasi indirizzo",
         "always_compose_in_new_window": "Componi i messaggi sempre in una nuova finestra",
         "always_show_the_mini-calendar": "Mostra sempre il minicalendario",
-        "automatically_add_forwarded_invites_to_calendar": "Aggiungi automaticamente all’Agenda gli inviti inoltrati",
+        "automatically_add_forwarded_invites_to_calendar": "Aggiungi automaticamente al calendario gli inviti inoltrati",
         "automatically_add_invites_with_PUBLISH_method": "Aggiungi automaticamente gli inviti con il metodo PUBBLICA",
         "both": "Entrambe",
         "bucket_name": "Nome Bucket",
@@ -317,7 +334,7 @@
         "are_you_sure_deleting_cos": "Vuoi davvero eliminare questa Classe di Servizio?",
         "auth_method": "Metodo di Autenticazione",
         "auto_logout_users": "Auto Logout Utenti",
-        "bind_dn_template": "Associa Template DN",
+        "bind_dn_template": "Associa Template DN (Distinguished Name)",
         "block_send": "Blocca Invio",
         "bulk_actions": "Azioni Massive",
         "can_receive": "Può ricevere",
@@ -335,7 +352,7 @@
         "i_am_looking_for_this_account": "Sto cercando questo account…",
         "import_an_external_backup": "Importa un Backup Esterno",
         "inbound_smtp_host_name": "SMPT Host Name in ingresso",
-        "logout_redirect_url": "URL di reindirizzamento al logout",
+        "logout_redirect_url": "Al momento del Logout, l'utente verrà reindirizzato a questo URL",
         "mailing_list": "Mailing List",
         "mailing_lists": "Mailing List",
         "main_view": "Questa è una vista",
@@ -364,7 +381,7 @@
         "this_list_is_empty": "Questa lista è vuota.",
         "uuid": "uuid",
         "view": "Questa è una vista",
-        "virtual_host_info_msg": "I virtual host consentono al sistema di stabilire un dominio predefinito per il login dell'utente.",
+        "virtual_host_info_msg": "L'utilizzo di virtual host consente agli utenti di navigare il servizio anche utilizzando un URL diverso.",
         "yes_delete": "Sì, Elimina",
         "you_are_deleting": "Stai eliminando {{cosname}}",
         "account_status": "Stato account",
@@ -400,10 +417,10 @@
         "delete_bucket_fail": "{{name}} non è stato rimosso",
         "create_new_cos": "Crea Nuova COS",
         "connector_is_not_created_and_verification_failed": "CONNETTORE NON CREATO E VERIFICA FALLITA",
-        "deleteing": "Eliminazione",
+        "deleteing": "Eliminazione ",
         "delete_domain_with_account_content_msg": "{{domainName}} non è vuoto: contiene {{domainAccounts}} account di sistema e {{domainAccounts}} account normali. Vuoi procedere con l'eliminazione?",
         "delete_cos_succeess": "{{cosname}} è stata eliminata con successo",
-        "delete_cos_instruction_msg": "Se clicchi il bottone SÌ, ELIMINA, la COS predefinita sostituirà la COS eliminata.",
+        "delete_cos_instruction_msg": "Se clicchi il bottone \"SÌ,ELIMINA\", la COS predefinita sostituirà la COS eliminata.",
         "enter_email_address": "Inserisci indirizzo e-mail",
         "enable_toaster_notification_for_new_calendar_events": "abilita le notifiche per nuovi eventi in calendario",
         "edit_signature": "<bold>Modifica Firma</bold>",
@@ -431,10 +448,10 @@
         "fall_back_to_local_msg": "Ripiega su gestione locale della password in caso di errore",
         "dynamic": "Dinamico",
         "displayed_name": "Nome Visualizzato",
-        "delete_content": "Stai eliminando {{name}}.\nSei sicuro di voler continuare?",
+        "delete_content": "Stai eliminando {{name}}. Vuoi continuare?",
         "create_resource_msg": "Puoi creare una nuova risorsa cliccando sul pulsante <bold>Crea</bold> (angolo in alto a sinistra) o sul pulsante Aggiungi (<bold>+</bold>) qui in alto",
         "create_account_list_msg": "Puoi creare un nuovo Account cliccando sul pulsante <bold>Crea</bold> (angolo in alto a sinistra) o sul pulsante Aggiungi (<bold>+</bold>) qui in alto",
-        "connection_is_created_verify_connector_fail": "CONNETTORE CREATO MA VERIFICA FALLITA",
+        "connection_is_created_verify_connector_fail": "CONNETTORE CREATO MA LA VERIFICA È FALLITA",
         "changes_have_been_saved": "Modifiche salvate",
         "bucket_view_details_button": "MOSTRA DETTAGLI",
         "alias_in_the_list": "Alias nella Lista",
@@ -456,7 +473,7 @@
         "this_list_is_member_of": "Questa lista fa parte di",
         "second_name_initials": "Iniziali del secondo nome",
         "schedule_policy": "Imposta policy",
-        "percentage_maximum_conflict_allowed": "% Conflitti massimi consentiti",
+        "percentage_maximum_conflict_allowed": "% Conflitto massimo consentito",
         "new_subscription_requests": "Nuove richieste di sottoscrizioni",
         "must_change_passowrd": "L'utente deve cambiare password al prossimo accesso",
         "maximum_conflict_allowed": "Massimo Conflitto Consentito",
@@ -576,7 +593,7 @@
         "changes_have_been_updated": "{{message}}",
         "first_day_of_week": "Primo giorno della settimana",
         "I_want_to_see_this_server_details": "Voglio vedere i dettagli di questo server",
-        "account_data_copy_to_account": "I dati di questo account verranno copiati su questo account",
+        "account_data_copy_to_account": "I dati dell'account verranno copiati su questo account",
         "account_quota_mb": "Spazio a disposizione dell’account (MB)",
         "create_resource": "Crea Risorsa",
         "create_resource_success_msg": "{{resourceName}} è stata creata con successo",
@@ -588,7 +605,7 @@
         "mail_notifications": "Notifiche Email",
         "mailing_list_name": "Nome Mailing List",
         "main": "Principale",
-        "max_account_you_can_manage_is": "Il numero massimo di account che puoi gestire è...",
+        "max_account_you_can_manage_is": "Il numero massimo di account che puoi gestire è…",
         "max_quota_allowed": "Quota Massima Consentita",
         "min_Threshold": "Soglia Minima",
         "configuration_lbl": "Configurazione",
@@ -636,7 +653,67 @@
         "local": "Locale",
         "na": "N/D",
         "purge": "Elimina",
-        "scheduled": "Pianificata"
+        "scheduled": "Pianificata",
+        "ext_volume": "Volume Esterno",
+        "deleting_account_content_3": "Oppure, puoi <bold> disabilitarlo per preservare</bold> i dati.",
+        "deletion_date": "Data di eliminazione",
+        "hms_settings": "Impostazioni HSM",
+        "global_address_list": "Elenco indirizzi globale",
+        "new_config": "CONFIG",
+        "new_volume_config": "CONFIG",
+        "new_volumeset_as_primary_button": "NUOVO VOLUME IMPOSTATO COME PRIMARIO",
+        "query_is_not_valid": "La query non è valida",
+        "accounts_that_are_owners": "Account che sono proprietari della mailing list",
+        "close_the_account": "Chiudi l'account",
+        "application_log": "Log dell'applicazione",
+        "appointment_reminder_in_minutes": "Promemoria appuntamento (minuti prima)",
+        "data_volume": "Dati del volume",
+        "auto_negation": "Rifiuta automaticamente",
+        "manual_accept_auto_decline_on_conflict": "Gestisci accettazione manualmente; rifiuto automatico in caso di conflitto",
+        "auto_accept_always": "Accetta sempre automaticamente se l'utente è disponibile",
+        "base_dn_is_not_valid": "Il DN di base non è valido",
+        "backup_at_startup": "Backup all' avvio",
+        "backup_space": "Spazio Backup",
+        "auto_refuse": "Negazione automatica",
+        "composing_mails": "Composizione Mail",
+        "config": "Config",
+        "data_volumes": "Dati dei volumi",
+        "delete_it_instead": "Eliminalo",
+        "deleting_resource_name": "Stai eliminando {{name}}",
+        "dl_delete_successfull": "{{name}} è stato eliminato con successo",
+        "disable_it_instead": "Disabilita",
+        "dynamic_mode": "Modalità Dynamic",
+        "enabed_address": "Indirizzi Abilitati",
+        "ex": "es.",
+        "external_ldap_server": "ldap-server-esterno",
+        "hsm_apply": "Applica HSM",
+        "global_server_settings": "Impostazioni Server Globale",
+        "i_want_to_send_invites_to_resource": "Inoltra inviti del calendario a questi indirizzi",
+        "in_maintenance": "In manutenzione",
+        "login_is_disabled": "Il Login è disabilitato",
+        "owners_settings": "Impostazioni dei proprietari della mailing list",
+        "on_startup_only": "Solo all'avvio",
+        "otp": "OTP",
+        "receiving_mails": "Ricezione Mail",
+        "resource_deleted_successfully": "{{resource_name}} è stato eliminato con successo",
+        "resource_disable_successfully": "{{resource_name}} è stato disabilitato con successo.",
+        "resource_remove_correctly": "{{resource_name}} è stato rimosso con successo.",
+        "rt_status": "Stato RT",
+        "send_new_members_notification_for_share_assigned_to_this_group": "Invia ai nuovi membri una notifica per le condivisioni assegnate a questo gruppo",
+        "smartscan": "Smartscan",
+        "verify_connector_verified": " VERIFICATO",
+        "yes_delete_it": "Sì, Elimina",
+        "you_are_deleting_ml": "Stai eliminando {{name}}",
+        "are_you_sure_delete_distribution_list": "Vuoi eliminare <bold>{{name}}</bold> ?",
+        "allowed_sending_addresses": "Indirizzi autorizzati per l'invio",
+        "date_time_picker": "Selettore data e ora",
+        "default_charset": "Set di caratteri predefinito",
+        "list_name_auto_fill": "Nome della Lista (riempimento automatico)",
+        "mail_stores": "Mailstore",
+        "main_settings": "Impostazioni Principali",
+        "maximum_conflict": "Conflitto Massimo",
+        "sending_mails": "Invio Mail",
+        "external_password_change_listener": "Endpoint da utilizzare per il cambio password"
     },
     "message": {
         "snackbar": {
@@ -786,7 +863,8 @@
     },
     "commons": {
         "confirm_connection": "CONFERMA CONNESSIONE",
-        "create_with_there_data": "CREA CON QUESTI DATI"
+        "create_with_there_data": "CREA CON QUESTI DATI",
+        "i_have_sent_data_to_user": "HO INVIATO I DATI ALL'UTENTE"
     },
     "create_new_bucket": "NUOVO BUCKET",
     "log": "Log",
@@ -822,7 +900,8 @@
         "enable_realtime_scanner": "Abilita Scanner Realtime",
         "run_the_smart_scan_at_the_startup": "Inizia lo Smartscan all'avvio",
         "schedule_smart_scan": "Programma Smartscan",
-        "this_module_is_enable_at_the_startup": "Questo modulo è abilitato all'avvio"
+        "this_module_is_enable_at_the_startup": "Questo modulo è abilitato all'avvio",
+        "store_server_configurations_in_the_backup": "Salva la configurazione del server nel backup"
     },
     "cos": {
         "maximum_number_of_items_to_display_per_page": "Numero massimo di elementi da visualizzare per pagina",
@@ -961,7 +1040,15 @@
         "allow_sending_cancellation_mail": "Consenti cancellazione dell'invio di una e-mail",
         "audible_reminder_notification": "Notifica sonora per i promemoria",
         "enable_auto_add_contacts": "Abilita aggiunta automatica dei contatti",
-        "show_time_zone_lists_in_view": "Mostra l'elenco dei fusi orari nella vista dell'appuntamento"
+        "show_time_zone_lists_in_view": "Mostra l'elenco dei fusi orari nella vista dell'appuntamento",
+        "add_invites_with_publish_method": "Aggiungi invitati usando il metodo PUBLISH",
+        "time_range": "Periodo di tempo",
+        "default_charset": "Set di caratteri predefinito",
+        "disabling_pool": "Disabilitazione pool",
+        "display_by": "Mostra per",
+        "group_calender": "Calendario Avanzato",
+        "new_proxy_allowed_domain": "Nuovo proxy abilitato per il dominio",
+        "use_quickadd_dialog_in_creation": "Utilizza la finestra QuickAdd per la creazione"
     },
     "accountDetails": {
         "default_COS": "COS Predefinita",
@@ -1006,7 +1093,7 @@
         "vietnamese": "Vietnamita"
     },
     "create_new_cos": "CREA NUOVA COS",
-    "welcome_to_carbonio": "Benvenuto {{adminName}} su Carbonio {{carbonioVersion}}!",
+    "welcome_to_carbonio": "Benvenuto su Carbonio {{carbonioVersion}} ,{{adminName}} !",
     "account": {
         "new": {
             "create_account_wizard": "Procedura guidata di modifica dell'account"
@@ -1014,7 +1101,10 @@
     },
     "privacy": {
         "send_full_error_data_to_zextras": "Invia rapporto di errore completo a Zextras",
-        "analytics_sub_1": "I tuoi dati sono al sicuro. Tutte le informazioni collezionate resteranno anonime. Saranno utilizzate dal nostro team esclusivamente per capire come migliorare ulteriormente Carbonio."
+        "analytics_sub_1": "I tuoi dati sono al sicuro. Tutte le informazioni collezionate resteranno anonime. Saranno utilizzate dal nostro team esclusivamente per capire come migliorare ulteriormente Carbonio.",
+        "survey_feedback_sub_1": "Non ti preoccupare, i questionari saranno veloci, semplici e molto utili per capire come stiamo andando.",
+        "allow_data_analytics": "Consenti l'analisi dei dati",
+        "full_error_sub_1": "Tutti commettiamo degli errori ma è come ci relazioniamo con essi che conta! Vogliamo imparare dalle nostre imperfezioni quindi facci sapere come possiamo migliorare"
     },
     "reminder": {
         "minute": "{{count}} minuto",
@@ -1091,7 +1181,18 @@
         "search_fro_people": "Cerca utenti",
         "this_account_is_a_direct_member_of": "Questo account è un membro diretto di",
         "this_account_is_a_in_direct_member_of": "Questo account è un membro indiretto di",
-        "send": "INVIA"
+        "send": "INVIA",
+        "please_note_code": "Attenzione: potrai vedere questi codici solo una volta.",
+        "secret_code": "Codice Segreto",
+        "select_email_otp": "Seleziona un indirizzo e-mail a cui inviare l'OTP oppure copia il codice che trovi qui sopra",
+        "send_the_otp_to": "Invia l'OTP a",
+        "browser_title_for_appointments": "Fai lampeggiare il titolo del browser per gli appuntamenti",
+        "can_specify_forwarding_address": "Può specificare un indirizzo di inoltro",
+        "add_invites_with_publish_method": "Aggiungi invitati usando il metodo PUBLISH",
+        "forwarding_calendar_invitations_to_these_addresses": "Inoltra inviti del calendario a questi indirizzi",
+        "group_calendar": "Calendario Avanzato",
+        "html_compose": "Composizione HTML",
+        "use_quickadd_dialog_in_creation": "Utilizza la finestra QuickAdd per la creazione"
     },
     "connection": {
         "access_key": "Chiave d'Accesso",
@@ -1103,6 +1204,9 @@
     "click_new_bucket_button_to_create_new_one": "Seleziona il pulsante NUOVO BUCKET per crearne uno nuovo.",
     "have_not_setup_bucket_type": "Sembra che tu non abbia selezionato il tipo di bucket",
     "volume": {
-        "serverName_volumes": "Volumi {{serverName}}"
+        "serverName_volumes": "Volumi {{serverName}}",
+        "new": {
+            "create_mailstores_volume": "Crea Volume Mailstore"
+        }
     }
 }
