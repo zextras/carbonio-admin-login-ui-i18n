@@ -940,7 +940,6 @@
         "search_for_people": "Поиск людей",
         "search_a_specific_server": "Поиск определенного сервера",
         "legacy_exchange_dn_attribute": "O и OU, используемые в атрибуте legacyExchangeDN",
-        "create_cos_success_msg": "",
         "auto_decline_if_inviter_is_blacklisted": "Автоматический отказ, если отправитель находится в черном списке",
         "audible_reminder_notification": "Звуковое уведомление",
         "percentage_threshold_for_quota_warning": "Процентный порог для предупреждений о квотах",
