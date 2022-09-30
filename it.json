@@ -713,7 +713,24 @@
         "main_settings": "Impostazioni Principali",
         "maximum_conflict": "Conflitto Massimo",
         "sending_mails": "Invio Mail",
-        "external_password_change_listener": "Endpoint da utilizzare per il cambio password"
+        "external_password_change_listener": "Endpoint da utilizzare per il cambio password",
+        "type_in_the_mails": "Digita l'account per aggiungerlo alla lista",
+        "server_specifics": "Specifiche del Server",
+        "no_auto_accept_or_decline": "Non accettare automaticamente anche se l'utente è disponibile",
+        "not_send_receive": "Non può inviare né ricevere",
+        "owners_manage_add_list": "I proprietari possono aggiungere o rimuovere membri, modificare il nome e le descrizione da visualizzare, cambiare la visibilità della lista (es. nasconderla dalla GAL), modificare i comportamenti di sottoscrizione o cancellazione",
+        "members_only": "Solo i membri",
+        "metadata_space": "Spazio Metadati",
+        "min_new_check_interval": "Intervallo minimo per un nuovo controllo",
+        "on_startup_and_scheduled": "All'avvio e quando programmato",
+        "remind_appointments_timer": "Timer per i promemoria degli appuntamenti",
+        "restore_external_data_source": "Ripristina fonti dei dati esterni",
+        "server_list": "Lista dei Server",
+        "soft_deleted": "disabilitato",
+        "max_email_quota_you_can_manage_is": "Lo spazio massimo che puoi gestire per una casella email è…",
+        "server_specific": "Specifiche del Server",
+        "sharing": "CONDIVISIONE",
+        "start": "inizia"
     },
     "message": {
         "snackbar": {
@@ -901,7 +918,34 @@
         "run_the_smart_scan_at_the_startup": "Inizia lo Smartscan all'avvio",
         "schedule_smart_scan": "Programma Smartscan",
         "this_module_is_enable_at_the_startup": "Questo modulo è abilitato all'avvio",
-        "store_server_configurations_in_the_backup": "Salva la configurazione del server nel backup"
+        "store_server_configurations_in_the_backup": "Salva la configurazione del server nel backup",
+        "back_delete_account_warning_message": "Se imposti 0, gli <strong> account</strong> verranno tenuti nel backup per sempre",
+        "back_delete_item_warning_message": "Se imposti 0, gli <strong> elementi</strong> verranno tenuti nel backup per sempre",
+        "check_ldap": "Controlla ldap",
+        "force_start_smartscan_now": "Forza l'avvio dello smartscan adesso",
+        "include_index": "Includi indice",
+        "include_server_configuration": "Includi configurazione del server",
+        "keep_deleted_account_in_the_backup": "Tieni nel backup l'account eliminato",
+        "ldap_working_properly": "Ldap sta funzionando correttamente",
+        "local_volume": "Volume Locale",
+        "maximum_operation_per_account": "Operazioni Massime per Account",
+        "metadata_archiving": "Archiviazione metadati",
+        "module_is_enabled_at_startup": "Questo modulo viene abilitato all'avvio",
+        "run_smartscan_at_startup": "Esegui lo Smartscan all'avvio",
+        "running": "in esecuzione",
+        "purge_old_configuration": "Elimina Vecchie Configurazioni",
+        "server_configuration": "Configurazione Server",
+        "set_external_volume": "Imposta volume esterno",
+        "space_threshold_mb": "Limite di Spazio (MB)",
+        "start_service": "Inizia servizio",
+        "stop_service": "Ferma il servizio",
+        "stopped": "fermato",
+        "the_service_is_stopped": "Il servizio è stato fermato",
+        "thread_number_for_items": "Numero di thread per gli elementi",
+        "waiting_time": "Tempo di Attesa",
+        "the_service_is": "Questo servizio è",
+        "schedule_automatic_retention_policies": "Imposta le regole automatiche di ritenzione",
+        "thread_number_for_accounts": "Numero di thread per Account"
     },
     "cos": {
         "maximum_number_of_items_to_display_per_page": "Numero massimo di elementi da visualizzare per pagina",
@@ -1104,7 +1148,8 @@
         "analytics_sub_1": "I tuoi dati sono al sicuro. Tutte le informazioni collezionate resteranno anonime. Saranno utilizzate dal nostro team esclusivamente per capire come migliorare ulteriormente Carbonio.",
         "survey_feedback_sub_1": "Non ti preoccupare, i questionari saranno veloci, semplici e molto utili per capire come stiamo andando.",
         "allow_data_analytics": "Consenti l'analisi dei dati",
-        "full_error_sub_1": "Tutti commettiamo degli errori ma è come ci relazioniamo con essi che conta! Vogliamo imparare dalle nostre imperfezioni quindi facci sapere come possiamo migliorare"
+        "full_error_sub_1": "Tutti commettiamo degli errori ma è come ci relazioniamo con essi che conta! Vogliamo imparare dalle nostre imperfezioni quindi facci sapere come possiamo migliorare",
+        "allow_live_survey_feedbacks": "Consenti i sondaggi per i feedback"
     },
     "reminder": {
         "minute": "{{count}} minuto",
@@ -1207,6 +1252,7 @@
         "serverName_volumes": "Volumi {{serverName}}",
         "new": {
             "create_mailstores_volume": "Crea Volume Mailstore"
-        }
+        },
+        "serverName_volumes_create_mailstores_volume": "{{serverName}} Crea Volume Mailstore"
     }
 }
