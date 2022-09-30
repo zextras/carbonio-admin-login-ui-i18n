@@ -616,7 +616,8 @@
         "type_accounts_paste_them_here": "键入账户或将其粘贴至此处",
         "type_an_account_dot": "键入账户...",
         "who_is_in_this_list": "谁在列表中？",
-        "who_needs_receive_this_email": "谁需要接收此邮件？"
+        "who_needs_receive_this_email": "谁需要接收此邮件？",
+        "server_list": "服务器列表"
     },
     "timezone": {
         "asia_tehran": "{{value}} 德黑兰",
@@ -956,7 +957,8 @@
         "latency_high_threshold_ms": "延迟高阈（ms）",
         "metadata": "元数据",
         "other_controls": "其他控制",
-        "range": "范围"
+        "range": "范围",
+        "running": "运行中"
     },
     "cos": {
         "calendar_options": "日历选项",
