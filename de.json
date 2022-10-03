@@ -615,7 +615,9 @@
         "volume_back_button": "ZURÜCK",
         "volume_main": "Hauptdatenträger",
         "volume_max_quota_allowed": "Maximal zulässig",
-        "volume_min_threshold": "Min. Schwellwert"
+        "volume_min_threshold": "Min. Schwellwert",
+        "soft_deleted": "deaktiviert",
+        "server_list": "Server Liste"
     },
     "timezone": {
         "asia_yerevan": "{{value}} Eriwan",
@@ -953,7 +955,10 @@
         "metadata": "Metadaten",
         "range": "Radius",
         "smart_scan_configuration": "SmartScan Konfiguration",
-        "tuning_options": "Einstellungsoptionen"
+        "tuning_options": "Einstellungsoptionen",
+        "maximum_operation_per_account": "Maximale Anzahl der Vorgänge pro Konto",
+        "running": "aktiv",
+        "waiting_time": "Wartezeit"
     },
     "cos": {
         "calendar_options": "Kalenderoptionen",
