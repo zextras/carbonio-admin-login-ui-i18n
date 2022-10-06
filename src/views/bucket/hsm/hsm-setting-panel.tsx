@@ -23,6 +23,7 @@ import { fetchSoap } from '../../../services/bucket-service';
 import ListRow from '../../list/list-row';
 import CreateHsmPolicy from './create-hsm-policy/create-hsm-policy';
 import EditHsmPolicy from './edit-hsm-policy/edit-hsm-policy';
+import DeleteHsmPolicy from './delete-policy/delete-hsm-policy';
 
 const HSMsettingPanel: FC = () => {
 	const { operation, server }: { operation: string; server: string } = useParams();
@@ -31,6 +32,7 @@ const HSMsettingPanel: FC = () => {
 	const [policies, setPolicies] = useState<any>([]);
 	const [showCreateHsmPolicyView, setShowCreateHsmPolicyView] = useState<boolean>(false);
 	const [showEditHsmPolicyView, setShowEditHsmPolicyView] = useState<boolean>(false);
+	const [showDeletePolicyView, setShowDeletePolicyView] = useState<boolean>(false);
 	const headers = useMemo(
 		() => [
 			{
@@ -179,6 +181,9 @@ const HSMsettingPanel: FC = () => {
 										type="outlined"
 										icon="CloseOutline"
 										height={36}
+										onClick={(): void => {
+											setShowDeletePolicyView(true);
+										}}
 									/>
 								</Padding>
 								<Padding right="small">
@@ -226,6 +231,12 @@ const HSMsettingPanel: FC = () => {
 			)}
 			{showEditHsmPolicyView && (
 				<EditHsmPolicy setShowEditHsmPolicyView={setShowEditHsmPolicyView} />
+			)}
+			{showDeletePolicyView && (
+				<DeleteHsmPolicy
+					showDeletePolicyView={showDeletePolicyView}
+					setShowDeletePolicyView={setShowDeletePolicyView}
+				/>
 			)}
 		</Container>
 	);
