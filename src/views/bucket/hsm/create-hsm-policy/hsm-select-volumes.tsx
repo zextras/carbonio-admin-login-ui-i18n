@@ -8,12 +8,16 @@ import React, { FC, useCallback, useContext, useEffect, useMemo, useState } from
 import { Trans, useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import ListRow from '../../../list/list-row';
+import { HSMContext } from '../hsm-context/hsm-context';
 
 const HSMselectVolumes: FC<any> = () => {
 	const { operation, server }: { operation: string; server: string } = useParams();
 	const [t] = useTranslation();
 	const [showSourceVolume, setShowSourceVolume] = useState<boolean>(false);
 	const [showDestinationVolume, setShowDestinationVolume] = useState<boolean>(false);
+	const context = useContext(HSMContext);
+	const { hsmDetail, setHsmDetail } = context;
+	const [volumeRows, setVolumeRows] = useState<Array<any>>([]);
 	const headers = useMemo(
 		() => [
 			{
@@ -23,19 +27,19 @@ const HSMselectVolumes: FC<any> = () => {
 				bold: true
 			},
 			{
-				id: 'name',
+				id: 'allocation',
 				label: t('hsm.allocation', 'Allocation'),
 				width: '25%',
 				bold: true
 			},
 			{
-				id: 'name',
+				id: 'type',
 				label: t('hsm.type', 'Type'),
 				width: '25%',
 				bold: true
 			},
 			{
-				id: 'name',
+				id: 'current',
 				label: t('hsm.current', 'Current'),
 				width: '25%',
 				bold: true
@@ -43,6 +47,50 @@ const HSMselectVolumes: FC<any> = () => {
 		],
 		[t]
 	);
+
+	const getVoumeType = useCallback(
+		(type: number): string => {
+			if (type === 1) {
+				return t('hsm.primary', 'Primary');
+			}
+			if (type === 2) {
+				return t('hsm.secondry', 'Secondry');
+			}
+			return t('hsm.indexes', 'Indexes');
+		},
+		[t]
+	);
+	useEffect(() => {
+		const volumeList = hsmDetail?.allVolumes;
+		if (volumeList && volumeList.length > 0) {
+			const allRows = volumeList.map((item: any) => ({
+				id: item?.id,
+				columns: [
+					<Text size="medium" weight="bold" key={item} color="#828282">
+						{item?.name}
+					</Text>,
+					<Text size="medium" weight="bold" key={item} color="#828282">
+						{''}
+					</Text>,
+					<Text size="medium" weight="bold" key={item} color="#828282">
+						{getVoumeType(item?.type)}
+					</Text>,
+					<Text
+						size="medium"
+						weight="bold"
+						key={item}
+						color={item?.isCurrent ? '#414141' : '#D74942'}
+					>
+						{item?.isCurrent ? t('hsm.yes', 'Yes') : t('hsm.no', 'No')}
+					</Text>
+				]
+			}));
+			setVolumeRows(allRows);
+		} else {
+			setVolumeRows([]);
+		}
+	}, [hsmDetail?.allVolumes, getVoumeType, t]);
+
 	return (
 		<Container
 			mainAlignment="flex-start"
@@ -88,7 +136,7 @@ const HSMselectVolumes: FC<any> = () => {
 			</ListRow>
 			<ListRow>
 				<Padding bottom="large">
-					{showSourceVolume && <Table rows={[]} headers={headers} />}
+					{showSourceVolume && <Table rows={volumeRows} headers={headers} />}
 				</Padding>
 			</ListRow>
 
@@ -132,7 +180,7 @@ const HSMselectVolumes: FC<any> = () => {
 			</ListRow>
 			<ListRow>
 				<Padding bottom="large">
-					{showDestinationVolume && <Table rows={[]} headers={headers} />}
+					{showDestinationVolume && <Table rows={volumeRows} headers={headers} />}
 				</Padding>
 			</ListRow>
 		</Container>

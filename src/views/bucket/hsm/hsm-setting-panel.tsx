@@ -22,7 +22,8 @@ import { useParams } from 'react-router-dom';
 import {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	getSoapFetchRequest
+	getSoapFetchRequest,
+	soapFetch
 } from '@zextras/carbonio-shell-ui';
 import { fetchSoap } from '../../../services/bucket-service';
 import ListRow from '../../list/list-row';
@@ -47,6 +48,7 @@ const HSMsettingPanel: FC = () => {
 	const [deduplicateAfterScheduledMoveBlobs, setDeduplicateAfterScheduledMoveBlobs] =
 		useState<boolean>(false);
 	const [oldValues, setOldValues] = useState<any>({});
+	const [volumeList, setVolumeList] = useState<any>([]);
 	const headers = useMemo(
 		() => [
 			{
@@ -138,15 +140,33 @@ const HSMsettingPanel: FC = () => {
 		});
 	}, [serverList]);
 
+	const getAllVolumes = useCallback(() => {
+		const serverId = serverList.find((item: any) => item?.name === server);
+		setVolumeList([]);
+		if (serverId) {
+			soapFetch(
+				'GetAllVolumes',
+				{
+					_jsns: 'urn:zimbraAdmin'
+				},
+				undefined,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				serverId
+			).then((response: any) => {
+				if (response?.volume && response?.volume.length > 0) {
+					setVolumeList(response?.volume);
+				}
+			});
+		}
+	}, [server, serverList]);
+
 	useEffect(() => {
 		if (server && serverList && serverList.length > 0) {
 			getZxPowerStoreServers();
+			getAllVolumes();
 		}
-	}, [server, getZxPowerStoreServers, serverList]);
-
-	useEffect(() => {
-		getHSMList();
-	}, [getHSMList]);
+	}, [server, getZxPowerStoreServers, serverList, getAllVolumes]);
 
 	const onCancel = useCallback(() => {
 		setIsPowerstoreMoveSchedulerEnabled(oldValues?.isPowerstoreMoveSchedulerEnabled);
@@ -379,7 +399,10 @@ const HSMsettingPanel: FC = () => {
 				</ListRow>
 			</Container>
 			{showCreateHsmPolicyView && (
-				<CreateHsmPolicy setShowCreateHsmPolicyView={setShowCreateHsmPolicyView} />
+				<CreateHsmPolicy
+					setShowCreateHsmPolicyView={setShowCreateHsmPolicyView}
+					volumeList={volumeList}
+				/>
 			)}
 			{showEditHsmPolicyView && (
 				<EditHsmPolicy setShowEditHsmPolicyView={setShowEditHsmPolicyView} />

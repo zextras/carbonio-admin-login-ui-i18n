@@ -15,6 +15,10 @@ import HSMcreatePolicy from './hsm-create-policy';
 import HSMpolicySettings from './hsm-policy-settings';
 import HSMselectVolumes from './hsm-select-volumes';
 
+interface hsmDetailObj {
+	allVolumes: Array<any>;
+}
+
 const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection }) => {
 	const { t } = useTranslation();
 	const { operation, server }: { operation: string; server: string } = useParams();
@@ -34,13 +38,15 @@ const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection
 		</Section>
 	);
 };
-
 // eslint-disable-next-line no-empty-pattern
 const CreateHsmPolicy: FC<{
 	setShowCreateHsmPolicyView: any;
-}> = ({ setShowCreateHsmPolicyView }) => {
+	volumeList: Array<any>;
+}> = ({ setShowCreateHsmPolicyView, volumeList }) => {
 	const [wizardData, setWizardData] = useState();
-	const [hsmDetail, setHsmDetail] = useState<any>({});
+	const [hsmDetail, setHsmDetail] = useState<hsmDetailObj>({
+		allVolumes: volumeList
+	});
 	const { t } = useTranslation();
 
 	const standardHsmPolicyWizardStep = useMemo(
