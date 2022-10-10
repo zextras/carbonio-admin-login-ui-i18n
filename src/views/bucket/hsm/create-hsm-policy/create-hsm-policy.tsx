@@ -17,6 +17,12 @@ import HSMselectVolumes from './hsm-select-volumes';
 
 interface hsmDetailObj {
 	allVolumes: Array<any>;
+	isAllEnabled: boolean;
+	isMessageEnabled: boolean;
+	isEventEnabled: boolean;
+	isContactEnabled: boolean;
+	isDocumentEnabled: boolean;
+	policyCriteria: Array<any>;
 }
 
 const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection }) => {
@@ -45,7 +51,13 @@ const CreateHsmPolicy: FC<{
 }> = ({ setShowCreateHsmPolicyView, volumeList }) => {
 	const [wizardData, setWizardData] = useState();
 	const [hsmDetail, setHsmDetail] = useState<hsmDetailObj>({
-		allVolumes: volumeList
+		allVolumes: volumeList,
+		isAllEnabled: true,
+		isMessageEnabled: true,
+		isEventEnabled: true,
+		isContactEnabled: true,
+		isDocumentEnabled: true,
+		policyCriteria: []
 	});
 	const { t } = useTranslation();
 

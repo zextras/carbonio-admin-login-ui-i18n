@@ -12,16 +12,28 @@ import {
 	Select,
 	Button,
 	IconButton,
-	Padding
+	Padding,
+	Table
 } from '@zextras/carbonio-design-system';
 import React, { FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import ListRow from '../../../list/list-row';
+import { HSMContext } from '../hsm-context/hsm-context';
 
 const HSMpolicySettings: FC<any> = () => {
 	const { operation, server }: { operation: string; server: string } = useParams();
 	const [t] = useTranslation();
+	const context = useContext(HSMContext);
+	const { hsmDetail, setHsmDetail } = context;
+	const [all, setAll] = useState<boolean>(hsmDetail?.isAllEnabled);
+	const [isMessageEnable, setIsMessageEnable] = useState<boolean>(hsmDetail?.isMessageEnabled);
+	const [isEventEnable, setIsEventEnable] = useState<boolean>(hsmDetail?.isEventEnabled);
+	const [isContactEnable, setIsContactEnable] = useState<boolean>(hsmDetail?.isContactEnabled);
+	const [isDocument, setIsDocument] = useState<boolean>(hsmDetail?.isDocumentEnabled);
+	const [policyCriteriaRows, setPolicyCriteriaRows] = useState<Array<any>>();
+	const [value, setValue] = useState<string>();
+
 	const options: any[] = useMemo(
 		() => [
 			{
@@ -38,7 +50,7 @@ const HSMpolicySettings: FC<any> = () => {
 			},
 			{
 				label: t('hsm.smaller_size', 'Smaller (Size)'),
-				value: 'small'
+				value: 'smaller'
 			}
 		],
 		[t]
@@ -84,6 +96,76 @@ const HSMpolicySettings: FC<any> = () => {
 		[t]
 	);
 
+	const headers = useMemo(
+		() => [
+			{
+				id: 'name',
+				label: t('hsm.policy_criteria', 'Policy Criteria'),
+				width: '100%',
+				bold: true
+			}
+		],
+		[t]
+	);
+
+	const [selectedOption, setSelectedOption]: any = useState<any>(options[0]);
+
+	const [selectedScale, setSelectedScale]: any = useState<any>(scaleOptions[0]);
+
+	const onOptionChange = (v: any): any => {
+		const it = options.find((item: any) => item.value === v);
+		setSelectedOption(it);
+	};
+
+	const onScaleChange = (v: any): any => {
+		const it = scaleOptions.find((item: any) => item.value === v);
+		setSelectedScale(it);
+	};
+
+	const [policyCriteria, setPolicyCriteria] = useState<Array<any>>(hsmDetail?.policyCriteria);
+
+	const onAdd = useCallback(() => {
+		setPolicyCriteria((prev) => [
+			...prev,
+			{
+				option: selectedOption?.value,
+				scale: selectedScale?.value,
+				dateScale: value
+			}
+		]);
+	}, [selectedOption?.value, selectedScale?.value, value]);
+
+	useEffect(() => {
+		setHsmDetail((prev: any) => ({
+			...prev,
+			policyCriteria
+		}));
+	}, [policyCriteria, setHsmDetail]);
+
+	useEffect(() => {
+		if (policyCriteria.length > 0) {
+			let displayPolicy = '';
+			const allRows = policyCriteria.map((item: any, index: number) => {
+				if (item?.option === 'before' || item?.option === 'after') {
+					displayPolicy = `${item?.option} ${item?.dateScale} ${t('hsm.days_lbl', 'days')}`;
+				} else if (item?.option === 'larger' || item?.option === 'smaller') {
+					displayPolicy = `${item?.option}  ${item?.dateScale} ${item?.scale}`;
+				}
+				return {
+					id: index,
+					columns: [
+						<Text size="medium" weight="bold" key={index} color="#828282">
+							{displayPolicy}
+						</Text>
+					]
+				};
+			});
+			setPolicyCriteriaRows(allRows);
+		} else if (policyCriteria.length === 0) {
+			setPolicyCriteriaRows([]);
+		}
+	}, [policyCriteria, t]);
+
 	return (
 		<Container
 			mainAlignment="flex-start"
@@ -106,19 +188,79 @@ const HSMpolicySettings: FC<any> = () => {
 			</ListRow>
 			<ListRow>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.all', 'All')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.all', 'All')}
+						value={all}
+						onClick={(): void => {
+							setAll(!all);
+							setHsmDetail((prev: any) => ({
+								...prev,
+								allVolumes: !all
+							}));
+						}}
+					/>
 				</Container>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.message', 'Message')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.message', 'Message')}
+						value={isMessageEnable}
+						onClick={(): void => {
+							setIsMessageEnable(!isMessageEnable);
+							setHsmDetail((prev: any) => ({
+								...prev,
+								isMessageEnabled: !isMessageEnable
+							}));
+						}}
+					/>
 				</Container>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.document', 'Document')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.document', 'Document')}
+						value={isDocument}
+						onClick={(): void => {
+							setIsDocument(!isDocument);
+							setHsmDetail((prev: any) => ({
+								...prev,
+								isDocumentEnabled: !isDocument
+							}));
+						}}
+					/>
 				</Container>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.event', 'Event')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.event', 'Event')}
+						value={isEventEnable}
+						onClick={(): void => {
+							setIsEventEnable(!isEventEnable);
+							setHsmDetail((prev: any) => ({
+								...prev,
+								isEventEnabled: !isEventEnable
+							}));
+						}}
+					/>
 				</Container>
 				<Container mainAlignment="flex-start" crossAlignment="flex-start">
-					<Checkbox iconColor="primary" size="small" label={t('hsm.contact', 'Contact')} />
+					<Checkbox
+						iconColor="primary"
+						size="small"
+						label={t('hsm.contact', 'Contact')}
+						value={isContactEnable}
+						onClick={(): void => {
+							setIsContactEnable(!isContactEnable);
+							setHsmDetail((prev: any) => ({
+								...prev,
+								isContactEnabled: !isContactEnable
+							}));
+						}}
+					/>
 				</Container>
 			</ListRow>
 			<ListRow>
@@ -139,20 +281,11 @@ const HSMpolicySettings: FC<any> = () => {
 						background="gray5"
 						label={t('hsm.option', 'Option')}
 						showCheckbox={false}
+						selection={selectedOption}
+						onChange={onOptionChange}
 					/>
 				</Container>
-				<Container
-					mainAlignment="flex-start"
-					crossAlignment="flex-start"
-					padding={{ right: 'large' }}
-				>
-					<Select
-						items={dateScaleOption}
-						background="gray5"
-						label={t('hsm.scale', 'Scale')}
-						showCheckbox={false}
-					/>
-				</Container>
+
 				<Container
 					mainAlignment="flex-start"
 					crossAlignment="flex-start"
@@ -163,11 +296,43 @@ const HSMpolicySettings: FC<any> = () => {
 						background="gray5"
 						label={t('hsm.value', 'Value')}
 						showCheckbox={false}
+						selection={selectedScale}
+						onChange={onScaleChange}
 					/>
 				</Container>
-				<Container style={{ border: '1px solid #2b73d2' }} width="fit">
-					<IconButton iconColor="primary" icon="Plus" height={44} width={44} />
+
+				<Container
+					mainAlignment="flex-start"
+					crossAlignment="flex-start"
+					padding={{ right: 'large' }}
+				>
+					<Input
+						label={t('hsm.value', 'Value')}
+						backgroundColor="gray5"
+						size="medium"
+						value={value}
+						onChange={(e: any): any => {
+							setValue(e.target.value);
+						}}
+					/>
 				</Container>
+				<Container width="fit">
+					<Button
+						type="outlined"
+						label={t('label.add', 'Add')}
+						icon="PlusOutline"
+						iconPlacement="right"
+						color="primary"
+						height={44}
+						onClick={onAdd}
+					/>
+				</Container>
+				<Container style={{ border: '1px solid rgb(215, 73, 66)' }} width="fit">
+					<IconButton iconColor="error" icon="Trash2Outline" height={44} width={44} />
+				</Container>
+			</ListRow>
+			<ListRow>
+				<Table rows={policyCriteriaRows} headers={headers} />
 			</ListRow>
 		</Container>
 	);
