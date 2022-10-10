@@ -13,11 +13,13 @@ import { HSMContext } from '../hsm-context/hsm-context';
 const HSMselectVolumes: FC<any> = () => {
 	const { operation, server }: { operation: string; server: string } = useParams();
 	const [t] = useTranslation();
-	const [showSourceVolume, setShowSourceVolume] = useState<boolean>(false);
-	const [showDestinationVolume, setShowDestinationVolume] = useState<boolean>(false);
+	const [showSourceVolume, setShowSourceVolume] = useState<boolean>(true);
+	const [showDestinationVolume, setShowDestinationVolume] = useState<boolean>(true);
 	const context = useContext(HSMContext);
 	const { hsmDetail, setHsmDetail } = context;
 	const [volumeRows, setVolumeRows] = useState<Array<any>>([]);
+	const [selectedDestinationVolume, setSelectedDestinationVolume] = useState<Array<any>>([]);
+	const [selectedSourceVolume, setSelectedSourceVolume] = useState<Array<any>>([]);
 	const headers = useMemo(
 		() => [
 			{
@@ -91,6 +93,34 @@ const HSMselectVolumes: FC<any> = () => {
 		}
 	}, [hsmDetail?.allVolumes, getVoumeType, t]);
 
+	useEffect(() => {
+		if (Array.isArray(hsmDetail?.allVolumes)) {
+			const sourceVol = hsmDetail?.allVolumes?.filter((item: any) =>
+				selectedSourceVolume?.includes(item?.id)
+			);
+			if (sourceVol) {
+				setHsmDetail((prev: any) => ({
+					...prev,
+					sourceVolume: sourceVol
+				}));
+			}
+		}
+	}, [hsmDetail?.allVolumes, selectedSourceVolume, setHsmDetail]);
+
+	useEffect(() => {
+		if (Array.isArray(hsmDetail?.allVolumes)) {
+			const destVol = hsmDetail?.allVolumes?.filter((item: any) =>
+				selectedDestinationVolume?.includes(item?.id)
+			);
+			if (destVol) {
+				setHsmDetail((prev: any) => ({
+					...prev,
+					destinationVolume: destVol
+				}));
+			}
+		}
+	}, [hsmDetail?.allVolumes, selectedDestinationVolume, setHsmDetail]);
+
 	return (
 		<Container
 			mainAlignment="flex-start"
@@ -136,7 +166,14 @@ const HSMselectVolumes: FC<any> = () => {
 			</ListRow>
 			<ListRow>
 				<Padding bottom="large">
-					{showSourceVolume && <Table rows={volumeRows} headers={headers} />}
+					{showSourceVolume && (
+						<Table
+							rows={volumeRows}
+							headers={headers}
+							selectedRows={selectedSourceVolume}
+							onSelectionChange={(selected: any): void => setSelectedSourceVolume(selected)}
+						/>
+					)}
 				</Padding>
 			</ListRow>
 
@@ -180,7 +217,16 @@ const HSMselectVolumes: FC<any> = () => {
 			</ListRow>
 			<ListRow>
 				<Padding bottom="large">
-					{showDestinationVolume && <Table rows={volumeRows} headers={headers} />}
+					{showDestinationVolume && (
+						<Table
+							rows={volumeRows}
+							headers={headers}
+							showCheckbox={false}
+							multiSelect={false}
+							selectedRows={selectedDestinationVolume}
+							onSelectionChange={(selected: any): void => setSelectedDestinationVolume(selected)}
+						/>
+					)}
 				</Padding>
 			</ListRow>
 		</Container>

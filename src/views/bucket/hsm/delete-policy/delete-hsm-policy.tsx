@@ -19,15 +19,24 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import ListRow from '../../../list/list-row';
 
-const DeleteHsmPolicy: FC<{ showDeletePolicyView: boolean; setShowDeletePolicyView: any }> = ({
+const DeleteHsmPolicy: FC<{
+	showDeletePolicyView: boolean;
+	setShowDeletePolicyView: any;
+	selectedPolicies: any;
+	onDeletePolicy: any;
+	isRequestInProgress: boolean;
+}> = ({
 	showDeletePolicyView,
-	setShowDeletePolicyView
+	setShowDeletePolicyView,
+	selectedPolicies,
+	onDeletePolicy,
+	isRequestInProgress
 }) => {
 	const [t] = useTranslation();
 	const createSnackbar: any = useContext(SnackbarManagerContext);
 	const copyToClipboard = useCallback(() => {
 		if (navigator) {
-			navigator.clipboard.writeText('xxxxeeed');
+			navigator.clipboard.writeText(selectedPolicies);
 			createSnackbar({
 				type: 'info',
 				label: 'HSM Policy 4 has been copied to the clipboard',
@@ -35,14 +44,20 @@ const DeleteHsmPolicy: FC<{ showDeletePolicyView: boolean; setShowDeletePolicyVi
 				actionLabel: ''
 			});
 		}
-	}, [createSnackbar]);
+	}, [createSnackbar, selectedPolicies]);
+
 	const closeHandler = useCallback(() => {
 		setShowDeletePolicyView(false);
 	}, [setShowDeletePolicyView]);
+
+	const onDelete = useCallback(() => {
+		onDeletePolicy();
+	}, [onDeletePolicy]);
+
 	return (
 		<Modal
 			size="medium"
-			title={t('hsm.delete_hsm', 'Delete HSM')}
+			title={t('hsm.delete_hsm_policy', 'Delete HSM Policy?')}
 			open={showDeletePolicyView}
 			customFooter={
 				<Container orientation="horizontal" mainAlignment="space-between">
@@ -54,7 +69,12 @@ const DeleteHsmPolicy: FC<{ showDeletePolicyView: boolean; setShowDeletePolicyVi
 					/>
 					<Row style={{ gap: '8px' }}>
 						<Button label={t('label.cancel', 'Cancel')} color="secondary" onClick={closeHandler} />
-						<Button label={t('hsm.delete', 'Delete')} color="error" />
+						<Button
+							label={t('hsm.delete', 'Delete')}
+							color="error"
+							onClick={onDelete}
+							disabled={isRequestInProgress}
+						/>
 					</Row>
 				</Container>
 			}
@@ -66,8 +86,8 @@ const DeleteHsmPolicy: FC<{ showDeletePolicyView: boolean; setShowDeletePolicyVi
 					<Padding bottom="medium">
 						<Text size={'extralarge'} overflow="break-word">
 							<Trans
-								i18nKey="hsm.delete_hsm_policy_confirm_msg"
-								defaults="If you delete this HSM policy you won`t be able to restore it. Do you want to delete HSM Policy 2?"
+								i18nKey="hsm.delete_hsm_policy_confirm_msg_1"
+								defaults="If you delete this HSM policy you won`t be able to restore it. Do you want to delete HSM Policy?"
 							/>
 						</Text>
 					</Padding>
@@ -89,8 +109,8 @@ const DeleteHsmPolicy: FC<{ showDeletePolicyView: boolean; setShowDeletePolicyVi
 				<Container padding={{ top: 'small', bottom: 'small' }}>
 					<Input
 						background="gray5"
-						label={'xxx'}
-						value={'zzzzz'}
+						label={t('hsm.hsm_policy', 'HSM Policy')}
+						value={selectedPolicies}
 						CustomIcon={(): any => (
 							<Icon icon="CopyOutline" size="large" color="grey" onClick={copyToClipboard} />
 						)}

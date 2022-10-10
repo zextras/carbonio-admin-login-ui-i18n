@@ -23,6 +23,8 @@ interface hsmDetailObj {
 	isContactEnabled: boolean;
 	isDocumentEnabled: boolean;
 	policyCriteria: Array<any>;
+	sourceVolume: Array<any>;
+	destinationVolume: Array<any>;
 }
 
 const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection }) => {
@@ -48,7 +50,8 @@ const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection
 const CreateHsmPolicy: FC<{
 	setShowCreateHsmPolicyView: any;
 	volumeList: Array<any>;
-}> = ({ setShowCreateHsmPolicyView, volumeList }) => {
+	createHSMpolicy: any;
+}> = ({ setShowCreateHsmPolicyView, volumeList, createHSMpolicy }) => {
 	const [wizardData, setWizardData] = useState();
 	const [hsmDetail, setHsmDetail] = useState<hsmDetailObj>({
 		allVolumes: volumeList,
@@ -57,9 +60,15 @@ const CreateHsmPolicy: FC<{
 		isEventEnabled: true,
 		isContactEnabled: true,
 		isDocumentEnabled: true,
-		policyCriteria: []
+		policyCriteria: [],
+		sourceVolume: [],
+		destinationVolume: []
 	});
 	const { t } = useTranslation();
+
+	const onCreate = useCallback(() => {
+		createHSMpolicy(hsmDetail);
+	}, [createHSMpolicy, hsmDetail]);
 
 	const standardHsmPolicyWizardStep = useMemo(
 		() => [
@@ -154,11 +163,12 @@ const CreateHsmPolicy: FC<{
 						label={t('label.create', 'CREATE')}
 						icon="PowerOutline"
 						iconPlacement="right"
+						onClick={onCreate}
 					/>
 				)
 			}
 		],
-		[t]
+		[t, onCreate]
 	);
 
 	const onComplete = useCallback(() => {
