@@ -52,6 +52,7 @@ import { useBackupModuleStore } from './store/backup-module/store';
 import { getAllServers } from './services/get-all-servers-service';
 import { useConfigStore } from './store/config/store';
 import { getAllConfig } from './services/get-all-config';
+import { useAuthIsAdvanced } from './store/auth-advanced/store';
 
 const LazyAppView = lazy(() => import('./views/app-view'));
 
@@ -67,6 +68,7 @@ const App: FC = () => {
 	const setServerList = useServerStore((state) => state.setServerList);
 	const setGlobalConfig = useGlobalConfigStore((state) => state.setGlobalConfig);
 	const setBackupModuleEnable = useBackupModuleStore((state) => state.setBackupModuleEnable);
+	const setIsAdvavanced = useAuthIsAdvanced((state) => state.setIsAdvavanced);
 	const setBackupServerList = useBackupModuleStore((state) => state.setBackupServerList);
 	const setConfig = useConfigStore((state) => state.setConfig);
 	const allConfig = useAllConfig();
@@ -112,24 +114,30 @@ const App: FC = () => {
 				]
 			},
 			{
-				header: t('label.default_settings', 'Default Settings'),
+				header: t('label.global_server_settings', 'Global Server Settings'),
 				options: [
 					{
 						label: t('label.server_config', 'Server Config')
 					},
 					{
 						label: t('label.advanced', 'Advanced')
-					}
-				]
-			},
-			{
-				header: t('label.server_settings', 'Server Settings'),
-				options: [
+					},
 					{
 						label: t('label.servers_list', 'Servers List')
 					}
 				]
 			},
+			{
+				header: t('label.server_specifics', 'Server Specifics'),
+				options: [
+					{
+						label: t('label.configuration_lbl', 'Configuration')
+					},
+					{
+						label: t('label.advanced', 'Advanced')
+					}
+				]
+			} /* ,
 			{
 				header: t('label.actions', 'Actions'),
 				options: [
@@ -137,7 +145,7 @@ const App: FC = () => {
 						label: t('label.import_an_external_backup', 'Import an External Backup')
 					}
 				]
-			}
+			} */
 		],
 		[t]
 	);
@@ -174,10 +182,10 @@ const App: FC = () => {
 					},
 					{
 						label: t('label.advanced', 'Advanced')
-					},
+					} /* ,
 					{
 						label: t('label.retention_policy', 'Retention Policy')
-					}
+					} */
 				]
 			}
 		],
@@ -223,18 +231,18 @@ const App: FC = () => {
 				]
 			},
 			{
-				header: t('label.management', 'Management'),
+				header: t('domain.manage', 'Manage'),
 				options: [
 					{
 						label: t('label.accounts', 'Accounts')
 					},
 					{
-						label: t('label.mailing_lists', 'Mailing Lists')
+						label: t('label.mailing_list', 'Mailing List')
 					},
 					{
 						label: t('label.resources', 'Resources')
 					},
-					{
+					/* {
 						label: t('label.admin_delegates', 'Admin Delegates')
 					},
 					{
@@ -245,13 +253,13 @@ const App: FC = () => {
 					},
 					{
 						label: t('label.export_domain', 'Export Domain')
-					},
+					} */
 					{
 						label: t('label.restore_account', 'Restore Account')
-					},
-					{
-						label: t('label.restore_deleted_email', 'Restore Deleted E-mail')
 					}
+					/* {
+						label: t('label.restore_deleted_email', 'Restore Deleted E-mail')
+					} */
 				]
 			}
 		],
@@ -266,7 +274,7 @@ const App: FC = () => {
 	const storagesTooltipItems = useMemo(
 		() => [
 			{
-				header: t('label.mail_stores', 'Mailstores'),
+				header: t('label.mailstores', 'Mailstores'),
 				options: [
 					{
 						label: t('label.here_you_will_find', 'Here you will find')
@@ -274,31 +282,29 @@ const App: FC = () => {
 				]
 			},
 			{
-				header: t('label.servers', 'Servers'),
+				header: t('label.global_servers', 'Global Servers'),
 				options: [
 					{
-						label: t('label.service_status', 'Service_Status')
+						label: t('label.servers_list', 'Servers List')
 					},
 					{
+						label: t('label.bucket_list', 'Bucket List')
+					}
+				]
+			},
+			{
+				header: t('label.server_details', 'Server Details'),
+				options: [
+					{
 						label: t('label.data_volumes', 'Data Volumes')
-					},
+					}
+					/* ,
 					{
 						label: t('label.hsm_policies', 'HSM Policies')
 					},
 					{
 						label: t('label.indexer_settings', 'Indexer Settings')
-					},
-					{
-						label: t('label.index_volumes', 'Index Volumes')
-					}
-				]
-			},
-			{
-				header: t('label.buckets', 'Buckets'),
-				options: [
-					{
-						label: t('label.connect_buckets', 'Connect Buckets')
-					}
+					} */
 				]
 			}
 		],
@@ -325,10 +331,10 @@ const App: FC = () => {
 				options: [
 					{
 						label: t('label.details', 'Details')
-					},
+					} /* ,
 					{
 						label: t('label.activate_and_update', 'Activate & Update')
-					}
+					} */
 				]
 			}
 		],
@@ -374,7 +380,7 @@ const App: FC = () => {
 			route: STORAGES_ROUTE_ID,
 			position: 2,
 			visible: true,
-			label: t('label.mail_stores', 'Mailstores'),
+			label: t('label.mailstores', 'Mailstores'),
 			primaryBar: 'HardDriveOutline',
 			appView: AppView,
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -563,6 +569,23 @@ const App: FC = () => {
 	useEffect(() => {
 		getAllServersRequest();
 	}, [getAllServersRequest]);
+
+	useEffect(() => {
+		const hostname = window?.location?.hostname;
+		const protocol = window?.location?.protocol;
+		fetch(`${protocol}//${hostname}/zx/auth/supported`)
+			// eslint-disable-next-line consistent-return
+			.then((res) => {
+				if (res.status === 200) {
+					setIsAdvavanced(true);
+					return res.json();
+				}
+				setIsAdvavanced(false);
+			})
+			.catch(() => {
+				setIsAdvavanced(false);
+			});
+	}, [setIsAdvavanced]);
 
 	return null;
 };
