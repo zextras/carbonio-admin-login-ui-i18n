@@ -999,7 +999,7 @@ export const volumeAllocationList = (t: TFunction): Array<{ label: string; value
 		value: 2
 	},
 	{
-		label: t('volume.volume_allocation_list.sproxy', 'Sproxy'),
+		label: t('volume.volume_allocation_list.sproxy', 'Proxy'),
 		value: 3
 	},
 	{
