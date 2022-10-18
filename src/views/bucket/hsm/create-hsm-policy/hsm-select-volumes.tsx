@@ -20,13 +20,22 @@ import { HSMContext } from '../hsm-context/hsm-context';
 const HSMselectVolumes: FC<any> = () => {
 	const { operation, server }: { operation: string; server: string } = useParams();
 	const [t] = useTranslation();
-	const [showSourceVolume, setShowSourceVolume] = useState<boolean>(true);
-	const [showDestinationVolume, setShowDestinationVolume] = useState<boolean>(true);
 	const context = useContext(HSMContext);
 	const { hsmDetail, setHsmDetail } = context;
+	const [showSourceVolume, setShowSourceVolume] = useState<boolean>(
+		hsmDetail?.sourceVolume.length > 0
+	);
+	const [showDestinationVolume, setShowDestinationVolume] = useState<boolean>(
+		hsmDetail?.destinationVolume.length > 0
+	);
+
 	const [volumeRows, setVolumeRows] = useState<Array<any>>([]);
-	const [selectedDestinationVolume, setSelectedDestinationVolume] = useState<Array<any>>([]);
-	const [selectedSourceVolume, setSelectedSourceVolume] = useState<Array<any>>([]);
+	const [selectedDestinationVolume, setSelectedDestinationVolume] = useState<Array<any>>(
+		hsmDetail?.destinationVolume.map((item: any) => item?.id)
+	);
+	const [selectedSourceVolume, setSelectedSourceVolume] = useState<Array<any>>(
+		hsmDetail?.sourceVolume.map((item: any) => item?.id)
+	);
 	const createSnackbar: any = useContext(SnackbarManagerContext);
 	const headers = useMemo(
 		() => [
@@ -70,6 +79,7 @@ const HSMselectVolumes: FC<any> = () => {
 		},
 		[t]
 	);
+
 	useEffect(() => {
 		const volumeList = hsmDetail?.allVolumes;
 		if (volumeList && volumeList.length > 0) {

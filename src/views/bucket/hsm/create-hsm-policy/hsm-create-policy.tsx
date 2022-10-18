@@ -15,6 +15,8 @@ const HSMcreatePolicy: FC<any> = () => {
 	const { hsmDetail, setHsmDetail } = context;
 	const [abstractString, setAbstractString] = useState<string>('');
 	const [hsmQuery, setHsmQuery] = useState<string>('');
+	const [sourceVolumeNames, setSourceVolumeNames] = useState<string>('');
+	const [destinationVolumeNames, setDestinationVolumeNames] = useState<string>('');
 	useEffect(() => {
 		const enabledString: string[] = [];
 		const beforeString: string[] = [];
@@ -151,6 +153,18 @@ const HSMcreatePolicy: FC<any> = () => {
 			);
 		}
 	}, [hsmDetail, t]);
+
+	useEffect(() => {
+		if (hsmDetail?.sourceVolume.length > 0) {
+			setSourceVolumeNames(hsmDetail?.sourceVolume.map((item: any) => item?.name).join());
+		}
+	}, [hsmDetail?.sourceVolume]);
+
+	useEffect(() => {
+		if (hsmDetail?.destinationVolume.length > 0) {
+			setDestinationVolumeNames(hsmDetail?.destinationVolume.map((item: any) => item?.name).join());
+		}
+	}, [hsmDetail?.destinationVolume]);
 	return (
 		<Container
 			mainAlignment="flex-start"
@@ -193,7 +207,7 @@ const HSMcreatePolicy: FC<any> = () => {
 					<Input
 						label={t('hsm.source_volume', 'Source Volume')}
 						background="gray6"
-						value={hsmDetail?.sourceVolume.length}
+						value={sourceVolumeNames}
 					/>
 				</Container>
 			</ListRow>
@@ -202,7 +216,7 @@ const HSMcreatePolicy: FC<any> = () => {
 					<Input
 						label={t('hsm.destination_volume', 'Destination Volume')}
 						background="gray6"
-						value={hsmDetail?.destinationVolume.length}
+						value={destinationVolumeNames}
 					/>
 				</Container>
 			</ListRow>

@@ -32,7 +32,14 @@ import CreateHsmPolicy from './create-hsm-policy/create-hsm-policy';
 import EditHsmPolicy from './edit-hsm-policy/edit-hsm-policy';
 import DeleteHsmPolicy from './delete-policy/delete-hsm-policy';
 import { useServerStore } from '../../../store/server/store';
-import { APPOINTMENT, CONTACT, DOCUMENT, MESSAGE, SERVER } from '../../../constants';
+import {
+	APPOINTMENT,
+	CONTACT,
+	DOCUMENT,
+	MESSAGE,
+	SERVER,
+	VOLUME_INDEX_TYPE
+} from '../../../constants';
 import { updateBackup } from '../../../services/update-backup';
 
 const HSMsettingPanel: FC = () => {
@@ -222,7 +229,7 @@ const HSMsettingPanel: FC = () => {
 			).then((response: any) => {
 				setIsVolumeInProgress(false);
 				if (response?.volume && response?.volume.length > 0) {
-					setVolumeList(response?.volume);
+					setVolumeList(response?.volume.filter((item: any) => item.type !== VOLUME_INDEX_TYPE));
 				}
 			});
 		}
