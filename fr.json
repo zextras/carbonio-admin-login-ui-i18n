@@ -661,7 +661,7 @@
         "share_message_to_new_member": "Partager le message aux nouveaux membres",
         "smartscan": "Smartscan",
         "smime": "S/MIME",
-        "soft_deleted": "Désactivé",
+        "soft_deleted": "désactivé",
         "this_account_owner_of_the_list": "ce compte sera le propriétaire de cette liste",
         "specified_domain_not_exist": "Le domaine spécifié n'existe pas",
         "start": "démarrer",
@@ -703,7 +703,7 @@
         "would_you_like_to_add_ml": "<bold>Qui souhaitez-vous ajouter à cette liste de distribution ?</bold>",
         "you_are_deleting_ml": "Vous êtes sur le point de supprimer {{name}}",
         "server_specifics": "Spécifications du serveur",
-        "home": "Accueil"
+        "home": ""
     },
     "message": {
         "snackbar": {
@@ -953,7 +953,7 @@
         "keep_deleted_account_in_the_backup": "Garder les comptes supprimés dans les backup",
         "ldap_working_properly": "Le LDAP fonctionne correctement",
         "local_volume": "Volume Local",
-        "maximum_operation_per_account": "Nombre maximum d'Opération par compte",
+        "maximum_operation_per_account": "Maximum d'opération par compte",
         "metadata_archiving": "Archivage des Metadonnées",
         "module_is_enabled_at_startup": "Ce module est activé au démarrage",
         "on_the_fly_metadata": "Métadonnées à la volée",
@@ -1219,7 +1219,7 @@
         "html_compose": "Éditeur HTML",
         "group_calendar": "Calendrier avancé",
         "global_address_list_access": "Accès à la liste globale d'adresses (GAL)",
-        "forwarding_calendar_invitations_to_these_addresses": "Transférer les invitations de calendrier à ces adresses",
+        "forwarding_calendar_invitations_to_these_addresses": "Transférer les invitations à ces adresses",
         "forwarding_addresses_specified_by_the_user": "Adresse de transfert définie par l'utilisateur",
         "forwarding_addresses_hidden_from_the_user": "Adresse de transfert cachée à l'utilisateur",
         "external_pop_access": "Accès POP externe",
