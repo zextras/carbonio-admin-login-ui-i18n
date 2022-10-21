@@ -441,7 +441,7 @@
         "email": "E-mail",
         "enable_automatic_adding_of_contacts": "Ativar a inclusão automática de contatos",
         "enable_mandatory_spell_check": "Ativar verificação ortográfica obrigatória",
-        "enable_past_due_reminders": "Ativar lembretes dos compromissos passados",
+        "enable_past_due_reminders": "Ativar lembretes de compromissos passados",
         "export_domain": "Exportar Domínio",
         "gal": "Lista global de endereços",
         "gal_mode": "Modo da GAL",
@@ -760,7 +760,7 @@
         "application_log": "Log do Aplicativo",
         "apply_hsm_policy_after_the_restore": "Aplicar as Políticas HSM após a restauração",
         "appointment_reminder_in_minutes": "Lembrete de Compromisso (minutos antes)",
-        "appointments_default_duration": "Duração do Compromisso Padrão",
+        "appointments_default_duration": "Duração Padrão do Compromisso",
         "are_you_sure_delete_distribution_list": "Tem certeza que deseja excluir <bold>{{name}}</bold>?",
         "back": "VOLTAR",
         "backup_at_startup": "Fazer Backup ao Iniciar",
@@ -815,7 +815,7 @@
         "resource_remove_correctly": "{{resource_name}} foi removido com successo.",
         "rt_status": "Status RT",
         "search_for_user_add_button": "Busque por um usuário e clique no botão ADICIONAR.",
-        "server_list": "Lista de Servidores",
+        "server_list": "Lista de servidores",
         "server_specific": "Especificações do Servidor",
         "server_specifics": "Especificações do Servidor",
         "smartscan": "Smartscan",
@@ -828,7 +828,7 @@
         "volume_type_edited": "{{message}}",
         "new_mailing_list": "Nova Lista de E-mail",
         "virtual_host_user_msg_1": "Por exemplo, você pode tornar o serviço disponível tanto para mail.example.com quanto para webmail.example.com.",
-        "deleting_resource_name": "Você está excluindo {{name}}",
+        "deleting_resource_name": "Você está excluíndo {{name}}",
         "login_is_disabled": "Login desativado",
         "mailing_list_name": "Nome da Lista de E-mail",
         "members_only": "Apenas membros",
@@ -876,7 +876,7 @@
         "who_is_in_this_list": "Quem está nesta lista?",
         "who_needs_receive_this_email": "Quem deve receber este e-mail?",
         "reply_to_address_for_receipt": "Endereço de resposta da confirmação",
-        "home": "Home"
+        "home": ""
     },
     "message": {
         "snackbar": {
