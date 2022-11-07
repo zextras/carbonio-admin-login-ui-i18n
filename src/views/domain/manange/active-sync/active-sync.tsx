@@ -1,0 +1,236 @@
+/*
+ * SPDX-FileCopyrightText: 2022 Zextras <https://www.zextras.com>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+import React, { FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import {
+	Container,
+	Divider,
+	Row,
+	Text,
+	Button,
+	Input,
+	Padding,
+	Table,
+	Icon,
+	SnackbarManagerContext
+} from '@zextras/carbonio-design-system';
+import { useTranslation, Trans } from 'react-i18next';
+import Paginig from '../../../components/paging';
+import gardian from '../../../../assets/gardian.svg';
+import { getAllDevices } from '../../../../services/get-all-devices';
+
+const ActiveSync: FC = () => {
+	const [t] = useTranslation();
+	const [offset, setOffset] = useState<number>(0);
+	const [allDevices, setAllDevices] = useState<Array<any>>([]);
+	const [allDeviceRow, setAllDeviceRow] = useState<Array<any>>([]);
+	const createSnackbar: any = useContext(SnackbarManagerContext);
+	const headers: any[] = useMemo(
+		() => [
+			{
+				id: 'name',
+				label: t('label.device', 'Device'),
+				width: '15%',
+				bold: true
+			},
+			{
+				id: 'device_id',
+				label: t('label.device_id', 'Device ID'),
+				width: '15%',
+				bold: true
+			},
+			{
+				id: 'account',
+				label: t('label.account', 'Account'),
+				width: '15%',
+				bold: true
+			},
+			{
+				id: 'last_seen',
+				label: t('label.last_seen', 'Last seen'),
+				width: '15%',
+				bold: true
+			},
+			{
+				id: 'eas',
+				label: t('label.eas', 'EAS'),
+				width: '15%',
+				bold: true
+			},
+			{
+				id: 'status',
+				label: t('label.status', 'Status'),
+				width: '15%',
+				bold: true
+			}
+		],
+		[t]
+	);
+
+	const getAllDeviceList = useCallback(() => {
+		getAllDevices('ZxMobile')
+			.then((res: any) => {
+				if (res?.Body?.response?.content) {
+					const content = JSON.parse(res?.Body?.response?.content);
+					if (content?.response?.devices && content?.ok) {
+						const devices = content?.response?.devices;
+					}
+				}
+			})
+			.catch((error: any) => {
+				createSnackbar({
+					key: 'error',
+					type: 'error',
+					label: error
+						? error?.error
+						: t('label.something_wrong_error_msg', 'Something went wrong. Please try again.'),
+					autoHideTimeout: 3000,
+					hideButton: true,
+					replace: true
+				});
+			});
+	}, [t, createSnackbar]);
+
+	useEffect(() => {
+		getAllDeviceList();
+	}, [getAllDeviceList]);
+
+	return (
+		<Container background="gray6" mainAlignment="flex-start">
+			<Container
+				orientation="column"
+				background="gray6"
+				crossAlignment="flex-start"
+				mainAlignment="flex-start"
+			>
+				<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
+					<Container orientation="vertical" mainAlignment="space-around" height="56px">
+						<Row orientation="horizontal" width="100%">
+							<Row
+								padding={{ all: 'large' }}
+								mainAlignment="flex-start"
+								width="50%"
+								crossAlignment="flex-start"
+							>
+								<Text size="medium" weight="bold" color="gray0">
+									{t('label.active_sync', 'ActiveSync')}
+								</Text>
+							</Row>
+							<Row
+								padding={{ all: 'large' }}
+								width="50%"
+								mainAlignment="flex-end"
+								crossAlignment="flex-end"
+							>
+								<Button
+									type="outlined"
+									label={t('label.bulk_actions', 'Bulk Actions')}
+									icon="ArrowIosDownward"
+									iconPlacement="right"
+									color="primary"
+									disabled
+									height={36}
+								/>
+							</Row>
+						</Row>
+					</Container>
+					<Divider color="gray2" />
+				</Row>
+				<Container
+					orientation="column"
+					background="gray6"
+					crossAlignment="flex-start"
+					mainAlignment="flex-start"
+					height="calc(100% - 70px)"
+					style={{ overflow: 'auto' }}
+					padding={{ all: 'large' }}
+				>
+					<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%" wrap="nowrap">
+						<Input
+							label={t(
+								'label.filter_by_device_type_account',
+								'Filter by device type, account, status'
+							)}
+							background="gray5"
+							value={''}
+							CustomIcon={(): any => <Icon icon="FunnelOutline" size="large" color="primary" />}
+						/>
+
+						<Padding left="medium">
+							<Button
+								type="outlined"
+								label={t('label.remove', 'Remove')}
+								color="error"
+								height="44px"
+							/>
+						</Padding>
+					</Row>
+					<Row
+						takeAvwidth="fill"
+						mainAlignment="flex-start"
+						width="100%"
+						wrap="nowrap"
+						padding={{ top: 'large' }}
+					>
+						<Table rows={[]} headers={headers} showCheckbox={false} />
+					</Row>
+					{allDeviceRow.length === 0 && (
+						<Container orientation="column" crossAlignment="center" mainAlignment="center">
+							<Row>
+								<img src={gardian} alt="logo" />
+							</Row>
+							<Row
+								padding={{ top: 'extralarge' }}
+								orientation="vertical"
+								crossAlignment="center"
+								style={{ textAlign: 'center' }}
+							>
+								<Text weight="light" color="#828282" size="large" overflow="break-word">
+									{t('label.this_list_is_empty', 'This list is empty.')}
+								</Text>
+							</Row>
+							<Row
+								orientation="vertical"
+								crossAlignment="center"
+								style={{ textAlign: 'center' }}
+								padding={{ top: 'small' }}
+								width="53%"
+							>
+								<Text weight="light" color="#828282" size="large" overflow="break-word">
+									<Trans
+										i18nKey="label.do_you_need_more_information"
+										defaults="Do you need more information?"
+									/>
+								</Text>
+							</Row>
+							<Row
+								orientation="vertical"
+								crossAlignment="center"
+								style={{ textAlign: 'center' }}
+								padding={{ top: 'small', bottom: 'small' }}
+								width="53%"
+							>
+								<Text weight="light" color="primary">
+									{t('label.click_here', 'Click here')}
+								</Text>
+							</Row>
+						</Container>
+					)}
+					<Row
+						takeAvwidth="fill"
+						mainAlignment="flex-start"
+						width="100%"
+						wrap="nowrap"
+						padding={{ top: 'large' }}
+					>
+						<Paginig totalItem={1} pageSize={10} setOffset={setOffset} />
+					</Row>
+				</Container>
+			</Container>
+		</Container>
+	);
+};
+export default ActiveSync;
