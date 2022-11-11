@@ -35,6 +35,7 @@ import {
 	RESOURCES,
 	RESTORE_ACCOUNT,
 	RESTORE_DELETED_EMAIL,
+	THEME,
 	VIRTUAL_HOSTS
 } from '../../constants';
 import { useDomainStore } from '../../store/domain/store';
@@ -182,6 +183,11 @@ const DomainListPanel: FC = () => {
 			{
 				id: MAILBOX_QUOTA,
 				name: t('label.mailbox_quota', 'Mailbox Quota'),
+				isSelected: isDomainSelect
+			},
+			{
+				id: THEME,
+				name: t('label.theme', 'Theme'),
 				isSelected: isDomainSelect
 			}
 		],
