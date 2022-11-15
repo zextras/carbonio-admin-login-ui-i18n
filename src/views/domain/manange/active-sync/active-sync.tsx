@@ -19,7 +19,7 @@ import {
 } from '@zextras/carbonio-design-system';
 import { useTranslation, Trans } from 'react-i18next';
 import moment from 'moment';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, debounce, filter } from 'lodash';
 import gardian from '../../../../assets/gardian.svg';
 import { getAllDevices } from '../../../../services/get-all-devices';
 import ActiveDeviceDetail from './active-device-detail';
@@ -53,6 +53,8 @@ const ActiveSync: FC = () => {
 	const [selectedMobileDevice, setSelectedMobileDevice] = useState<Array<any>>([]);
 	const [selectedMobileDeviceDetail, setSelectedMobileDeviceDetail] = useState<any>();
 	const [refreshDeviceList, setRefreshDeviceList] = useState<boolean>(false);
+	const [searchString, setSearchString] = useState<string>('');
+	const [backupAllDevice, setBackupAllDevice] = useState<Array<MobileDevice>>([]);
 
 	const headers: any[] = useMemo(
 		() => [
@@ -105,6 +107,7 @@ const ActiveSync: FC = () => {
 						const devices = content?.response?.devices;
 						if (devices && devices.length > 0) {
 							setAllMobileDevices(devices);
+							setBackupAllDevice(devices);
 						}
 					}
 				}
@@ -136,7 +139,30 @@ const ActiveSync: FC = () => {
 		}
 	}, [refreshDeviceList, getAllDeviceList, selectedMobileDevice]);
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const searchQuery = useCallback(
+		debounce((searchText, data: Array<MobileDevice>) => {
+			if (searchText) {
+				const filterDevice = data.filter(
+					(item: MobileDevice) =>
+						item?.accountName.toLowerCase().includes(searchText.toLowerCase()) ||
+						item?.status.toString().toLowerCase().includes(searchText.toLowerCase()) ||
+						item?.deviceType.toLowerCase().includes(searchText.toLowerCase())
+				);
+				setAllMobileDevices(filterDevice);
+			} else {
+				setAllMobileDevices(data);
+			}
+		}, 700),
+		[debounce]
+	);
+
+	useEffect(() => {
+		searchQuery(searchString, backupAllDevice);
+	}, [searchString, searchQuery, backupAllDevice]);
+
 	useMemo(() => {
+		setAllDeviceRow([]);
 		if (allMobileDevices.length > 0) {
 			const allRows = allMobileDevices.map((item: MobileDevice) => ({
 				id: item?.firstSeen,
@@ -285,7 +311,9 @@ const ActiveSync: FC = () => {
 								'Filter by device type, account, status'
 							)}
 							background="gray5"
-							value={''}
+							onChange={(e: any): any => {
+								setSearchString(e.target.value);
+							}}
 							CustomIcon={(): any => <Icon icon="FunnelOutline" size="large" color="primary" />}
 						/>
 
@@ -295,6 +323,7 @@ const ActiveSync: FC = () => {
 								label={t('label.remove', 'Remove')}
 								color="error"
 								height="44px"
+								disabled
 							/>
 						</Padding>
 					</Row>

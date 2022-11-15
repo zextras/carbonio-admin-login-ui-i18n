@@ -384,11 +384,12 @@ const ActiveDeviceDetail: FC<{
 							width={186}
 							iconPlacement="right"
 							onClick={(): void => {
+								setIsOperationRequestInProgress(true);
 								setOperationType(SUSPEND_DEVICE);
 								suspendDeviceOperation();
 							}}
-							loading={isDetailRequestInProgess}
-							disable={isDetailRequestInProgess}
+							loading={isDetailRequestInProgess || isOperationRequestInProgress}
+							disable={isDetailRequestInProgess || isOperationRequestInProgress}
 						/>
 					</Tooltip>
 				</Container>
