@@ -325,7 +325,7 @@
                 "accepted": "Anda telah menerima permintaan berbagi"
             }
         },
-        "status": "Status",
+        "status": "status",
         "suspended": "Ditangguhkan",
         "timezone": "Zona Waktu",
         "unlimited": "Tidak terbatas",
@@ -671,7 +671,7 @@
         "public": "Publik",
         "quotas": "Kuota",
         "restore_data_source": "Pulihkan Sumber Data",
-        "settings": "Pengaturan",
+        "settings": "Setelan",
         "something_wrong_wrror_msg": "Terjadi kesalahan,. Coba lagi.",
         "use_last_available_status": "Gunakan status yang terakhir tersedia",
         "volume": "Volume",
@@ -872,7 +872,32 @@
         "type_an_account_dot": "Ketik akun ...",
         "username_with": "nama pengguna dengan",
         "who_is_in_this_list": "Siapa yang ada di daftar?",
-        "who_needs_receive_this_email": "Siapa yang butuh menerima email ini?"
+        "who_needs_receive_this_email": "Siapa yang butuh menerima email ini?",
+        "DELETE": "HAPUS",
+        "OTP": "OTP",
+        "allowed": "Diizinkan",
+        "device_id": "ID Perangkat",
+        "e_mail": "Email",
+        "eas": "EAS",
+        "email_address": "Alamat email",
+        "enabled": "Diaktifkan",
+        "global": "Global",
+        "last_seen": "Terakhir dilihat",
+        "mailstores": "Mailstore",
+        "mobile_password": "Kata Sandi Seluler",
+        "reset_device": "Reset Perangkat",
+        "s3_bucket": "Bucket S3",
+        "select_an_external_volume": "Pilih Volume Eksternal",
+        "service": "Layanan",
+        "status_lbl": "Status",
+        "theme": "Tema",
+        "title": "Judul",
+        "update": "Perbarui",
+        "volume_next_button": "BERIKUTNYA",
+        "volume_server_name": "Server",
+        "wipe_device": "Hapus Perangkat",
+        "advanced_lbl": "Canggih",
+        "reset": "Atur ulang"
     },
     "message": {
         "snackbar": {
@@ -1027,7 +1052,9 @@
         "use_ical_delegation_model_for_shared_calendars": "Gunakan model delegasi iCal untuk kalender bersama",
         "use_quickadd_dialog_in_creation": "Gunakan dialog QuickAdd saat pembuatan",
         "yes_disable": "Ya, nonaktifkan",
-        "show_time_zone_lists_in_view": "Tampilkan daftar zona waktu dalam tampilan janji temu"
+        "show_time_zone_lists_in_view": "Tampilkan daftar zona waktu dalam tampilan janji temu",
+        "active_sync": "ActiveSync",
+        "dark_mode": "Mode Gelap"
     },
     "backup": {
         "backup_path": "Jalur Backup",
@@ -1102,7 +1129,10 @@
         "metadata": "Metadata",
         "other_controls": "Kontrol Lain",
         "smart_scan_configuration": "Konfigurasi Pemindaian Cerdas",
-        "tuning_options": "Opsi Penyesuaian"
+        "tuning_options": "Opsi Penyesuaian",
+        "bucket_list": "Daftar Bucket",
+        "external_volume": "Volume Eksternal",
+        "kb": "KB"
     },
     "accountDetails": {
         "enable_activeSync_remote_access": "Aktifkan akses jarak jauh ActiveSync",
@@ -1274,6 +1304,84 @@
             "create_mailstores_volume": "Buat Volume Mailstore"
         },
         "serverName_volumes": "Volume {{serverName}}",
-        "serverName_volumes_create_mailstores_volume": "{{serverName}} Buat Volume Mailstore"
+        "serverName_volumes_create_mailstores_volume": "{{serverName}} Buat Volume Mailstore",
+        "server_list_header": {
+            "description": "Deskripsi",
+            "index": "Indeks",
+            "primary": "Utama",
+            "secondary": "Sekunder",
+            "server": "Server"
+        },
+        "volume_allocation_list": {
+            "centralized": "Terpusat",
+            "external": "Eksternal",
+            "local": "Lokal"
+        },
+        "volume_config_header": {
+            "name": "Nama"
+        },
+        "volume_header": {
+            "compression": "Kompresi",
+            "current": "Saat ini",
+            "id": "ID",
+            "name": "Nama",
+            "path": "Jalur"
+        },
+        "volume_indexer_header": {
+            "current": "Saat ini",
+            "id": "ID",
+            "name": "Nama",
+            "path": "Jalur"
+        },
+        "volume_type": {
+            "index": "Indeks",
+            "primary": "Utama",
+            "secondary": "Sekunder"
+        }
+    },
+    "hsm": {
+        "all": "Semua",
+        "allocation": "Alokasi",
+        "apply_duplication_after_scheduledhsm": "Terapkan Deduplikasi setelah HSM terjadwal",
+        "contact": "Kontak",
+        "create_policy": "Buat Kebijakan",
+        "criteria": "Kriteria",
+        "current": "Saat ini",
+        "days": "Hari",
+        "delete": "Hapus",
+        "destination_volume": "Volume Tujuan",
+        "details": "Detail",
+        "document": "Dokumen",
+        "edit": "Edit",
+        "event": "Acara",
+        "gb": "GB",
+        "hours": "Jam",
+        "hsm_policies_list": "Daftar Kebijakan HSM",
+        "hsm_policy": "Kebijakan HSM",
+        "indexes": "Indeks",
+        "items": "Item",
+        "kb": "KB",
+        "mb": "MB",
+        "message": "Pesan",
+        "minimum_space_threshold": "Batas Ruang Minimum",
+        "minutes": "Menit",
+        "months": "Bulan",
+        "name": "Nama",
+        "new_policy_summary": "Ringkasan Kebijakan Baru",
+        "no": "Tidak",
+        "option": "Opsi",
+        "parameters": "Parameter",
+        "policy_settings": "Pengaturan Kebijakan",
+        "primary": "Utama",
+        "schedule": "Jadwal",
+        "secondary": "Sekunder",
+        "select_volumes": "Pilih Volume",
+        "server": "Server",
+        "source_volume": "Volume Sumber",
+        "this_function_allow_save_disk_copy_msg": "Fungsi ini memungkinkanmu meyimpan ruang disk dengan menyimpan satu salinan item.",
+        "type": "Jenis",
+        "value": "Nilai",
+        "volumes": "Volume",
+        "yes": "Ya"
     }
 }
