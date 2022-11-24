@@ -1384,6 +1384,7 @@
         "volumes": "Datenträger",
         "yes": "Ja",
         "all": "Alle",
-        "gb": "GB"
+        "gb": "GB",
+        "secondry": "Sekundär"
     }
 }
