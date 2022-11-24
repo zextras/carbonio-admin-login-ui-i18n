@@ -1380,6 +1380,7 @@
         "type": "Tipo",
         "value": "Valore",
         "volumes": "Volumi",
-        "yes": "Sì"
+        "yes": "Sì",
+        "secondry": "Secondario"
     }
 }
