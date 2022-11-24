@@ -617,7 +617,32 @@
         "type_an_account_dot": "键入账户...",
         "who_is_in_this_list": "谁在列表中？",
         "who_needs_receive_this_email": "谁需要接收此邮件？",
-        "server_list": "服务器列表"
+        "server_list": "服务器列表",
+        "OTP": "OTP",
+        "allowed": "已允许",
+        "mailstores": "Mailstores",
+        "reset": "重置",
+        "reset_device": "重置设备",
+        "s3_bucket": "S3存储桶",
+        "service": "服务",
+        "update": "更新",
+        "DELETE": "删除",
+        "advanced_lbl": "高级",
+        "device_id": "设备ID",
+        "e_mail": "邮件",
+        "eas": "EAS",
+        "email_address": "邮件地址",
+        "enabled": "已启用",
+        "global": "全局",
+        "last_seen": "上次出现",
+        "mobile_password": "移动端密码",
+        "select_an_external_volume": "选择外部卷",
+        "status_lbl": "状态",
+        "theme": "主题",
+        "title": "标题",
+        "volume_next_button": "下一步",
+        "volume_server_name": "服务器",
+        "wipe_device": "擦除设备"
     },
     "timezone": {
         "asia_tehran": "{{value}} 德黑兰",
@@ -956,7 +981,10 @@
         "metadata": "元数据",
         "other_controls": "其他控制",
         "range": "范围",
-        "running": "运行中"
+        "running": "运行中",
+        "bucket_list": "存储桶列表",
+        "external_volume": "外部卷",
+        "kb": "KB"
     },
     "cos": {
         "calendar_options": "日历选项",
@@ -1104,7 +1132,9 @@
         "reject_common_passwords": "拒绝常见密码",
         "search_a_specific_server": "搜索特定服务器",
         "use_quickadd_dialog_in_creation": "创建中使用 QuickAdd 对话框",
-        "yes_disable": "是的，禁用"
+        "yes_disable": "是的，禁用",
+        "active_sync": "ActiveSync",
+        "dark_mode": "深色模式"
     },
     "accountDetails": {
         "enable_activeSync_remote_access": "启用ActiveSync远程访问",
@@ -1274,8 +1304,86 @@
             "create_mailstores_volume": "创建 Mailstores 卷"
         },
         "serverName_volumes": "{{serverName}} 卷",
-        "serverName_volumes_create_mailstores_volume": "{{serverName}} 创建 Mailstore 卷"
+        "serverName_volumes_create_mailstores_volume": "{{serverName}} 创建 Mailstore 卷",
+        "server_list_header": {
+            "description": "描述",
+            "index": "索引",
+            "primary": "主要",
+            "secondary": "次要",
+            "server": "服务器"
+        },
+        "volume_allocation_list": {
+            "local": "本地",
+            "centralized": "中心化",
+            "external": "外部"
+        },
+        "volume_type": {
+            "secondary": "次要",
+            "index": "索引",
+            "primary": "主要"
+        },
+        "volume_config_header": {
+            "name": "名称"
+        },
+        "volume_header": {
+            "compression": "压缩",
+            "current": "当前",
+            "id": "ID",
+            "name": "名称",
+            "path": "路径"
+        },
+        "volume_indexer_header": {
+            "current": "当前",
+            "id": "ID",
+            "name": "名称",
+            "path": "路径"
+        }
     },
     "click_new_bucket_button_to_create_new_one": "点击“新存储桶”按钮以新建。",
-    "have_not_setup_bucket_type": "似乎您还没有设置存储桶类型"
+    "have_not_setup_bucket_type": "似乎您还没有设置存储桶类型",
+    "hsm": {
+        "contact": "联系人",
+        "gb": "GB",
+        "policy_settings": "策略设置",
+        "all": "全部",
+        "allocation": "分配",
+        "apply_duplication_after_scheduledhsm": "计划的HSM之后去重",
+        "create_policy": "创建策略",
+        "criteria": "标准",
+        "current": "当前",
+        "days": "天",
+        "delete": "删除",
+        "destination_volume": "目标卷",
+        "details": "详细资料",
+        "document": "文档",
+        "edit": "编辑",
+        "event": "事件",
+        "hours": "小时",
+        "hsm_policies_list": "HSM策略列表",
+        "hsm_policy": "HSM策略",
+        "indexes": "索引",
+        "items": "项目",
+        "kb": "KB",
+        "mb": "MB",
+        "message": "消息",
+        "minimum_space_threshold": "最小空间阈值",
+        "minutes": "分钟",
+        "months": "月",
+        "name": "名称",
+        "new_policy_summary": "新政策摘要",
+        "no": "否",
+        "option": "选项",
+        "parameters": "参数",
+        "primary": "主要",
+        "schedule": "计划",
+        "secondary": "次要",
+        "select_volumes": "选择卷",
+        "server": "服务器",
+        "source_volume": "来源卷",
+        "this_function_allow_save_disk_copy_msg": "此功能允许您通过存储项目的单个副本来节省磁盘空间。",
+        "type": "类型",
+        "value": "值",
+        "volumes": "卷",
+        "yes": "是"
+    }
 }
