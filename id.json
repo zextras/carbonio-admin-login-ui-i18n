@@ -1387,6 +1387,7 @@
         "value": "Nilai",
         "volumes": "Volume",
         "yes": "Ya",
-        "policy_name": "Nama Kebijakan"
+        "policy_name": "Nama Kebijakan",
+        "secondry": "Sekunder"
     }
 }
