@@ -734,7 +734,10 @@
         "update": "Actualizar",
         "volume_next_button": "SIGUIENTE",
         "volume_server_name": "Servidor",
-        "wipe_device": "Borrar dispositivo"
+        "wipe_device": "Borrar dispositivo",
+        "failed": "Fallo",
+        "remove_button": "REMOVER",
+        "session_id": "ID de sesión"
     },
     "timezone": {
         "indian_mauritius": "{{value}} Port Louis",
@@ -1386,6 +1389,7 @@
         "value": "Valor",
         "volumes": "Volúmenes",
         "yes": "Sí",
-        "secondry": "Secundario"
+        "secondry": "Secundario",
+        "policy_name": "Nombre de la política"
     }
 }
