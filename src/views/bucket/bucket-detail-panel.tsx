@@ -321,13 +321,6 @@ const BucketDetailPanel: FC = () => {
 							if (showDetails) setShowDetails(!showDetails);
 						}}
 					/>
-					<Button
-						type="outlined"
-						label={t('label.bucket_delete_button', 'DELETE')}
-						icon="CloseOutline"
-						color="error"
-						disabled
-					/>
 				</Row>
 				{bucketDeleteName && (
 					<BucketDeleteModel

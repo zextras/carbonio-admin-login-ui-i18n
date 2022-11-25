@@ -18,7 +18,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { BucketRegions, BucketRegionsInAlibaba, BucketTypeItems } from '../utility/utils';
 import { fetchSoap } from '../../services/bucket-service';
-import { ALIBABA, AMAZON_WEB_SERVICE_S3, ERROR, FAIL, SUCCESS } from '../../constants';
+import { ALIBABA, AMAZON_WEB_SERVICE_S3, CUSTOM_S3, ERROR, FAIL, SUCCESS } from '../../constants';
 
 const prefixRegex = /^[A-Za-z0-9_./-]*$/;
 
@@ -39,6 +39,8 @@ const Connection: FC<{
 		t('buckets.connection.create_and_verify_connector', 'CREATE & VERIFY CONNECTOR')
 	);
 	const [bucketName, setBucketName] = useState('');
+	const [bucketLabel, setBucketLabel] = useState('');
+	const [bucketNotes, setBucketNotes] = useState('');
 	const [accessKeyData, setAccessKeyData] = useState('');
 	const [secretKey, setSecretKey] = useState('');
 	const [regionsData, setRegionsData] = useState<any>();
@@ -59,12 +61,15 @@ const Connection: FC<{
 	const server = document.location.hostname; // 'nbm-s02.demo.zextras.io';
 	const handleVerifyConnector = (): any => {
 		if (bucketName && accessKeyData && secretKey) {
-			fetchSoap('zextras', {
+			const storeType = bucketType || bucketTypeData;
+			const objectToSend = {
 				_jsns: 'urn:zimbraAdmin',
 				module: 'ZxCore',
 				action: 'doCreateBucket',
-				storeType: bucketType || bucketTypeData,
+				storeType,
 				bucketName,
+				label: bucketLabel,
+				notes: bucketNotes,
 				accessKey: accessKeyData,
 				secret: secretKey,
 				region: regionsData?.value,
@@ -74,7 +79,17 @@ const Connection: FC<{
 						: urlInput,
 				prefix,
 				targetServer: server
-			}).then((res: any) => {
+			};
+			if (storeType === CUSTOM_S3) {
+				delete objectToSend.region;
+			}
+			if (prefix === '') {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				delete objectToSend.prefix;
+			}
+
+			fetchSoap('zextras', objectToSend).then((res: any) => {
 				const response = JSON.parse(res.Body.response.content);
 				if (response.ok) {
 					const data = response.response.message;
@@ -123,8 +138,7 @@ const Connection: FC<{
 			bucketName &&
 			regionsData?.value &&
 			accessKeyData &&
-			secretKey &&
-			prefix
+			secretKey
 		) {
 			setBucketDetailButton(false);
 		} else if (
@@ -134,7 +148,6 @@ const Connection: FC<{
 			accessKeyData &&
 			secretKey &&
 			urlInput &&
-			prefix &&
 			prefixConfirm
 		) {
 			setBucketDetailButton(false);
@@ -147,7 +160,6 @@ const Connection: FC<{
 			accessKeyData &&
 			secretKey &&
 			urlInput &&
-			prefix &&
 			prefixConfirm
 		) {
 			setBucketDetailButton(false);
@@ -191,9 +203,10 @@ const Connection: FC<{
 				setShowRegion(true);
 			} else {
 				setShowRegion(false);
+				regionsData.value = '';
 			}
 		}
-	}, [bucketType, bucketTypeData]);
+	}, [bucketType, bucketTypeData, regionsData]);
 
 	useEffect(() => {
 		if (
@@ -337,6 +350,17 @@ const Connection: FC<{
 					/>
 				</Row>
 			)}
+			<Row width={'100%'} padding={{ top: 'large' }} mainAlignment="flex-start">
+				<Input
+					background="gray5"
+					label={t('label.label', 'Label')}
+					name="label"
+					value={bucketLabel}
+					onChange={(ev: any): any => {
+						setBucketLabel(ev.target.value);
+					}}
+				/>
+			</Row>
 			<Row width="100%" padding={{ top: 'large' }}>
 				<Row width={showRegion ? '48%' : '100%'} mainAlignment="flex-start">
 					<Input
@@ -420,10 +444,14 @@ const Connection: FC<{
 						value={prefix}
 						onChange={(ev: any): any => {
 							setPrefix(ev.target.value);
-							if (prefixRegex.test(ev.target.value)) {
-								setprefixConfirm(true);
+							if (ev.target.value !== '') {
+								if (prefixRegex.test(ev.target.value)) {
+									setprefixConfirm(true);
+								} else {
+									setprefixConfirm(false);
+								}
 							} else {
-								setprefixConfirm(false);
+								setprefixConfirm(true);
 							}
 						}}
 						hasError={!prefixConfirm}
@@ -440,6 +468,17 @@ const Connection: FC<{
 					)}
 				</Row>
 			)}
+			<Row width={'100%'} padding={{ top: 'large' }} mainAlignment="flex-start">
+				<Input
+					background="gray5"
+					label={t('label.bucket_notes', 'Notes')}
+					name="notes"
+					value={bucketNotes}
+					onChange={(ev: any): any => {
+						setBucketNotes(ev.target.value);
+					}}
+				/>
+			</Row>
 			<Row width="100%" padding={{ top: 'large' }}>
 				<Button
 					type="outlined"
