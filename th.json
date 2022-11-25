@@ -899,7 +899,10 @@
         "update": "อัพเดท",
         "volume_next_button": "ต่อไป",
         "volume_server_name": "เซิร์ฟเวอร์",
-        "wipe_device": "Wipe อุปกรณ์"
+        "wipe_device": "Wipe อุปกรณ์",
+        "failed": "ล้มเหลว",
+        "remove_button": "ลบ",
+        "session_id": "รหัสเซสชัน"
     },
     "message": {
         "snackbar": {
@@ -1385,6 +1388,7 @@
         "value": "ค่า",
         "volumes": "ไดรฟ์ข้อมูล",
         "yes": "ใช่",
-        "secondry": "รอง"
+        "secondry": "รอง",
+        "policy_name": "ชื่อนโยบาย"
     }
 }
