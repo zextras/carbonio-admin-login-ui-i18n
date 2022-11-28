@@ -41,12 +41,12 @@ const headers = (t: any): Array<object> => [
 	},
 	{
 		id: 'name',
-		label: t('label.label', 'Name'),
+		label: t('label.name', 'Name'),
 		bold: true
 	},
 	{
 		id: 'type',
-		label: t('label.label', 'Type'),
+		label: t('label.type', 'Type'),
 		bold: true
 	}
 ];
