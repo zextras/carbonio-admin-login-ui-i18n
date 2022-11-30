@@ -515,7 +515,7 @@ const EditBucketDetailPanel: FC<{
 						background="gray5"
 						label={t('label.bucket_type', 'Bucket Type')}
 						inputName="label"
-						value={bucketDetail?.storeType}
+						value={bucketDetail?.storeType || ''}
 						readOnly
 					/>
 				</Row>
