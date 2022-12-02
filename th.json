@@ -913,11 +913,11 @@
         "end_user_theme_description": "ในส่วนนี้ คุณสามารถปรับแต่ง WebApp ด้วยโลโก้และรูปภาพของบริษัทของคุณ",
         "favicon_description": "วาง URL ของ favicon สำหรับหน้าเข้าสู่ระบบ ใช้ไฟล์ ICO ขนาด 16x16 พิกเซล",
         "light_mode": "โหมด <bold>สว่าง</bold>",
-        "can_not_receiver": "ไม่สามารถรับได้",
+        "can_not_receiver": "รับไม่ได้",
         "logo_description": "วาง URL ของโลโก้สำหรับหน้าเข้าสู่ระบบ ใช้ไฟล์ SVG หรือ PNG ที่มีพื้นหลังโปร่งใส ขนาด 240x120 พิกเซล",
         "manage_external_volume_and_move_all": "จัดการวอลุ่มภายนอก และย้ายรายการทั้งหมดไปยังเส้นทางโลคอล",
         "operation_now_in_queue": "ตอนนี้การดำเนินการกำลังอยู่ในคิว",
-        "aware_of_doing_device_factory_settings": "ฉันทราบว่าฉันกำลังทำอะไรอยู่ ฉันต้องการรีเซ็ตให้เป็นการตั้งค่าจากโรงงาน ",
+        "aware_of_doing_device_factory_settings": "ฉันต้องการรีเซ็ตให้เป็นการตั้งค่าจากโรงงาน",
         "owners_description_msg_1": "เจ้าของสามารถเพิ่มและลบสมาชิก, เปลี่ยนชื่อที่แสดงและคำอธิบาย, เปลี่ยนการมองเห็นรายการ (เช่นซ่อนใน gal), เปลี่ยนความเป็นเจ้าของ, แก้ไขการสมัคร/ยกเลิกการสมัครได้",
         "rest_device_warning_msg_1": "การล้างข้อมูลอุปกรณ์จะคืนค่าเป็นการตั้งค่าจากโรงงาน คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ? ",
         "selected_empty_bucket_helperText": "คุณยังไม่ได้เลือก bucket\nคุณสามารถเริ่มพิมพ์ในช่อง\nด้านบนเพื่อเริ่มดู",
@@ -1285,7 +1285,7 @@
     "account": {
         "new": {
             "create_account_wizard": "ตัวช่วยสร้างบัญชี",
-            "create_otp_wizard": "สร้างตัวช่วยสร้าง OTP"
+            "create_otp_wizard": "สร้างตั OTP"
         }
     },
     "welcome_to_carbonio": "ยินดีต้อนรับ {{adminName}} สู่ Carbonio {{carbonioVersion}}!",
@@ -1522,9 +1522,9 @@
         "smaller_size": "เล็กกว่า (ขนาด)",
         "smaller_size_than": "เล็กกว่า <bold>{{measure}} {{scale}}</bold>",
         "years": "ปี",
-        "editing_policy": "กำลังแก้ไขนโยบาย",
-        "enable_scheduler": "เปิดใช้งานตัวจัดกำหนดการ",
-        "scheduling": "การกำหนดเวลา",
+        "editing_policy": "แก้ไขนโยบาย",
+        "enable_scheduler": "เปิดใช้งานกำหนดการ",
+        "scheduling": "กำหนดการ",
         "volume_already_selected_in_destination": "วอลุ่มที่เลือกไว้ในไดรฟ์ข้อมูลปลายทาง",
         "volume_already_selected_in_source": "วอลุ่มที่เลือกไว้ในไดรฟ์ข้อมูลต้นทาง"
     },
