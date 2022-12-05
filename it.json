@@ -151,7 +151,8 @@
         "max_result_return_gal_search": "Numero massimo di risultati riportati dalla ricerca GAL",
         "single_account_domain_space_byte": "Spazio dominio del singolo account (Byte)",
         "i_want_to_generate_an_otp_code": "VOGLIO GENERARE UN CODICE OTP",
-        "proceed_without_generating_an_otp_code": "PROCEDI SENZA GENERARE UN CODICE OTP"
+        "proceed_without_generating_an_otp_code": "PROCEDI SENZA GENERARE UN CODICE OTP",
+        "internal_gal_received": "Intervallo polling GAL interna"
     },
     "label": {
         "account": "Profilo",
@@ -848,7 +849,9 @@
         "wiping_device_warning_msg_1": "Ripristinando il dispositivo, questo tornerà alle impostazioni di fabbrica. Vuoi continuare?",
         "yes_wipe_the_device": "Sì, ripristina il dispositivo",
         "you_are_trying_reset_device": "Stai cercando di ripristinare un dispositivo",
-        "you_are_trying_wipe_device": "Stai provando a ripristinare un dispositivo"
+        "you_are_trying_wipe_device": "Stai provando a ripristinare un dispositivo",
+        "user_agent": "Agente Utente",
+        "total_acc_rights_with_delete_distribution_list_helper_text": "Questa lista ha <bold>{{totalAccRights}}</bold> account condivisi. <br /> Eliminandola, anche le condivisioni andranno perse."
     },
     "message": {
         "snackbar": {
