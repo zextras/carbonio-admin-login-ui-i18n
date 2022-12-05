@@ -270,7 +270,9 @@ const DomainListPanel: FC = () => {
 	const manageItems = useMemo(
 		() =>
 			!isAdvanced
-				? allManageOptions.filter((item: any) => item?.id !== RESTORE_ACCOUNT)
+				? allManageOptions.filter(
+						(item: any) => item?.id !== RESTORE_ACCOUNT && item?.id !== ACTIVE_SYNC
+				  )
 				: allManageOptions,
 		[allManageOptions, isAdvanced]
 	);
