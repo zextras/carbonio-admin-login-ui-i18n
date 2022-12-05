@@ -679,7 +679,7 @@
         "end_user_theme_description": "В этом разделе вы можете настроить веб-приложение с логотипом и изображением вашей компании.",
         "end_user_title": "КОНЕЧНЫЙ ПОЛЬЗОВАТЕЛЬ",
         "filter_by_device_type_account": "Фильтр по типу устройства, учетной записи, статусу",
-        "image_path": "Путь к изображению",
+        "image_path": "Путь изображения",
         "ip": "IP",
         "link_button": "ССЫЛКА",
         "logo": "Логотип",
@@ -720,7 +720,7 @@
         "suspend": "Приостановить",
         "title_and_description": "Заголовок и описание",
         "title_theme_note": "Заголовок — это имя, которое будет отображаться на вкладке браузера.",
-        "total_acc_rights_with_delete_distribution_list_helper_text": "Этот список имеет права <bold>{{totalAccRights}}</bold> для общих учетных записей. <br /> Если вы удалите его, все права будут потеряны.",
+        "total_acc_rights_with_delete_distribution_list_helper_text": "В этом списке есть общие аккаунты <bold>{{totalAccRights}}</bold>. <br /> Если вы удалите его, права на совместную работу будет потеряны.",
         "use_https_protocol_message": "Вам нужно использовать протокол HTTPS",
         "session_end_success": "Сессия успешно завершена",
         "selected_empty_bucket": "Вы не выбрали бакет. Вы можете начать вводить текст в поле выше, чтобы начать их просмотр.",
@@ -733,7 +733,8 @@
         "you_are_trying_reset_device": "Вы пытаетесь сбросить настройки устройства",
         "yes_wipe_the_device": "Да, очистить устройство",
         "you_are_trying_wipe_device": "Вы пытаетесь очистить устройства.",
-        "volume_definition": "Определение"
+        "volume_definition": "Определение",
+        "no_donot_wipe_device": "Нет, не очищать"
     },
     "timezone": {
         "europe_bucharest": "{{value}} Бухарест",
@@ -1508,7 +1509,7 @@
         "edit_hsm_policy_success": "Политика HSM успешно обновлена",
         "hsm_policy_correctly_deleted": "Политика HSM была правильно удалена",
         "all_secondary_volume_used_source_msg": "Текущий вторичный том будет использоваться в качестве места назначения. Или выберите вручную другие тома.",
-        "editing_policy": "Редактирование политики",
+        "editing_policy": "Редактировать политики",
         "enable_scheduler": "Включить планировщик",
         "larger_size": "Больше (размер)",
         "larger_size_than": "больше, чем <bold>{{measure}} {{scale}}</bold>",
