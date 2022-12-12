@@ -17,7 +17,8 @@ import {
 	Padding,
 	Button,
 	IconButton,
-	useSnackbar
+	useSnackbar,
+	Tooltip
 } from '@zextras/carbonio-design-system';
 import moment from 'moment';
 import logo from '../../../../assets/gardian.svg';
@@ -55,6 +56,12 @@ const ManageAccounts: FC = () => {
 				id: 'name',
 				label: t('label.name', 'Name'),
 				width: '15%',
+				bold: true
+			},
+			{
+				id: 'aliases',
+				label: t('label.Aliases', 'Aliases'),
+				width: '10%',
 				bold: true
 			},
 			{
@@ -283,8 +290,18 @@ const ManageAccounts: FC = () => {
 				setTotalAccount(data.searchTotal || 0);
 				accountListResponse.map((item: any): any => {
 					item?.a?.map((ele: any) => {
-						// eslint-disable-next-line no-param-reassign
-						item[ele?.n] = ele._content;
+						if (ele?.n === 'mail') {
+							if (item[ele?.n]) {
+								item[ele?.n].push(ele._content);
+							} else {
+								// eslint-disable-next-line no-param-reassign
+								item[ele?.n] = [ele._content];
+							}
+						} else {
+							// eslint-disable-next-line no-param-reassign
+							item[ele?.n] = ele._content;
+						}
+
 						return '';
 					});
 					accountListArr.push({
@@ -310,6 +327,44 @@ const ManageAccounts: FC = () => {
 							>
 								{item?.displayName || <>&nbsp;</>}
 							</Text>,
+							<>
+								{
+									// eslint-disable-next-line no-param-reassign, no-unsafe-optional-chaining
+									item?.mail?.length - 1 || 0 ? (
+										<Tooltip
+											key={item?.id}
+											placement="bottom"
+											label={item?.mail.slice(1).join(', ')}
+											maxWidth="auto"
+										>
+											<Text
+												size="medium"
+												key={item?.id}
+												color="#828282"
+												onClick={(): void => {
+													openDetailView(item);
+												}}
+											>
+												{
+													// eslint-disable-next-line no-param-reassign, no-unsafe-optional-chaining
+													item?.mail?.length - 1 || 0
+												}
+											</Text>
+										</Tooltip>
+									) : (
+										<Text
+											size="medium"
+											key={item?.id}
+											color="#828282"
+											onClick={(): void => {
+												openDetailView(item);
+											}}
+										>
+											0
+										</Text>
+									)
+								}
+							</>,
 							<Text
 								size="medium"
 								key={item?.id}
