@@ -13,6 +13,9 @@ import packageJson from '../../../package.json';
 import MatomoTracker from '../../matomo-tracker';
 import { DASHBOARD } from '../../constants';
 import { useGlobalConfigStore } from '../../store/global-config/store';
+import ListRow from '../list/list-row';
+import CarbonioVersionInformation from './carbonio-version-information-view';
+import QuickAccess from './quick-access-view';
 
 const Dashboard: FC = () => {
 	const [t] = useTranslation();
@@ -23,6 +26,22 @@ const Dashboard: FC = () => {
 	const accounts = useUserAccounts();
 	const [userName, setUserName] = useState<string>('');
 	const [version, setVersion] = useState<string>('');
+	const [quickAccessItems, setQuickAccessItems] = useState<Array<any>>([
+		{
+			upperText: t('label.domains', 'Domains'),
+			operationText: t('label.accounts', 'Accounts'),
+			bottomText: t('label.open', 'Open'),
+			operationIcon: 'PersonOutline',
+			bottomIcon: 'ChevronRightOutline'
+		},
+		{
+			upperText: t('label.domains', 'Domains'),
+			operationText: t('label.mailing_list', 'Mailing List'),
+			bottomText: t('label.open', 'Open'),
+			operationIcon: 'PersonOutline',
+			bottomIcon: 'ChevronRightOutline'
+		}
+	]);
 
 	useEffect(() => {
 		globalCarbonioSendAnalytics && matomo.trackPageView(`${DASHBOARD}`);
@@ -35,14 +54,29 @@ const Dashboard: FC = () => {
 			setUserName(accounts[0]?.name.split('@')[0]);
 		}
 	}, [accounts]);
+
 	useEffect(() => {
 		if (packageJson?.version) {
 			setVersion(packageJson?.version);
 		}
 	}, []);
+
 	return (
-		<Container height="100%" mainAlignment="center" crossAlignment="center" background="gray5">
-			<Container>
+		<Container
+			height="100%"
+			mainAlignment="flex-start"
+			crossAlignment="flex-start"
+			background="gray5"
+		>
+			<ListRow>
+				<Container>
+					<CarbonioVersionInformation userName={userName} />
+				</Container>
+				<Container>
+					<QuickAccess quickAccessItems={quickAccessItems} />
+				</Container>
+			</ListRow>
+			{/* <Container>
 				<Text
 					overflow="break-word"
 					weight="normal"
@@ -67,7 +101,7 @@ const Dashboard: FC = () => {
 				<Text color="#828282" overflow="break-word" weight="light" style={{ fontSize: '24px' }}>
 					{t('select_section_from_left_menu', 'Please select a section from the left menu')}
 				</Text>
-			</Container>
+			</Container> */}
 		</Container>
 	);
 };
