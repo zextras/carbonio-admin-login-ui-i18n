@@ -70,23 +70,22 @@ const Dashboard: FC = () => {
 	]);
 	const domainInformation = useDomainInformation();
 
-	useEffect(() => {
-		setDomain({
-			a: domainInformation?.a,
-			id: domainInformation?.id,
-			name: domainInformation?.name
-		});
-	}, [domainInformation, setDomain]);
-
 	const openOperationView = useCallback(
 		(operation: string) => {
-			if (operation === 'account' && !!domainInformation) {
-				history.push(`/${MANAGE}/${DOMAINS_ROUTE_ID}/${domainInformation?.id}/${ACCOUNTS}`);
-			} else if (operation === 'malinglist') {
-				history.push(`/${MANAGE}/${DOMAINS_ROUTE_ID}/${domainInformation?.id}/${MAILING_LIST}`);
+			if (domainInformation && domainInformation?.id) {
+				setDomain({
+					a: domainInformation?.a,
+					id: domainInformation?.id,
+					name: domainInformation?.name
+				});
+				if (operation === 'account') {
+					history.push(`/${MANAGE}/${DOMAINS_ROUTE_ID}/${domainInformation?.id}/${ACCOUNTS}`);
+				} else if (operation === 'malinglist') {
+					history.push(`/${MANAGE}/${DOMAINS_ROUTE_ID}/${domainInformation?.id}/${MAILING_LIST}`);
+				}
 			}
 		},
-		[history, domainInformation]
+		[history, domainInformation, setDomain]
 	);
 
 	useEffect(() => {
