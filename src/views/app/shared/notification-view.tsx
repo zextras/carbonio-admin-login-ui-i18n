@@ -460,11 +460,19 @@ const NotificationView: FC<{
 					<Padding left="large">
 						<Button
 							type="outlined"
-							label={t('notification.mark_as_read', 'Mark as read')}
+							label={
+								isEmpty(selectedNotification) || !selectedNotification?.ack
+									? t('notification.mark_as_read', 'Mark as read')
+									: t('notification.mark_as_unread', 'Mark as unread')
+							}
 							icon="EmailReadOutline"
 							iconPlacement="right"
 							color="primary"
-							disabled
+							disabled={isRequestInProgress || isEmpty(selectedNotification)}
+							loading={isRequestInProgress}
+							onClick={(): void => {
+								markAsReadUnread(selectedNotification);
+							}}
 						/>
 					</Padding>
 				</Container>
