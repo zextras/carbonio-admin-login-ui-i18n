@@ -1393,8 +1393,8 @@
     },
     "reminder": {
         "minute_0": "{{count}} minuta",
-        "minute_1": "{{count}} minuty",
-        "minute_2": "{{count}} minut"
+        "minute_1": "",
+        "minute_2": ""
     },
     "connection": {
         "access_key": "Klucz dostępu",
@@ -1526,7 +1526,7 @@
         "years": "Lata",
         "enable_scheduler": "Włącz planowanie",
         "editing_policy": "Polityka edytowania",
-        "scheduling": "Zaplanuj",
+        "scheduling": "Harmonogram",
         "volume_already_selected_in_destination": "Wolumin został już wybrany jako wolumin docelowy",
         "volume_already_selected_in_source": "Wolumin został już wybrany jako wolumin źródłowy"
     },
