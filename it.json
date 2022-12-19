@@ -1519,7 +1519,7 @@
         "smaller_size_than": "più piccolo di <bold>{{measure}} {{scale}}</bold>",
         "years": "Anni",
         "policy_criteria": "Criteri della policy",
-        "scheduling": "Pianificazione",
+        "scheduling": "Programma",
         "volume_already_selected_in_destination": "Il volume è già stato selezionato come volume di destinazione",
         "volume_already_selected_in_source": "Il volume è già stato selezionato come volume sorgente"
     },
