@@ -735,7 +735,6 @@
         "logo_description": "Collez l'URL du logo pour la page de connexion. Utilisez un fichier SVG ou PNG avec un fond transparent, de dimension 240x120 pixels.",
         "otp_deleted_successfully": "L'OTP a été supprimée avec succès",
         "owners_description_msg_1": "Les propriétaires peuvent ajouter et supprimer des membres, modifier le nom d'affichage et la description, modifier la visibilité de la liste (ex : la masquer dans la liste d'adresses globale), modifier la propriété, modifier le comportement d'abonnement/désabonnement.",
-        "home": "",
         "NEW_OTP": "NOUVEAU OTP",
         "abq_status": "Statut ABQ",
         "active_sessions": "Sessions actives",
