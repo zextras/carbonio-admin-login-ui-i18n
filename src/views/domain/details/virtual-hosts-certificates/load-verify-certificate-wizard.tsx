@@ -30,7 +30,8 @@ const WizardInSection: FC<any> = ({ wizard, wizardFooter, setToggleWizardSection
 
 const LoadVerifyCertificateWizard: FC<{
 	setToggleWizard: any;
-}> = ({ setToggleWizard }) => {
+	setAlertToggle: any;
+}> = ({ setToggleWizard, setAlertToggle }) => {
 	const { t } = useTranslation();
 	const [wizardData, setWizardData] = useState();
 
@@ -58,6 +59,7 @@ const LoadVerifyCertificateWizard: FC<{
 			onChange={setWizardData}
 			onComplete={onComplete}
 			setToggleWizardSection={setToggleWizard}
+			externalData={setAlertToggle}
 		/>
 	);
 };

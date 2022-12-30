@@ -35,7 +35,10 @@ import Textarea from '../../../components/textarea';
 import ListRow from '../../../list/list-row';
 import { CertificateTypes } from '../../../utility/utils';
 
-const LoadAndVerifyCert: FC<{ setToggleWizardSection: any }> = ({ setToggleWizardSection }) => {
+const LoadAndVerifyCert: FC<{ setToggleWizardSection: any; externalData: any }> = ({
+	setToggleWizardSection,
+	externalData
+}) => {
 	let fileReader: FileReader;
 	const { t } = useTranslation();
 	const domainInformation: any = useDomainStore((state) => state.domain?.a);
@@ -44,6 +47,9 @@ const LoadAndVerifyCert: FC<{ setToggleWizardSection: any }> = ({ setToggleWizar
 	const [uploadBtnTgl, setUploadBtnTgl] = useState(false);
 	const createSnackbar: any = useContext(SnackbarManagerContext);
 	const certificateTypes = useMemo(() => CertificateTypes(t), [t]);
+	const [domainCertiErr, setDomainCertiErr] = useState(true);
+	const [domainCertiCaChainErr, setDomainCertiCaChainErr] = useState(true);
+	const [privateKeyErr, setPrivateKeyErr] = useState(true);
 	const [objDomainCertificate, setObjDomainCertificate] = useState<ICertificateContent>({
 		fileName: '',
 		content: ''
@@ -99,6 +105,15 @@ const LoadAndVerifyCert: FC<{ setToggleWizardSection: any }> = ({ setToggleWizar
 	};
 
 	const verifyCertificateHandler = useCallback((): void => {
+		if (objDomainCertificate.content === '') {
+			setDomainCertiErr(false);
+		}
+		if (objDomainCertificateCaChain.content === '') {
+			setDomainCertiCaChainErr(false);
+		}
+		if (objDomainCertificatePrivateKey.content === '') {
+			setPrivateKeyErr(false);
+		}
 		setVerifyBtnLoading(true);
 		if (
 			objDomainCertificate.content === '' ||
@@ -116,6 +131,7 @@ const LoadAndVerifyCert: FC<{ setToggleWizardSection: any }> = ({ setToggleWizar
 				hideButton: true,
 				replace: true
 			});
+			setVerifyBtnLoading(false);
 		} else {
 			soapFetch(`VerifyCertKey`, {
 				_jsns: 'urn:zimbraAdmin',
@@ -223,6 +239,7 @@ const LoadAndVerifyCert: FC<{ setToggleWizardSection: any }> = ({ setToggleWizar
 					hideButton: true,
 					replace: true
 				});
+				externalData(true);
 				setToggleWizardSection(false);
 			})
 			.catch((error) => {
@@ -238,6 +255,22 @@ const LoadAndVerifyCert: FC<{ setToggleWizardSection: any }> = ({ setToggleWizar
 				});
 			});
 	};
+
+	useEffect(() => {
+		if (objDomainCertificate.content !== '') {
+			setDomainCertiErr(true);
+		}
+		if (objDomainCertificateCaChain.content !== '') {
+			setDomainCertiCaChainErr(true);
+		}
+		if (objDomainCertificatePrivateKey.content !== '') {
+			setPrivateKeyErr(true);
+		}
+	}, [
+		objDomainCertificate.content,
+		objDomainCertificateCaChain.content,
+		objDomainCertificatePrivateKey.content
+	]);
 
 	return (
 		<Container padding={{ all: 'small' }}>
@@ -268,12 +301,21 @@ const LoadAndVerifyCert: FC<{ setToggleWizardSection: any }> = ({ setToggleWizar
 				<ListRow>
 					<Padding vertical="small" horizontal="small" width="100%">
 						<Textarea
+							label={t('label.load_copy_certi', 'Load or copy your certificate')}
 							backgroundColor="gray5"
 							value={objDomainCertificate.content || ''}
 							size="medium"
 							inputName="zimbraNotes"
 							readOnly
+							hasError={!domainCertiErr}
 						/>
+						{!domainCertiErr && (
+							<Padding top="extrasmall">
+								<Text color="error" overflow="break-word" size="extrasmall">
+									{t('label.certificate_invalid', 'The certificate is invalid')}
+								</Text>
+							</Padding>
+						)}
 					</Padding>
 				</ListRow>
 				<ListRow>
@@ -310,12 +352,21 @@ const LoadAndVerifyCert: FC<{ setToggleWizardSection: any }> = ({ setToggleWizar
 				<ListRow>
 					<Padding vertical="small" horizontal="small" width="100%">
 						<Textarea
+							label={t('label.load_copy_certi', 'Load or copy your certificate')}
 							backgroundColor="gray5"
 							value={objDomainCertificateCaChain.content || ''}
 							size="medium"
 							inputName="zimbraNotes"
 							readOnly
+							hasError={!domainCertiCaChainErr}
 						/>
+						{!domainCertiCaChainErr && (
+							<Padding top="extrasmall">
+								<Text color="error" overflow="break-word" size="extrasmall">
+									{t('label.certificate_invalid', 'The certificate is invalid')}
+								</Text>
+							</Padding>
+						)}
 					</Padding>
 				</ListRow>
 				<ListRow>
@@ -352,12 +403,21 @@ const LoadAndVerifyCert: FC<{ setToggleWizardSection: any }> = ({ setToggleWizar
 				<ListRow>
 					<Padding vertical="small" horizontal="small" width="100%">
 						<Textarea
+							label={t('label.load_copy_certi', 'Load or copy your certificate')}
 							backgroundColor="gray5"
 							value={objDomainCertificatePrivateKey.content || ''}
 							size="medium"
 							inputName="zimbraNotes"
 							readOnly
+							hasError={!privateKeyErr}
 						/>
+						{!privateKeyErr && (
+							<Padding top="extrasmall">
+								<Text color="error" overflow="break-word" size="extrasmall">
+									{t('label.certificate_invalid', 'The certificate is invalid')}
+								</Text>
+							</Padding>
+						)}
 					</Padding>
 				</ListRow>
 				<ListRow>
