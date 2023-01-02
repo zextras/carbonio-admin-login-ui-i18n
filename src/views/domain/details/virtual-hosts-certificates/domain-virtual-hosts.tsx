@@ -132,7 +132,7 @@ const DomainVirtualHosts: FC = () => {
 	}, [virtualHostValue, items]);
 
 	const removeVirtualHost = useCallback((): void => {
-		if (selectedRows && selectedRows.length > 0) {
+		if (selectedRows && selectedRows.length > 0 && items.length > 0) {
 			const filterItems = items.filter((item: any) => !selectedRows.includes(item.id));
 			setItems(filterItems);
 			setRemoveVirtualBtnDisabled(true);
@@ -196,8 +196,9 @@ const DomainVirtualHosts: FC = () => {
 	};
 
 	const getAllCertiDetailsAPICall = useCallback((): any => {
-		const zimbraData = domainInformation.filter((item: any) => item.n === ZIMBRA_DOMAIN_NAME)[0]
-			?._content;
+		const zimbraData =
+			domainInformation &&
+			domainInformation.filter((item: any) => item.n === ZIMBRA_DOMAIN_NAME)[0]?._content;
 		soapFetch(`GetDomain`, {
 			_jsns: 'urn:zimbraAdmin',
 			attrs: 'zimbraSSLCertificate,zimbraSSLPrivateKey',

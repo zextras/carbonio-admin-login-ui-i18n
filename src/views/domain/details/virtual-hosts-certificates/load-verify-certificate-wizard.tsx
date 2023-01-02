@@ -48,16 +48,11 @@ const LoadVerifyCertificateWizard: FC<{
 		}
 	];
 
-	const onComplete = useCallback((data) => {
-		console.log('_dd onComplete');
-	}, []);
-
 	return (
 		<HorizontalWizard
 			steps={wizardSteps}
 			Wrapper={WizardInSection}
 			onChange={setWizardData}
-			onComplete={onComplete}
 			setToggleWizardSection={setToggleWizard}
 			externalData={setAlertToggle}
 		/>

@@ -28,7 +28,7 @@ const DeleteCertificateModel: FC<{
 				open={open}
 				customFooter={
 					<Container orientation="horizontal" mainAlignment="flex-end">
-						<Row style={{ gap: '8px' }}>
+						<Row style={{ gap: '1rem' }}>
 							<Button
 								label={t('label.cancle_button', 'NO')}
 								color="secondary"
@@ -45,25 +45,23 @@ const DeleteCertificateModel: FC<{
 				showCloseIcon
 				onClose={closeHandler}
 			>
-				<Text
-					size={'extralarge'}
-					overflow="break-word"
-					style={{ whiteSpace: 'pre-line', textAlign: 'center', padding: '32px 0' }}
-				>
-					{certiDetails === ZIMBRA_SSL_CERTIFICATE ? (
-						<Trans
-							i18nKey="label.delete_domain_certificate_content"
-							defaults="You are deleting Domain Certificate.<br /> Are you sure you want to delete it?"
-							components={{ break: <br /> }}
-						/>
-					) : (
-						<Trans
-							i18nKey="label.delete_private_key_certificate_content"
-							defaults="You are deleting Private Key Certificate.<br /> Are you sure you want to delete it?"
-							components={{ break: <br /> }}
-						/>
-					)}
-				</Text>
+				<Row padding={{ vertical: 'extralarge' }} mainAlignment="center" crossAlignment="center">
+					<Text size={'extralarge'} overflow="break-word" style={{ whiteSpace: 'pre-line' }}>
+						{certiDetails === ZIMBRA_SSL_CERTIFICATE ? (
+							<Trans
+								i18nKey="label.delete_domain_certificate_content"
+								defaults="You are deleting Domain Certificate.<br /> Are you sure you want to delete it?"
+								components={{ break: <br /> }}
+							/>
+						) : (
+							<Trans
+								i18nKey="label.delete_private_key_certificate_content"
+								defaults="You are deleting Private Key Certificate.<br /> Are you sure you want to delete it?"
+								components={{ break: <br /> }}
+							/>
+						)}
+					</Text>
+				</Row>
 			</Modal>
 		</>
 	);
