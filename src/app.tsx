@@ -263,7 +263,7 @@ const App: FC = () => {
 						label: t('label.authentication', 'Authentication')
 					},
 					{
-						label: t('label.virtual_hosts', 'Virtual Hosts')
+						label: t('label.virtual_hosts_and_certificates', 'Virtual Hosts & Certificate')
 					},
 					{
 						label: t('label.mailbox_quota', 'Mailbox Quota')
