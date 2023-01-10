@@ -45,6 +45,7 @@ import {
 	MANAGE_APP_ID,
 	MONITORING,
 	MTA,
+	NOTIFICATION_ROUTE_ID,
 	OPERATIONS,
 	PRIVACY_ROUTE_ID,
 	SERVICES_ROUTE_ID,
@@ -56,7 +57,7 @@ import PrimaryBarTooltip from './views/primary-bar-tooltip/primary-bar-tooltip';
 import { useServerStore } from './store/server/store';
 import { useGlobalConfigStore } from './store/global-config/store';
 import { useBackupModuleStore } from './store/backup-module/store';
-import { getAllServers } from './services/get-all-servers-service';
+import { getAllServers, getMailstoresServers } from './services/get-all-servers-service';
 import { useConfigStore } from './store/config/store';
 import { getAllConfig } from './services/get-all-config';
 import { useAuthIsAdvanced } from './store/auth-advanced/store';
@@ -262,7 +263,7 @@ const App: FC = () => {
 						label: t('label.authentication', 'Authentication')
 					},
 					{
-						label: t('label.virtual_hosts', 'Virtual Hosts')
+						label: t('label.virtual_hosts_and_certificates', 'Virtual Hosts & Certificate')
 					},
 					{
 						label: t('label.mailbox_quota', 'Mailbox Quota')
@@ -450,18 +451,34 @@ const App: FC = () => {
 			primarybarSection: { ...managementSection },
 			tooltip: CosTooltipView
 		});
-		addRoute({
-			route: SUBSCRIPTIONS_ROUTE_ID,
-			position: 4,
-			visible: true,
-			label: t('label.subscriptions', 'Subscriptions'),
-			primaryBar: 'AwardOutline',
-			appView: AppView,
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			primarybarSection: { ...managementSection },
-			tooltip: SubscriptionTooltipView
-		});
+		if (isAdvanced) {
+			addRoute({
+				route: SUBSCRIPTIONS_ROUTE_ID,
+				position: 4,
+				visible: true,
+				label: t('label.subscriptions', 'Subscriptions'),
+				primaryBar: 'AwardOutline',
+				appView: AppView,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				primarybarSection: { ...managementSection },
+				tooltip: SubscriptionTooltipView
+			});
+
+			addRoute({
+				route: BACKUP_ROUTE_ID,
+				position: 1,
+				visible: true,
+				label: t('label.backup', 'Backup'),
+				// primaryBar: 'HistoryOutline',
+				primaryBar: backupPrimaryBar,
+				appView: AppView,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				primarybarSection: { ...servicesSection },
+				tooltip: BackupTooltipView
+			});
+		}
 		addRoute({
 			route: PRIVACY_ROUTE_ID,
 			position: 5,
@@ -473,31 +490,18 @@ const App: FC = () => {
 			// @ts-ignore
 			primarybarSection: { ...managementSection }
 		});
-		addRoute({
-			route: BACKUP_ROUTE_ID,
-			position: 1,
-			visible: true,
-			label: t('label.backup', 'Backup'),
-			// primaryBar: 'HistoryOutline',
-			primaryBar: backupPrimaryBar,
-			appView: AppView,
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			primarybarSection: { ...servicesSection },
-			tooltip: BackupTooltipView
-		});
 
-		/* addRoute({
-			route: OPERATIONS,
+		addRoute({
+			route: NOTIFICATION_ROUTE_ID,
 			position: 1,
 			visible: true,
-			label: t('label.operations', 'Operations'),
-			primaryBar: 'ListOutline',
+			label: t('label.notifications', 'Notifications'),
+			primaryBar: 'BellOutline',
 			appView: AppView,
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			primarybarSection: { ...logAndQueuesSection }
-		}); */
+		});
 
 		/* addRoute({
 			route: APPLICATION_LOG,
@@ -534,7 +538,8 @@ const App: FC = () => {
 		StorageTooltipView,
 		SubscriptionTooltipView,
 		logAndQueuesSection,
-		backupPrimaryBar
+		backupPrimaryBar,
+		isAdvanced
 	]);
 
 	useEffect(() => {
@@ -593,12 +598,11 @@ const App: FC = () => {
 				zextras: {
 					_jsns: 'urn:zimbraAdmin',
 					module: 'ZxConfig',
-					action: 'dump_global_config',
-					targetServers: serverName
+					action: 'dump_global_config'
 				}
 			}).then((data: any) => {
 				const responseData = JSON.parse(data?.Body?.response?.content);
-				const globalConfig = responseData?.response[serverName]?.response;
+				const globalConfig = responseData?.response;
 				if (globalConfig) {
 					setGlobalConfig(globalConfig);
 				}
@@ -614,15 +618,25 @@ const App: FC = () => {
 				setServerList(server);
 				checkIsBackupModuleEnable(server);
 				setAllServersList(server);
-				setVolumeList(server);
 				getGlobalConfig(server[0]?.name);
 			}
 		});
-	}, [setServerList, checkIsBackupModuleEnable, setAllServersList, setVolumeList, getGlobalConfig]);
+	}, [setServerList, checkIsBackupModuleEnable, setAllServersList, getGlobalConfig]);
+
+	const getMailstoresServersRequest = useCallback(() => {
+		getMailstoresServers().then((data) => {
+			const server = data?.server;
+			if (server && Array.isArray(server) && server.length > 0) {
+				setVolumeList(server);
+			}
+		});
+	}, [setVolumeList]);
 
 	useEffect(() => {
 		getAllServersRequest();
-	}, [getAllServersRequest]);
+		// another call just to get only mailstores can be improvised later
+		getMailstoresServersRequest();
+	}, [getAllServersRequest, getMailstoresServersRequest]);
 
 	return null;
 };

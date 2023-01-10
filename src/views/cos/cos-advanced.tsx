@@ -60,20 +60,20 @@ const CosAdvanced: FC = () => {
 		[t]
 	);
 
-	const proxyAllowedDomainHeaders: any[] = useMemo(
-		() => [
-			{
-				id: 'account',
-				label: t('cos.proxy_allowed_domain_name', 'Proxy Allowed Domain Name'),
-				width: '100%',
-				bold: true
-			}
-		],
-		[t]
-	);
+	// const proxyAllowedDomainHeaders: any[] = useMemo(
+	// 	() => [
+	// 		{
+	// 			id: 'account',
+	// 			label: t('cos.proxy_allowed_domain_name', 'Proxy Allowed Domain Name'),
+	// 			width: '100%',
+	// 			bold: true
+	// 		}
+	// 	],
+	// 	[t]
+	// );
 
 	const [cosAdvanced, setCosAdvanced] = useState<any>({
-		zimbraAttachmentsBlocked: 'FALSE',
+		// zimbraAttachmentsBlocked: 'FALSE',
 		zimbraMailForwardingAddressMaxLength: '',
 		zimbraMailForwardingAddressMaxNumAddrs: '',
 		zimbraMailQuota: '',
@@ -81,12 +81,12 @@ const CosAdvanced: FC = () => {
 		zimbraQuotaWarnPercent: '',
 		zimbraQuotaWarnInterval: '',
 		zimbraQuotaWarnMessage: '',
-		zimbraDataSourceMinPollingInterval: '',
-		zimbraDataSourcePop3PollingInterval: '',
-		zimbraDataSourceImapPollingInterval: '',
-		zimbraDataSourceCalendarPollingInterval: '',
-		zimbraDataSourceRssPollingInterval: '',
-		zimbraDataSourceCaldavPollingInterval: '',
+		// zimbraDataSourceMinPollingInterval: '',
+		// zimbraDataSourcePop3PollingInterval: '',
+		// zimbraDataSourceImapPollingInterval: '',
+		// zimbraDataSourceCalendarPollingInterval: '',
+		// zimbraDataSourceRssPollingInterval: '',
+		// zimbraDataSourceCaldavPollingInterval: '',
 		zimbraPasswordLocked: 'FALSE',
 		zimbraPasswordMinLength: '',
 		zimbraPasswordMaxLength: '',
@@ -124,7 +124,7 @@ const CosAdvanced: FC = () => {
 	const [zimbraQuotaWarnIntervalType, setzimbraQuotaWarnIntervalType] = useState(
 		cosAdvanced?.zimbraQuotaWarnInterval?.slice(-1) || ''
 	);
-	const [zimbraDataSourceMinPollingIntervalNum, setZimbraDataSourceMinPollingIntervalNum] =
+	/* const [zimbraDataSourceMinPollingIntervalNum, setZimbraDataSourceMinPollingIntervalNum] =
 		useState(cosAdvanced?.zimbraDataSourceMinPollingInterval?.slice(0, -1));
 	const [zimbraDataSourceMinPollingIntervalType, setZimbraDataSourceMinPollingIntervalType] =
 		useState(cosAdvanced?.zimbraDataSourceMinPollingInterval?.slice(-1) || '');
@@ -153,7 +153,7 @@ const CosAdvanced: FC = () => {
 	const [zimbraDataSourceCaldavPollingIntervalNum, setZimbraDataSourceCaldavPollingIntervalNum] =
 		useState(cosAdvanced?.zimbraDataSourceCaldavPollingInterval?.slice(0, -1));
 	const [zimbraDataSourceCaldavPollingIntervalType, setZimbraDataSourceCaldavPollingIntervalType] =
-		useState(cosAdvanced?.zimbraDataSourceCaldavPollingInterval?.slice(-1) || '');
+		useState(cosAdvanced?.zimbraDataSourceCaldavPollingInterval?.slice(-1) || ''); */
 	const [zimbraPasswordLockoutDurationNum, setZimbraPasswordLockoutDurationNum] = useState(
 		cosAdvanced?.zimbraPasswordLockoutDuration?.slice(0, -1)
 	);
@@ -195,15 +195,15 @@ const CosAdvanced: FC = () => {
 		cosAdvanced?.zimbraMailSpamLifetime?.slice(-1) || ''
 	);
 
-	const [newProxyAllowedDomain, setNewProxyAllowedDomain] = useState<string>('');
-	const [selectedProxyAllowedDomain, setSelectedProxyAllowedDomain] = useState<any>([]);
-	const [proxyAllowedDomainAddBtnDisabled, setProxyAllowedDomainAddBtnDisabled] = useState(true);
-	const [proxyAllowedDomainDeleteBtnDisabled, setProxyAllowedDomainDeleteBtnDisabled] =
-		useState(true);
-	const [searchProxyAllowedDomain, setSearchProxyAllowedDomain]: any = useState('');
-	const [proxyAllowedDomainRows, setProxyAllowedDomainRows] = useState<any[]>([]);
-	const [proxyAllowedDomainList, setProxyAllowedDomainList] = useState<any[]>([]);
-	const [zimbraProxyAllowedDomains, setZimbraProxyAllowedDomains] = useState<any[]>([]);
+	// const [newProxyAllowedDomain, setNewProxyAllowedDomain] = useState<string>('');
+	// const [selectedProxyAllowedDomain, setSelectedProxyAllowedDomain] = useState<any>([]);
+	// const [proxyAllowedDomainAddBtnDisabled, setProxyAllowedDomainAddBtnDisabled] = useState(true);
+	// const [proxyAllowedDomainDeleteBtnDisabled, setProxyAllowedDomainDeleteBtnDisabled] =
+	// 	useState(true);
+	// const [searchProxyAllowedDomain, setSearchProxyAllowedDomain]: any = useState('');
+	// const [proxyAllowedDomainRows, setProxyAllowedDomainRows] = useState<any[]>([]);
+	// const [proxyAllowedDomainList, setProxyAllowedDomainList] = useState<any[]>([]);
+	// const [zimbraProxyAllowedDomains, setZimbraProxyAllowedDomains] = useState<any[]>([]);
 
 	const setValue = useCallback(
 		(key: string, value: any): void => {
@@ -212,37 +212,37 @@ const CosAdvanced: FC = () => {
 		[setCosAdvanced]
 	);
 
-	useEffect(() => {
-		const sList: any[] = [];
-		proxyAllowedDomainList.forEach((item: any, index: number) => {
-			sList.push({
-				id: index?.toString(),
-				columns: [
-					<Text size="medium" weight="light" key={index} color="gray0">
-						{item?._content}
-					</Text>
-				],
-				item,
-				label: item?._content,
-				clickable: true
-			});
-		});
-		setProxyAllowedDomainRows(sList);
-	}, [proxyAllowedDomainList]);
+	// useEffect(() => {
+	// 	const sList: any[] = [];
+	// 	proxyAllowedDomainList.forEach((item: any, index: number) => {
+	// 		sList.push({
+	// 			id: index?.toString(),
+	// 			columns: [
+	// 				<Text size="medium" weight="light" key={index} color="gray0">
+	// 					{item?._content}
+	// 				</Text>
+	// 			],
+	// 			item,
+	// 			label: item?._content,
+	// 			clickable: true
+	// 		});
+	// 	});
+	// 	setProxyAllowedDomainRows(sList);
+	// }, [proxyAllowedDomainList]);
 
-	const generateProxyAllowedDomainList = (proxyAllowedDomains: any): void => {
-		if (proxyAllowedDomains && Array.isArray(proxyAllowedDomains)) {
-			setProxyAllowedDomainList(proxyAllowedDomains);
-		}
-	};
+	// const generateProxyAllowedDomainList = (proxyAllowedDomains: any): void => {
+	// 	if (proxyAllowedDomains && Array.isArray(proxyAllowedDomains)) {
+	// 		setProxyAllowedDomainList(proxyAllowedDomains);
+	// 	}
+	// };
 
 	const setInitalValues = useCallback(
 		(obj: any): void => {
 			if (obj) {
-				setValue(
-					'zimbraAttachmentsBlocked',
-					obj?.zimbraAttachmentsBlocked ? obj?.zimbraAttachmentsBlocked : 'FALSE'
-				);
+				// setValue(
+				// 	'zimbraAttachmentsBlocked',
+				// 	obj?.zimbraAttachmentsBlocked ? obj?.zimbraAttachmentsBlocked : 'FALSE'
+				// );
 				setValue(
 					'zimbraMailForwardingAddressMaxLength',
 					obj?.zimbraMailForwardingAddressMaxLength ? obj?.zimbraMailForwardingAddressMaxLength : ''
@@ -398,22 +398,22 @@ const CosAdvanced: FC = () => {
 
 	useEffect(() => {
 		if (!!cosInformation && cosInformation.length > 0) {
-			const proxyAllowedDomains = cosInformation
-				?.filter((value: any) => value?.n === 'zimbraProxyAllowedDomains')
-				.map((item: any, index: any): any => {
-					const id = index?.toString();
-					return { ...item, id };
-				});
-			generateProxyAllowedDomainList(proxyAllowedDomains);
-			setZimbraProxyAllowedDomains(proxyAllowedDomains);
+			// const proxyAllowedDomains = cosInformation
+			// 	?.filter((value: any) => value?.n === 'zimbraProxyAllowedDomains')
+			// 	.map((item: any, index: any): any => {
+			// 		const id = index?.toString();
+			// 		return { ...item, id };
+			// 	});
+			// generateProxyAllowedDomainList(proxyAllowedDomains);
+			// setZimbraProxyAllowedDomains(proxyAllowedDomains);
 			const obj: any = {};
 			cosInformation.map((item: any) => {
 				obj[item?.n] = item._content;
 				return '';
 			});
-			if (!obj.zimbraAttachmentsBlocked) {
+			/* if (!obj.zimbraAttachmentsBlocked) {
 				obj.zimbraAttachmentsBlocked = 'FALSE';
-			}
+			} */
 			if (!obj.zimbraMailForwardingAddressMaxLength) {
 				obj.zimbraMailForwardingAddressMaxLength = '';
 			}
@@ -435,7 +435,7 @@ const CosAdvanced: FC = () => {
 			if (!obj.zimbraQuotaWarnMessage) {
 				obj.zimbraQuotaWarnMessage = '';
 			}
-			if (!obj.zimbraDataSourceMinPollingInterval) {
+			/* if (!obj.zimbraDataSourceMinPollingInterval) {
 				obj.zimbraDataSourceMinPollingInterval = '';
 			}
 			if (!obj.zimbraDataSourcePop3PollingInterval) {
@@ -452,7 +452,7 @@ const CosAdvanced: FC = () => {
 			}
 			if (!obj.zimbraDataSourceCaldavPollingInterval) {
 				obj.zimbraDataSourceCaldavPollingInterval = '';
-			}
+			} */
 			if (!obj.zimbraPasswordLocked) {
 				obj.zimbraPasswordLocked = 'FALSE';
 			}
@@ -526,7 +526,7 @@ const CosAdvanced: FC = () => {
 			setInitalValues(obj);
 			setZimbraQuotaWarnIntervalNum(obj?.zimbraQuotaWarnInterval?.slice(0, -1));
 			setzimbraQuotaWarnIntervalType(obj?.zimbraQuotaWarnInterval?.slice(-1));
-			setZimbraDataSourceMinPollingIntervalNum(
+			/* setZimbraDataSourceMinPollingIntervalNum(
 				obj?.zimbraDataSourceMinPollingInterval?.slice(0, -1)
 			);
 			setZimbraDataSourceMinPollingIntervalType(obj?.zimbraDataSourceMinPollingInterval?.slice(-1));
@@ -557,7 +557,7 @@ const CosAdvanced: FC = () => {
 			);
 			setZimbraDataSourceCaldavPollingIntervalType(
 				obj?.zimbraDataSourceCaldavPollingInterval?.slice(-1)
-			);
+			); */
 			setZimbraPasswordLockoutDurationNum(obj?.zimbraPasswordLockoutDuration?.slice(0, -1));
 			setZimbraPasswordLockoutDurationType(obj?.zimbraPasswordLockoutDuration?.slice(-1));
 			setZimbraPasswordLockoutFailureLifetimeNum(
@@ -613,40 +613,40 @@ const CosAdvanced: FC = () => {
 		[cosAdvanced, timeItems, setCosAdvanced]
 	);
 
-	const addProxyAllowedDomain = useCallback((): void => {
-		if (newProxyAllowedDomain) {
-			const lastId =
-				proxyAllowedDomainList.length > 0
-					? proxyAllowedDomainList[proxyAllowedDomainList.length - 1].id
-					: 0;
-			const newId = +lastId + 1;
-			const item = {
-				id: newId.toString(),
-				n: 'zimbraProxyAllowedDomains',
-				_content: newProxyAllowedDomain
-			};
-			setProxyAllowedDomainList([...proxyAllowedDomainList, item]);
-			setProxyAllowedDomainAddBtnDisabled(true);
-			setNewProxyAllowedDomain('');
-		}
-	}, [newProxyAllowedDomain, proxyAllowedDomainList, setProxyAllowedDomainList]);
+	// const addProxyAllowedDomain = useCallback((): void => {
+	// 	if (newProxyAllowedDomain) {
+	// 		const lastId =
+	// 			proxyAllowedDomainList.length > 0
+	// 				? proxyAllowedDomainList[proxyAllowedDomainList.length - 1].id
+	// 				: 0;
+	// 		const newId = +lastId + 1;
+	// 		const item = {
+	// 			id: newId.toString(),
+	// 			n: 'zimbraProxyAllowedDomains',
+	// 			_content: newProxyAllowedDomain
+	// 		};
+	// 		setProxyAllowedDomainList([...proxyAllowedDomainList, item]);
+	// 		setProxyAllowedDomainAddBtnDisabled(true);
+	// 		setNewProxyAllowedDomain('');
+	// 	}
+	// }, [newProxyAllowedDomain, proxyAllowedDomainList, setProxyAllowedDomainList]);
 
-	const deleteProxyAllowedDomain = useCallback((): void => {
-		if (selectedProxyAllowedDomain && selectedProxyAllowedDomain.length > 0) {
-			const filterItems = proxyAllowedDomainList.filter(
-				(item: any, index: any) => !selectedProxyAllowedDomain.includes(index.toString())
-			);
-			setProxyAllowedDomainList(filterItems);
-			setProxyAllowedDomainDeleteBtnDisabled(true);
-			setSelectedProxyAllowedDomain([]);
-		}
-	}, [selectedProxyAllowedDomain, proxyAllowedDomainList, setProxyAllowedDomainList]);
+	// const deleteProxyAllowedDomain = useCallback((): void => {
+	// 	if (selectedProxyAllowedDomain && selectedProxyAllowedDomain.length > 0) {
+	// 		const filterItems = proxyAllowedDomainList.filter(
+	// 			(item: any, index: any) => !selectedProxyAllowedDomain.includes(index.toString())
+	// 		);
+	// 		setProxyAllowedDomainList(filterItems);
+	// 		setProxyAllowedDomainDeleteBtnDisabled(true);
+	// 		setSelectedProxyAllowedDomain([]);
+	// 	}
+	// }, [selectedProxyAllowedDomain, proxyAllowedDomainList, setProxyAllowedDomainList]);
 
 	const onCancel = (): void => {
 		setInitalValues(cosData);
 		setZimbraQuotaWarnIntervalNum(cosData?.zimbraQuotaWarnInterval?.slice(0, -1));
 		setzimbraQuotaWarnIntervalType(cosData?.zimbraQuotaWarnInterval?.slice(-1));
-		setZimbraDataSourceMinPollingIntervalNum(
+		/* setZimbraDataSourceMinPollingIntervalNum(
 			cosData?.zimbraDataSourceMinPollingInterval?.slice(0, -1)
 		);
 		setZimbraDataSourceMinPollingIntervalType(
@@ -681,7 +681,7 @@ const CosAdvanced: FC = () => {
 		);
 		setZimbraDataSourceCaldavPollingIntervalType(
 			cosData?.zimbraDataSourceCaldavPollingInterval?.slice(-1)
-		);
+		); */
 		setZimbraPasswordLockoutDurationNum(cosData?.zimbraPasswordLockoutDuration?.slice(0, -1));
 		setZimbraPasswordLockoutDurationType(cosData?.zimbraPasswordLockoutDuration?.slice(-1));
 		setZimbraPasswordLockoutFailureLifetimeNum(
@@ -700,7 +700,7 @@ const CosAdvanced: FC = () => {
 		setZimbraMailTrashLifetimeType(cosData?.zimbraMailTrashLifetime?.slice(-1));
 		setZimbraMailSpamLifetimeNum(cosData?.zimbraMailSpamLifetime?.slice(0, -1));
 		setZimbraMailSpamLifetimeType(cosData?.zimbraMailSpamLifetime?.slice(-1));
-		setProxyAllowedDomainList(cosAdvanced.zimbraProxyAllowedDomains || []);
+		// setProxyAllowedDomainList(cosAdvanced.zimbraProxyAllowedDomains || []);
 		setZimbraMailQuota(
 			cosAdvanced?.zimbraMailQuota
 				? (parseInt(cosAdvanced?.zimbraMailQuota, 10) / (1024 * 1024)).toString()
@@ -783,7 +783,7 @@ const CosAdvanced: FC = () => {
 		}
 	}, [cosAdvanced.zimbraQuotaWarnMessage, cosData.zimbraQuotaWarnMessage]);
 
-	useEffect(() => {
+	/* useEffect(() => {
 		if (
 			cosData.zimbraDataSourceMinPollingInterval !== undefined &&
 			cosData.zimbraDataSourceMinPollingInterval !== cosAdvanced.zimbraDataSourceMinPollingInterval
@@ -851,7 +851,7 @@ const CosAdvanced: FC = () => {
 	}, [
 		cosAdvanced.zimbraDataSourceCaldavPollingInterval,
 		cosData.zimbraDataSourceCaldavPollingInterval
-	]);
+	]); */
 
 	useEffect(() => {
 		if (
@@ -1037,13 +1037,13 @@ const CosAdvanced: FC = () => {
 		}
 	}, [cosAdvanced.zimbraFreebusyExchangeUserOrg, cosData.zimbraFreebusyExchangeUserOrg]);
 
-	useEffect(() => {
-		if (!_.isEqual(zimbraProxyAllowedDomains, proxyAllowedDomainList)) {
-			setIsDirty(true);
-		} else {
-			setIsDirty(false);
-		}
-	}, [zimbraProxyAllowedDomains, proxyAllowedDomainList]);
+	// useEffect(() => {
+	// 	if (!_.isEqual(zimbraProxyAllowedDomains, proxyAllowedDomainList)) {
+	// 		setIsDirty(true);
+	// 	} else {
+	// 		setIsDirty(false);
+	// 	}
+	// }, [zimbraProxyAllowedDomains, proxyAllowedDomainList]);
 
 	const onZimbraQuotaWarnIntervalTypeChange = useCallback(
 		(v: string) => {
@@ -1069,7 +1069,7 @@ const CosAdvanced: FC = () => {
 		[zimbraQuotaWarnIntervalType, setCosAdvanced]
 	);
 
-	const onZimbraDataSourceMinPollingIntervalTypeChange = useCallback(
+	/* const onZimbraDataSourceMinPollingIntervalTypeChange = useCallback(
 		(v: string) => {
 			setCosAdvanced((prev: any) => ({
 				...prev,
@@ -1211,7 +1211,7 @@ const CosAdvanced: FC = () => {
 			setZimbraDataSourceCaldavPollingIntervalNum(e.target.value);
 		},
 		[zimbraDataSourceCaldavPollingIntervalType, setCosAdvanced]
-	);
+	); */
 
 	const onZimbraPasswordLockoutDurationTypeChange = useCallback(
 		(v: string) => {
@@ -1427,12 +1427,12 @@ const CosAdvanced: FC = () => {
 		Object.keys(cosAdvanced).map((ele: any) =>
 			attributes.push({ n: ele, _content: cosAdvanced[ele] })
 		);
-		proxyAllowedDomainList.forEach((item: any) => {
-			attributes.push({
-				n: 'zimbraProxyAllowedDomains',
-				_content: item?._content
-			});
-		});
+		// proxyAllowedDomainList.forEach((item: any) => {
+		// 	attributes.push({
+		// 		n: 'zimbraProxyAllowedDomains',
+		// 		_content: item?._content
+		// 	});
+		// });
 		body.a = attributes;
 		modifyCos(body)
 			.then((data) => {
@@ -1506,7 +1506,7 @@ const CosAdvanced: FC = () => {
 				style={{ overflow: 'auto' }}
 				padding={{ top: 'large' }}
 			>
-				<Row
+				{/* <Row
 					mainAlignment="flex-start"
 					crossAlignment="flex-start"
 					padding={{ top: 'large', right: 'large', bottom: 'large', left: 'large' }}
@@ -1527,7 +1527,7 @@ const CosAdvanced: FC = () => {
 						/>
 					</Row>
 					<Divider />
-				</Row>
+				</Row> */}
 				<Row
 					mainAlignment="flex-start"
 					crossAlignment="flex-start"
@@ -1680,7 +1680,7 @@ const CosAdvanced: FC = () => {
 					</Row>
 					<Divider />
 				</Row>
-				<Row
+				{/* <Row
 					mainAlignment="flex-start"
 					crossAlignment="flex-start"
 					padding={{ all: 'large' }}
@@ -1883,8 +1883,8 @@ const CosAdvanced: FC = () => {
 						</Container>
 					</Row>
 					<Divider />
-				</Row>
-				<Row
+				</Row> */}
+				{/* <Row
 					mainAlignment="flex-start"
 					crossAlignment="flex-start"
 					padding={{ all: 'large' }}
@@ -2025,7 +2025,7 @@ const CosAdvanced: FC = () => {
 						</Container>
 						<Divider />
 					</Row>
-				)}
+				)} */}
 				<Row
 					mainAlignment="flex-start"
 					crossAlignment="flex-start"
