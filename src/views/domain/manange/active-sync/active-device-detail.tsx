@@ -126,14 +126,19 @@ const ActiveDeviceDetail: FC<{
 			getMobileDeviceDetail(
 				ZX_MOBILE,
 				selectedMobileDeviceDetail?.accountEmail,
-				selectedMobileDeviceDetail?.deviceId
+				selectedMobileDeviceDetail?.deviceId,
+				selectedMobileDeviceDetail?.accountServer
 			)
 				.then((res: any) => {
 					setIsDetailRequestInProgess(false);
 					if (res?.Body?.response?.content) {
 						const content: any = JSON.parse(res?.Body?.response?.content);
-						if (content?.response && content?.ok) {
-							setMobileDeviceDetail(content?.response);
+						const keys = Object.keys(content?.response);
+						if (keys && keys.length > 0) {
+							const deviceItem = content?.response[keys[0]]?.response;
+							if (deviceItem) {
+								setMobileDeviceDetail(deviceItem);
+							}
 						}
 					}
 				})
