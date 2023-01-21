@@ -1003,7 +1003,7 @@
         "open": "Abrir",
         "there_are_no_owners": "Não existem proprietários aqui.",
         "who_can_send_mails_to_list ": "Quem pode enviar e-mails PARA esta lista?",
-        "home": "Início",
+        "home": "",
         "domain_certificate_private_key": "Chave particular do domínio",
         "Aliases": "Nomes alternativos",
         "domain_certificate": "Certificado do domínio"
