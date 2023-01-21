@@ -1398,8 +1398,8 @@
         "show_time_zone_lists_in_view": "Pokazuj listę stref czasowych w widoku spotkań",
         "search_fro_people": "Wyszukiwanie osób",
         "pop3_access": "Dostęp POP3",
-        "out_of_the_office_reply": "Odpowiedź poza biurem",
-        "out_of_office_reply": "Odpowiedź poza biurem",
+        "out_of_the_office_reply": "Odpowiedź Poza biurem",
+        "out_of_office_reply": "Odpowiedź Poza biurem",
         "notify_changes_by_delegated_access": "Powiadamiaj o zmianach dokonanych przez pełnomocników",
         "new_mail_notification": "Nowe powiadomienie mailowe",
         "min_new_check_interval_value": "Wartość",
@@ -1458,8 +1458,8 @@
     },
     "reminder": {
         "minute_0": "{{count}} minuta",
-        "minute_1": "{{count}} minuty",
-        "minute_2": "{{count}} minut"
+        "minute_1": "",
+        "minute_2": ""
     },
     "connection": {
         "access_key": "Klucz dostępu",
@@ -1624,7 +1624,7 @@
         "notification_mark_read_successfully": "Powiadomienie zostało oznaczone jako przeczytane",
         "notification_mark_unread_successfully": "Powiadomienie zostało oznaczone jako nieprzeczytane",
         "warning": "UWAGA",
-        "notifications_list": "Lista powiadomień"
+        "notifications_list": "Lista Powiadomień"
     },
     "cumminity_edition": "CE!",
     "to_carbonio": "do Carbonio!",
