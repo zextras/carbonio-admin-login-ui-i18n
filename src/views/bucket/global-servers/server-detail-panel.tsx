@@ -161,7 +161,9 @@ const serverDetailPanel: FC = () => {
 	const allServersList = useMailstoreListStore((state) => state.allMailstoreList);
 	const isAdvanced = useAuthIsAdvanced((state) => state.isAdvanced);
 	const [serversList, setServersList] = useState<any>([]);
+	const [serverListAll, setServerListAll] = useState<any>([]);
 	const serverHeaderAdvanced = useMemo(() => headerAdvanced(t), [t]);
+	const [searchServer, setSearchServer] = useState<string>('');
 
 	const getServersListType = useCallback((): void => {
 		if (isAdvanced) {
@@ -219,6 +221,7 @@ const serverDetailPanel: FC = () => {
 								};
 							});
 							setServersList(serverList);
+							setServerListAll(serverList);
 						}
 					}
 				});
@@ -237,6 +240,7 @@ const serverDetailPanel: FC = () => {
 					};
 				});
 				setServersList(serverList);
+				setServerListAll(serverList);
 			}
 		}
 	}, [allServersList, isAdvanced]);
@@ -264,6 +268,11 @@ const serverDetailPanel: FC = () => {
 		],
 		[t]
 	);
+
+	useEffect(() => {
+		const fildterdServer = serverListAll.filter((item: any) => item.name.includes(searchServer));
+		setServersList(fildterdServer);
+	}, [searchServer, serverListAll]);
 
 	return (
 		<>
@@ -302,6 +311,10 @@ const serverDetailPanel: FC = () => {
 										label={t('label.search_for_a_Server', `Search for a Server`)}
 										background="gray5"
 										CustomIcon={(): any => <Icon icon="FunnelOutline" size="large" color="Gray0" />}
+										value={searchServer}
+										onChange={(e: any): void => {
+											setSearchServer(e.target.value);
+										}}
 									/>
 								</Container>
 							</Row>
