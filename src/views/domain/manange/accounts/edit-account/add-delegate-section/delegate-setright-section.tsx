@@ -6,11 +6,9 @@
 import React, { FC, useMemo, useContext, useState, useEffect, useCallback } from 'react';
 import {
 	Container,
-	Input,
 	Row,
 	Select,
 	Text,
-	Icon,
 	Checkbox,
 	Divider,
 	Radio,
@@ -26,13 +24,6 @@ import { delegateRightsType, delegateWhereToStore } from '../../../../../utility
 import { AccountContext } from '../../account-context';
 
 const SelectItem = styled(Row)``;
-const CustomIcon = styled(Icon)`
-	width: 20px;
-	height: 20px;
-`;
-
-import { MAX_DELEGATE_ACCOUNT_DISPLAY } from '../../../../../../constants';
-
 const DelegateSetRightsSection: FC = () => {
 	const domainName = useDomainStore((state) => state.domain?.name);
 
@@ -43,15 +34,13 @@ const DelegateSetRightsSection: FC = () => {
 	]);
 	const [searchDelegateAccountName, setSearchDelegateAccountName] = useState('');
 	const [sendingOption, setSendingOption] = useState('');
-	const [isDelegateAccountListExpand, setIsDelegateAccountListExpand] = useState(false);
 	const [isDelegateSelect, setIsDelegateSelect] = useState(false);
 	const DELEGETES_RIGHTS_TYPE = useMemo(() => delegateRightsType(t), [t]);
-	const DELEGETES_WHERE_TO_STORE = useMemo(() => delegateWhereToStore(t), [t]);
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const [offset, setOffset] = useState<number>(0);
 	const [limit, setLimit] = useState<number>(20);
 	const conext = useContext(AccountContext);
-	const { deligateDetail, setDeligateDetail, folderList, setFolderList } = conext;
+	const { accountDetail, deligateDetail, setDeligateDetail, folderList, setFolderList } = conext;
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const searchAccountList = useCallback(
@@ -72,14 +61,9 @@ const DelegateSetRightsSection: FC = () => {
 	}, [searchAccountList, searchDelegateAccountName]);
 
 	const selectedDelegateAccount = (v: any): void => {
-		console.log('selectedDelegateAccount =>', v);
 		setIsDelegateSelect(true);
 		setSearchDelegateAccountName(v.name);
 	};
-
-	useEffect(() => {
-		console.log('delegateAccountList', delegateAccountList);
-	}, [delegateAccountList]);
 
 	const getAccountList = useCallback((): void => {
 		const type = 'accounts';
@@ -89,7 +73,6 @@ const DelegateSetRightsSection: FC = () => {
 			const accountListResponse: any = data?.account || [];
 
 			if (accountListResponse && Array.isArray(accountListResponse)) {
-				console.log('accountListResponse', accountListResponse);
 				const accountListArr: any[] = [];
 				data?.account.map((delegateAccount: any) =>
 					accountListArr.push({
@@ -131,11 +114,7 @@ const DelegateSetRightsSection: FC = () => {
 		setDeligateDetail((prev: any) => ({ ...prev, delegeteRights: v }));
 	};
 
-	const onWhereToStoreChange = (v: any): any => {
-		setDeligateDetail((prev: any) => ({ ...prev, whereToStore: v }));
-	};
 	const onFolderSelect = (v: any, index: number): any => {
-		// setDeligateDetail((prev: any) => ({ ...prev, whereToStore: v }));
 		const changeFolder = cloneDeep(folderList);
 		changeFolder[index].selected = !changeFolder[index].selected;
 		setFolderList(changeFolder);
@@ -174,7 +153,7 @@ const DelegateSetRightsSection: FC = () => {
 				<Row width="100%" padding={{ top: 'medium' }}>
 					<Divider color="gray2" />
 				</Row>
-				{deligateDetail?.delegeteRights === 'read_mails_only' ? (
+				{!deligateDetail?.delegeteRights || deligateDetail?.delegeteRights === 'read_mails_only' ? (
 					<></>
 				) : (
 					<>
@@ -204,14 +183,20 @@ const DelegateSetRightsSection: FC = () => {
 									<Radio
 										label={t(
 											'account_details.send_as_recepients',
-											`Send as (recepients will see the sender)`
+											`Send as (recepients will see the sender {{targetEmail}})`,
+											{
+												targetEmail: accountDetail?.zimbraMailDeliveryAddress
+											}
 										)}
 										value="sendAs"
 									/>
 									<Radio
 										label={t(
 											'account_details.send_as_behalf',
-											`Send on Behalf of (recepients will see the sender)`
+											`Send on Behalf of (recepients will see the sender {{targetEmail}})`,
+											{
+												targetEmail: accountDetail?.zimbraMailDeliveryAddress
+											}
 										)}
 										value="sendOnBehalfOf"
 									/>
@@ -220,7 +205,7 @@ const DelegateSetRightsSection: FC = () => {
 						</Row>
 					</>
 				)}
-				{deligateDetail?.delegeteRights === 'send_mails_only' ? (
+				{!deligateDetail?.delegeteRights || deligateDetail?.delegeteRights === 'send_mails_only' ? (
 					<></>
 				) : (
 					<>
@@ -300,31 +285,6 @@ const DelegateSetRightsSection: FC = () => {
 						</Row>
 					</>
 				)}
-				{/* <Row width="100%" padding={{ top: 'medium' }}>
-					<Divider color="gray2" />
-				</Row>
-				<Row mainAlignment="flex-start" width="100%">
-					<Row padding={{ top: 'large' }} width="100%" mainAlignment="space-between">
-						<Text size="small" color="gray0" weight="bold">
-							{t('account_details.where_to_store_sent_emails', `Where to store sent emails?`)}
-						</Text>
-					</Row>
-				</Row> */}
-				{/* <Row padding={{ top: 'large', left: 'large' }} width="100%" mainAlignment="space-between">
-					<Row width="100%" mainAlignment="flex-start">
-						<Select
-							background="gray5"
-							label={t('account_details.where_to_store_sent_emails', 'Where to store sent emails?')}
-							showCheckbox={false}
-							padding={{ right: 'medium' }}
-							defaultSelection={DELEGETES_WHERE_TO_STORE.find(
-								(item: any) => item.value === deligateDetail?.whereToStore
-							)}
-							onChange={onWhereToStoreChange}
-							items={DELEGETES_WHERE_TO_STORE}
-						/>
-					</Row>
-				</Row> */}
 			</Container>
 		</>
 	);

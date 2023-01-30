@@ -19,15 +19,13 @@ import { debounce } from 'lodash';
 import { useDomainStore } from '../../../../../../store/domain/store';
 import { accountListDirectory } from '../../../../../../services/account-list-directory-service';
 import { AccountContext } from '../../account-context';
-import { AccountStatus, localeList, delegateType } from '../../../../../utility/utils';
+import { delegateType } from '../../../../../utility/utils';
 
 const SelectItem = styled(Row)``;
 const CustomIcon = styled(Icon)`
 	width: 20px;
 	height: 20px;
 `;
-
-import { MAX_DELEGATE_ACCOUNT_DISPLAY } from '../../../../../../constants';
 
 const DelegateSelectModeSection: FC = () => {
 	const domainName = useDomainStore((state) => state.domain?.name);
@@ -67,7 +65,6 @@ const DelegateSelectModeSection: FC = () => {
 
 	const selectedDelegateAccount = useCallback(
 		(v: any): void => {
-			console.log('selectedDelegateAccount =>', v);
 			setIsDelegateSelect(true);
 			setSearchDelegateAccountName(v.name);
 			setDeligateDetail((prev: any) => ({
@@ -78,10 +75,6 @@ const DelegateSelectModeSection: FC = () => {
 		[deligateDetail, setDeligateDetail]
 	);
 
-	useEffect(() => {
-		console.log('delegateAccountList', delegateAccountList);
-	}, [delegateAccountList]);
-
 	const getAccountList = useCallback((): void => {
 		const type = deligateDetail?.grantee?.[0]?.type === 'grp' ? 'distributionlists' : 'accounts';
 		const attrs =
@@ -90,7 +83,6 @@ const DelegateSelectModeSection: FC = () => {
 			const accountListResponse: any = data?.account || [];
 
 			if (accountListResponse && Array.isArray(accountListResponse)) {
-				console.log('accountListResponse', accountListResponse);
 				const accountListArr: any[] = [];
 				if (data?.dl?.length) {
 					// eslint-disable-next-line no-param-reassign
@@ -133,7 +125,6 @@ const DelegateSelectModeSection: FC = () => {
 	}, [getAccountList, searchQuery]);
 
 	const onGroupByChange = (v: any): any => {
-		console.log('deligateDetail', deligateDetail);
 		setDeligateDetail((prev: any) => ({
 			...prev,
 			grantee: [{ type: v, name: deligateDetail?.grantee?.[0]?.name || '' }]
@@ -191,7 +182,6 @@ const DelegateSelectModeSection: FC = () => {
 								)}
 								onChange={(ev: any): void => {
 									setIsDelegateSelect(false);
-									console.log('ev.target.value', ev.target.value);
 									setSearchDelegateAccountName(ev.target.value);
 								}}
 								CustomIcon={(): any => (

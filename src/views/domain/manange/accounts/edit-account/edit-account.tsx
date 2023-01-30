@@ -88,16 +88,17 @@ const EditAccount: FC<{
 	}, [domainList, getDomainLists]);
 
 	useEffect(() => {
-		const modifiedKeys: any = reduce(
-			accountDetail,
-			function (result, value, key): any {
-				return isEqual(value, initAccountDetail[key]) ? result : [...result, key];
-			},
-			[]
-		);
-		map(modifiedKeys, (ele) => {
-			console.log(ele, initAccountDetail[ele], accountDetail[ele]);
-		});
+		// Uncomment this for debugg change keys
+		// const modifiedKeys: any = reduce(
+		// 	accountDetail,
+		// 	function (result, value, key): any {
+		// 		return isEqual(value, initAccountDetail[key]) ? result : [...result, key];
+		// 	},
+		// 	[]
+		// );
+		// map(modifiedKeys, (ele) => {
+		// 	console.log(ele, initAccountDetail[ele], accountDetail[ele]);
+		// });
 		if (initAccountDetail?.zimbraId && !isEqual(accountDetail, initAccountDetail)) {
 			setIsDirty(true);
 		} else {

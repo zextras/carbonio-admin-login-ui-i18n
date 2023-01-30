@@ -22,7 +22,6 @@ import {
 } from '@zextras/carbonio-design-system';
 import moment from 'moment';
 import {
-	soapFetch,
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
 	postSoapFetchRequest
@@ -32,7 +31,6 @@ import { useDomainStore } from '../../../../store/domain/store';
 import Paging from '../../../components/paging';
 import { accountListDirectory } from '../../../../services/account-list-directory-service';
 import { getAccountRequest } from '../../../../services/get-account';
-import { getAccountIdentities } from '../../../../services/get-account-identities';
 import { getAccountMembershipRequest } from '../../../../services/get-account-membership';
 import { getSingatures } from '../../../../services/get-signature-service';
 import AccountDetailView from './account-detail-view';
@@ -125,10 +123,6 @@ const ManageAccounts: FC = () => {
 			setSignatureData(signatureResponse);
 		});
 	}, []);
-
-	// useEffect(() => {
-	// 	getSignatureDetail();
-	// }, [getSignatureDetail]);
 
 	const STATUS_COLOR: any = useMemo(
 		() => ({
@@ -286,7 +280,6 @@ const ManageAccounts: FC = () => {
 	);
 	const getFolderList = useCallback(
 		(acc, delegateList): void => {
-			const targetServers = 'localhost';
 			postSoapFetchRequest(
 				`/service/admin/soap/GetFolderRequest`,
 				{
@@ -314,14 +307,7 @@ const ManageAccounts: FC = () => {
 							userDelegate.push({ ...el, id: ele.id, name: ele.name });
 						});
 				});
-				console.log('==>> getFolderList ==>', filteredFolders);
-				console.log('==>> userDelegate Folder ==>', userDelegate);
 				setFolderList(filteredFolders);
-				const mergeList: any[] = [];
-				// delegateList.forEach((ele: any) => {
-				// 	const folder: any[] = filter(userDelegate, { d: ele?.grantee?.[0]?.name });
-				// 	mergeList.push({ ...ele, folder });
-				// });
 				userDelegate.forEach((ele: any) => {
 					let found = false;
 					delegateList.forEach((el: any) => {
@@ -344,38 +330,13 @@ const ManageAccounts: FC = () => {
 					}
 				});
 
-				console.log('==>> userDelegate ==>', delegateList);
 				setIdentitiesList(delegateList);
-				// setIdentitiesList(res?.Body?.GetIdentitiesResponse?.identity);
-				// setIdentitiesList(res?.Body?.GetGrantsResponse?.grant);
 			});
 		},
 		[flatten]
 	);
 	const getIdentitiesList = useCallback(
 		(acc): void => {
-			console.log('==>> GetIdentities acc ==>', acc);
-			const targetServers = 'localhost';
-			postSoapFetchRequest(
-				`/service/admin/soap/GetIdentitiesRequest`,
-				{
-					_jsns: 'urn:zimbraAccount',
-					identity: [
-						{
-							a: {
-								by: 'name',
-								_content: acc.name
-							}
-						}
-					]
-				},
-				'GetIdentitiesRequest',
-				acc.id
-			).then((res: any) => {
-				console.log('==>> GetIdentitiesRequest ==>', res?.Body?.GetIdentitiesResponse?.identity);
-				// setIdentitiesList(res?.Body?.GetIdentitiesResponse?.identity);
-				// setIdentitiesList(res?.Body?.GetGrantsResponse?.grant);
-			});
 			const request: any = {
 				_jsns: 'urn:zimbraAdmin',
 				target: {
@@ -392,26 +353,8 @@ const ManageAccounts: FC = () => {
 				'GetGrantsRequest',
 				acc.id
 			).then((res: any) => {
-				console.log('==>> GetGrantsResponse ==>', res?.Body?.GetGrantsResponse?.grant);
-				// setIdentitiesList(res?.Body?.GetIdentitiesResponse?.identity);
 				getFolderList(acc, res?.Body?.GetGrantsResponse?.grant || []);
 			});
-
-			// fetchSoap('zextras', {
-			// 	_jsns: 'urn:zimbraAdmin',
-			// 	module: 'ZxCore',
-			// 	action: 'getAllowDelegatedAddress',
-			// 	targetServers,
-			// 	targetID: acc.id,
-			// 	type: 'account',
-			// 	by: 'id'
-			// }).then((res: any) => {
-			// 	if (res?.ok) {
-			// 		setIdentitiesList(res?.response?.[targetServers]?.grants);
-			// 	}
-			// 	console.log('addAllowAddressForDelegatedSender ==>', res);
-			// 	// setIdentitiesList(res?.Body?.GetIdentitiesResponse?.identity);
-			// });
 		},
 		[getFolderList]
 	);

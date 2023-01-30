@@ -97,7 +97,6 @@ const EditAccountDelegatesSection: FC = () => {
 		setDeligateDetail,
 		folderList
 	} = conext;
-	console.log('accountDetail===>', accountDetail);
 	const [showCreateIdentity, setShowCreateIdentity] = useState<boolean>(false);
 	const [editMode, setEditMode] = useState<boolean>(false);
 	const [selectedRows, setSelectedRows] = useState([]);
@@ -108,7 +107,6 @@ const EditAccountDelegatesSection: FC = () => {
 
 	useEffect(() => {
 		const identitiesArr: any = [];
-		console.log('==>> DelegatedAddress ==>', identitiesList);
 		identitiesList.map((item: any): any => {
 			identitiesArr.push({
 				id: item?.grantee?.[0]?.id,
@@ -163,7 +161,7 @@ const EditAccountDelegatesSection: FC = () => {
 			},
 			{
 				id: 'sharing-options',
-				label: t('label.sending_options', 'Sharing Options'),
+				label: t('label.sharing_options', 'Sharing Options'),
 				width: '25%',
 				bold: true
 			}
@@ -195,18 +193,12 @@ const EditAccountDelegatesSection: FC = () => {
 		} else if (selectedDelegate?.folder?.[0]?.perm === 'rwidxa') {
 			selectedDelegate.delegeteRights = 'send_read_manage_mails';
 		}
-		console.log('selectedDelegate', selectedDelegate);
-		// selectedDelegate.granteeEmail = selectedDelegate?.granteeName;
-		// selectedDelegate.right = selectedDelegate?.sendAs === 'true' ? 'sendAs' : 'sendOnBehalfOf';
 		setDeligateDetail(selectedDelegate);
 		setShowCreateIdentity(true);
 	};
 
 	const handleDeleteeDelegate = useCallback((): void => {
-		console.log('handleDeleteeDelegate');
-		console.log('selectedRows', selectedRows);
 		const selectedDelegate = find(identitiesList, (o) => o?.grantee?.[0].id === selectedRows[0]);
-		console.log('selectedDelegate', selectedDelegate);
 		if (selectedDelegate) {
 			if (selectedDelegate?.folder?.length) {
 				selectedDelegate.folder.forEach((ele: any) => {
@@ -223,14 +215,10 @@ const EditAccountDelegatesSection: FC = () => {
 						'FolderActionRequest',
 						accountDetail?.zimbraId
 					).then((res: any) => {
-						console.log('==>> GetIdentities ==>', res);
 						getIdentitiesList({
 							id: accountDetail?.zimbraId,
 							name: accountDetail?.zimbraMailDeliveryAddress
 						});
-
-						// setIdentitiesList(res?.Body?.GetIdentitiesResponse?.identity);
-						// setIdentitiesList(res?.Body?.GetGrantsResponse?.grant);
 					});
 				});
 			}
@@ -256,7 +244,6 @@ const EditAccountDelegatesSection: FC = () => {
 					'RevokeRightRequest',
 					accountDetail?.zimbraId
 				).then((res: any) => {
-					console.log('doRemoveDelegatedSenderAddress ==>', res?.Body);
 					setShowCreateIdentity(false);
 					getIdentitiesList({
 						id: accountDetail?.zimbraId,
@@ -280,9 +267,6 @@ const EditAccountDelegatesSection: FC = () => {
 		}
 	}, [accountDetail, createSnackbar, editMode, getIdentitiesList, identitiesList, selectedRows, t]);
 	const handleCreateDelegateAPI = useCallback((): void => {
-		console.log('handleCreateDelegateAPI');
-		console.log('deligateDetail', deligateDetail);
-		// doAddAllowAddressForDelegatedSender
 		if (editMode) {
 			handleDeleteeDelegate();
 		}
@@ -308,7 +292,6 @@ const EditAccountDelegatesSection: FC = () => {
 				'GrantRightRequest',
 				accountDetail?.zimbraId
 			).then((res: any) => {
-				console.log('==>> GetIdentities ==>', res);
 				getIdentitiesList({
 					id: accountDetail?.zimbraId,
 					name: accountDetail?.zimbraMailDeliveryAddress
@@ -324,8 +307,6 @@ const EditAccountDelegatesSection: FC = () => {
 					hideButton: true,
 					replace: true
 				});
-				// setIdentitiesList(res?.Body?.GetIdentitiesResponse?.identity);
-				// setIdentitiesList(res?.Body?.GetGrantsResponse?.grant);
 			});
 		}
 		if (deligateDetail?.delegeteRights && deligateDetail?.delegeteRights !== 'send_mails_only') {
@@ -333,7 +314,6 @@ const EditAccountDelegatesSection: FC = () => {
 			const folderIds = selectedFolders.map(function (obj) {
 				return obj.id;
 			});
-			console.log('folderIds=>', folderIds);
 			postSoapFetchRequest(
 				`/service/admin/soap/FolderActionRequest`,
 				{
@@ -352,7 +332,6 @@ const EditAccountDelegatesSection: FC = () => {
 				'FolderActionRequest',
 				accountDetail?.zimbraId
 			).then((res: any) => {
-				console.log('==>> GetIdentities ==>', res);
 				getIdentitiesList({
 					id: accountDetail?.zimbraId,
 					name: accountDetail?.zimbraMailDeliveryAddress
@@ -368,38 +347,8 @@ const EditAccountDelegatesSection: FC = () => {
 					hideButton: true,
 					replace: true
 				});
-				// setIdentitiesList(res?.Body?.GetIdentitiesResponse?.identity);
-				// setIdentitiesList(res?.Body?.GetGrantsResponse?.grant);
 			});
 		}
-		// Create Identity
-		// postSoapFetchRequest(
-		// 	`/service/admin/soap/CreateIdentityRequest`,
-		// 	{
-		// 		_jsns: 'urn:zimbraAdmin',
-		// 		identity: {
-		// 			_content: accountDetail?.zimbraMailDeliveryAddress,
-		// 			type: 'account',
-		// 			by: 'name'
-		// 		},
-		// 		grantee: {
-		// 			by: 'name',
-		// 			type: deligateDetail?.grantee?.[0]?.type,
-		// 			_content: deligateDetail?.grantee?.[0]?.name
-		// 		},
-		// 		right: {
-		// 			_content: deligateDetail?.right?.[0]?._content
-		// 		}
-		// 	},
-		// 	'CreateIdentityRequest',
-		// 	accountDetail?.zimbraId
-		// ).then((res: any) => {
-		// 	console.log('==>> GetIdentities ==>', res);
-		// 	getIdentitiesList({
-		// 		id: accountDetail?.zimbraId,
-		// 		name: accountDetail?.zimbraMailDeliveryAddress
-		// 	});
-		// });
 	}, [
 		deligateDetail,
 		editMode,
@@ -439,8 +388,6 @@ const EditAccountDelegatesSection: FC = () => {
 						label={t('account_details.NEXT', 'NEXT')}
 						icon="ChevronRightOutline"
 						iconPlacement="right"
-						// disabled={!deligateDetail?.granteeType || !deligateDetail?.granteeEmail}
-						// onClick={(): void => setShowCreateIdentity(false)}
 					/>
 				)
 			},
@@ -478,7 +425,6 @@ const EditAccountDelegatesSection: FC = () => {
 						label={t('account_details.NEXT', 'NEXT')}
 						icon="ChevronRightOutline"
 						iconPlacement="right"
-						// onClick={(): void => setShowCreateIdentity(false)}
 					/>
 				)
 			},
