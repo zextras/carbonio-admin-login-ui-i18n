@@ -1402,7 +1402,6 @@
         "aliases": "उपनाम"
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "Carbonio को फुल एरर डाटा भेजें",
         "allow_live_survey_feedbacks": "फीडबैक के लिए सर्वेज़ की अनुमति दें",
         "allow_data_analytics": "डाटा एनालिटिक्स की अनुमति दें",
         "survey_feedback_sub_1": "चिंता न करें, सर्वे में ज़्यादा टाइम नहीं लगेगा, ये आसान हैं और हम कैसा कर रहे हैं यह समझने में हमारी बहुत मदद करते हैं।",

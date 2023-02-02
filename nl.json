@@ -1402,7 +1402,6 @@
         "aliases": "Aliassen"
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "Stuur volledige foutgegevens naar Zextras",
         "allow_data_analytics": "Data-analyse mogelijk maken",
         "allow_live_survey_feedbacks": "Enquêtes voor feedback toelaten",
         "analytics_sub_1": "Uw gegevens zijn veilig. Alle informatie die we verzamelen is en blijft anoniem. Het wordt gebruikt door ons team om te begrijpen hoe we Carbonio kunnen verbeteren.",

@@ -1409,7 +1409,6 @@
         "secret_key": "Geheimer Schlüssel"
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "Vollständige Fehlerdaten an schicken",
         "allow_data_analytics": "Datenanalyse erlauben",
         "allow_live_survey_feedbacks": "Feedback Umfragen erlauben",
         "analytics_sub_1": "Ihre Daten sind sicher. Alle Informationen, die wir sammeln sind und bleiben anonym. Sie werden nur von unserem Team genutzt, um zu verstehen, wie wir Carbonio verbessern können.",

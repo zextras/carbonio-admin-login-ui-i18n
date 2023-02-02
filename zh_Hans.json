@@ -1313,7 +1313,6 @@
         }
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "向Zextras发送完整错误数据",
         "allow_data_analytics": "允许数据分析",
         "allow_live_survey_feedbacks": "允许反馈调查",
         "analytics_sub_1": "您的数据很安全。我们所收集的所有信息都将是匿名的。我们的团队将使用这些信息来指导 Carbonio 的改善工作。",

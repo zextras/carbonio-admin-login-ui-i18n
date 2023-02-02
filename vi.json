@@ -1270,7 +1270,6 @@
         "files": "Tệp"
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "Gửi dữ liệu lỗi đầy đủ tới Zextras",
         "full_error_sub_1": "Tất cả chúng ta đều mắc sai lầm nhưng chính cách bạn đối phó với chúng sẽ thay đổi mọi thứ! Chúng tôi muốn học hỏi từ những lỗi của mình, vì vậy hãy cho chúng tôi biết cách chúng tôi có thể sửa chúng",
         "allow_data_analytics": "Cho phép phân tích dữ liệu",
         "allow_live_survey_feedbacks": "Cho phải khảo sát phản hồi",

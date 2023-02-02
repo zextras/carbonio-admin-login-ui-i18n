@@ -1313,7 +1313,6 @@
     "many_cos_info_msg": "非常に多くのCOSがあります！ どれを見たいですか？入力してフィルタリングを開始してください。",
     "log": "ログ",
     "privacy": {
-        "send_full_error_data_to_zextras": "すべてのエラーデータを に送る",
         "allow_data_analytics": "データ分析を許可する",
         "allow_live_survey_feedbacks": "フィードバックのための調査を許可する",
         "survey_feedback_sub_1": "ご心配は無用です。調査は迅速かつ簡単で、弊社がサービスについて理解するうえで非常に役立ちます。",

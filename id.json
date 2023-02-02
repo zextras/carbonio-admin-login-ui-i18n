@@ -1407,7 +1407,6 @@
         "secret_key": "Kunci Rahasia"
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "Kirim data kesalahan lengkap ke Zextras",
         "allow_live_survey_feedbacks": "Izinkan survei untuk mendapat masukan",
         "analytics_sub_1": "Data Anda aman. Semua informasi yang kami kumpulkan akan tetap anonim. Ini akan digunakan oleh tim kami untuk memahami bagaimana kami dapat menyempurnakan Carbonio.",
         "allow_data_analytics": "Izinkan analitik data",

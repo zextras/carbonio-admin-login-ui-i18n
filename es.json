@@ -1313,7 +1313,6 @@
         }
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "Enviar error completo a Zextras",
         "allow_data_analytics": "Permitir análisis de datos",
         "allow_live_survey_feedbacks": "Permitir encuestas para feedback",
         "analytics_sub_1": "Tus datos están seguros. Toda la información que recopilamos se mantiene anónima. Se enviará a nuestro equipo para que sepamos cómo podemos mejorar Carbonio.",

@@ -1403,8 +1403,7 @@
         "full_error_sub_1": "Hepimiz hata yapabiliriz, ancak önemli olan bunları düzeltmek! Hataları ve nasıl düzeltebileceğimizi bizimle paylaşın",
         "analytics_sub_1": "Veriniz güvende. Toplanan bilgiler hiçbir zaman kişi bilgisi içermeyecek. Bu bilgiler, ekibimiz tarafından Carbonio ürününü daha nasıl geliştirebiliriz anlamak üzere kullanılacak.",
         "allow_live_survey_feedbacks": "Geri bildirim için anketlere izin ver",
-        "allow_data_analytics": "Veri analize izin ver",
-        "send_full_error_data_to_zextras": "Tüm hata verisini Zextras'a gönder"
+        "allow_data_analytics": "Veri analize izin ver"
     },
     "have_not_setup_bucket_type": "Bucket türü ayarları yapılmamış",
     "click_new_bucket_button_to_create_new_one": "Yeni oluşturmak için YENI BUCKET simgesine tıklayın.",

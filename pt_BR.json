@@ -1408,7 +1408,6 @@
         "secret_key": "Chave secreta"
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "Enviar relatório completo de erros para a Zextras",
         "allow_data_analytics": "Permitir análise de dados",
         "allow_live_survey_feedbacks": "Permitir pesquisas para feedback",
         "analytics_sub_1": "Seus dados estão seguros. Todas as informações que coletamos são e sempre serão anônimas. Elas serão utilizadas pela nossa equipe para que possamos saber como melhorar o Carbonio.",

@@ -592,9 +592,6 @@
         "descriptive_name": "Nome descritivo",
         "notes": "Observações"
     },
-    "privacy": {
-        "send_full_error_data_to_zextras": "Enviar relatório completo de erros para a Zextras"
-    },
     "reminder": {
         "minute": "{{count}} minuto",
         "minute_plural": ""

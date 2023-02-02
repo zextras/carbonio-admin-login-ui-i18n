@@ -1327,7 +1327,6 @@
         }
     },
     "privacy": {
-        "send_full_error_data_to_zextras": "Invia rapporto di errore completo a Zextras",
         "analytics_sub_1": "I tuoi dati sono al sicuro. Tutte le informazioni collezionate resteranno anonime. Saranno utilizzate dal nostro team esclusivamente per capire come migliorare ulteriormente Carbonio.",
         "survey_feedback_sub_1": "Non ti preoccupare, i questionari saranno veloci, semplici e molto utili per capire come stiamo andando.",
         "allow_data_analytics": "Consenti l'analisi dei dati",
