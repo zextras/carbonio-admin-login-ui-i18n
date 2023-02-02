@@ -746,7 +746,21 @@
         "who_can_send_mails_to_list ": "谁可向此列表发送邮件？",
         "domain_certificate": "域证书",
         "domain_certificate_private_key": "域私钥",
-        "Aliases": "别名"
+        "Aliases": "别名",
+        "ID": "ID",
+        "centralized": "中心化",
+        "done": "完成",
+        "empty_table_helperText": "空表格",
+        "external_volume_edited": "{{message}}",
+        "general_options": "一般选项",
+        "operation": {
+            "get_all_operation_error": "{{name}}",
+            "stop_operation_error": "{{name}}"
+        },
+        "queued": "已加入队列",
+        "running": "运行中",
+        "stop_operation_helperText": "{{message}}",
+        "use_intelligent_tiering": "使用智能分层类型"
     },
     "timezone": {
         "asia_tehran": "{{value}} 德黑兰",
@@ -1448,7 +1462,8 @@
         "volume_config_header": {
             "name": "名称",
             "hsm_scheduled": "HSM已计划",
-            "indexer": "索引器"
+            "indexer": "索引器",
+            "status": "状态"
         },
         "volume_header": {
             "compression": "压缩",
@@ -1462,7 +1477,10 @@
             "id": "ID",
             "name": "名称",
             "path": "路径"
-        }
+        },
+        "indexer_helperText": "索引器",
+        "primary_helperText": "主要",
+        "secondary_helperText": "次要"
     },
     "click_new_bucket_button_to_create_new_one": "点击“新存储桶”按钮以新建。",
     "have_not_setup_bucket_type": "似乎您还没有设置存储桶类型",
@@ -1559,5 +1577,27 @@
         "mark_as_unread": "标记为未读",
         "notifications_list": "通知列表"
     },
-    "welcome": "欢迎"
+    "welcome": "欢迎",
+    "operations": {
+        "copy_btn": "复制",
+        "details": "详细资料",
+        "done": "完成",
+        "empty_table_helperText": "空表格",
+        "label": {
+            "Deep": "深度",
+            "notifications": "通知",
+            "status": "状态"
+        },
+        "operations_list_header": {
+            "author": "作者",
+            "operation": "操作",
+            "server": "服务器",
+            "start_date": "开始日期",
+            "status": "状态",
+            "submit_date": "提交日期"
+        },
+        "other": "其他",
+        "queued": "已加入队列",
+        "running": "运行中"
+    }
 }
