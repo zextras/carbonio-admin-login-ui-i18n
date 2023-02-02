@@ -1005,7 +1005,21 @@
         "who_can_send_mails_to_list ": "Quem pode enviar e-mails PARA esta lista?",
         "domain_certificate_private_key": "Chave particular do domínio",
         "Aliases": "Nomes alternativos",
-        "domain_certificate": "Certificado do domínio"
+        "domain_certificate": "Certificado do domínio",
+        "ID": "ID",
+        "centralized": "Centralizado",
+        "done": "Concluído",
+        "empty_table_helperText": "Tabela Vazia",
+        "external_volume_edited": "{{message}}",
+        "general_options": "Opções gerais",
+        "operation": {
+            "get_all_operation_error": "{{name}}",
+            "stop_operation_error": "{{name}}"
+        },
+        "queued": "Em fila",
+        "running": "Executando",
+        "stop_operation_helperText": "{{message}}",
+        "use_intelligent_tiering": "Usar hierarquia inteligente"
     },
     "message": {
         "snackbar": {
@@ -1443,7 +1457,8 @@
         "volume_config_header": {
             "name": "Nome",
             "hsm_scheduled": "HSM Agendado",
-            "indexer": "Indexador"
+            "indexer": "Indexador",
+            "status": "Status"
         },
         "volume_header": {
             "compression": "Compressão",
@@ -1462,7 +1477,10 @@
             "index": "Índice",
             "primary": "Primário",
             "secondary": "Secundário"
-        }
+        },
+        "indexer_helperText": "Indexador",
+        "primary_helperText": "Primário",
+        "secondary_helperText": "Secundário"
     },
     "click_new_bucket_button_to_create_new_one": "Clique no botão NOVO BUCKET para criar um novo.",
     "have_not_setup_bucket_type": "Parece que você não configurou o tipo de bucket",
@@ -1559,5 +1577,27 @@
         "carbonio": "Carbonio",
         "description": "Descrição"
     },
-    "welcome": "Bem-vindo"
+    "welcome": "Bem-vindo",
+    "operations": {
+        "copy_btn": "COPIAR",
+        "details": "Detalhes",
+        "done": "Concluído",
+        "empty_table_helperText": "Tabela Vazia",
+        "label": {
+            "Deep": "Profundo",
+            "notifications": "Notificações",
+            "status": "Status"
+        },
+        "operations_list_header": {
+            "author": "Autor",
+            "operation": "Operação",
+            "server": "Servidor",
+            "start_date": "Data de início",
+            "status": "Status",
+            "submit_date": "Data de envio"
+        },
+        "other": "Outro",
+        "queued": "Em fila",
+        "running": "Executando"
+    }
 }
