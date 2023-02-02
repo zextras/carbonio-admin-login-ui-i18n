@@ -1006,7 +1006,21 @@
         "there_are_no_owners": "ที่นี่ยังไม่มีเจ้าของ",
         "Aliases": "นามแฝง",
         "domain_certificate": "ใบรับรองโดเมน",
-        "domain_certificate_private_key": "คีย์ส่วนตัวของโดเมน"
+        "domain_certificate_private_key": "คีย์ส่วนตัวของโดเมน",
+        "ID": "ID",
+        "external_volume_edited": "{{message}}",
+        "general_options": "ตัวเลือกทั่วไป",
+        "operation": {
+            "get_all_operation_error": "{{name}}",
+            "stop_operation_error": "{{name}}"
+        },
+        "running": "ทำงานอยู่",
+        "use_intelligent_tiering": "ใช้การจัดระดับอัจฉริยะ",
+        "centralized": "รวบรวมแล้ว",
+        "done": "เสร็จสิ้น",
+        "empty_table_helperText": "โต๊ะว่าง",
+        "queued": "อยู่ในคิวแล้ว",
+        "stop_operation_helperText": "{{message}}"
     },
     "message": {
         "snackbar": {
@@ -1443,7 +1457,8 @@
         "volume_config_header": {
             "name": "ชื่อ",
             "hsm_scheduled": "กำหนดเวลา HSM",
-            "indexer": "ตัวทำดัชนี"
+            "indexer": "ตัวทำดัชนี",
+            "status": "สถานะ"
         },
         "volume_header": {
             "compression": "การบีบอัด",
@@ -1462,7 +1477,10 @@
             "index": "ดัชนี",
             "primary": "หลัก",
             "secondary": "รอง"
-        }
+        },
+        "indexer_helperText": "ตัวทำดัชนี",
+        "primary_helperText": "หลัก",
+        "secondary_helperText": "รอง"
     },
     "click_new_bucket_button_to_create_new_one": "คลิกปุ่ม NEW BUCKET เพื่อสร้างใหม่",
     "have_not_setup_bucket_type": "ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าประเภท bucket",
@@ -1559,5 +1577,27 @@
         "mark_as_unread": "ทำเครื่องหมายว่ายังไม่ได้อ่าน",
         "notifications_list": "รายการการแจ้งเตือน"
     },
-    "welcome": "ยินดีต้อนรับ"
+    "welcome": "ยินดีต้อนรับ",
+    "operations": {
+        "copy_btn": "คัดลอก",
+        "details": "รายละเอียด",
+        "done": "เสร็จสิ้น",
+        "empty_table_helperText": "โต๊ะว่าง",
+        "label": {
+            "Deep": "ลึก",
+            "notifications": "การแจ้งเตือน",
+            "status": "สถานะ"
+        },
+        "operations_list_header": {
+            "author": "ผู้เขียน",
+            "operation": "การดำเนินงาน",
+            "server": "เซิร์ฟเวอร์",
+            "start_date": "วันที่เริ่มต้น",
+            "status": "สถานะ",
+            "submit_date": "วันที่ส่ง"
+        },
+        "other": "อื่น ๆ",
+        "queued": "อยู่ในคิวแล้ว",
+        "running": "ทำงานอยู่"
+    }
 }
