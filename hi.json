@@ -712,7 +712,21 @@
         "verify_certificate": "वेरिफ़ाई करें",
         "Aliases": "उपनाम",
         "domain_certificate": "डोमेन प्रमाणपत्र",
-        "domain_certificate_private_key": "डोमेन निजी कुंजी"
+        "domain_certificate_private_key": "डोमेन निजी कुंजी",
+        "ID": "आईडी",
+        "external_volume_edited": "{{message}}",
+        "general_options": "सामान्‍य विकल्‍प",
+        "operation": {
+            "get_all_operation_error": "{{name}}",
+            "stop_operation_error": "{{name}}"
+        },
+        "queued": "कतार में",
+        "running": "चालू है",
+        "use_intelligent_tiering": "Intelligent Tiering उपयोग करें",
+        "centralized": "केन्द्रित",
+        "done": "हो गया",
+        "empty_table_helperText": "खाली टेबल",
+        "stop_operation_helperText": "{{message}}"
     },
     "timezone": {
         "asia_tomsk": "{{value}} तोम्स्क",
@@ -1445,7 +1459,8 @@
         "volume_config_header": {
             "name": "नाम",
             "hsm_scheduled": "HSM शैड्यूल है",
-            "indexer": "इंडेक्सर"
+            "indexer": "इंडेक्सर",
+            "status": "स्थिति"
         },
         "volume_header": {
             "compression": "कंप्रेशन",
@@ -1464,7 +1479,10 @@
             "index": "इंडेक्स",
             "primary": "प्राइमरी",
             "secondary": "सेकंडरी"
-        }
+        },
+        "indexer_helperText": "इंडेक्सर",
+        "primary_helperText": "प्राइमरी",
+        "secondary_helperText": "सेकंडरी"
     },
     "click_new_bucket_button_to_create_new_one": "नई बकेट बटन क्लिक करके एक नई बनाएँ।",
     "hsm": {
@@ -1560,5 +1578,27 @@
         "manage": "मैनेज करें",
         "notifications_list": "अधिसूचनाओं की लिस्ट"
     },
-    "welcome": "आपका स्वागत है"
+    "welcome": "आपका स्वागत है",
+    "operations": {
+        "copy_btn": "कॉपी करें",
+        "details": "विवरण",
+        "done": "हो गया",
+        "empty_table_helperText": "खाली टेबल",
+        "label": {
+            "Deep": "गहराई",
+            "notifications": "अधिसूचनाएं",
+            "status": "स्थिति"
+        },
+        "operations_list_header": {
+            "author": "लेखक",
+            "operation": "ऑपरेशन",
+            "server": "सर्वर",
+            "start_date": "प्रारम्भ तिथि",
+            "status": "स्थिति",
+            "submit_date": "सब्मिट करने की तारीख"
+        },
+        "other": "अन्य",
+        "queued": "कतार में",
+        "running": "चालू है"
+    }
 }
