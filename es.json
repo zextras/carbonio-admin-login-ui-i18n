@@ -838,7 +838,21 @@
         "verify_certificate": "Verificar",
         "Aliases": "Alias",
         "domain_certificate": "Certificado de dominio",
-        "domain_certificate_private_key": "Clave privada de dominio"
+        "domain_certificate_private_key": "Clave privada de dominio",
+        "operation": {
+            "get_all_operation_error": "{{name}}",
+            "stop_operation_error": "{{name}}"
+        },
+        "running": "Ejecutando",
+        "ID": "ID",
+        "centralized": "Centralizado",
+        "done": "Realizado",
+        "empty_table_helperText": "Tabla vacía",
+        "external_volume_edited": "{{message}}",
+        "general_options": "Opciones generales",
+        "queued": "En cola",
+        "stop_operation_helperText": "{{message}}",
+        "use_intelligent_tiering": "Usar Intelligent Tiering"
     },
     "timezone": {
         "indian_mauritius": "{{value}} Port Louis",
@@ -1444,7 +1458,8 @@
         "volume_config_header": {
             "name": "Nombre",
             "hsm_scheduled": "HSM programado",
-            "indexer": "Indizador"
+            "indexer": "Indizador",
+            "status": "Estado"
         },
         "volume_header": {
             "compression": "Compresión",
@@ -1463,7 +1478,10 @@
             "index": "Índice",
             "primary": "Primario",
             "secondary": "Secundario"
-        }
+        },
+        "primary_helperText": "Primario",
+        "secondary_helperText": "Secundario",
+        "indexer_helperText": "Indizador"
     },
     "click_new_bucket_button_to_create_new_one": "Haz clic sobre el botón NUEVO BUCKET para crear uno nuevo.",
     "have_not_setup_bucket_type": "Parece que no has configurado un tipo de bucket",
@@ -1560,5 +1578,27 @@
         "mark_as_unread": "Marcar como no leído",
         "notifications_list": "Lista de notificaciones"
     },
-    "welcome": "Bienvenido"
+    "welcome": "Bienvenido",
+    "operations": {
+        "operations_list_header": {
+            "start_date": "Fecha de inicio",
+            "status": "Estado",
+            "submit_date": "Fecha de envío",
+            "author": "Autor",
+            "operation": "Operación",
+            "server": "Servidor"
+        },
+        "other": "Otro",
+        "queued": "En cola",
+        "running": "Ejecutando",
+        "copy_btn": "COPIAR",
+        "details": "Detalles",
+        "done": "Realizado",
+        "empty_table_helperText": "Tabla vacía",
+        "label": {
+            "Deep": "Profundo",
+            "notifications": "Notificaciones",
+            "status": "Estado"
+        }
+    }
 }
