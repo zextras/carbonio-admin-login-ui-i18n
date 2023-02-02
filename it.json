@@ -881,7 +881,21 @@
         "load_FILE": "CARICA FILE",
         "max_number_account_of_this_domain_manage": "Il numero massimo di account che questo dominio può gestire",
         "there_are_not_member_here": "Nessun membro presente.",
-        "want_to_use_this_certifiacte": "VOGLIO UTILIZZARE QUESTO CERTIFICATO"
+        "want_to_use_this_certifiacte": "VOGLIO UTILIZZARE QUESTO CERTIFICATO",
+        "ID": "ID",
+        "centralized": "Centralizzato",
+        "done": "Fine",
+        "empty_table_helperText": "Tabella vuota",
+        "general_options": "Opzioni generali",
+        "operation": {
+            "get_all_operation_error": "{{name}}",
+            "stop_operation_error": "{{name}}"
+        },
+        "use_intelligent_tiering": "Usa Intelligent Tiering",
+        "external_volume_edited": "{{message}}",
+        "queued": "In coda",
+        "running": "Avviato",
+        "stop_operation_helperText": "{{message}}"
     },
     "message": {
         "snackbar": {
@@ -1483,8 +1497,12 @@
         "volume_config_header": {
             "name": "Nome",
             "hsm_scheduled": "HSM Programmato",
-            "indexer": "Indexer"
-        }
+            "indexer": "Indexer",
+            "status": "Stato"
+        },
+        "indexer_helperText": "Indexer",
+        "primary_helperText": "Primario",
+        "secondary_helperText": "Secondario"
     },
     "hsm": {
         "all": "Tutto",
@@ -1585,10 +1603,32 @@
         "mark_as_unread": "Segna come non letto",
         "error": "ERRORE",
         "information": "INFORMAZIONI",
-        "notifications_list": "Lista Notifiche",
+        "notifications_list": "Lista notifiche",
         "warning": "ATTENZIONE"
     },
     "cumminity_edition": "Community Edition!",
     "welcome": "Benvenuto",
-    "welcome_to_carbonio_information": "{{adminName}}, benvenuti su Carbonio!"
+    "welcome_to_carbonio_information": "{{adminName}}, benvenuti su Carbonio!",
+    "operations": {
+        "copy_btn": "COPIA",
+        "details": "Dettagli",
+        "done": "Fine",
+        "empty_table_helperText": "Tabella vuota",
+        "label": {
+            "Deep": "Approfondito",
+            "notifications": "Notifiche",
+            "status": "Stato"
+        },
+        "operations_list_header": {
+            "author": "Autore",
+            "operation": "Operazione",
+            "server": "Server",
+            "start_date": "Data di inizio",
+            "status": "Stato",
+            "submit_date": "Data di invio"
+        },
+        "other": "Altro",
+        "queued": "In coda",
+        "running": "Avviato"
+    }
 }
