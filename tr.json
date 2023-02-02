@@ -743,7 +743,21 @@
         "virtual_host_msg": "Sanal ana sistemler, sistemin kullanıcı oturumu için varsayılan bir etki alanı oluşturmasını sağlar.<br />Aşağıdaki ana sistemlerden birinin URL’sini kullanarak oturum açan kullanıcının bu etki alanında olduğu varsayılır, domain1.local. <br />Sanal ana sistemin kaldırılması ancak posta kutusu sunucusu yeniden başlatıldıktan sonra yürürlüğe girer.",
         "virtual_hosts_and_certificates": "Sanal Host ve Sertifika",
         "want_to_use_this_certifiacte": "BU SERTİFİKAYI KULLANMAK İSTİYORUM",
-        "what_inside": "İçinde ne var?"
+        "what_inside": "İçinde ne var?",
+        "ID": "ID",
+        "centralized": "Merkezi",
+        "done": "Tamamlandı",
+        "empty_table_helperText": "Tabloyu Boşalt",
+        "external_volume_edited": "{{message}}",
+        "general_options": "Genel Seçenekler",
+        "operation": {
+            "get_all_operation_error": "{{name}}",
+            "stop_operation_error": "{{name}}"
+        },
+        "running": "Çalışıyor",
+        "stop_operation_helperText": "{{message}}",
+        "use_intelligent_tiering": "Intelligent Tiering kullan",
+        "queued": "Sırada"
     },
     "timezone": {
         "asia_gaza": "{{value}} Gaza",
@@ -1377,7 +1391,8 @@
         "volume_config_header": {
             "name": "Ad",
             "hsm_scheduled": "HSM Zamanlandı",
-            "indexer": "İndeksleyici"
+            "indexer": "İndeksleyici",
+            "status": "Durum"
         },
         "volume_header": {
             "compression": "Sıkıştırma",
@@ -1396,7 +1411,10 @@
             "index": "İndeks",
             "primary": "Birincil",
             "secondary": "İkincil"
-        }
+        },
+        "indexer_helperText": "İndeksleyici",
+        "primary_helperText": "Birincil",
+        "secondary_helperText": "İkincil"
     },
     "privacy": {
         "survey_feedback_sub_1": "Anketler hızlı, kolay ve yapmamız gerekenleri anlamamız için çok kullanışlı olacak.",
@@ -1633,5 +1651,28 @@
     },
     "cumminity_edition": "Topluluk Sürümü!",
     "welcome": "Hoş Geldiniz",
-    "welcome_to_carbonio_information": "{{adminName}} - Carbonio'a Hoş Geldin!"
+    "welcome_to_carbonio_information": "{{adminName}} - Carbonio'a Hoş Geldin!",
+    "operations": {
+        "copy_btn": "KOPYALA",
+        "copy_operation_successfully": "Bildirim başarıyla kopyalandı",
+        "details": "Detaylar",
+        "done": "Tamamlandı",
+        "empty_table_helperText": "Tabloyu Boşalt",
+        "label": {
+            "Deep": "Derinlik",
+            "notifications": "Bildirimler",
+            "status": "Durum"
+        },
+        "operations_list_header": {
+            "author": "Yazar",
+            "operation": "İşlem",
+            "server": "Sunucu",
+            "start_date": "Başlangıç tarihi",
+            "status": "Durum",
+            "submit_date": "Gönderim tarihi"
+        },
+        "other": "Diğer",
+        "queued": "Sırada",
+        "running": "Çalışıyor"
+    }
 }
