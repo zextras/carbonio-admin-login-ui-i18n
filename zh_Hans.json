@@ -760,7 +760,10 @@
         "queued": "已加入队列",
         "running": "运行中",
         "stop_operation_helperText": "{{message}}",
-        "use_intelligent_tiering": "使用智能分层类型"
+        "use_intelligent_tiering": "使用智能分层类型",
+        "what_inside": "主题",
+        "lockout": "锁定",
+        "please_wait": "请稍候"
     },
     "timezone": {
         "asia_tehran": "{{value}} 德黑兰",
@@ -1019,7 +1022,8 @@
             },
             "activate": "激活",
             "activation": "激活",
-            "deactivate": "停用"
+            "deactivate": "停用",
+            "order_id": "订单ID"
         }
     },
     "message": {
@@ -1567,7 +1571,8 @@
     "select_bucket_or_create_new_bucket_helperText": "似乎您还没有设置存储桶类型。\n\t\t\t\t\t\t\t\t\t点击“新存储桶”按钮以新建。",
     "dashboard": {
         "carbonio": "Carbonio",
-        "description": "描述"
+        "description": "描述",
+        "server_name": "服务器名称"
     },
     "notification": {
         "copy": "复制",
