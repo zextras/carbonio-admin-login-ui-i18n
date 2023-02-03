@@ -760,7 +760,10 @@
         "queued": "In der Warteschlange",
         "running": "Läuft",
         "stop_operation_helperText": "{{message}}",
-        "use_intelligent_tiering": "Intelligentes Tiering nutzen"
+        "use_intelligent_tiering": "Intelligentes Tiering nutzen",
+        "lockout": "Sperrung",
+        "please_wait": "Bitte warten Sie.",
+        "what_inside": "Betreff"
     },
     "timezone": {
         "asia_yerevan": "{{value}} Eriwan",
