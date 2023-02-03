@@ -1018,7 +1018,11 @@
         "done": "Selesai",
         "empty_table_helperText": "Kosongkan Tabel",
         "queued": "Diantrekan",
-        "stop_operation_helperText": "{{message}}"
+        "stop_operation_helperText": "{{message}}",
+        "home": "Rumah",
+        "lockout": "Penguncian",
+        "please_wait": "Harap tunggu",
+        "what_inside": "Subjek"
     },
     "message": {
         "snackbar": {
