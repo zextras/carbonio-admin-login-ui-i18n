@@ -177,3 +177,7 @@ export const SWIFT = 'SWIFT';
 export const CEPH = 'CEPH';
 export const CLOUDIAN = 'CLOUDIAN';
 export const SCALITYS3 = 'SCALITYS3';
+export const ASC = 'asc';
+export const DESC = 'desc';
+export const PERCENT_USED = 'percentUsed';
+export const TOTAL_USED = 'totalUsed';
