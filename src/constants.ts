@@ -185,3 +185,4 @@ export const ASC = 'asc';
 export const DESC = 'desc';
 export const PERCENT_USED = 'percentUsed';
 export const TOTAL_USED = 'totalUsed';
+export const LDAP_QUERY = 'ldap:///??sub?(&(objectClass=inetOrgPerson)(mail=*@domain.tld))';
