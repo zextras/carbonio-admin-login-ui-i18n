@@ -803,8 +803,8 @@
         "ID": "ID",
         "account_password_setting_note_for_external_authentication": "Параметры ниже ↓ не влияют на пароли, установленные пользователями в доменах, которые настроены на использование внешней аутентификации. Изменения, сделанные здесь, переопределяют настройки COS для пароля и блокировки неудачного входа в систему.",
         "cancel_operation_sucess": "Действие {{name}} было успешно отменена",
-        "cancel_operations_message": "Вы уверены, что хотите ОТМЕНИТЬ это действие? <br /> Нажав ОТМЕНА ДЕЙСТВИЙ <br /> оно будет удалено из списка очереди.",
-        "cancel_operations_msg": "Вы уверены, что хотите ОТМЕНИТЬ это действие? <br /> Нажав ОТМЕНА ДЕЙСТВИЙ <br /> действие будет удалено из списка очереди.",
+        "cancel_operations_message": "Вы уверены, что хотите ОТМЕНИТЬ эту операцию? <br /> Нажав ОТМЕНИТЬ ОПЕРАЦИЮ <br /> она будет удалена из списка очереди операций.",
+        "cancel_operations_msg": "Вы уверены, что хотите ОТМЕНИТЬ эту операцию? <br /> Нажав ОТМЕНИТЬ ОПЕРАЦИЮ <br /> она будет удалена из списка очереди операций.",
         "disable_the_account": "Отключить учетную запись",
         "restore_config_info_row_1": "<bold>{{accountName}}</bold> будет скопирован в учетную запись, которую вы выберете в поле ниже.",
         "restore_select_account_row_2": "<bold>Обратите внимание</bold>, что все письма, встречи, контакты и настройки учетной записи будут восстановлены в том виде, в каком они были в выбранный временной период.",
@@ -1700,7 +1700,10 @@
             "remote_metadata_upload": "Удаленная загрузка метаданных",
             "started_at": "Началось в",
             "submitted_at": "Отправлено в",
-            "who_started_it": "Кто это начал?"
+            "who_started_it": "Кто это начал?",
+            "stop_operation_btn": "ОСТАНОВИТЬ ОПЕРАЦИЮ",
+            "cancel_operation_btn": "ОТМЕНИТЬ ОПЕРАЦИЮ",
+            "operation_type": "Тип операции"
         },
         "operations_list_header": {
             "author": "Автор",
@@ -1715,6 +1718,13 @@
         "running": "Работает",
         "cancel_operation_model_title": "Вы отменяете {{OperationName}}",
         "cancel_operation_model_title_helperText": "Вы отменяете {{operationName}}",
-        "operationname_on_servername": "{{operationName}} на {{serverName}}"
+        "operationname_on_servername": "{{operationName}} на {{serverName}}",
+        "cancel_opearation_btn": "ОТМЕНИТЬ ОПЕРАЦИЮ",
+        "queued_panel_heading": "Операции в очереди",
+        "running_panel_heading": "Запуск операций",
+        "stop_opearation_btn": "ОСТАНОВИТЬ ОПЕРАЦИЮ",
+        "done_panel_heading": "Выполненные операции",
+        "stopping_operation_model_title": "Вы останавливаете {{OperationName}}",
+        "stopping_operation_model_title_helperText": "Вы останавливаете {{operationName}}"
     }
 }
