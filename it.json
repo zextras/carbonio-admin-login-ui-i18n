@@ -943,7 +943,19 @@
         "cancel_operation_sucess": "L'operazione {{name}} è stata cancellata con successo",
         "copyrights_theme_note": "Le informazioni che riguardano il copyright appariranno nel footer del riquadro per l'accesso",
         "use_infraquent_access": "Usa Accesso poco frequente",
-        "volume_as_current": "Volume come corrente"
+        "volume_as_current": "Volume come corrente",
+        "Accounts": "Account",
+        "EDIT": "MODIFICA",
+        "REMOVE": "RIMUOVI",
+        "Rights": "Diritti",
+        "Type": "Tipo",
+        "chats": "Chat",
+        "contacts": "Contatti",
+        "files": "Drive",
+        "mail_signatures": "Firme E-mail",
+        "mails": "Mail",
+        "out_of_the_office_reply": "Risposta automatica Fuori Ufficio",
+        "tasks": "Impegni"
     },
     "message": {
         "snackbar": {
@@ -1494,7 +1506,10 @@
         "new_alias_name": "Nome nuovo alias",
         "your_available_aliases": "I tuoi alias disponibili",
         "allow_user_check_minimum_interval": "Consenti all'utente di modificare l'intervallo minimo tra i controlli",
-        "type_the_new_alias_name": "Digita il nuovo nome alias e seleziona un dominio per aggiungerlo ai tuoi alias disponibili"
+        "type_the_new_alias_name": "Digita il nuovo nome alias e seleziona un dominio per aggiungerlo ai tuoi alias disponibili",
+        "NEXT": "SUCCESSIVO",
+        "abstract": "Riassunto",
+        "on_behalf_of": "per conto di"
     },
     "connection": {
         "access_key": "Chiave d'Accesso",
