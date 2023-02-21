@@ -359,7 +359,6 @@ const DetailsPanel: FC<{
 						label={ButtonLabel}
 						icon={buttonIcon}
 						iconPlacement="right"
-						size="fill"
 						color={verify}
 						onClick={verifyConnector}
 						disabled={toggleBtn}

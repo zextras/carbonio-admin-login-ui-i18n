@@ -2447,7 +2447,7 @@ const EditMailingListView: FC<any> = ({
 								<Button
 									label={t('label.go_back', 'Go Back')}
 									color="secondary"
-									size="fill"
+									size="medium"
 									onClick={(): void => {
 										setOpenAddMailingListDialog(false);
 									}}

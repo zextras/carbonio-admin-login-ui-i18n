@@ -627,13 +627,15 @@ const EditBucketDetailPanel: FC<{
 						}}
 					/>
 				</Row>
-				<Row width="100%" padding={{ top: 'large' }}>
+				<Row width="100%" padding={{ top: 'large' }} style={{ display: 'block' }}>
 					<Button
 						type="outlined"
 						label={ButtonLabel}
 						icon={buttonIcon}
 						iconPlacement="right"
-						size="fill"
+						size="large"
+						width="100%"
+						style={{ width: '100%' }}
 						color={verify}
 						onClick={verifyConnector}
 						disabled={toggleBtn}
