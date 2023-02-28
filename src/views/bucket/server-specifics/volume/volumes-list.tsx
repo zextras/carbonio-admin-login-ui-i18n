@@ -233,11 +233,13 @@ const VolumesDetailPanel: FC = () => {
 				_jsns: 'urn:zimbraAdmin',
 				module: 'ZxPowerstore',
 				action: 'getAllVolumes',
-				targetServers: serverName
+				targetServers: selectedServerName
 			})
 				.then((res: any) => {
 					const result = JSON.parse(res?.Body?.response?.content);
-					const getAllVolResponse = result?.response?.[`${serverList[0]?.name}`];
+					const getAllVolResponse = Object.keys(result?.response).map(
+						(key) => result?.response[key]
+					)[0];
 					if (getAllVolResponse?.ok) {
 						const primaries = getAllVolResponse?.response?.primaries;
 						const secondaries = getAllVolResponse?.response?.secondaries;
@@ -299,7 +301,7 @@ const VolumesDetailPanel: FC = () => {
 					});
 				});
 		}
-	}, [isAdvanced, serverName, serverList, selectedServerId, createSnackbar, t]);
+	}, [isAdvanced, selectedServerName, selectedServerId, createSnackbar, t]);
 
 	const deleteHandler = async (data: any): Promise<any> => {
 		if (isAdvanced) {
@@ -307,12 +309,14 @@ const VolumesDetailPanel: FC = () => {
 				_jsns: 'urn:zimbraAdmin',
 				module: 'ZxPowerstore',
 				action: 'doDeleteVolume',
-				targetServers: serverName,
+				targetServers: selectedServerName,
 				volumeName: data?.name
 			})
 				.then((res: any) => {
 					const result = JSON.parse(res?.Body?.response?.content);
-					const deleteResponse = result?.response?.[`${serverList[0]?.name}`];
+					const deleteResponse = Object.keys(result?.response).map(
+						(key) => result?.response[key]
+					)[0];
 					if (deleteResponse?.ok) {
 						createSnackbar({
 							key: '1',

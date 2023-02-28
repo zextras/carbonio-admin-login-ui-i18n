@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useEffect, useState, useMemo, useCallback } from 'react';
+import React, { FC, useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { debounce, flatMapDeep, filter } from 'lodash';
 import {
@@ -41,6 +41,7 @@ import { fetchSoap } from '../../../../services/listOTP-service';
 import { useAuthIsAdvanced } from '../../../../store/auth-advanced/store';
 import CustomRowFactory from '../../../app/shared/customTableRowFactory';
 import CustomHeaderFactory from '../../../app/shared/customTableHeaderFactory';
+import useOutsideClick from '../../../app/hooks/useoutsideclick';
 
 const ManageAccounts: FC = () => {
 	const [t] = useTranslation();
@@ -57,6 +58,7 @@ const ManageAccounts: FC = () => {
 
 	const flatten: any = useCallback((item: any) => [item, flatMapDeep(item.folder, flatten)], []);
 	const isAdvanced = useAuthIsAdvanced((state) => state.isAdvanced);
+	const tableRef = useRef(null);
 
 	const headers: any = useMemo(
 		() => [
@@ -537,6 +539,30 @@ const ManageAccounts: FC = () => {
 		}
 	}, [domainName, getAccountList]);
 
+	const closeAccountDetailDialog = useCallback(() => {
+		if (showAccountDetailView) {
+			setShowAccountDetailView(false);
+		}
+	}, [showAccountDetailView]);
+
+	const handleKeyEvent = useCallback(
+		(event) => {
+			if (event.key === 'Escape') {
+				closeAccountDetailDialog();
+			}
+		},
+		[closeAccountDetailDialog]
+	);
+
+	useOutsideClick(tableRef, closeAccountDetailDialog);
+
+	useEffect(() => {
+		window.addEventListener('keydown', handleKeyEvent);
+		return () => {
+			window.removeEventListener('keydown', handleKeyEvent);
+		};
+	}, [handleKeyEvent]);
+
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="flex-start" background="gray6">
 			<Row takeAvwidth="fill" mainAlignment="flex-start" width="100%">
@@ -619,6 +645,7 @@ const ManageAccounts: FC = () => {
 							crossAlignment="flex-start"
 							width="fill"
 							height="calc(100vh - 340px)"
+							ref={tableRef}
 						>
 							{accountList.length !== 0 && (
 								<Table
@@ -677,6 +704,48 @@ const ManageAccounts: FC = () => {
 									<Paging totalItem={totalAccount} setOffset={setOffset} pageSize={limit} />
 								</Row>
 							)}
+							<AccountContext.Provider
+								value={{
+									accountDetail,
+									setAccountDetail,
+									directMemberList,
+									inDirectMemberList,
+									setDirectMemberList,
+									setInDirectMemberList,
+									initAccountDetail,
+									setInitAccountDetail,
+									setSignatureItems,
+									setSignatureList,
+									otpList,
+									getListOtp,
+									identitiesList,
+									deligateDetail,
+									setDeligateDetail,
+									getIdentitiesList,
+									folderList,
+									setFolderList
+								}}
+							>
+								{showAccountDetailView && (
+									<AccountDetailView
+										selectedAccount={selectedAccount}
+										setShowAccountDetailView={setShowAccountDetailView}
+										setShowEditAccountView={setShowEditAccountView}
+										STATUS_COLOR={STATUS_COLOR}
+										getAccountList={getAccountList}
+									/>
+								)}
+
+								{showEditAccountView && (
+									<EditAccount
+										setShowEditAccountView={setShowEditAccountView}
+										selectedAccount={selectedAccount}
+										getAccountList={getAccountList}
+										signatureList={signatureList}
+										signatureItems={signatureItems}
+									/>
+								)}
+							</AccountContext.Provider>
 						</Row>
 					</Container>
 				</Row>
@@ -687,48 +756,6 @@ const ManageAccounts: FC = () => {
 					getAccountList={getAccountList}
 				/>
 			)}
-			<AccountContext.Provider
-				value={{
-					accountDetail,
-					setAccountDetail,
-					directMemberList,
-					inDirectMemberList,
-					setDirectMemberList,
-					setInDirectMemberList,
-					initAccountDetail,
-					setInitAccountDetail,
-					setSignatureItems,
-					setSignatureList,
-					otpList,
-					getListOtp,
-					identitiesList,
-					deligateDetail,
-					setDeligateDetail,
-					getIdentitiesList,
-					folderList,
-					setFolderList
-				}}
-			>
-				{showAccountDetailView && (
-					<AccountDetailView
-						selectedAccount={selectedAccount}
-						setShowAccountDetailView={setShowAccountDetailView}
-						setShowEditAccountView={setShowEditAccountView}
-						STATUS_COLOR={STATUS_COLOR}
-						getAccountList={getAccountList}
-					/>
-				)}
-
-				{showEditAccountView && (
-					<EditAccount
-						setShowEditAccountView={setShowEditAccountView}
-						selectedAccount={selectedAccount}
-						getAccountList={getAccountList}
-						signatureList={signatureList}
-						signatureItems={signatureItems}
-					/>
-				)}
-			</AccountContext.Provider>
 		</Container>
 	);
 };
