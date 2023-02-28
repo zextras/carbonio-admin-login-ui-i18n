@@ -1785,7 +1785,7 @@
         "stopping_operation_model_title": "Se está deteniendo {{OperationName}}",
         "stopping_operation_model_title_helperText": "Se está deteniendo {{operationName}}"
     },
-    "select_bucket_or_create_bucket": "Aún no se ha configurado un bucket.\nClic en el botón \"CREAR +\" para añadir uno nuevo.",
+    "select_bucket_or_create_bucket": "Aún no se ha configurado ningún bucket.\nClic en el botón \"CREAR +\" para añadir uno nuevo.",
     "to_carbonio": "a Carbonio!",
     "virtual_hosts": {
         "load": "CARGAR",
