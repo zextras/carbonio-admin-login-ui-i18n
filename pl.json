@@ -74,7 +74,7 @@
         "asia_damascus": "{{value}} Damaszek",
         "asia_dhaka": "{{value}} Dhaka",
         "asia_gaza": "{{value}} Gaza",
-        "asia_hong_kong": "{{value}} Pekin, Chongqing, Hong Kong, Urumczi",
+        "asia_hong_kong": "{{value}} Pekin, Chongquing, Hong Kong, Urumczi",
         "asia_hovd": "{{value}} Kobdo",
         "asia_irkutsk": "{{value}} Irkuck (RTZ 7)",
         "asia_jerusalem": "{{value}} Jerozolima",
@@ -311,7 +311,7 @@
         "app_name": "Zarządzaj",
         "backup": "Kopia zapasowa",
         "cancel": "Anuluj",
-        "core": "Rdzeń",
+        "core": "Core",
         "days": "Dni",
         "delete": "Usuń",
         "description": "Opis",
@@ -375,7 +375,7 @@
         "always_compose_in_new_window": "Zawsze twórz w nowym oknie",
         "always_show_the_mini-calendar": "Zawsze pokazuj minikalendarz",
         "creation_date": "Data stworzenia",
-        "default_appointment_visibility": "Domyślna widoczność spotkań",
+        "default_appointment_visibility": "Domyślna widoczność spotkania",
         "details": "Szczegóły",
         "draft_auto_save_interval": "Interwał automatycznego zapisu kopii roboczej",
         "email": "E-mail",
@@ -1121,7 +1121,8 @@
         "sort_by_total_quota": "Sortuj wg limitu przydziału",
         "storage_primarybar_tooltip": "Zobacz swój <bold>status serwera, woluminy oraz polityki HSM</bold>. Tutaj możesz również połączyć buckety.",
         "subscription_primarybar_tooltip": "Zobacz <bold>szczegóły subskrypcji</bold> oraz aktywuj nową.",
-        "web_feature": "Funkcja dla klienta sieciowego"
+        "web_feature": "Funkcja dla klienta sieciowego",
+        "storage": "Pamięć"
     },
     "message": {
         "snackbar": {
@@ -1569,8 +1570,8 @@
     },
     "reminder": {
         "minute_0": "{{count}} minuta",
-        "minute_1": "{{count}} minuty",
-        "minute_2": "{{count}} minut"
+        "minute_1": "",
+        "minute_2": ""
     },
     "connection": {
         "access_key": "Klucz dostępu",
