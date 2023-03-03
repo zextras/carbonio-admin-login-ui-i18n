@@ -817,7 +817,8 @@
         "storage_primarybar_tooltip": "<bold>Sunucu durumunu</bold>, <bold>hacimleri</bold> ve <bold>HSM ilkelerini</bold> görüntüleyin. Ayrıca <bold>bucket birimlerine de bağlantı</bold> yapabilirsiniz.",
         "operation_primarybar_tooltip": "<bold>İşlemleri başlatma, yönetme</bold> ve <bold>sonlandırma</bold> durumunu görüntüleyin ve yönetin.",
         "privacy_primarybar_tooltip": "<bold>Veri raporları, hata logları</bold> ve <bold>anketler</bold> gibi <bold>Gizlilik</bold> ayarlarını yönetin.",
-        "subscription_primarybar_tooltip": "<bold>Abonelik detaylarınızı</bold> görüntüleyin ve/veya yeni aboneliğinizi <bold>etkinleştirin</bold>."
+        "subscription_primarybar_tooltip": "<bold>Abonelik detaylarınızı</bold> görüntüleyin ve/veya yeni aboneliğinizi <bold>etkinleştirin</bold>.",
+        "storage": "Depolama"
     },
     "timezone": {
         "asia_gaza": "{{value}} Gaza",
