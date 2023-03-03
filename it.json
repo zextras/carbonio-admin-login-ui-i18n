@@ -966,7 +966,8 @@
         "sharing_options": "Opzioni di Condivisione",
         "sort_by_percentage": "Ordina per percentuale",
         "sort_by_total_quota": "Ordina per spazio totale",
-        "web_feature": "Funzionalità Web"
+        "web_feature": "Funzionalità Web",
+        "storage": "Memoria"
     },
     "message": {
         "snackbar": {
