@@ -340,7 +340,7 @@
             }
         },
         "status": "สถานะ",
-        "suspended": "หยุดชั่วคราว",
+        "suspended": "ระงับ",
         "timezone": "โซนเวลา",
         "unlimited": "ไม่จำกัด",
         "url": "URL",
@@ -1098,7 +1098,8 @@
         "contacts": "ผู้ติดต่อ",
         "mail_signatures": "ลายเซ็นจดหมาย",
         "mails": "อีเมล",
-        "out_of_the_office_reply": "การตอบกลับเมื่อไม่อยู่ในสำนักงาน"
+        "out_of_the_office_reply": "การตอบกลับเมื่อไม่อยู่ในสำนักงาน",
+        "storage": "เก็บข้อมูล"
     },
     "message": {
         "snackbar": {
