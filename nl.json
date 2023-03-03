@@ -916,7 +916,8 @@
         "contacts": "Contacten",
         "files": "Drive",
         "out_of_the_office_reply": "Antwoord bij afwezigheid",
-        "tasks": "Taken"
+        "tasks": "Taken",
+        "storage": "Opslag"
     },
     "timezone": {
         "europe_belgrade": "{{value}} Belgrado, Bratislava, Boedapest, Ljubljana, Praag",
