@@ -1346,7 +1346,8 @@
     "accountDetails": {
         "enable_activeSync_remote_access": "ActiveSync रिमोट एक्सेस चालू करें",
         "default_COS": "डिफ़ाल्ट COS",
-        "change_password_for_next_login": "अगले लॉगिन में पासवर्ड बदलना जरूरी है"
+        "change_password_for_next_login": "अगले लॉगिन में पासवर्ड बदलना जरूरी है",
+        "user_will_change_password_on_next_login": "यूज़र अगले लॉगिन पर अपना पासवर्ड बदलेगा"
     },
     "locale": {
         "English": "अँग्रेजी",
@@ -1502,7 +1503,9 @@
         "click_on_the_pencil_to_edit": "पेंसिल पर क्लिक करें और उपलब्ध उपनाम बदलें या इसे डिलीट करने के लिए क्रॉस पर क्लिक करें",
         "NEXT": "अगला",
         "abstract": "एब्स्ट्रैक्ट",
-        "on_behalf_of": "इनकी ओर से"
+        "on_behalf_of": "इनकी ओर से",
+        "ADD": "जोड़ें",
+        "a_user": "एक यूज़र"
     },
     "privacy": {
         "allow_live_survey_feedbacks": "फीडबैक के लिए सर्वेज़ की अनुमति दें",
