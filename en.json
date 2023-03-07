@@ -113,7 +113,7 @@
         "select_email_otp": "Select an email address to send the OTP to or copy the code above",
         "select_mode": "SELECT MODE",
         "send": "SEND",
-        "send_as_behalf": "Send on Behalf of (recepients will see the sender {{targetEmail}})",
+        "send_as_behalf": "Send on Behalf of (recipients will will display this sender email {{targetEmail}})",
         "send_as_recepients": "Send as (recipients will display this sender email {{targetEmail}})",
         "send_mails_only": "Send Mails only (no access to folders)",
         "send_read_mails": "Send and Read Mails (no rights to create folders / manage mails)",
