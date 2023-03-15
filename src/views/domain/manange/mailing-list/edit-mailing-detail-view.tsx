@@ -920,7 +920,6 @@ const EditMailingListView: FC<any> = ({
 				? setOwnerOfList(previousDetail?.ownerOfList)
 				: setOwnerOfList([]);
 		}
-		setGrantType(previousDetail?.grantType);
 		setIsDirty(false);
 	};
 
@@ -1307,11 +1306,6 @@ const EditMailingListView: FC<any> = ({
 			setIsDirty(true);
 		}
 	}, [previousDetail?.displayName, displayName]);
-	useEffect(() => {
-		if (!isEqual(zimbraDefaultMailAlias, zimbraMailAlias)) {
-			setIsDirty(true);
-		}
-	}, [zimbraDefaultMailAlias, zimbraMailAlias]);
 
 	useEffect(() => {
 		if (
@@ -1906,6 +1900,13 @@ const EditMailingListView: FC<any> = ({
 					</Container>
 				</ListRow>
 				<ListRow>
+					<ManageAliases
+						listAliases={zimbraMailAlias}
+						setListAliases={setZimbraMailAlias}
+						setAliasChange={(): void => ((): any => true)()}
+					/>
+				</ListRow>
+				<ListRow>
 					<Container
 						mainAlignment="flex-start"
 						crossAlignment="flex-start"
@@ -2009,13 +2010,6 @@ const EditMailingListView: FC<any> = ({
 							/>
 						</Container>
 					</Container>
-				</ListRow>
-				<ListRow>
-					<ManageAliases
-						listAliases={zimbraMailAlias}
-						setListAliases={setZimbraMailAlias}
-						setAliasChange={(): void => ((): any => true)()}
-					/>
 				</ListRow>
 				<Row padding={{ top: 'small', bottom: 'medium' }}>
 					<Text size="medium" weight="bold" color="gray0">
