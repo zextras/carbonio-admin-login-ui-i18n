@@ -551,7 +551,7 @@
         "disabled": "Inhabilitada",
         "local": "Local",
         "na": "N/A",
-        "purge": "Depuración",
+        "purge": "Depurar",
         "scheduled": "Programado",
         "allowed_sending_addresses": "Direcciones que tienen permitido enviar",
         "data_volume": "Volumen de datos",
@@ -1604,7 +1604,7 @@
         },
         "volume_config_header": {
             "name": "Nombre",
-            "hsm_scheduled": "HSM programado",
+            "hsm_scheduled": "HSM planificado",
             "indexer": "Indexador",
             "status": "Estado"
         },
