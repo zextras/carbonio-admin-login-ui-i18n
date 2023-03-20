@@ -426,7 +426,7 @@
         "domain_quota_settings": "Configurações de cotas de domínio",
         "deligated_admin_help_url": "URL de Ajuda do Administrador Delegado",
         "deleteing": "Excluindo ",
-        "delete_domain_with_account_content_msg": "{{domainName}}} não está vazio: ele contém {{{domainAccounts}} contas de sistema e {{domainAccounts}} contas regulares. Tem certeza que deseja continuar com a exclusão?",
+        "delete_domain_with_account_content_msg": "{{domainName}} não está vazio: ele contém {{domainAccounts}} contas de sistema e {{domainAccounts}} contas regulares. Tem certeza que deseja continuar com a exclusão?",
         "access_key": "Chave de acesso",
         "account_scan": "AccountScan",
         "actions": "Ações",
