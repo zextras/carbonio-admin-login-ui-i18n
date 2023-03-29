@@ -496,7 +496,7 @@
         "unsaved_changes": "Você tem alterações que não foram salvas",
         "unsaved_changes_line1": "Tem certeza que deseja sair desta página sem salvar?",
         "unsaved_changes_line2": "Todas as suas alterações não salvas serão perdidas",
-        "use_iCal_delegation_model_for_shared_calendars_for_CalDAV_interface": "Usar o modelo de delegação iCal para as agendas compartilhadas para a interface CalDAV",
+        "use_iCal_delegation_model_for_shared_calendars_for_CalDAV_interface": "Usar o modelo de delegação iCal para calendários compartilhados para a interface CalDAV",
         "use_the_gal_when_autocompleting_addresses": "Usar a Lista global de endereços ao completar automaticamente os endereços",
         "verify_connector": "VERIFICAR CONECTOR",
         "virtual_hosts": "Hosts virtuais",
