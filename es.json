@@ -132,7 +132,14 @@
         "certificate_content_error": "El certificado de dominio, la cadena CA o la clave privada no son validos",
         "certificate_invalid_error": "El certificado no es válido. Por favor, intente con otro",
         "certificate_type_use_letsencrypt": "Quiero utilizar un certificado Let's Encrypt",
-        "certificate_valid": "El certificado es válido"
+        "certificate_valid": "El certificado es válido",
+        "gal_change_mode_both": "Ambos",
+        "gal_change_mode_external": "Externo",
+        "unit_measure_days": "Días",
+        "unit_measure_hours": "Horas",
+        "unit_measure_minutes": "Minutos",
+        "unit_measure_seconds": "Segundos",
+        "gal_change_mode_internal": "Interno"
     },
     "label": {
         "account": "Cuenta",
@@ -162,7 +169,7 @@
         "page ": "Has aceptado la solicitud de acceso compartido",
         "page_": "Has aceptado la solicitud de acceso compartido",
         "privacy": "Privacidad",
-        "remove": "Eliminar",
+        "remove": "Remover",
         "save": "Guardar",
         "signature_required": "La información de la firma es obligatoria.",
         "snackbar": {
@@ -171,7 +178,7 @@
             }
         },
         "status": "estado",
-        "suspended": "Suspendida",
+        "suspended": "Suspendido",
         "timezone": "Zona horaria",
         "unlimited": "Ilimitado",
         "url": "URL",
@@ -292,7 +299,7 @@
         "help": "Ayuda",
         "home": "Inicio",
         "hsm_policies": "Políticas HSM",
-        "index_volumes": "Volúmenes índice",
+        "index_volumes": "Índice de Volúmenes",
         "indexer_settings": "Ajustes del indexador",
         "initial_calendar_view": "Vista inicial del calendario",
         "last_access": "Último acceso",
@@ -325,7 +332,7 @@
         "subscription": "Suscripción",
         "time_zone": "Zona horaria",
         "type": "Tipo",
-        "unsaved_changes": "No se han guardado los cambios",
+        "unsaved_changes": "Hay cambios sin guardar",
         "unsaved_changes_line1": "¿Seguro que quieres salir de esta página sin guardar?",
         "unsaved_changes_line2": "Los cambios no guardados se perderán",
         "use_iCal_delegation_model_for_shared_calendars_for_CalDAV_interface": "Utilizar modelo de delegación iCal en calendarios compartidos para la interfaz CalDAV",
@@ -479,7 +486,7 @@
         "delete_content": "Está a punto de eliminar \"{{name}}\". ¿Seguro que quiere continuar?",
         "allocation": "Tipo",
         "always": "Siempre",
-        "button_delete": "ELIMINAR",
+        "button_delete": "BORRAR",
         "calendar": "Calendario",
         "calendar_options": "Opciones del calendario",
         "can_receive_email": "Puede recibir correo",
@@ -491,7 +498,7 @@
         "current": "Actual",
         "date_creation": "Creación de datos",
         "default": "Predeterminado",
-        "delete_button": "ELIMINAR",
+        "delete_button": "BORRAR",
         "destination_account": "Cuenta de destino",
         "disable": "deshabilitar",
         "do_you_need_more_information": "¿Necesita más información?",
@@ -548,7 +555,7 @@
         "volume_server": "Servidor",
         "configuration_lbl": "Configuración",
         "global_address_list": "Libreta Global de Direcciones",
-        "disabled": "Desactivada",
+        "disabled": "Desactivado",
         "local": "Local",
         "na": "N/A",
         "purge": "Eliminar",
@@ -611,7 +618,7 @@
         "server_specifics": "Especificaciones del servidor",
         "set_as_primary_button": "ESTABLECER COMO PRIMARIO",
         "smartscan": "Smartscan",
-        "soft_deleted": "desactivado",
+        "soft_deleted": "Desactivado",
         "this_list_can_receive_email": "La lista puede recibir correo",
         "type_in_the_mails": "Ingrese las cuentas para añadirlas a la lista",
         "type_name_your_domain_will_have": "Nombre del dominio",
@@ -621,7 +628,7 @@
         "who_is_in_this_list": "¿Quién pertenece a esta Lista?",
         "who_needs_receive_this_email": "Introduzca las direcciones de e-mail para el envío de notificaciones",
         "yes_delete_it": "Eliminar",
-        "you_are_deleting_ml": "Está a punto de eliminar \"{{name}}\"",
+        "you_are_deleting_ml": "Usted está eliminando \"{{name}}\"",
         "server_list": "Lista de servidores",
         "appointments_default_duration": "Duración predeterminada de la cita",
         "contact_options": "Opciones de Contactos",
@@ -687,7 +694,7 @@
         "i_want_to_send_invites_to_resource": "Reenviar invitaciones del calendario a estas direcciones",
         "i_want_to_set_signature": "Quiero configurar una firma",
         "maximum_conflict": "Conflicto máximo",
-        "min_Threshold": "Límite mínimo",
+        "min_Threshold": "Umbral mínimo",
         "max_account_you_can_manage_is": "El número máximo de cuentas que puede administrar es…",
         "max_email_quota_you_can_manage_is": "La cuota máxima de correo que puede administrar es…",
         "max_quota_allowed": "Cuota máxima permitida",
@@ -717,7 +724,7 @@
         "volume_main": "Volumen primario",
         "volume_max_quota_allowed": "Cuota máxima permitida",
         "volume_min_threshold": "Umbral mínimo",
-        "DELETE": "ELIMINAR",
+        "DELETE": "BORRAR",
         "OTP": "Autenticación en dos pasos - Contraseña de un solo uso (OTP)",
         "advanced_lbl": "Avanzado",
         "allowed": "Permitido",
@@ -832,9 +839,9 @@
         "you_are_trying_reset_device": "Está intentando resincronizar un dispositivo",
         "you_are_trying_wipe_device": "Está intentando formatear un dispositivo",
         "bucket_create_button": "CREAR",
-        "bucket_delete_button": "ELIMINAR",
+        "bucket_delete_button": "BORRAR",
         "bucket_notes": "Notas",
-        "date": "Fecha",
+        "date": "Date",
         "notifications": "Notificaciones",
         "open": "Abrir",
         "search_for_user_and_clic_to_add": "Busque un usuario y haga clic en AÑADIR.",
@@ -952,7 +959,15 @@
         "cos_primarybar_tooltip": "Ver y amdinistrar las <bold>Clases de Servicio,</bold> detalles, <bold>funcionalidades, Pool de servidores</bold> y <bold>configuraciones</bold> avanzadas.",
         "files": "Files",
         "notification_primarybar_tooltip": "Ver las <bold>notificaciones</bold>, marcarlas como <bold>leídas</bold> o <bold>copiarlas</bold> para compartirlas.",
-        "storage": "Almacenamiento"
+        "storage": "Almacenamiento",
+        "account_name": "Nombre de la cuenta",
+        "aliases": "Alias",
+        "distribution_list": "Lista de distribución",
+        "dont_save_a_copy_of_sent_messages": "No guardar copia de los mensajes enviados",
+        "save_a_copy_of_sent_messages_to_delegates_sent_folder": "Guardar una copia de los mensajes enviados en la carpeta Enviados del Delegado",
+        "save_a_copy_of_sent_messages_to_my_sent_folder": "Guardar una copia de los mensajes en mi carpeta de Enviados",
+        "save_a_copy_of_sent_messages_to_my_sent_folder_and_delegates_folder": "Guardar una copia de los mensajes enviados en mi carpeta Enviados y en la del delegado",
+        "value": "Valor"
     },
     "timezone": {
         "indian_mauritius": "{{value}} Port Louis",
@@ -1098,7 +1113,7 @@
             "bundle": "Bundle",
             "company_name": "Organización",
             "customer": "Cliente",
-            "email_buyer": "E-mail del comprador",
+            "email_buyer": "Email del Comprador",
             "emissionDate": "Fecha de emisión",
             "features": "Otras características",
             "hide": "Ocultar",
@@ -1106,7 +1121,7 @@
             "more_info": "Más información",
             "status": "Estado",
             "subscription_Accounts": "Cuentas utilizadas",
-            "subscription_last_check": "Última comprobación de suscripción",
+            "subscription_last_check": "Última verificación de la suscripción",
             "subscription_type": "Tipo de suscripción",
             "token": "Token",
             "version": "Versión del módulo",
@@ -1120,7 +1135,8 @@
             "activate": "Activar",
             "activation": "Activación",
             "deactivate": "Desactivar",
-            "order_id": "Nº de licencia"
+            "order_id": "Nº de licencia",
+            "valid": "Válida"
         }
     },
     "message": {
@@ -1145,7 +1161,7 @@
     "select_bucket_or_create_new_bucket": "No se ha configurado ningún Bucket aún. Haga clic en el botón \"NUEVO BUCKET\" para crear uno nuevo.",
     "backup": {
         "backup_path": "Ruta del backup",
-        "backup_purge": "Depuración del backup",
+        "backup_purge": "Depuración del Backup",
         "compression_level": "Nivel de comprensión",
         "keep_delete_accounts_in_backup": "Mantener las cuentas eliminadas en el Backup",
         "keep_delted_items_backup": "Mantener los archivos eliminados en el Backup por",
@@ -1153,7 +1169,7 @@
         "local_metadata_threshold": "Umbral de metadatos locales",
         "minimum_space_threshold": "Umbral de espacio mínimo",
         "module_enable_at_startup": "El módulo se activa al iniciar",
-        "purge_old_configurations": "Depurar configuraciones antiguas",
+        "purge_old_configurations": "Depurar las configuraciones antiguas",
         "realtime_scanner": "RealTime Scanner",
         "schedule": "Programar",
         "set_backup_forever_msg": "Si se establece en 0, los datos se mantendrán en el Backup por siempre",
@@ -1209,9 +1225,9 @@
         "smart_scan_configuration": "Configuración de SmartScan",
         "initialize_backup": "Inicializar Backup",
         "latency": "Latencia",
-        "latency_high_threshold_ms": "Umbral de latencia máximo (ms)",
+        "latency_high_threshold_ms": "Umbral alto de latencia (ms)",
         "latency_low_threshold_ms": "Umbral de latencia mínimo (ms)",
-        "max_waiting_time_ms": "Tiempo máximo de espera (ms)",
+        "max_waiting_time_ms": "Tiempo de espera máximo (ms)",
         "maximum_metadata_size_mb": "Tamaño máximo de los metadatos (MB)",
         "metadata": "Metadatos",
         "other_controls": "Otros controles",
@@ -1437,8 +1453,9 @@
         "send_full_error_data": "Enviar datos completos del error"
     },
     "reminder": {
-        "minute": "{{count}} minuto",
-        "minute_plural": ""
+        "minute_0": "{{count}} minuto",
+        "minute_1": "",
+        "minute_2": ""
     },
     "account_details": {
         "advanced_search": "Búsqueda avanzada",
@@ -1570,7 +1587,15 @@
         "where_do_we_store_it": "¿Dónde se guardan?",
         "where_to_store_sent_emails": "¿Dónde quieres guardar los correos enviados?",
         "who_will_be_delegates": "¿Quiénes serán los delegados?",
-        "save_it_to_delegate_sent_folder": "Guardar en la carpeta Enviados del remitente y del Delegado"
+        "save_it_to_delegate_sent_folder": "Guardar en la carpeta Enviados del remitente y del Delegado",
+        "DELETE": "BORRAR",
+        "SAVE": "GUARDAR",
+        "create": "CREAR",
+        "label": "Etiqueta",
+        "remove": "Remover",
+        "send_check": "Enviar",
+        "status": "Estado",
+        "services": "Servicios"
     },
     "connection": {
         "access_key": "Clave de acceso",
@@ -1581,14 +1606,14 @@
     },
     "volume": {
         "serverName_volumes_create_mailstores_volume": "Crear volumen de Mailstore para \"{{serverName}} \"",
-        "serverName_volumes": "Volúmenes de \"{{serverName}}\"",
+        "serverName_volumes": "Volúmenes de {{serverName}}",
         "new": {
             "create_mailstores_volume": "| Crear volúmen de Mailstore"
         },
         "server_list_header": {
             "description": "Descripción",
             "index": "Índice",
-            "primary": "Primario",
+            "primary": "Principal",
             "secondary": "Secundario",
             "server": "Servidor",
             "indexer": "Indexador",
@@ -1622,10 +1647,10 @@
         },
         "volume_type": {
             "index": "Índice",
-            "primary": "Primario",
+            "primary": "Principal",
             "secondary": "Secundario"
         },
-        "primary_helperText": "Primario",
+        "primary_helperText": "Principal",
         "secondary_helperText": "Secundario",
         "indexer_helperText": "Indexador"
     },
@@ -1634,7 +1659,7 @@
     "hsm": {
         "all": "Todo",
         "allocation": "Tipo",
-        "apply_duplication_after_scheduledhsm": "Deduplicar después de ejecutar HSM programado",
+        "apply_duplication_after_scheduledhsm": "Aplicar Deduplicación después del HSM programado",
         "contact": "Contactos",
         "create_policy": "Crear política",
         "criteria": "Criterio de aplicación",
@@ -1643,7 +1668,7 @@
         "delete": "Eliminar",
         "destination_volume": "Volumen de destino",
         "details": "Detalles",
-        "document": "Documentos",
+        "document": "Documento",
         "edit": "Editar",
         "event": "Evento",
         "gb": "GB",
@@ -1664,8 +1689,8 @@
         "option": "Opción",
         "parameters": "Parámetros",
         "policy_settings": "Ajustes de la política",
-        "primary": "Primario",
-        "schedule": "Programación",
+        "primary": "Principal",
+        "schedule": "Programar",
         "secondary": "Secundario",
         "select_volumes": "Seleccionar volúmenes",
         "server": "Servidor",
@@ -1704,7 +1729,7 @@
         "smaller_size": "Más pequeño (Tamaño)",
         "smaller_size_than": "más pequeño que <bold>{{measure}} {{scale}}</bold>",
         "years": "Años",
-        "scheduling": "Programado para:",
+        "scheduling": "Programar",
         "volume_already_selected_in_destination": "El volumen ya ha sido seleccionado como destino",
         "volume_already_selected_in_source": "El volumen ya ha sido seleccionado como origen"
     },
@@ -1757,7 +1782,7 @@
         "details": "Detalles",
         "done": "Concluido",
         "label": {
-            "Deep": "Deep",
+            "Deep": "Profundo",
             "notifications": "Notificaciones",
             "status": "Estado",
             "action(M)": "Acción (M)",
@@ -1793,5 +1818,6 @@
         "load_certificate": "CARGAR CERTIFICADO"
     },
     "welcome_to_carbonio_information": "¡Bienvenido a Carbonio, {{adminName}}!",
-    "cumminity_edition": "¡Community Edition!"
+    "cumminity_edition": "¡Community Edition!",
+    "new": "Nuevo"
 }
