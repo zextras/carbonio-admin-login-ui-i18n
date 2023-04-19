@@ -52,7 +52,7 @@
         "services": "Serviços",
         "web_client": "Cliente web",
         "access_key": "Chave de acesso",
-        "actions": "Açoes",
+        "actions": "Ações",
         "unsaved_changes": "Você tem alterações que não foram salvas",
         "unsaved_changes_line1": "Tem certeza que deseja sair desta página sem salvar?",
         "unsaved_changes_line2": "Todas as suas alterações não salvas serão perdidas",
@@ -197,14 +197,14 @@
         "disabled": "Desativado",
         "na": "N/A",
         "scheduled": "Programado",
-        "soft_deleted": "desactivado",
+        "soft_deleted": "desativado",
         "advanced_lbl": "Avançado",
         "allowed": "Permitido",
         "device_id": "ID do dispositivo",
         "e_mail": "E-mail",
         "eas": "EAS",
         "email_address": "Endereço de e-mail",
-        "enabled": "Ativada",
+        "enabled": "Enabled",
         "last_seen": "Visto por última vez",
         "mobile_password": "Mobile Password",
         "reset": "Redefinir",
@@ -240,7 +240,16 @@
         "files": "Ficheiros",
         "mails": "E-mails",
         "tasks": "Tarefas",
-        "storage": "Armazenamento"
+        "storage": "Armazenamento",
+        "account_name": "Nome da Conta",
+        "distribution_list": "Lista de distribuição",
+        "dont_save_a_copy_of_sent_messages": "Não salvar uma cópia das mensagens enviadas",
+        "save_a_copy_of_sent_messages_to_delegates_sent_folder": "Salvar uma cópia das mensagens enviadas na pasta de Enviados do delegado",
+        "save_a_copy_of_sent_messages_to_my_sent_folder": "Salvar uma cópia das mensagens enviadas na minha pasta de Enviados",
+        "value": "Valor",
+        "do_you_need_more_information": "Precisa de mais informações?",
+        "save_a_copy_of_sent_messages_to_my_sent_folder_and_delegates_folder": "Salvar uma cópia das mensagens enviadas na pasta de Enviados e na pasta de delegados",
+        "click_here": "Clique aqui"
     },
     "timezone": {
         "asia_pyongyang": "{{value}} Pyongyang",
@@ -397,7 +406,8 @@
     "core": {
         "subscription": {
             "hide": "Ocultar",
-            "status": "Status"
+            "status": "Status",
+            "valid": "Válida"
         }
     },
     "domain": {
@@ -412,7 +422,11 @@
         "most_result_return_gal_search": "Maioria dos resultados devolvidos pela pesquisa na GAL",
         "virtual_hosts": "Anfitriões virtuais",
         "manage": "Gerir",
-        "search_domain": "Buscar um domínio"
+        "search_domain": "Buscar um domínio",
+        "gal_change_mode_both": "Ambos",
+        "unit_measure_days": "Dias",
+        "gal_change_mode_external": "Externo",
+        "gal_change_mode_internal": "Interno"
     },
     "message": {
         "snackbar": {
@@ -490,7 +504,7 @@
         "email_retention_policy": "Política de retenção de email",
         "enable_failed_login_lockout": "Ativar bloqueio devido a início de sessão sem sucesso",
         "enable_smime": "Ativar S/MIME",
-        "enabled": "Ativada",
+        "enabled": "Enabled",
         "failed_login_policy": "Política de início de sessão sem sucesso",
         "free_busy_interop": "Interop livre/ocupado",
         "html_compose": "Escrever em HTML",
@@ -602,7 +616,13 @@
         "Chats": "Chats",
         "domain": "Domínio",
         "files": "Ficheiros",
-        "on_behalf_of": "em nome de"
+        "on_behalf_of": "em nome de",
+        "label": "Etiqueta",
+        "remove": "Remover",
+        "send_check": "Enviar",
+        "services": "Serviços",
+        "status": "Status",
+        "SAVE": "SALVAR"
     },
     "connection": {
         "access_key": "Chave de acesso",
@@ -710,5 +730,6 @@
         },
         "other": "Outro",
         "running": "A executar"
-    }
+    },
+    "new": "Novo"
 }
