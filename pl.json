@@ -31,5 +31,6 @@
     "details": "Szczegóły",
     "login": "Zaloguj się",
     "login_saml": "Zaloguj się SAML",
-    "password": "Hasło"
+    "password": "Hasło",
+    "server_unreachable": "Błąd 502: Usługa jest nieosiągalna - spróbuj ponownie później."
 }
