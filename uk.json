@@ -1,1 +1,10 @@
-{}
+{
+    "cant_login": "Не вдається виконати вхід",
+    "carbonio_authentication": "Аутентифікація Carbonio",
+    "changePassword_confirmNewPassword": "Підтвердіть новий пароль",
+    "changePassword_confirm_label": "Змінити пароль та увійти",
+    "all_rights_reserved": "Всі права збережено",
+    "auth_not_valid": "Політика автентифікації потребує додаткових кроків: зверніться до свого адміністратора за додатковою інформацією",
+    "changePassword_error_block_personal_data": "Неправильний пароль: пароль містить ім'я користувача або інші особисті дані: {{str}}",
+    "changePassword_error_confirmPassword": "Паролі не збігаються"
+}
