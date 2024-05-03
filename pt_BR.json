@@ -26,12 +26,17 @@
     "trust_device_and_ip": "Confiar neste dispositivo e endereço IP",
     "changePassword_title": "Criar nova senha",
     "changePassword_error_passwordRecentlyUsed": "A senha já foi usada recentemente",
-    "changePassword_error_minUppercaseChars": "O número mínimo de letras maiúsculas é {{num}}",
-    "changePassword_error_minPunctuationChars": "O número mínimo de caracteres de pontuação é {{num}}",
-    "changePassword_error_minNumericChars": "O número mínimo de caracteres numéricos é {{num}}",
-    "changePassword_error_minLowerCaseChars": "O número mínimo de letras minúsculas é {{num}}",
+    "changePassword_error_minUppercaseChars": "Esperando ao menos {{num}} caracteres maiúsculos",
+    "changePassword_error_minPunctuationChars": "Esperando ao menos {{num}} caracteres de pontuação",
+    "changePassword_error_minNumericChars": "Esperando ao menos {{num}} caracteres numéricos",
+    "changePassword_error_minLowerCaseChars": "Esperando ao menos {{num}} caracteres minúsculos",
     "changePassword_confirm_label": "Alterar senha e fazer login",
     "carbonio_authentication": "Autenticação do Carbonio",
     "server_unreachable": "Error 502: Service Unreachable - Retry later.",
-    "changePassword_error_block_personal_data": "A senha não é válida: ela contém nome de usuário ou dados pessoais: {{str}}"
+    "changePassword_error_block_personal_data": "A senha não é válida: ela contém nome de usuário ou dados pessoais: {{str}}",
+    "browser_fully_supported": "Seu navegador é totalmente <a>compatível</a>",
+    "browser_limited_supported": "Está tendo problemas? Experimente um navegador totalmente <a>compatível</a>",
+    "changePassword_error_block_common_words": "Senha inválida: a senha é considerada comum demais: {{str}}",
+    "changePassword_error_minDigitsOrPuncs": "Esperando ao menos {{num}} caracteres numéricos ou de pontuação",
+    "changePassword_error_passwordLocked": "Senha bloqueada e não pode ser alterada"
 }
