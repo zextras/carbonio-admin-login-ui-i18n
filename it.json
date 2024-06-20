@@ -26,12 +26,17 @@
     "copy_right": "Copyright",
     "changePassword_newPassword": "Nuova password",
     "trust_device_and_ip": "Considera questo dispositivo e IP come affidabili",
-    "changePassword_error_minUppercaseChars": "Il numero minimo di caratteri maiuscoli è {{num}}",
-    "changePassword_error_minPunctuationChars": "Il numero minimo di caratteri di punteggiatura è {{num}}",
-    "changePassword_error_minNumericChars": "Il numero minimo di caratteri numerici è {{num}}",
-    "changePassword_error_minLowerCaseChars": "Il numero minimo di caratteri minuscoli è {{num}}",
+    "changePassword_error_minUppercaseChars": "Previsti almeno {{num}} caratteri maiuscoli",
+    "changePassword_error_minPunctuationChars": "Previsti almeno {{num}} caratteri di punteggiatura",
+    "changePassword_error_minNumericChars": "Sono previsti almeno {{num}} caratteri numerici",
+    "changePassword_error_minLowerCaseChars": "Sono previsti almeno {{num}} caratteri minuscoli",
     "changePassword_error_confirmPassword": "Le password non sono uguali",
     "changePassword_confirm_label": "Modifica la password e accedi",
     "server_unreachable": "Errore 502: Impossibile raggiungere il server - Riprova più tardi.",
-    "changePassword_error_block_personal_data": "Password non valida: la password contiene nome utente o altri dati personali: {{str}}"
+    "changePassword_error_block_personal_data": "Password non valida: la password contiene nome utente o altri dati personali: {{str}}",
+    "browser_fully_supported": "Il tuo browser è completamente <a>supportato</a>",
+    "browser_limited_supported": "Hai problemi? Prova un browser completamente <a>supportato</a>",
+    "changePassword_error_block_common_words": "Password non valida: la password è nota per essere troppo comune: {{str}}",
+    "changePassword_error_minDigitsOrPuncs": "Previsti almeno {{num}} caratteri numerici o di punteggiatura",
+    "changePassword_error_passwordLocked": "La password è bloccata e non può essere modificata"
 }
