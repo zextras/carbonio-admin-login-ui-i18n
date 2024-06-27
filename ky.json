@@ -1,6 +1,6 @@
 {
     "choose_otp": "ОТР ыкмасын тандоо",
-    "changePassword_error_minLowerCaseChars": "Төмөнкү каттоодогу символдордун минималдык саны: {{num}}.",
+    "changePassword_error_minLowerCaseChars": "Төмөнкү каттоо символдордун минималдык саны: {{num}}.",
     "credentials_not_valid": "Эсепке алуу маалыматтары туура эмес, маалыматтарды текшерип, кайра кирип көрүңүз",
     "server_unreachable": "Ката 502: Кызмат жеткиликсиз. Кийинчерээк кайталап көрүңүз",
     "all_rights_reserved": "Бардык укуктар корголгон",
