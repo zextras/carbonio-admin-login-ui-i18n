@@ -30,7 +30,11 @@
     "changePassword_error_minNumericChars": "El número mínimo de caracteres numéricos es {{num}}",
     "changePassword_error_minLowerCaseChars": "El número mínimo de caracteres en minúscula es {{num}}",
     "changePassword_error_confirmPassword": "Las contraseñas no coinciden",
-    "changePassword_confirm_label": "Actualizar contraseña e ingresar",
+    "changePassword_confirm_label": "Cambiar contraseña e iniciar sesión",
     "carbonio_authentication": "Autenticación de Carbonio",
-    "server_unreachable": "Error 502: Service Unreachable - Retry later."
+    "server_unreachable": "Error 502: Service Unreachable - Retry later.",
+    "browser_limited_supported": "¿Tienes algún problema? Prueba con un navegador completamente <a>soportado</a>",
+    "changePassword_error_block_personal_data": "Contraseña no válida: la contraseña contiene un nombre de usuario u otros datos personales: {{str}}",
+    "changePassword_error_block_common_words": "Contraseña no válida: la contraseña parece ser demasiado común: {{str}}",
+    "changePassword_error_passwordLocked": "La contraseña está bloqueada y no puede ser cambiada"
 }
