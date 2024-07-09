@@ -14,7 +14,7 @@
     "supported_browsers": "Navegadores soportados",
     "login_saml": "Autenticación SAML",
     "all_rights_reserved": "Todos los derechos reservados",
-    "cant_login": "No se puede iniciar sesión",
+    "cant_login": "No se puede iniciar sesión ahora",
     "credentials_not_valid": "Las credenciales no son válidas. Compruebe los datos e intente de nuevo",
     "copy_right": "Copyright",
     "changePassword_newPassword": "Nueva contraseña",
@@ -25,10 +25,10 @@
     "trust_device_and_ip": "Confiar en el dispositivo y dirección IP",
     "changePassword_title": "Cambio de contraseña requerido",
     "changePassword_error_passwordRecentlyUsed": "La contraseña ya ha sido utilizada recientemente",
-    "changePassword_error_minUppercaseChars": "El número mínimo de caracteres en mayúscula es {{num}}",
-    "changePassword_error_minPunctuationChars": "El número mínimo de signos de puntuación es {{num}}",
-    "changePassword_error_minNumericChars": "El número mínimo de caracteres numéricos es {{num}}",
-    "changePassword_error_minLowerCaseChars": "El número mínimo de caracteres en minúscula es {{num}}",
+    "changePassword_error_minUppercaseChars": "Se esperan al menos {{num}} mayúsculas",
+    "changePassword_error_minPunctuationChars": "Se espera al menos {{num}} signos de puntuación",
+    "changePassword_error_minNumericChars": "Se esperan al menos {{num}} caracteres numéricos",
+    "changePassword_error_minLowerCaseChars": "Se esperan al menos un mínimo de {{num}} caracteres en minúscula",
     "changePassword_error_confirmPassword": "Las contraseñas no coinciden",
     "changePassword_confirm_label": "Cambiar contraseña e iniciar sesión",
     "carbonio_authentication": "Autenticación de Carbonio",
@@ -36,5 +36,7 @@
     "browser_limited_supported": "¿Tienes algún problema? Prueba con un navegador completamente <a>soportado</a>",
     "changePassword_error_block_personal_data": "Contraseña no válida: la contraseña contiene un nombre de usuario u otros datos personales: {{str}}",
     "changePassword_error_block_common_words": "Contraseña no válida: la contraseña parece ser demasiado común: {{str}}",
-    "changePassword_error_passwordLocked": "La contraseña está bloqueada y no puede ser cambiada"
+    "changePassword_error_passwordLocked": "La contraseña está bloqueada y no puede ser cambiada",
+    "browser_fully_supported": "Tu navegador está totalmente <a>soportado</a>",
+    "changePassword_error_minDigitsOrPuncs": "Se esperan por lo menos {{num}} caracteres numéricos o signos de puntuación"
 }
