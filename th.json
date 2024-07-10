@@ -26,11 +26,17 @@
     "trust_device_and_ip": "เชื่อถืออุปกรณ์และที่อยู่ IP นี้",
     "changePassword_title": "สร้างรหัสผ่านใหม่",
     "changePassword_error_passwordRecentlyUsed": "รหัสผ่านที่เพิ่งใช้งาน",
-    "changePassword_error_minUppercaseChars": "จำนวนอักขระตัวพิมพ์ใหญ่ขั้นต่ำคือ {{num}}",
-    "changePassword_error_minPunctuationChars": "จำนวนอักขระเครื่องหมายวรรคตอนขั้นต่ำคือ {{num}}",
-    "changePassword_error_minNumericChars": "จำนวนอักขระตัวเลขขั้นต่ำคือ {{num}}",
-    "changePassword_error_minLowerCaseChars": "จำนวนอักขระตัวพิมพ์เล็กขั้นต่ำคือ {{num}}",
+    "changePassword_error_minUppercaseChars": "ต้องมีอักขระที่เป็นตัวพิมพ์ใหญ่อย่างน้อย {{num}} ตัว",
+    "changePassword_error_minPunctuationChars": "ต้องมีอักขระที่เป็นเครื่องหมายวรรคตอนอย่างน้อย {{num}} ตัว",
+    "changePassword_error_minNumericChars": "ต้องมีอักขระที่เป็นตัวเลขอย่างน้อย {{num}} ตัว",
+    "changePassword_error_minLowerCaseChars": "ต้องมีอักขระที่เป็นตัวพิมพ์เล็กขั้นอย่างน้อย {{num}} ตัว",
     "changePassword_confirm_label": "เปลี่ยนรหัสผ่านและเข้าสู่ระบบ",
     "carbonio_authentication": "การตรวจสอบ Carbonio",
-    "server_unreachable": "ข้อผิดพลาด 502: ไม่สามารถเข้าถึงบริการได้ - ลองอีกครั้งในภายหลัง"
+    "server_unreachable": "ข้อผิดพลาด 502: ไม่สามารถเข้าถึงบริการได้ - ลองอีกครั้งในภายหลัง",
+    "browser_limited_supported": "ประสบปัญหา? ลองใช้เบราว์เซอร์ที่ <a>รองรับ</a> อย่างเต็มรูปแบบ",
+    "browser_fully_supported": "เบราว์เซอร์ของคุณได้รับการ<a>สนับสนุน</a>อย่างเต็มรูปแบบ",
+    "changePassword_error_block_common_words": "รหัสผ่านไม่ถูกต้อง: รหัสผ่านนี้เป็นรหัสที่รู้กันว่าถูกใช้บ่อยเกินไป: {{str}}",
+    "changePassword_error_block_personal_data": "รหัสผ่านไม่ถูกต้อง: รหัสผ่านมีชื่อผู้ใช้หรือข้อมูลส่วนบุคคลอื่น ๆ: {{str}}",
+    "changePassword_error_minDigitsOrPuncs": "ต้องมีอักขระที่เป็นตัวเลขหรือเครื่องหมายวรรคตอนอย่างน้อย {{num}} ตัว",
+    "changePassword_error_passwordLocked": "รหัสผ่านถูกล็อคและไม่สามารถเปลี่ยนแปลงได้"
 }
