@@ -27,5 +27,11 @@
     "trust_device_and_ip": "Megbízik ebben az eszközben és az IP-címben",
     "unsupported_version": "A szerver nem válaszol. Kérjük, lépjen kapcsolatba a szerver adminisztrátorával",
     "username": "Felhasználónév",
-    "wrong_password": "Hibás jelszó, ellenőrizze az adatokat, és próbálja újra"
+    "wrong_password": "Hibás jelszó, ellenőrizze az adatokat, és próbálja újra",
+    "browser_limited_supported": "Problémái vannak? Próbáljon ki egy teljes mértékben <a>támogatott</a> böngészőt",
+    "browser_fully_supported": "Az Ön böngészője teljes mértékben <a>támogatott </a>",
+    "changePassword_error_minDigitsOrPuncs": "Legalább {{num}} numerikus karakter vagy írásjel szükséges",
+    "changePassword_error_block_common_words": "Érvénytelen jelszó: a jelszó köztudottan túl gyakori: {{str}}",
+    "changePassword_error_passwordLocked": "A jelszó zárolva van, és nem módosítható",
+    "cant_login": "Most nem lehet bejelentkezni"
 }
