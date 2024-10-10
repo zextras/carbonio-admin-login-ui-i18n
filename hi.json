@@ -33,5 +33,8 @@
     "changePassword_error_confirmPassword": "पासवर्ड मेल नहीं खा रहे",
     "changePassword_confirmNewPassword": "नए पासवर्ड को कन्फ़र्म करें",
     "server_unreachable": "Error 502: सेवा पहुँच से बाहर है - बाद में दोबारा कोशिश करें।",
-    "browser_fully_supported": "आपका ब्राउज़र पूरी तरीके से <a>सपोर्टेड</a> कर रहा है"
+    "browser_fully_supported": "आपका ब्राउज़र पूरी तरीके से <a>सपोर्टेड</a> कर रहा है",
+    "browser_limited_supported": "समस्या आ रही है? पूर्णतः <a>समर्थित> ब्राउज़र आज़माएँ",
+    "changePassword_error_block_common_words": "अमान्य पासवर्ड: पासवर्ड बहुत सामान्य माना जाता है: {{str}}",
+    "changePassword_error_block_personal_data": "अमान्य पासवर्ड: पासवर्ड में उपयोगकर्ता नाम या अन्य व्यक्तिगत डेटा शामिल है: {{str}}"
 }
