@@ -32,7 +32,7 @@
     "changePassword_error_minLowerCaseChars": "Esperando ao menos {{num}} caracteres minúsculos",
     "changePassword_confirm_label": "Alterar senha e fazer login",
     "carbonio_authentication": "Autenticação do Carbonio",
-    "server_unreachable": "Error 502: Service Unreachable - Retry later.",
+    "server_unreachable": "Erro 502: Serviço inacessível - Tente novamente mais tarde.",
     "changePassword_error_block_personal_data": "A senha não é válida: ela contém nome de usuário ou dados pessoais: {{str}}",
     "browser_fully_supported": "Seu navegador é totalmente <a>compatível</a>",
     "browser_limited_supported": "Está tendo problemas? Experimente um navegador totalmente <a>compatível</a>",
