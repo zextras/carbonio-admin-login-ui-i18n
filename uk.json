@@ -33,5 +33,10 @@
     "credentials_not_valid": "Облікові дані не дійсні, будь ласка, перевірте дані та спробуйте ще раз",
     "unsupported_version": "Сервер надіслав невірну відповідь. Зверніться до адміністратора вашого сервера",
     "changePassword_error_minPunctuationChars": "Мінімальна кількість знаків пунктуації - {{num}}",
-    "choose_otp": "Виберіть метод OTP"
+    "choose_otp": "Виберіть метод OTP",
+    "browser_fully_supported": "Ваш браузер повністю <a>підтримується</a>",
+    "browser_limited_supported": "Виникли проблеми? Спробуйте повністю <a>підтримуваний</a> браузер",
+    "changePassword_error_block_common_words": "Недійсний пароль: пароль відомий як надто поширений: {{str}}",
+    "changePassword_error_minDigitsOrPuncs": "Очікується щонайменше {{num}} цифр або розділових знаків",
+    "changePassword_error_passwordLocked": "Пароль заблоковано і його не можна змінити"
 }
