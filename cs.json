@@ -37,6 +37,6 @@
     "trust_device_and_ip": "Důvěřovat tomuto zařízení a IP adrese",
     "two_step_authentication": "Dvoufazová autentizace",
     "type_otp": "Jednorázový přístupový kód",
-    "unsupported_version": "Server odeslal neplatnou odpověď. Kontaktujte, prosím, svého správce serveru.",
+    "unsupported_version": "Server odeslal neplatnou odpověď. Kontaktujte prosím správce serveru",
     "username": "Přihlašovací jméno"
 }
