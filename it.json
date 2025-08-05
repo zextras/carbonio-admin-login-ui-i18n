@@ -38,5 +38,13 @@
     "browser_limited_supported": "Hai problemi? Prova un browser completamente <a>supportato</a>",
     "changePassword_error_block_common_words": "Password non valida: la password è nota per essere troppo comune: {{str}}",
     "changePassword_error_minDigitsOrPuncs": "Previsti almeno {{num}} caratteri numerici o di punteggiatura",
-    "changePassword_error_passwordLocked": "La password è bloccata e non può essere modificata"
+    "changePassword_error_passwordLocked": "La password è bloccata e non può essere modificata",
+    "error": {
+        "contact_support": "Contatta il supporto o prova ad aggiornare la pagina",
+        "something_went_wrong": "Qualcosa è andato storto",
+        "loading_page": "Ci dispiace, ma c'è stato un errore nel caricamento della pagina."
+    },
+    "button": {
+        "refresh_page": "AGGIORNA"
+    }
 }
