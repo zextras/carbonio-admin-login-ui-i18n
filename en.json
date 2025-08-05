@@ -38,5 +38,13 @@
     "type_otp": "Type here One-Time-Password",
     "unsupported_version": "The server sent a not valid response. Please contact your server administrator",
     "username": "Username",
-    "wrong_password": "Wrong password, please check data and try again"
+    "wrong_password": "Wrong password, please check data and try again",
+    "error": {
+        "contact_support": "Contact support or try refreshing the page",
+        "something_went_wrong": "Something went wrong",
+        "loading_page": "We’re sorry, but there was an error trying to load this page."
+    },
+    "button": {
+        "refresh_page": "REFRESH"
+    }
 }
