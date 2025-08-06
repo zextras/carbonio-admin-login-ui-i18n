@@ -1,4 +1,12 @@
 {
     "copy_right": "Autorska prava",
-    "supported_browsers": "Podržani preglednici"
+    "supported_browsers": "Podržani preglednici",
+    "error": {
+        "something_went_wrong": "Nešto nije u redu",
+        "loading_page": "Izvinjavamo se, ali došlo je do greške prilikom učitavanja ove stranice.",
+        "contact_support": "Kontaktirajte podršku ili pokušajte osvježiti stranicu"
+    },
+    "button": {
+        "refresh_page": "OSVJEŽI"
+    }
 }
