@@ -38,5 +38,13 @@
     "browser_limited_supported": "Возникли проблемы? Попробуйте полностью <a>поддерживаемый</a> браузер",
     "changePassword_error_block_common_words": "Неверный пароль: известно, что пароль слишком распространен: {{str}}",
     "changePassword_error_minDigitsOrPuncs": "Необходимо не менее {{num}} числовых символов или знаков препинания",
-    "changePassword_error_passwordLocked": "Пароль заблокирован и не может быть изменен"
+    "changePassword_error_passwordLocked": "Пароль заблокирован и не может быть изменен",
+    "error": {
+        "something_went_wrong": "Что-то пошло не так",
+        "contact_support": "Обратитесь в службу поддержки или попробуйте обновить страницу",
+        "loading_page": "К сожалению, при загрузке этой страницы произошла ошибка."
+    },
+    "button": {
+        "refresh_page": "ОБНОВИТЬ"
+    }
 }
