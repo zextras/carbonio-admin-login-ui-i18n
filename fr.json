@@ -38,5 +38,13 @@
     "browser_fully_supported": "Votre navigateur est pleinement <a>supporté</a>",
     "changePassword_error_block_common_words": "Mot de passe invalide : le mot de passe est connu pour être trop commun : {{str}}",
     "changePassword_error_minDigitsOrPuncs": "Il est attendu au moins {{num}} caractères numériques ou de ponctuation",
-    "changePassword_error_passwordLocked": "Le mot de passe est bloqué et ne peut être changé"
+    "changePassword_error_passwordLocked": "Le mot de passe est bloqué et ne peut être changé",
+    "error": {
+        "contact_support": "Contactez le support ou essayez de rafraîchir cette page",
+        "something_went_wrong": "Quelque chose s'est mal passé",
+        "loading_page": "Nous sommes désolé, mais une erreur est apparue lors du chargement de cette page."
+    },
+    "button": {
+        "refresh_page": "RAFRAÎCHIR"
+    }
 }
