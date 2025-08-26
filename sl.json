@@ -41,6 +41,10 @@
     "auth_not_valid": "Za preverjanje pristnosti je potrebnih več korakov: prosimo, obrnite se na svojega skrbnika za več informacij",
     "error": {
         "something_went_wrong": "Nekaj je šlo narobe",
-        "loading_page": "Oprosti, pri nalaganju te strani je prišlo do napake."
+        "loading_page": "Oprosti, pri nalaganju te strani je prišlo do napake.",
+        "contact_support": "Stopite v stik s podporo ali poskusite osvežiti stran"
+    },
+    "button": {
+        "refresh_page": "OSVEŽI"
     }
 }
