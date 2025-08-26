@@ -40,6 +40,7 @@
     "credentials_not_valid": "Poverilnice niso veljavne, preverite podatke in poskusite znova",
     "auth_not_valid": "Za preverjanje pristnosti je potrebnih več korakov: prosimo, obrnite se na svojega skrbnika za več informacij",
     "error": {
-        "something_went_wrong": "Nekaj je šlo narobe"
+        "something_went_wrong": "Nekaj je šlo narobe",
+        "loading_page": "Oprosti, pri nalaganju te strani je prišlo do napake."
     }
 }
