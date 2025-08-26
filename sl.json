@@ -38,5 +38,8 @@
     "all_rights_reserved": "Vse pravice pridržane",
     "changePassword_error_block_personal_data": "Neveljavno geslo: geslo vsebuje uporabniško ime ali druge osebne podatke: {{str}}",
     "credentials_not_valid": "Poverilnice niso veljavne, preverite podatke in poskusite znova",
-    "auth_not_valid": "Za preverjanje pristnosti je potrebnih več korakov: prosimo, obrnite se na svojega skrbnika za več informacij"
+    "auth_not_valid": "Za preverjanje pristnosti je potrebnih več korakov: prosimo, obrnite se na svojega skrbnika za več informacij",
+    "error": {
+        "something_went_wrong": "Nekaj je šlo narobe"
+    }
 }
