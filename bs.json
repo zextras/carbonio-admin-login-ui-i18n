@@ -8,5 +8,9 @@
     },
     "button": {
         "refresh_page": "OSVJEŽI"
-    }
+    },
+    "changePassword_error_block_personal_data": "Neispravna lozinka: lozinka sadrži korisničko ime ili druge lične podatke: {{str}}",
+    "changePassword_error_minNumericChars": "Očekuje se barem {{num}} numeričkih znakova",
+    "changePassword_error_minPunctuationChars": "Očekuje se barem {{num}} znakova za pisanje",
+    "changePassword_error_minUppercaseChars": "Očekuje se barem {{num}} velika slova"
 }
