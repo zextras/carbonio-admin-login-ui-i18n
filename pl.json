@@ -13,7 +13,7 @@
     "changePassword_error_maxLength": "Max. długość to {{num}} znaków",
     "server_not_responding": "Serwer nie odpowiada. Skontaktuj się z administratorem serwera",
     "supported_browsers": "Wspierane przeglądarki",
-    "trust_device_and_ip": "Ufaj temu urzędzeniu i adresowi IP",
+    "trust_device_and_ip": "Ufaj temu urządzeniu i adresowi IP",
     "two_step_authentication": "Uwierzytelnianie dwuetapowe",
     "type_otp": "Wpisz tutaj hasło jednorazowe",
     "username": "Nazwa użytkownika",
