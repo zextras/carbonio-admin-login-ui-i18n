@@ -40,6 +40,8 @@
     "changePassword_error_minDigitsOrPuncs": "ต้องมีอักขระที่เป็นตัวเลขหรือเครื่องหมายวรรคตอนอย่างน้อย {{num}} ตัว",
     "changePassword_error_passwordLocked": "รหัสผ่านถูกล็อคและไม่สามารถเปลี่ยนแปลงได้",
     "error": {
-        "something_went_wrong": "มีบางอย่างผิดพลาด"
+        "something_went_wrong": "มีบางอย่างผิดพลาด",
+        "loading_page": "ขออภัย เกิดข้อผิดพลาดในการโหลดหน้านี้",
+        "contact_support": "ติดต่อฝ่ายสนับสนุน หรือลองรีเฟรชหน้าอีกครั้ง"
     }
 }
