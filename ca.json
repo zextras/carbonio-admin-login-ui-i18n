@@ -8,5 +8,12 @@
     "details": "Detalls",
     "password": "Contrasenya",
     "supported_browsers": "Navegadors compatibles",
-    "username": "Nom d’usuari"
+    "username": "Nom d’usuari",
+    "error": {
+        "something_went_wrong": "Alguna cosa ha anat malament",
+        "loading_page": "Ho sentim, però hi havia un error en intentar carregar aquesta pàgina."
+    },
+    "button": {
+        "refresh_page": "ACTUALITZA"
+    }
 }
