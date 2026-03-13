@@ -38,5 +38,8 @@
     "browser_limited_supported": "Está tendo problemas? Experimente um navegador totalmente <a>compatível</a>",
     "changePassword_error_block_common_words": "Senha inválida: a senha é considerada comum demais: {{str}}",
     "changePassword_error_minDigitsOrPuncs": "Esperando ao menos {{num}} caracteres numéricos ou de pontuação",
-    "changePassword_error_passwordLocked": "Senha bloqueada e não pode ser alterada"
+    "changePassword_error_passwordLocked": "Senha bloqueada e não pode ser alterada",
+    "error": {
+        "something_went_wrong": "Algo deu errado"
+    }
 }
