@@ -40,6 +40,11 @@
     "changePassword_error_minDigitsOrPuncs": "Esperando ao menos {{num}} caracteres numéricos ou de pontuação",
     "changePassword_error_passwordLocked": "Senha bloqueada e não pode ser alterada",
     "error": {
-        "something_went_wrong": "Algo deu errado"
+        "something_went_wrong": "Algo deu errado",
+        "loading_page": "Lamentamos, mas ocorreu um erro ao tentar carregar esta página.",
+        "contact_support": "Contate o suporte ou tente recarregar a página"
+    },
+    "button": {
+        "refresh_page": "ATUALIZAR"
     }
 }
