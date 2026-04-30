@@ -46,5 +46,8 @@
     },
     "button": {
         "refresh_page": "ODŚWIEŻ"
-    }
+    },
+    "two_factor_not_configured_title": "Nie masz już skonfigurowanego uwierzytelniania dwuetapowego",
+    "two_factor_not_configured_description": "Nie ma aktywnego, skonfigurowanego tokena hasła jednorazowego na Twoim koncie. Aby zalogować się z Twojego konta, musisz połączyć się z zaufanej sieci.",
+    "back_to_login": "POWRÓT DO LOGOWANIA"
 }
