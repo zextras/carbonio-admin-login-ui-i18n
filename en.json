@@ -46,5 +46,10 @@
     },
     "button": {
         "refresh_page": "REFRESH"
-    }
+    },
+    "two_factor_not_configured_title": "You have no longer the 2FA configured",
+    "two_factor_not_configured_description": "There is no active OTP token configured in your account. In order to login from your account you have to connect from a trusted network.",
+    "back_to_login": "BACK TO LOGIN",
+    "otp_max_attempts": "Invalid OTP. You have reached the maximum number of attempts.",
+    "otp_method_disabled": "This OTP method is disabled. To restore it, please contact your system administrator."
 }
