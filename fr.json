@@ -46,5 +46,10 @@
     },
     "button": {
         "refresh_page": "RAFRAÎCHIR"
-    }
+    },
+    "two_factor_not_configured_title": "La 2FA n'est plus configurée",
+    "two_factor_not_configured_description": "Aucun jeton OTP actif n'est configuré sur votre compte. Pour vous connecter, vous devez vous connecter depuis un réseau de confiance.",
+    "back_to_login": "RETOUR À L'ÉCRAN DE CONNEXION",
+    "otp_max_attempts": "OTP invalide. Vous avez atteint le nombre maximum de tentatives.",
+    "otp_method_disabled": "Cette méthode OTP est désactivée. Pour la réactiver, veuillez contacter votre administrateur système."
 }
