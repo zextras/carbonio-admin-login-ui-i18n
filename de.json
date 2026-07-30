@@ -40,5 +40,14 @@
     "two_factor_not_configured_description": "In Ihrem Konto ist kein aktives OTP-Token konfiguriert. Um sich in Ihrem Konto anzumelden, müssen Sie sich über ein vertrauenswürdiges Netzwerk verbinden.",
     "back_to_login": "ZURÜCK ZUM LOGIN",
     "otp_max_attempts": "Ungültiges OTP. Sie haben die maximale Anzahl an Versuchen erreicht.",
-    "otp_method_disabled": "Diese OTP-Methode ist deaktiviert. Um sie wiederherzustellen, kontaktieren Sie bitte Ihren Systemadministrator."
+    "otp_method_disabled": "Diese OTP-Methode ist deaktiviert. Um sie wiederherzustellen, kontaktieren Sie bitte Ihren Systemadministrator.",
+    "browser_limited_supported": "Probleme? Versuchen Sie einen vollständig <a>unterstützten</a> Browser",
+    "changePassword_error_passwordLocked": "Das Passwort ist gesperrt und kann nicht geändert werden",
+    "error": {
+        "contact_support": "Kontaktieren Sie den Support oder versuchen Sie, die Seite neu zu laden",
+        "loading_page": "Es tut uns leid, aber es gab einen Fehler beim Laden dieser Seite."
+    },
+    "button": {
+        "refresh_page": "SEITE NEU LADEN"
+    }
 }
