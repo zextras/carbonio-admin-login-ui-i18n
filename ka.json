@@ -7,5 +7,10 @@
     "username": "მომხმარებლის სახელი",
     "button": {
         "refresh_page": "განახლება"
-    }
+    },
+    "carbonio_authentication": "Carbonio-ის ავთენტიკაცია",
+    "changePassword_newPassword": "ახალი პაროლი",
+    "changePassword_oldPassword": "ძველი პაროლი",
+    "login_saml": "SAML-ით შესვლა",
+    "supported_browsers": "მხარდაჭერილი ბრაუზერები"
 }
