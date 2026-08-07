@@ -12,5 +12,14 @@
     "changePassword_newPassword": "ახალი პაროლი",
     "changePassword_oldPassword": "ძველი პაროლი",
     "login_saml": "SAML-ით შესვლა",
-    "supported_browsers": "მხარდაჭერილი ბრაუზერები"
+    "supported_browsers": "მხარდაჭერილი ბრაუზერები",
+    "all_rights_reserved": "ყველა უფლება დაცულია",
+    "changePassword_confirmNewPassword": "ახალი პაროლის დადასტურება",
+    "changePassword_error_confirmPassword": "პაროლები არ ემთხვევა",
+    "changePassword_error_passwordRecentlyUsed": "პაროლი ახლახან იქნა გამოყენებული",
+    "type_otp": "აკრიფეთ აქ ერთჯერადი პაროლი",
+    "error": {
+        "something_went_wrong": "რაღაც არასწორად წავიდა"
+    },
+    "back_to_login": "დაბრუნება შესვლის ფვერდზე"
 }
