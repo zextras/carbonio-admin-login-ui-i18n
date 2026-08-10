@@ -21,5 +21,9 @@
     "error": {
         "something_went_wrong": "რაღაც არასწორად წავიდა"
     },
-    "back_to_login": "დაბრუნება შესვლის ფვერდზე"
+    "back_to_login": "დაბრუნება შესვლის ფვერდზე",
+    "cant_login": "ამჟამად შესვლა შეუძლებელია",
+    "changePassword_confirm_label": "პაროლის შეცვლა და შესვლა",
+    "changePassword_title": "ახალი პაროლის შექმნა",
+    "choose_otp": "აირჩიეთ OTP-ის მეთოდი"
 }
