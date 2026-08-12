@@ -25,5 +25,13 @@
     "cant_login": "ამჟამად შესვლა შეუძლებელია",
     "changePassword_confirm_label": "პაროლის შეცვლა და შესვლა",
     "changePassword_title": "ახალი პაროლის შექმნა",
-    "choose_otp": "აირჩიეთ OTP-ის მეთოდი"
+    "choose_otp": "აირჩიეთ OTP-ის მეთოდი",
+    "browser_fully_supported": "თქვენი ბრაუზერი სრულად <a>მხარდაჭერილია</a>",
+    "changePassword_error_maxLength": "მაქსიმალური სიგრძეა {{num}} სიმბოლო",
+    "changePassword_error_minLength": "მინიმალური სიგრძეა {{num}} სიმბოლო",
+    "changePassword_error_minLowerCaseChars": "მოველოდი, სულ ცოტა, {{num}} მხედრულ ასოს",
+    "changePassword_error_minNumericChars": "მოველოდი, სულ ცოტა {{num}} ციფრს",
+    "changePassword_error_minPunctuationChars": "მოველოდი, სულ ცოტა, {{num}} პუნქტუაციის სიმბოლოს",
+    "changePassword_error_minUppercaseChars": "მოველოდი, სულ ცოტა, {{num}} მთავრულ ასოს",
+    "trust_device_and_ip": "ამ მოწყობილობის, ან IP მისამართის ნდობა"
 }
