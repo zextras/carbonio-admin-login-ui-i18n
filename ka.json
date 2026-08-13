@@ -19,7 +19,8 @@
     "changePassword_error_passwordRecentlyUsed": "პაროლი ახლახან იქნა გამოყენებული",
     "type_otp": "აკრიფეთ აქ ერთჯერადი პაროლი",
     "error": {
-        "something_went_wrong": "რაღაც არასწორად წავიდა"
+        "something_went_wrong": "რაღაც არასწორად წავიდა",
+        "contact_support": "დაუკავშირდით მხარდაჭერის გუნდს, ან სცადეთ გვერდის თავიდან ჩატვირთვა"
     },
     "back_to_login": "დაბრუნება შესვლის ფვერდზე",
     "cant_login": "ამჟამად შესვლა შეუძლებელია",
@@ -33,5 +34,11 @@
     "changePassword_error_minNumericChars": "მოველოდი, სულ ცოტა {{num}} ციფრს",
     "changePassword_error_minPunctuationChars": "მოველოდი, სულ ცოტა, {{num}} პუნქტუაციის სიმბოლოს",
     "changePassword_error_minUppercaseChars": "მოველოდი, სულ ცოტა, {{num}} მთავრულ ასოს",
-    "trust_device_and_ip": "ამ მოწყობილობის, ან IP მისამართის ნდობა"
+    "trust_device_and_ip": "ამ მოწყობილობის, ან IP მისამართის ნდობა",
+    "browser_limited_supported": "პრობლემები გაქვთ? სცადეთ სრულად <a>მხარდაჭერილი</a> ბრაუზერი",
+    "changePassword_error_passwordLocked": "პაროლი დაბლოკილია და ვერ შეიცვლება",
+    "server_unreachable": "შეცდომა 502: სერვისი ხელმისაწვდომი არაა - მოგვიანებით სცადეთ.",
+    "two_factor_not_configured_title": "თქვენ აღარ გაქვთ 2FA",
+    "changePassword_error_minDigitsOrPuncs": "მოველოდი, სულ ცოტა {{num}} ციფრს, ან პუნქტუაციის ნიშანს",
+    "wrong_password": "არასწორი პაროლი. შეამოწმეთ მონაცემები და კიდევ სცადეთ"
 }
